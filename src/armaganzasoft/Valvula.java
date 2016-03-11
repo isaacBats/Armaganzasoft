@@ -1,38 +1,48 @@
-GPIO.setup(right_valvula, GPIO.IN, pull_up_down = GPIO.PUD_UP)
- 
-while True:
- if GPIO.input(left_valvula): 
-print("LEFT VALVULA OPEN!")
- if GPIO.input(right_valvula): 
-print("RIGHT VALVULA OPEN!")
- time.sleep(0.5) 
-GPIO.cleanup( )
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package armaganzasoft.components;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+
+/**
+ *
+ * @author ErwinValle
+ */
 
 
 
- import time
+public class Valvula {
+    
+    public void open(){
 
- import RPi.GPIO as GPIO
-
-    public void close(){
     // the code
+ JFrame valvula = new JFrame(); 
+        Component panel = null;
 
- GPIO.setmode(GPIO.BCM) 
-left_valvula = 22
- right_valvula = 23 
-
- GPIO.setup(left_valvula, GPIO.IN, pull_up_down = GPIO.PUD_UP)
- GPIO.setup(right_valvula, GPIO.IN, pull_up_down = GPIO.PUD_UP) 
-
-while True:
- if GPIO.input(left_valvula): 
-print("LEFT VALVULA CLOSE!")
- if GPIO.input(right_valvula): 
-print("RIGHT VALVULA CLOSE!")
- time.sleep(0.5) 
-GPIO.cleanup( )
-
-
+valvula.getContentPane().add( panel,BorderLayout.CENTER ); 
+    
+valvula.addWindowListener( new WindowAdapter() { 
+@Override
+public void windowClosing( WindowEvent evt ) { 
+System.exit( 0 ); 
 } 
-    }
 }
+
+        }
+}
+
+/**
+ *
+ * @author user
+ */
