@@ -6,6 +6,8 @@
 
 package armaganzasoft.models;
 
+import java.lang.management;
+import java.util.jar;
 import java.util.Date;
 
 /**
@@ -53,7 +55,7 @@ public class FrmAcceso extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel2.setText("Contraseña ");
+        jLabel2.setText("ContraseÃ±a ");
 
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -138,7 +140,7 @@ public class FrmAcceso extends javax.swing.JFrame {
             if(!nombre.isEmpty());
            
                 if(nombre.isEmpty()){
-                mensaje.showMessageDialog(rootPane, "Nombre del usuario o contraseña incorrectos", "Error", mensaje.ERROR_MESSAGE);
+                mensaje.showMessageDialog(rootPane, "Nombre del usuario o contraseÃ±a incorrectos", "Error", mensaje.ERROR_MESSAGE);
                 jTextField1.setText("");
                 jPasswordField1.setText("");
             } else{
