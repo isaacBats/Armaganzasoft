@@ -18,4 +18,8 @@ public class Valvula {
     public void close(){
     // the code
     }
+    
+    public void status(){
+    // the code
+    }
 }
