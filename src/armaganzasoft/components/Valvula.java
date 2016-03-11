@@ -33,11 +33,11 @@ public class Valvula {
 valvula.getContentPane().add( panel,BorderLayout.CENTER ); 
     
 valvula.addWindowListener( new WindowAdapter() { 
-@Override
-public void windowClosing( WindowEvent evt ) { 
-System.exit( 0 ); 
-} 
-}
+        @Override
+        public void windowClosing( WindowEvent evt ) { 
+            System.exit( 0 ); 
+        } 
+});
 
         }
 }
