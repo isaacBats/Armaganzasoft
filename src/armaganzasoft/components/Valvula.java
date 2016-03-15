@@ -17,6 +17,21 @@ import static jdk.nashorn.internal.objects.NativeJava.extend;
 
 public class Valvula {
     
+    private String code;
+    
+    private String name;
+
+    public Valvula(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
+
+    public Valvula() {
+    
+    }
+    
+    
+    
   JFrame valvula = new JFrame();
     
     public void open(){
@@ -50,5 +65,15 @@ public class Valvula {
     }
     
     private javax.swing.JOptionPane mensaje;
+
+    public String getCode() {
+        
+        return this.code;
+    }
+    
+    public String getName(){
+        
+        return this.name;
+    }
 }
 

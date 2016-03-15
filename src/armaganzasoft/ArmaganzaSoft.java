@@ -5,6 +5,9 @@
  */
 package armaganzasoft;
 
+import armaganzasoft.components.Valvula;
+import armaganzasoft.repositorys.ValvulaRepository;
+
 
 /**
  *
@@ -17,6 +20,20 @@ public class ArmaganzaSoft {
      */
     public static void main(String[] args) {        
                
+        
+        Valvula valvulaAgua;
+        Valvula valvulaAditivo;
+        
+        ValvulaRepository vr;        
+        
+        valvulaAgua = new Valvula("V002", "Valvula Agua 2");
+        valvulaAditivo = new Valvula("V003", "Valvula Aditivo 1");
+        
+        
+        vr = new ValvulaRepository();
+        
+        vr.addValvula(valvulaAgua);
+        vr.addValvula(valvulaAditivo);
     }
     
 }
