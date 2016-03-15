@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
  
-public class Botones extends JFrame{
+public class Boton extends JFrame{
 	
 	JButton encender = new JButton("Encender");
 	JButton apagar = new JButton("Apagar");
@@ -11,16 +11,16 @@ public class Botones extends JFrame{
 	
 	JPanel principal = new JPanel(new BorderLayout());
  
-	public Botones(){
-		super("Botones");
+	public Boton(){
+		super("Boton");
 		principal.add("North", encender);
 		principal.add("South", apagar);
  
 		getContentPane().add(principal);
  
 		
-		encender.setToolTipText("Botón ENCENDER...");
-		apagar.setToolTipText("Botón APAGAR...");
+		encender.setToolTipText("BotÃ³n ENCENDER...");
+		apagar.setToolTipText("BotÃ³n APAGAR...");
  
 		pack();
 		setResizable(false);
@@ -32,13 +32,13 @@ public class Botones extends JFrame{
 	}
  
 	public static void main(String g[]){
-		Botones p = new Botones();
+		Boton p = new Boton();
 		p.show();
  
 		p.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent evt){
 				System.exit(0);
 			}
-		}
+		});
 	}
 }
