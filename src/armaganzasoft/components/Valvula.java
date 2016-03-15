@@ -32,7 +32,7 @@ public class Valvula {
     }
     
     public void close(){
-        valvula.removeAll();
+        // Aqui va tu codigo Ewin
     }
     
     public void estado(){
