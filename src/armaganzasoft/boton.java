@@ -1,5 +1,6 @@
 package boton;
 
+import java.awt.Container;
 import javax.swing.*;
 import java.awt.event.*;
 /**
@@ -12,7 +13,7 @@ public class Encendido extends Valvula {
      * Creates new form Encendido
      */
      
-    public Encendido() {
+    public void Encendido() {
         initComponents();
     }
 
@@ -213,8 +214,7 @@ public class Encendido extends Valvula {
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-      open ();
-        jTextField2.setText("Valvulas Encendidas");
+              jTextField2.setText("Valvulas Encendidas");
 // TODO add your handling code here:
     }                                        
 
@@ -267,13 +267,21 @@ public class Encendido extends Valvula {
     private javax.swing.JTextField jTextField2;
     // End of variables declaration                   
 
-    private void close() {
-      
+    
+    void setVisible(boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void open() {
-        
+    private void setDefaultCloseOperation(int EXIT_ON_CLOSE) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void pack() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private Container getContentPane() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
