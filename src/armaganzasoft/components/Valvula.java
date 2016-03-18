@@ -1,5 +1,6 @@
 package armaganzasoft.components;
 
+import armaganzasoft.Encendido;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.WindowAdapter;
@@ -81,3 +82,4 @@ public class Valvula extends Encendido{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
+    
