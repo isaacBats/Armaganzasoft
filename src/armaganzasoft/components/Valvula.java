@@ -47,7 +47,7 @@ public class Valvula {
     }
     
     public void close(){
-        // Aqui va tu codigo Ewin
+        
     }
     
     public void estado(){
