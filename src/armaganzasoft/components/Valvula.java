@@ -47,6 +47,7 @@ public class Valvula {
     }
     
     public void close(){
+        finish();
         
     }
     
@@ -75,5 +76,8 @@ public class Valvula {
         
         return this.name;
     }
-}
 
+    private void finish() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
