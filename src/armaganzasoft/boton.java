@@ -1,8 +1,11 @@
-package boton;
+package armaganzasoft.components;
 
+import armaganzasoft.components.Valvula;
+import armaganzasoft.components.Encendido;
 import java.awt.Container;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.EventObject;
 /**
  *
  * @author Rodrigo
