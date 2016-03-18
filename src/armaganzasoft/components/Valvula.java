@@ -6,20 +6,19 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import static java.lang.System.exit;
 import javax.swing.JFrame;
-import static jdk.nashorn.internal.objects.NativeJava.extend;
+//import static jdk.nashorn.internal.objects.NativeJava.extend;
 
+//public class Valvula {
+  
 /**
  *
  * @author Rodrigo
  */
 
-
-
-public class Valvula extends Encendido {
-public class Valvula {
+public class Valvula extends Encendido{
+//public void Valvula () {
     
-    private String code;
-    
+    private String code;    
     private String name;
 
     public Valvula(String code, String name) {
