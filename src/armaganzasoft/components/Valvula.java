@@ -15,6 +15,7 @@ import static jdk.nashorn.internal.objects.NativeJava.extend;
 
 
 
+public class Valvula extends Encendido {
 public class Valvula {
     
     private String code;
