@@ -1,6 +1,7 @@
 package armaganzasoft.components;
 
-import armaganzasoft.Encendido;
+//import armaganzasoft.Encendido;
+import armaganzasoft.Boton;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.WindowAdapter;
@@ -16,7 +17,7 @@ import javax.swing.JFrame;
  * @author Rodrigo
  */
 
-public class Valvula extends Encendido{
+public class Valvula extends Boton{
 //public void Valvula () {
     
     private String code;    
