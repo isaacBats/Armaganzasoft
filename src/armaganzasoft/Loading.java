@@ -1,4 +1,4 @@
-package armaganza_interfaces;
+package armaganzasoft;
 
 /**
  *

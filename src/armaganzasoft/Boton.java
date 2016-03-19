@@ -1,6 +1,7 @@
 package armaganzasoft;
 
 //import armaganzasoft.components.Valvula;
+import armaganzasoft.components.Valvula;
 import java.awt.Container;
 import javax.swing.*;
 import java.awt.event.*;
@@ -180,15 +181,15 @@ public class Boton {
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-
- jTextField2.setText("Valvula 1 Encendida");
+Valvula open= new Valvula (); 
+        jTextField2.setText("Valvula 1 Encendida");
 
         // TODO add your handling code here:
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-      
-      jTextField2.setText("Valvula 2 Encendida");
+ Valvula open= new Valvula ();      
+     jTextField2.setText("Valvula 2 Encendida");
         // TODO add your handling code here:
     }                                        
 
@@ -198,25 +199,26 @@ public class Boton {
     }                                           
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-      
+       Valvula close= new Valvula (); 
       jTextField1.setText("Valvula 1 Apagada");
         // TODO add your handling code here:
     }                                        
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-  
+   Valvula close= new Valvula (); 
       jTextField1.setText("Valvula 2 Apagada");
         // TODO add your handling code here:
     }                                        
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-   
+    Valvula close= new Valvula (); 
       jTextField1.setText("Valvulas Apagadas");
         // TODO add your handling code here:
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-              jTextField2.setText("Valvulas Encendidas");
+    Valvula open= new Valvula (); 
+        jTextField2.setText("Valvulas Encendidas");
 // TODO add your handling code here:
     }                                        
 
