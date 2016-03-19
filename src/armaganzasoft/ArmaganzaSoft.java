@@ -32,7 +32,7 @@ public class ArmaganzaSoft {
 //        valvulaAditivo = new Valvula("V003", "Valvula Aditivo 1");
         
 //        valvulaAditivo2 = new Valvula("V006", "Valvula Aditivo HP");
-        valvulaAditivo3 = new Valvula("V005", "Valvula Aditivo tercero");
+        valvulaAditivo3 = new Valvula("V009", "Valvula Aditivo nueve");
         
         
         vr = new ValvulaRepository();
@@ -41,7 +41,10 @@ public class ArmaganzaSoft {
 //        vr.addValvula(valvulaAditivo);
         
 //          vr.addValvula(valvulaAditivo2);
-          vr.addValvula(valvulaAditivo3);
+          if(vr.addValvula(valvulaAditivo3) == true){
+          
+              System.out.println(valvulaAditivo3.getName());
+          }
     }
     
 }
