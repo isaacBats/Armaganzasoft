@@ -21,19 +21,27 @@ public class ArmaganzaSoft {
     public static void main(String[] args) {        
                
         
-        Valvula valvulaAgua;
-        Valvula valvulaAditivo;
+//        Valvula valvulaAgua;
+//        Valvula valvulaAditivo;
+        Valvula valvulaAditivo2;
+        Valvula valvulaAditivo3;
         
         ValvulaRepository vr;        
         
-        valvulaAgua = new Valvula("V002", "Valvula Agua 2");
-        valvulaAditivo = new Valvula("V003", "Valvula Aditivo 1");
+//        valvulaAgua = new Valvula("V002", "Valvula Agua 2");
+//        valvulaAditivo = new Valvula("V003", "Valvula Aditivo 1");
+        
+//        valvulaAditivo2 = new Valvula("V006", "Valvula Aditivo HP");
+        valvulaAditivo3 = new Valvula("V005", "Valvula Aditivo tercero");
         
         
         vr = new ValvulaRepository();
         
-        vr.addValvula(valvulaAgua);
-        vr.addValvula(valvulaAditivo);
+//        vr.addValvula(valvulaAgua);
+//        vr.addValvula(valvulaAditivo);
+        
+//          vr.addValvula(valvulaAditivo2);
+          vr.addValvula(valvulaAditivo3);
     }
     
 }
