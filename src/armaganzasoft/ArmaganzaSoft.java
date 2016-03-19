@@ -43,6 +43,7 @@ public class ArmaganzaSoft {
 //          vr.addValvula(valvulaAditivo2);
           if(vr.addValvula(valvulaAditivo3) == true){
           
+              //esto no sirve
               System.out.println(valvulaAditivo3.getName());
           }
     }
