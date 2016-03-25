@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package armaganzasoft.interfaces;
+packagearmaganzasoft;
 
-import armaganzasoft.interfaces.ClienteRMI;
+
 import armaganzasoft.interfaces.Principal;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -80,8 +80,6 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Empresa Siz\\planet.jpg")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 690, 430));
 
         pack();

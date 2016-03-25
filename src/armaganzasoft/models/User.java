@@ -23,7 +23,6 @@ public class User {
     public int getId() {
         return id;
     }
-
     
     public int getBranch_id() {
         return branch_id;
