@@ -18,8 +18,8 @@ import javax.swing.JFrame;
  */
 
 public class Valvula extends Boton{
-//public void Valvula () {
-    
+
+   
     private String code;    
     private String name;
 
