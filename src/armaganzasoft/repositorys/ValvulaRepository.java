@@ -89,6 +89,10 @@ public class ValvulaRepository extends BaseRepository{
         }
         return false;
     }
+    
+    public void all(){
+        
+    }
 
     
     
