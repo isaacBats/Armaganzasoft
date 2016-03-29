@@ -1,7 +1,6 @@
 package armaganzasoft.interfaces;
 
 import armaganzasoft.components.Valvula;
-import armaganzasoft.repositorys.ValvulaRepository;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -32,8 +31,6 @@ public class Botones extends JFrame {
 
             getContentPane().add(principal);
 
-//            abrir.setToolTipText("Botón ABRIR...");
-//            cerrar.setToolTipText("Botón CERRAR...");
             abrir.addActionListener( new ActionListener(){
                 @Override
                 public void actionPerformed( ActionEvent arg ){
