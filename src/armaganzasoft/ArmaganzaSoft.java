@@ -6,8 +6,11 @@
 package armaganzasoft;
 
 import armaganzasoft.components.Valvula;
+import armaganzasoft.interfaces.Botones;
 import armaganzasoft.repositorys.ValvulaRepository;
 import java.awt.Button;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 /**
@@ -32,16 +35,21 @@ public class ArmaganzaSoft {
 //        vr = new ValvulaRepository();
 //        vr.addValvula(valvulaAgua);
 
-        if(valvulaAgua.getStatus() == 0){
-            System.out.println("La valvula "+valvulaAgua.getName()+" se encuentra Cerrada");
-        }        
-        System.out.println("Abriendo valvula "+valvulaAgua.getName());
-        valvulaAgua.open();
+//        if(valvulaAgua.getStatus() == 0){
+//            System.out.println("La valvula "+valvulaAgua.getName()+" se encuentra Cerrada");
+//        }        
+//        System.out.println("Abriendo valvula "+valvulaAgua.getName());
+//        valvulaAgua.open();
         
-        Button boton;
-        
-        boton = new Button( "Abrir" );
-        boton.setVisible(true);
+        Botones p = new Botones();
+            p.setValvula(valvulaAgua);
+            p.show();
+
+            p.addWindowListener(new WindowAdapter(){
+                    public void windowClosing(WindowEvent evt){
+                            System.exit(0);
+                    }
+            });
         
         
         
