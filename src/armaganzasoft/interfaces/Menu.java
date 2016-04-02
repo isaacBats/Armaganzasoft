@@ -13,7 +13,7 @@ import armaganzasoft.models.Proveedores;
 import armaganzasoft.models.Usuarios;
 
 /**
- *
+ * Call metod to display init
  * @author rodri
  */
 public class Menu extends javax.swing.JFrame {

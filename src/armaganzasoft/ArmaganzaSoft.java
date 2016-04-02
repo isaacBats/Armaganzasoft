@@ -13,6 +13,9 @@ import armaganzasoft.repositorys.ValvulaRepository;
 import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import armaganzasoft.components.Valvula;
+import armaganzasoft.interfaces.Botones;
+import java.awt.Button;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -27,22 +30,13 @@ public class ArmaganzaSoft {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) { 
-        
-        Bienvenida inicio = new Bienvenida();
-        inicio.setVisible(true);
-       
-        }
-    
-    
-
+    public static void main(String[] args) {        
                
         
-//        Valvula valvulaAgua;
+        Valvula valvulaAgua;
         
- //       ValvulaRepository vr;        
-        
-  //      valvulaAgua = new Valvula("V002", "Valvula Agua 2");
+        ValvulaRepository vr;        
+        valvulaAgua = new Valvula("V002", "Valvula Agua 2");
         
 //        vr = new ValvulaRepository();
 //        vr.addValvula(valvulaAgua);
@@ -53,8 +47,7 @@ public class ArmaganzaSoft {
 //        System.out.println("Abriendo valvula "+valvulaAgua.getName());
 //        valvulaAgua.open();
         
-
-        /*Botones p = new Botones();
+        Botones p = new Botones();
             p.setValvula(valvulaAgua);
             p.show();
 
@@ -62,7 +55,11 @@ public class ArmaganzaSoft {
                     public void windowClosing(WindowEvent evt){
                             System.exit(0);
                     }
-            });*/
+            });
         
-    }
+        Bienvenida inicio = new Bienvenida();
+        inicio.setVisible(true);
+       
+    }        
+}
     
