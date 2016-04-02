@@ -1,14 +1,27 @@
 package armaganzasoft.components;
+
+//import armaganzasoft.Encendido;
+import armaganzasoft.Boton;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import static java.lang.System.exit;
+import javax.swing.JFrame;
+//import static jdk.nashorn.internal.objects.NativeJava.extend;
+
+//public class Valvula {
   
 /**
  *
  * @author Rodrigo
  */
 
-public class Valvula {  
+public class Valvula extends Boton{
+
+   
     private String code;    
     private String name;
-    private int status = 0;
 
     public Valvula(String code, String name) {
         this.code = code;
@@ -18,30 +31,44 @@ public class Valvula {
     public Valvula() {
     
     }
-      
+    
+    
+    
+  JFrame valvula = new JFrame();
+    
     public void open(){
-        
-        if( this.status == 0 ){
-            
-            this.status = 1;
-            System.out.println("La valvula "+this.getName()+" se ha abierto");
-            
-        }
+
+    // the code
+         
+        Component panel = null;
+       
+
+        valvula.getContentPane().add( panel,BorderLayout.CENTER ); 
+    
+        valvula.addWindowListener (new WindowAdapter() {}); { }
     }
     
     public void close(){
-        if( this.status == 1 ){
-            this.status = 0;
-            System.out.println("Se ha cerrado la valvula "+this.getName());
-        }
+        finish();
         
     }
     
-    public int getStatus(){
-        
-        return this.status;
+    public void estado(){
+        int valvula=0, habilitado, alerta, desabilitado;
+        if(valvula<=4){
+            mensaje.showMessageDialog(mensaje,"valvula encendida", "ENCENDIDA",mensaje.INFORMATION_MESSAGE);
+        }else{
+            if(valvula>=4){
+             mensaje.showMessageDialog(mensaje,"valvula en peligro ", "PELIGRO",mensaje.WARNING_MESSAGE);   
+            }else{
+                mensaje.showMessageDialog(mensaje,"valvula desabilitada","APAGADO",mensaje.ERROR_MESSAGE);
+            }
+        }
+    
     }
-   
+    
+    private javax.swing.JOptionPane mensaje;
+
     public String getCode() {
         
         return this.code;
@@ -52,5 +79,8 @@ public class Valvula {
         return this.name;
     }
 
+    private void finish() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
     

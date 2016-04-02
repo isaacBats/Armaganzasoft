@@ -31,22 +31,21 @@ public class ArmaganzaSoft {
         
         Valvula valvulaAgua;
         
-        ValvulaRepository vr;        
-        
+        ValvulaRepository vr;                
         vr = new ValvulaRepository();
         ResultSet rs;
         
         valvulaAgua = new Valvula("V002", "Valvula Dosificador");
         
-        rs = vr.all();
-        try {
-            while (rs.next())
-            {
-                System.out.println("codigo = "+rs.getString("name") );
-            }           
-        } catch (SQLException ex) {
-            System.out.println("Error: "+ ex);
-        }
+        vr.all();
+//        try {
+//            while (rs.next())
+//            {
+//                System.out.println("codigo = "+rs.getString("name") );
+//            }           
+//        } catch (SQLException ex) {
+//            System.out.println("Error: "+ ex);
+//        }
                 
 //        vr = new ValvulaRepository();
 //        vr.addValvula(valvulaAgua);
@@ -67,9 +66,6 @@ public class ArmaganzaSoft {
 //                    }
 //            });
         
-        Bienvenida inicio = new Bienvenida();
-        inicio.setVisible(true);
-       
-    }        
-}
+    }
     
+}

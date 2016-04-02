@@ -92,18 +92,22 @@ public class ValvulaRepository extends BaseRepository{
         return false;
     }
     
-    public ResultSet all(){
+    public void all(){
         try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM machines");
-            if(rs.next())
-                return rs;
+            while (rs.next())
+            {
+               System.out.println("nombre = "+rs.getString("code"));
+            }
                 
         }catch(SQLException e){
             System.out.println("Error al consultar en base de datos "+ e);
         }
-        return null;
+        
+        
     }
+
 
     
     
