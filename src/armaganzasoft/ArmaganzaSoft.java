@@ -5,8 +5,16 @@
  */
 package armaganzasoft;
 
-import armaganzasoft.components.Valvula;
+//import temporal.Valvula;
+//import armaganzasoft.interfaces.Botones;
+import armaganzasoft.interfaces.Bienvenida;
+import armaganzasoft.interfaces.Login;
 import armaganzasoft.repositorys.ValvulaRepository;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 /**
@@ -19,33 +27,42 @@ public class ArmaganzaSoft {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {        
+    public static void main(String[] args) { 
+        
+        Bienvenida inicio = new Bienvenida();
+        inicio.setVisible(true);
+       
+        }
+    
+    
+
                
         
-        Valvula valvulaAgua;
-        Valvula valvulaAditivo;
-        Valvula valvulaAditivo2;
-        Valvula valvulaAditivo3;
+//        Valvula valvulaAgua;
         
-        ValvulaRepository vr;        
+ //       ValvulaRepository vr;        
         
-        valvulaAgua = new Valvula("V002", "Valvula Agua 2");
-        valvulaAditivo = new Valvula("V003", "Valvula Aditivo 1");
+  //      valvulaAgua = new Valvula("V002", "Valvula Agua 2");
         
-        valvulaAditivo2 = new Valvula("V006", "Valvula Aditivo HP");
-        valvulaAditivo3 = new Valvula("V009", "Valvula Aditivo nueve");
+//        vr = new ValvulaRepository();
+//        vr.addValvula(valvulaAgua);
+
+//        if(valvulaAgua.getStatus() == 0){
+//            System.out.println("La valvula "+valvulaAgua.getName()+" se encuentra Cerrada");
+//        }        
+//        System.out.println("Abriendo valvula "+valvulaAgua.getName());
+//        valvulaAgua.open();
         
+
+        /*Botones p = new Botones();
+            p.setValvula(valvulaAgua);
+            p.show();
+
+            p.addWindowListener(new WindowAdapter(){
+                    public void windowClosing(WindowEvent evt){
+                            System.exit(0);
+                    }
+            });*/
         
-        vr = new ValvulaRepository();
-        vr.addValvula(valvulaAgua);
-        
-        vr.addValvula(valvulaAditivo);
-        
-          vr.addValvula(valvulaAditivo2);
-          if(vr.addValvula(valvulaAditivo3) == true){
-          
-            System.out.println(valvulaAditivo3.getName());
-          }
     }
     
-}
