@@ -8,9 +8,10 @@ package armaganzasoft;
 import armaganzasoft.components.Valvula;
 import armaganzasoft.interfaces.Botones;
 import armaganzasoft.repositorys.ValvulaRepository;
-import java.awt.Button;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 /**
@@ -30,7 +31,25 @@ public class ArmaganzaSoft {
         
         ValvulaRepository vr;        
         
-        valvulaAgua = new Valvula("V002", "Valvula Agua 2");
+        
+        vr = new ValvulaRepository();
+        ResultSet rs;
+        
+        valvulaAgua = new Valvula("V002", "Valvula Dosificador");
+        
+        rs = vr.all();
+        try {
+            while (rs.next())
+            {
+                System.out.println("codigo = "+rs.getString("name") );
+            }           
+        } catch (SQLException ex) {
+            System.out.println("Error: "+ ex);
+        }
+        
+        
+        
+       
         
 //        vr = new ValvulaRepository();
 //        vr.addValvula(valvulaAgua);

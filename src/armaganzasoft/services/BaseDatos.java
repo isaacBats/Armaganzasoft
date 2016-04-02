@@ -11,8 +11,8 @@ public class BaseDatos {
     
     private final String URL        = "jdbc:mysql://localhost:3306/";
     private final String DB         = "armaganza";
-    private final String USER       = "root";
-    private final String PASSWORD   = "";
+    private final String USER       = "armaganza";
+    private final String PASSWORD   = "armaganza";
     
     public Connection conn = null;
     
