@@ -103,7 +103,6 @@ public class ValvulaRepository extends BaseRepository{
             System.out.println("Error al consultar en base de datos "+ e);
         }
         return null;
-        
     }
 
     

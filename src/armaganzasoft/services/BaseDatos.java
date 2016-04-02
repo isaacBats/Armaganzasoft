@@ -1,5 +1,7 @@
 package armaganzasoft.services;
 
+
+import armaganzasoft.models.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,12 +11,16 @@ import java.sql.SQLException;
  */
 public class BaseDatos {
     
+   
+    
     private final String URL        = "jdbc:mysql://localhost:3306/";
     private final String DB         = "armaganza";
     private final String USER       = "armaganza";
     private final String PASSWORD   = "armaganza";
     
     public Connection conn = null;
+     User us = new User();
+  
     
     public Connection getConnection(){
         
@@ -35,4 +41,8 @@ public class BaseDatos {
         conn.close();
     }
     
+    
 }
+
+    
+

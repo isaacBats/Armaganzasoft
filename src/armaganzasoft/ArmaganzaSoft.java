@@ -5,9 +5,18 @@
  */
 package armaganzasoft;
 
+//import temporal.Valvula;
+//import armaganzasoft.interfaces.Botones;
+import armaganzasoft.interfaces.Bienvenida;
+import armaganzasoft.interfaces.Login;
+import armaganzasoft.repositorys.ValvulaRepository;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import armaganzasoft.components.Valvula;
 import armaganzasoft.interfaces.Botones;
 import armaganzasoft.repositorys.ValvulaRepository;
+import java.awt.Button;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
@@ -30,8 +39,6 @@ public class ArmaganzaSoft {
         Valvula valvulaAgua;
         
         ValvulaRepository vr;        
-        
-        
         vr = new ValvulaRepository();
         ResultSet rs;
         
@@ -46,11 +53,7 @@ public class ArmaganzaSoft {
         } catch (SQLException ex) {
             System.out.println("Error: "+ ex);
         }
-        
-        
-        
-       
-        
+                
 //        vr = new ValvulaRepository();
 //        vr.addValvula(valvulaAgua);
 
@@ -70,10 +73,9 @@ public class ArmaganzaSoft {
                     }
             });
         
-        
-        
-        
-        
-    }
-    
+        Bienvenida inicio = new Bienvenida();
+        inicio.setVisible(true);
+       
+    }        
 }
+    
