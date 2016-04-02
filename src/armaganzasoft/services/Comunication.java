@@ -48,7 +48,7 @@ public class Comunication {
             ReadResponse rep = (ReadResponse) mp.send(req2);
             Valor = String.valueOf(rep.getShortData()[0]);
         } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: "+ex);
         }
 
         return Valor;
@@ -71,7 +71,7 @@ public class Comunication {
             Valor2= rep.getData();
             Valor= Valor +  Byte.toString(Valor2[0]);
         } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: "+ex);
         }
 
         return Valor;
@@ -94,7 +94,7 @@ public class Comunication {
             Valor2= rep.getData();
             Valor= Valor +  Byte.toString(Valor2[0]);
         } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: "+ex);
         }
 
         return Valor;
@@ -115,7 +115,7 @@ public class Comunication {
             //ReadResponse rep = (ReadResponse) mp.send(req2);
             Valor = "OK";
         } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: "+ex);
         }
 
         return Valor;
@@ -143,7 +143,7 @@ public class Comunication {
             //ReadResponse rep = (ReadResponse) mp.send(req2);
             Valor = "OK";
         } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: "+ex);
         }
 
         return Valor;
