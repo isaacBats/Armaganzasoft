@@ -1,5 +1,10 @@
 package armaganzasoft.models;
 
+import armaganzasoft.services.BaseDatos;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 
 /**
@@ -19,6 +24,36 @@ public class User {
     private boolean active;
     private Date    update_at;
     private Date    created_at;
+   
+      private String sql=null;
+      private BaseDatos db;
+      private Connection conn;
+    
+    public String validarUsario(String Login, String password) throws SQLException{
+        String nombre="";
+            if(conectar()){
+                String sql = "SELECT * FROM users WHERE name like '"+Login+"';";
+                Statement stmt = this.conn.createStatement();
+                ResultSet res = stmt.executeQuery(sql);
+                if(res.next()){
+//                    nombre = res.getString("name");
+                    
+                    if( password.equals(res.getString("password"))){
+                        nombre = "Bienvenido a Armaganza Soft";
+                    }else{
+                        nombre = "Contraseña invalida";
+                    }
+                }else{
+                    return "No se encontro registro";
+                }    
+                res.close();
+                stmt.close();
+                this.conn.close();
+                return nombre;
+            }
+        return "No se encontro registro";
+        
+    }
 
     public int getId() {
         return id;
@@ -111,4 +146,22 @@ public class User {
     public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
+
+    private boolean conectar() {
+        this.db = new BaseDatos();
+        this.conn = db.getConnection();
+        if(this.conn != null){
+            return true;
+        }else{
+            return false;
+        }
+    
+    
+    }
+
+    public String validarUsuario(String login, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 }
