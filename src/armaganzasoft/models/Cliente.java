@@ -5,6 +5,8 @@
  */
 package armaganzasoft.models;
 
+import armaganzasoft.interfaces.Menu;
+
 /**
  *
  * @author Rodrigo
@@ -57,29 +59,24 @@ public class Cliente extends javax.swing.JFrame {
         jLabel7.setText("jLabel7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
-        getContentPane().add(jTextField10);
-        jTextField10.setBounds(680, 230, 280, 40);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, 280, 40));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("C.P.");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(580, 240, 24, 15);
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setText("MODIFICAR");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(840, 470, 170, 40);
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 470, 170, 40));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setText("ELIMINAR");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(1134, 350, 170, 40);
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 350, 170, 40));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("AGREGAR");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(840, 350, 170, 40);
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 350, 170, 40));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setText("BUSCAR CLIENTE");
@@ -88,82 +85,67 @@ public class Cliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(560, 30, 140, 40);
-        getContentPane().add(jTextField9);
-        jTextField9.setBounds(680, 160, 280, 40);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 140, 40));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 280, 40));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("CIUDAD");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(560, 170, 48, 15);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(680, 100, 280, 40);
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
+        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 280, 40));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("DIRECCION");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(550, 100, 68, 15);
-        getContentPane().add(jTextField7);
-        jTextField7.setBounds(160, 480, 260, 40);
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 260, 40));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("RFC");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(50, 490, 23, 15);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(160, 420, 260, 40);
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, -1, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 260, 40));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("CELULAR");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 430, 55, 15);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(90, 30, 440, 40);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(160, 350, 260, 40);
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 440, 40));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 260, 40));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("TELEFONO");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 360, 70, 15);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(160, 270, 260, 40);
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 70, -1));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 260, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("E - MAIL");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 280, 52, 15);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(160, 190, 260, 40);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 260, 40));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(160, 110, 260, 40);
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 260, 40));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("APELLIDOS");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 210, 69, 15);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("NOMBRE");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 120, 52, 15);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton5.setText("PRINCIPAL");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(1140, 470, 170, 40);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 470, 170, 40));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(0, 0, 1380, 1070);
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 1070));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,6 +157,13 @@ public class Cliente extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+Menu principal=new Menu();
+        principal.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

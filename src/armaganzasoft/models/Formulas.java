@@ -5,6 +5,8 @@
  */
 package armaganzasoft.models;
 
+import armaganzasoft.interfaces.Menu;
+
 /**
  *
  * @author user
@@ -49,83 +51,76 @@ public class Formulas extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(27, 12, 482, 20);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(271, 101, 500, 50);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(271, 180, 280, 50);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(271, 258, 280, 50);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(271, 334, 280, 50);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(271, 413, 280, 50);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 12, 482, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 101, 500, 50));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 180, 280, 50));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 258, 280, 50));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 334, 280, 50));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 413, 280, 50));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(850, 223, 309, 319);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 223, 309, 319));
 
         jButton1.setText("Buscar Formula");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(564, 11, 105, 23);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(564, 11, -1, -1));
 
         jButton2.setText("AGREGAR");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(1190, 147, 150, 53);
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 147, 150, 53));
 
         jButton3.setText("MODIFICAR");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(1190, 233, 150, 55);
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 233, 150, 55));
 
         jButton4.setText("ELIMINAR");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(1190, 328, 150, 55);
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 328, 150, 55));
 
         jButton5.setText("PRINCIPAL");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(1190, 424, 150, 55);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 424, 150, 55));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("NOTAS");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(970, 180, 40, 14);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 180, 40, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("NOMBRE");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(160, 120, 80, 14);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 80, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("CODIGO");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(160, 190, 60, 14);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 60, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("ORDEN");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(160, 270, 60, 14);
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("VALOR");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(160, 350, 40, 14);
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 40, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("TIPO");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(170, 430, 80, 14);
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 80, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 0, 1350, 1080);
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+Menu principal=new Menu();
+        principal.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

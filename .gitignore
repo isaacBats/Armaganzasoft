@@ -10,6 +10,7 @@ nbactions.xml
 
 #Java files 
 *.class
+applet.policy   
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

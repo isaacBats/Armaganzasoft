@@ -5,6 +5,8 @@
  */
 package armaganzasoft.models;
 
+import armaganzasoft.interfaces.Menu;
+
 /**
  *
  * @author user
@@ -38,12 +40,12 @@ public class EntregasParciales extends javax.swing.JFrame {
         button4 = new java.awt.Button();
         button5 = new java.awt.Button();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jLabel1, org.jdesktop.beansbinding.ObjectProperty.create(), this, org.jdesktop.beansbinding.BeanProperty.create("title"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new javax.swing.JLabel(), org.jdesktop.beansbinding.ObjectProperty.create(), this, org.jdesktop.beansbinding.BeanProperty.create("title"));
         bindingGroup.addBinding(binding);
 
         getContentPane().setLayout(null);
@@ -90,6 +92,11 @@ public class EntregasParciales extends javax.swing.JFrame {
         button4.setBounds(1180, 330, 140, 70);
 
         button5.setLabel("PRINCIPAL");
+        button5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(button5);
         button5.setBounds(1180, 450, 140, 70);
 
@@ -98,10 +105,10 @@ public class EntregasParciales extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 500, 110, 14);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("NOTAS");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(820, 60, 50, 14);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("NOTAS");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(820, 70, 40, 14);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
         getContentPane().add(jLabel3);
@@ -123,6 +130,13 @@ public class EntregasParciales extends javax.swing.JFrame {
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_button2ActionPerformed
+
+    private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
+Menu principal=new Menu();
+        principal.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,9 +181,9 @@ public class EntregasParciales extends javax.swing.JFrame {
     private java.awt.Button button5;
     private java.awt.Canvas canvas2;
     private java.awt.Canvas canvas3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private java.awt.TextField textField1;
     private java.awt.TextField textField2;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;

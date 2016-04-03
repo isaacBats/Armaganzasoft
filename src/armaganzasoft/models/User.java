@@ -1,5 +1,6 @@
 package armaganzasoft.models;
 
+import armaganzasoft.interfaces.Menu;
 import armaganzasoft.services.BaseDatos;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,30 +30,28 @@ public class User {
       private BaseDatos db;
       private Connection conn;
     
-    public String validarUsario(String Login, String password) throws SQLException{
+    public Boolean validarUsuario(String Login, String password) throws SQLException{
         String nombre="";
             if(conectar()){
                 String sql = "SELECT * FROM users WHERE name like '"+Login+"';";
                 Statement stmt = this.conn.createStatement();
                 ResultSet res = stmt.executeQuery(sql);
-                if(res.next()){
-//                    nombre = res.getString("name");
-                    
-                    if( password.equals(res.getString("password"))){
+                if(res.next() && password.equals(res.getString("password"))){
                         nombre = "Bienvenido a Armaganza Soft";
-                    }else{
+                        System.out.println(nombre);
+                        return true;
+                 
+                }else{
                         nombre = "Contraseña invalida";
+                        System.out.println(nombre);
+                        return false;
                     }
                 }else{
-                    return "No se encontro registro";
+                    //return "No se encontro registro";
+                    System.out.println("No se pudo conectar a la base de datos");
+                    this.conn.close();
+                    return false;
                 }    
-                res.close();
-                stmt.close();
-                this.conn.close();
-                return nombre;
-            }
-        return "No se encontro registro";
-        
     }
 
     public int getId() {
@@ -158,10 +157,4 @@ public class User {
     
     
     }
-
-    public String validarUsuario(String login, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
 }

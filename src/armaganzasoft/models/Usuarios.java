@@ -7,22 +7,25 @@
 
 package armaganzasoft.models;
 
+import armaganzasoft.interfaces.Menu;
 import armaganzasoft.services.BaseDatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Rodrigo
- */
+
+ // @author ErwinValle
+
 public class Usuarios extends javax.swing.JFrame {
+private User users= new User();
+    private static void Guardar(String Nombre, String Apellidos, String NumdeEmpleado, String Email, String Usuario, String Password, String Puesto, String Status, String Area) {
+        
+    }
     
    BaseDatos conn = new BaseDatos();
-    /**
-     * Creates new form Login
-     */
+    
+     
     public Usuarios() {
         initComponents();
     }
@@ -217,7 +220,7 @@ public class Usuarios extends javax.swing.JFrame {
 
         jButton2.setText("MODIFICAR");
 
-        jButton3.setText(" BAJA");
+        jButton3.setText("ELIMINAR");
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,7 +246,12 @@ public class Usuarios extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("ALTA");
+        jButton5.setText("PRINCIPAL");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -380,29 +388,31 @@ jTextField10.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String Nombre=jTextField1.getText();
+        String Apellidos=jTextField2.getText();
+        String NumdeEmpleado=jTextField3.getText();
+        String Email=jTextField4.getText();
+        String Usuario=jTextField5.getText();
+        String Password=jTextField6.getText();
+        String Puesto=jTextField7.getText();
+        String Status=jTextField9.getText();
+        String Area=jTextField11.getText();
+        
 //private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
-       
-  Usuarios FrmUsuarios = new Usuarios();
+    
+  Usuarios usuarios = new Usuarios();
         
-  int exito =  FrmUsuarios.Guardar(txtname.getText(), txtApellidoscontacto.getText(), 
-               txtEmail.getText(), txtCelular.getText(), txtDireccion.getText(), 
-               cboxSexo.getSelectedItem().toString());
-        
-  if(exito>0){
-
-    JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente", 
-                                  "Éxito en la operación", JOptionPane.INFORMATION_MESSAGE);
-
-  }else{
-
-    JOptionPane.showMessageDialog(null, "Los datos no se pudieron guardar\n"
-                                 + "Inténtelo nuevamente", "Error en la operación", JOptionPane.ERROR_MESSAGE); 
-
-  
-
-  }  
+   Usuarios.Guardar(Nombre, Apellidos, NumdeEmpleado, Email, Usuario, Password, Puesto, Status, Area);
+ 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+Menu principal=new Menu();
+        principal.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

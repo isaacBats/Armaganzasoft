@@ -27,7 +27,10 @@ import java.sql.Struct;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static sun.security.jgss.GSSUtil.login;
 
 /**
  *
@@ -37,6 +40,7 @@ public class Login extends javax.swing.JFrame {
   
      private BaseDatos db;
      private Connection conn;
+    private Object login;
          
     
 
@@ -102,7 +106,31 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+            String nombre = jTextField1.getText();
+            String password = jPasswordField1.getText();
+            
+            User user;
+            
+            user = new User();
+         try {
+             if(user.validarUsuario(nombre, password)){
+                 java.awt.EventQueue.invokeLater(new Runnable() {
+                      public void run() {
+                            new Menu().setVisible(true);
+                           }
+                  });
+             }else{
+                 System.out.println("No te Puedes Conectar&");
+                
+                 /* Hacer que cuando no te logees correctamente
+                    se limpien los campos del formulario
+                 */
+                //jTextField1.;
+                //jPasswordField1.removeAll();
+             }
+         } catch (SQLException ex) {
+             System.out.println("Error: "+ ex);
+         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

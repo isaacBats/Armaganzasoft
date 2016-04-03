@@ -9,8 +9,6 @@ import armaganzasoft.services.BaseDatos;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import static junit.framework.Assert.assertTrue;
-import junit.framework.Test;
 
 /**
  *
