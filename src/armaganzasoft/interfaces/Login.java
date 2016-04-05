@@ -114,13 +114,17 @@ public class Login extends javax.swing.JFrame {
             user = new User();
          try {
              if(user.validarUsuario(nombre, password)){
+                 JOptionPane.showMessageDialog(this,"BIENVENIDO A ARMAGANZA SOFT");
+                 dispose();
                  java.awt.EventQueue.invokeLater(new Runnable() {
                       public void run() {
                             new Menu().setVisible(true);
                            }
                   });
+                 
              }else{
-                 System.out.println("No te Puedes Conectar&");
+                 //System.out.println("No te Puedes Conectar&");
+                 JOptionPane.showMessageDialog(this,"DATOS INCORRECTOS NO TE PUEDES CONECTAR");
                 
                  /* Hacer que cuando no te logees correctamente
                     se limpien los campos del formulario

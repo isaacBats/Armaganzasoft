@@ -1,12 +1,14 @@
 package armaganzasoft.models;
 
 import armaganzasoft.interfaces.Menu;
+import armaganzasoft.models.User;
 import armaganzasoft.services.BaseDatos;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.Hashtable;
 
 /**
  * @author Isaac Daniel
@@ -25,10 +27,12 @@ public class User {
     private boolean active;
     private Date    update_at;
     private Date    created_at;
+   private Statement stm;
+   private ResultSet rs;
    
-      private String sql=null;
+      private String sql;
       private BaseDatos db;
-      private Connection conn;
+      private Connection conn= null;
     
     public Boolean validarUsuario(String Login, String password) throws SQLException{
         String nombre="";
@@ -39,6 +43,7 @@ public class User {
                 if(res.next() && password.equals(res.getString("password"))){
                         nombre = "Bienvenido a Armaganza Soft";
                         System.out.println(nombre);
+                        //JOptionPane.showMessageDialog(this,"BIENVENIDO A ARMAGANZA SOFT");
                         return true;
                  
                 }else{
@@ -53,6 +58,9 @@ public class User {
                     return false;
                 }    
     }
+    
+   
+
 
     public int getId() {
         return id;
@@ -145,6 +153,15 @@ public class User {
     public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
+     public void InsertarUsuario(Hashtable users){
+       
+            try{
+                stm.execute("INSERT INTO users(name,lastname, num_employee, e_mail, active, usuario,, password, roll, position)VALUES('"+users.get("name")+"','"+users.get("last_name")+"','"+users.get("num_employee")+"','"+users.get("email")+"','"+users.get("active")+"','"+users.get("usuario")+"','"+users.get("password")+"','"+users.get("rool")+"','"+users.get("position")+"')");
+            }catch(SQLException ex){
+                System.out.println(ex);
+            }
+            
+    }
 
     private boolean conectar() {
         this.db = new BaseDatos();
@@ -153,8 +170,8 @@ public class User {
             return true;
         }else{
             return false;
-        }
+        }}
+
     
-    
-    }
+      
 }

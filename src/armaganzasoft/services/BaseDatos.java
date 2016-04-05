@@ -14,7 +14,7 @@ public class BaseDatos {
     private final String USER       = "root";
     private final String PASSWORD   = "";
     
-    public Connection conn = null;
+    private Connection conn = null;
     
     public Connection getConnection(){
         

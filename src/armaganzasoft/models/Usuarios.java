@@ -9,24 +9,29 @@ package armaganzasoft.models;
 
 import armaganzasoft.interfaces.Menu;
 import armaganzasoft.services.BaseDatos;
+import armaganzasoft.models.User;
+import armaganzasoft.repositorys.UserRepository;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 
  // @author ErwinValle
 
 public class Usuarios extends javax.swing.JFrame {
-private User users= new User();
-    private static void Guardar(String Nombre, String Apellidos, String NumdeEmpleado, String Email, String Usuario, String Password, String Puesto, String Status, String Area) {
-        
-    }
-    
-   BaseDatos conn = new BaseDatos();
+
+     private BaseDatos db;
+     private Connection conn;
+    private Object usuarios;
+         
     
      
     public Usuarios() {
+        this.db = new BaseDatos();
+        this.conn = db.getConnection();
         initComponents();
     }
     
@@ -334,7 +339,7 @@ private User users= new User();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-      jTextField1.setText("");
+//String nombre = jTextField1.getText("");     
       
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -344,47 +349,47 @@ private User users= new User();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-jTextField2.setText("");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-jTextField3.setText("");
+
 // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-jTextField4.setText("");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-jTextField9.setText("");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-jTextField5.setText("");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-jTextField6.setText("");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-jTextField7.setText("");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-jTextField11.setText("");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField11ActionPerformed
 
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-jTextField10.setText("");        // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -398,11 +403,15 @@ jTextField10.setText("");        // TODO add your handling code here:
         String Status=jTextField9.getText();
         String Area=jTextField11.getText();
         
-//private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
-    
-  Usuarios usuarios = new Usuarios();
+         User user;
+            
+            user = new User();
         
-   Usuarios.Guardar(Nombre, Apellidos, NumdeEmpleado, Email, Usuario, Password, Puesto, Status, Area);
+       conn.equals("INSERT INTO users (branch_id,num_employee, name, lastname, email, pass, posotion, roll, active) "
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+       
+      
+                     JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");                                        
  
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
