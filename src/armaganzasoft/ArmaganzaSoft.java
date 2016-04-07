@@ -5,18 +5,9 @@
  */
 package armaganzasoft;
 
-//import temporal.Valvula;
-import armaganzasoft.interfaces.Botones;
-import armaganzasoft.interfaces.Bienvenida;
-//import armaganzasoft.repositorys.ValvulaRepository;
-import armaganzasoft.components.Valvula;
-//import armaganzasoft.interfaces.Botones;
-import armaganzasoft.repositorys.ValvulaRepository;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+import armaganzasoft.interfaces.Usuarios;
+import armaganzasoft.models.User;
+import armaganzasoft.repositorys.UserRepository;
 
 /**
  *
@@ -30,47 +21,36 @@ public class ArmaganzaSoft {
      */
     public static void main(String[] args) {        
                
-        
-        Valvula valvulaAgua;
-        
-        ValvulaRepository vr;                
-        vr = new ValvulaRepository();
-//        ResultSet rs;
-        
-        valvulaAgua = new Valvula("V002", "Valvula Dosificador");
-        
-        vr.all();
-        
-        
-        
-//        try {
-//            while (rs.next())
-//            {
-//                System.out.println("codigo = "+rs.getString("name") );
-//            }           
-//        } catch (SQLException ex) {
-//            System.out.println("Error: "+ ex);
+//        User pedro;
+//        
+//        pedro = new User();
+//        
+//        pedro.setBranch_id(1);
+//        pedro.setNum_employee("A023");
+//        pedro.setName("Juan");
+//        pedro.setLast_name("Gabriel");
+//        pedro.setEmail("jgabriel@allgo.com");
+//        pedro.setUser("pepe");
+//        pedro.setPassword("1234");
+//        pedro.setPosition("Colador");
+//        pedro.setRoll("USER");
+//        pedro.setActive(true);
+//        
+//        
+//        UserRepository  userRepo = new UserRepository();
+//
+//        if( !userRepo.addUsuario(pedro) ){
+//            System.out.println("El usuario "+pedro.getName()+" se ha insertado Correctamente");
+//        }else{
+//            System.out.println("El usuario "+pedro.getName()+" se ha insertado Correctamente");
 //        }
+        
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Usuarios().setVisible(true);
+            }
+        });
                 
-//        vr = new ValvulaRepository();
-//        vr.addValvula(valvulaAgua);
-
-//        if(valvulaAgua.getStatus() == 0){
-//            System.out.println("La valvula "+valvulaAgua.getName()+" se encuentra Cerrada");
-//        }        
-//        System.out.println("Abriendo valvula "+valvulaAgua.getName());
-//        valvulaAgua.open();
-        
-        Botones p = new Botones();
-            p.setValvula(valvulaAgua);
-            p.show();
-
-            p.addWindowListener(new WindowAdapter(){
-                    public void windowClosing(WindowEvent evt){
-                            System.exit(0);
-                    }
-            });
-        
     }
     
 }

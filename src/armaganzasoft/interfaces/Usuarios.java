@@ -5,7 +5,7 @@
  */
 
 
-package armaganzasoft.models;
+package armaganzasoft.interfaces;
 
 import armaganzasoft.interfaces.Menu;
 import armaganzasoft.services.BaseDatos;
@@ -23,15 +23,10 @@ import javax.swing.JOptionPane;
 
 public class Usuarios extends javax.swing.JFrame {
 
-     private BaseDatos db;
-     private Connection conn;
-    private Object usuarios;
          
     
      
     public Usuarios() {
-        this.db = new BaseDatos();
-        this.conn = db.getConnection();
         initComponents();
     }
     
@@ -393,25 +388,33 @@ public class Usuarios extends javax.swing.JFrame {
     }                                            
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        String Nombre=jTextField1.getText();
-        String Apellidos=jTextField2.getText();
-        String NumdeEmpleado=jTextField3.getText();
-        String Email=jTextField4.getText();
-        String Usuario=jTextField5.getText();
-        String Password=jTextField6.getText();
-        String Puesto=jTextField7.getText();
-        String Status=jTextField9.getText();
-        String Area=jTextField11.getText();
         
-         User user;
-            
-            user = new User();
+        User user;
+        user = new User();
         
-       conn.equals("INSERT INTO users (branch_id,num_employee, name, lastname, email, pass, posotion, roll, active) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        user.setBranch_id(1);
+        user.setName(jTextField1.getText());
+        user.setLast_name(jTextField2.getText());
+        user.setNum_employee(jTextField3.getText());
+        user.setEmail(jTextField4.getText());
+        user.setUser(jTextField5.getText());
+        user.setPassword(jTextField6.getText());
+        user.setPosition(jTextField7.getText());
+        user.setActive(true);
+        user.setRoll(jTextField11.getText());
+        
+        UserRepository  userRepo = new UserRepository();
+
+        if( !userRepo.addUsuario(user) ){
+            System.out.println("El usuario "+user.getName()+" se ha insertado Correctamente");
+            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");                                        
+        }else{
+            System.out.println("El usuario "+user.getName()+" se ha insertado Correctamente");
+            JOptionPane.showMessageDialog(this,"No se pudo agregar");                                        
+        }
+        
        
       
-                     JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");                                        
  
         // TODO add your handling code here:
     }                                        
@@ -426,38 +429,38 @@ Menu principal=new Menu();
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Usuarios().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Usuarios().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;

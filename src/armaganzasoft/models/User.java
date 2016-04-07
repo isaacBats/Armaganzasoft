@@ -34,6 +34,13 @@ public class User {
       private String sql;
       private BaseDatos db;
       private Connection conn= null;
+      
+      /**
+       * Default Construct 
+       */
+      public User(){
+      
+      }
     
     public Boolean validarUsuario(String Login, String password) throws SQLException{
         String nombre="";
@@ -161,16 +168,7 @@ public class User {
     public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
-     public void InsertarUsuario(Hashtable users){
-       
-            try{
-                stm.execute("INSERT INTO users(name,lastname, num_employee, e_mail, active, usuario,, password, roll, position)VALUES('"+users.get("name")+"','"+users.get("last_name")+"','"+users.get("num_employee")+"','"+users.get("email")+"','"+users.get("active")+"','"+users.get("usuario")+"','"+users.get("password")+"','"+users.get("rool")+"','"+users.get("position")+"')");
-            }catch(SQLException ex){
-                System.out.println(ex);
-            }
-            
-    }
-
+     
     private boolean conectar() {
         this.db = new BaseDatos();
         this.conn = db.getConnection();

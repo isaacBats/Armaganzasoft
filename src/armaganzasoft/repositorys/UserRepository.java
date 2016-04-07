@@ -23,6 +23,7 @@ public class UserRepository extends BaseRepository {
     
     /**
      * Insert a new User in data Base
+     * @param user
      * @return Boolean   True if I was inserted into the Data Base
      */
     public boolean addUsuario(User user){
@@ -32,11 +33,11 @@ public class UserRepository extends BaseRepository {
             query = con.prepareStatement("INSERT INTO users (branch_id,"
                                                           + "num_employee, "
                                                           + "name, "
-                                                          + "lastname, "
+                                                          + "last_name, "
                                                           + "email, "
                                                           + "user, "
-                                                          + "pass, "
-                                                          + "posotion, "
+                                                          + "password, "
+                                                          + "position, "
                                                           + "roll, "
                                                           + "active) "
                                         + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
@@ -51,10 +52,12 @@ public class UserRepository extends BaseRepository {
             query.setString(7, user.getPassword());
             query.setString(8, user.getPosition());
             query.setString(9, user.getRoll());
-            query.setBoolean(8, user.isActive());
+            query.setBoolean(10, user.isActive());
             
-            if( query.execute() )
+            if( !query.execute() ){
                 return true;
+            }
+            query.close();
             
         } catch (SQLException ex) {
             System.out.println("Error: "+ ex);
