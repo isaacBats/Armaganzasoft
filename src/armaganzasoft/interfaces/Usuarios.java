@@ -238,7 +238,7 @@ public class Usuarios extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("AREA");
+        jLabel9.setText("ROLL");
 
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
