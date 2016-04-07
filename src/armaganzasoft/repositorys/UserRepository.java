@@ -1,8 +1,5 @@
 package armaganzasoft.repositorys;
 
-import armaganzasoft.components.Valvula;
-import armaganzasoft.models.Usuarios;
-import armaganzasoft.interfaces.Login;
 import armaganzasoft.models.User;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,58 +9,49 @@ import java.sql.SQLException;
  * @author rodri
  */
 public class UserRepository extends BaseRepository {
-    
-    private String name;
-    private String lastname;
-    private String employee_id;
-    private String email;
-    private boolean active;
-    private String usuario;
-    private String password;
-    private String position;
-    private String roll;
      
     /**
      * Sentence to execute in database
      */
     private PreparedStatement query;
-    private int branch_id;
-
+    
     
 
-    public UserRepository(User user) {
+    public UserRepository() {
         
-        this.name = user.getName();
-        this.lastname = user.getLast_name();
-         this.employee_id = user.getNum_employee();
-        this.email = user.getEmail();
-        this.active = user.isActive();
-        this.usuario = user.getName();
-        this.password = user.getPassword();
-        this.position = user.getPosition();
-        this.roll = user.getRoll();
     }
     
     /**
-     * Insert a Valvula in data Base when a new object is created
+     * Insert a new User in data Base
      * @return Boolean   True if I was inserted into the Data Base
      */
-    public boolean addUsuario(){
+    public boolean addUsuario(User user){
         
         try {
             
-            // String sql = "INSERT INTO machines (name, code) VALUES(?, ?)";   
-            query = con.prepareStatement("INSERT INTO users (branch_id,num_employee, name, lastname, email, pass, posotion, roll, active) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            query = con.prepareStatement("INSERT INTO users (branch_id,"
+                                                          + "num_employee, "
+                                                          + "name, "
+                                                          + "lastname, "
+                                                          + "email, "
+                                                          + "user, "
+                                                          + "pass, "
+                                                          + "posotion, "
+                                                          + "roll, "
+                                                          + "active) "
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                                        );
             
-            query.setInt(1, this.branch_id);
-            query.setString(2, this.employee_id);
-            query.setString(3, this.name);
-            query.setString(4, this.lastname);
-            query.setString(5, this.email);
-            query.setString(6, this.password);
-            query.setString(7, this.position);
-            query.setString(8, this.roll);
+            query.setInt(1, user.getBranch_id());
+            query.setString(2, user.getNum_employee());
+            query.setString(3, user.getName());
+            query.setString(4, user.getLast_name());
+            query.setString(5, user.getEmail());
+            query.setString(6, user.getUser());
+            query.setString(7, user.getPassword());
+            query.setString(8, user.getPosition());
+            query.setString(9, user.getRoll());
+            query.setBoolean(8, user.isActive());
             
             if( query.execute() )
                 return true;
@@ -73,15 +61,6 @@ public class UserRepository extends BaseRepository {
         }finally{
             return false;
         }
-    }
-    
-    /**
-     * Insert a Valvula in data Base having a object Valvula parameter
-     * @param valvula  A object type Valvula
-     * @return Boolean   True if I was inserted into the Data Base 
-     */
-   
-
-    
+    }    
     
 }

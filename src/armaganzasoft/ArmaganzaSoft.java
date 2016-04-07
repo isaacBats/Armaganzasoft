@@ -6,12 +6,14 @@
 package armaganzasoft;
 
 //import temporal.Valvula;
-//import armaganzasoft.interfaces.Botones;
+import armaganzasoft.interfaces.Botones;
 import armaganzasoft.interfaces.Bienvenida;
 //import armaganzasoft.repositorys.ValvulaRepository;
 import armaganzasoft.components.Valvula;
 //import armaganzasoft.interfaces.Botones;
 import armaganzasoft.repositorys.ValvulaRepository;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -33,11 +35,14 @@ public class ArmaganzaSoft {
         
         ValvulaRepository vr;                
         vr = new ValvulaRepository();
-        ResultSet rs;
+//        ResultSet rs;
         
         valvulaAgua = new Valvula("V002", "Valvula Dosificador");
         
         vr.all();
+        
+        
+        
 //        try {
 //            while (rs.next())
 //            {
@@ -56,15 +61,15 @@ public class ArmaganzaSoft {
 //        System.out.println("Abriendo valvula "+valvulaAgua.getName());
 //        valvulaAgua.open();
         
-//        Botones p = new Botones();
-//            p.setValvula(valvulaAgua);
-//            p.show();
-//
-//            p.addWindowListener(new WindowAdapter(){
-//                    public void windowClosing(WindowEvent evt){
-//                            System.exit(0);
-//                    }
-//            });
+        Botones p = new Botones();
+            p.setValvula(valvulaAgua);
+            p.show();
+
+            p.addWindowListener(new WindowAdapter(){
+                    public void windowClosing(WindowEvent evt){
+                            System.exit(0);
+                    }
+            });
         
     }
     

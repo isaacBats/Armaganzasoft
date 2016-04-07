@@ -21,6 +21,7 @@ public class User {
     private String  name;
     private String  last_name;
     private String  email;
+    private String  user;
     private String  password;
     private String  position;
     private String  roll;
@@ -61,6 +62,13 @@ public class User {
     
    
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public int getId() {
         return id;
