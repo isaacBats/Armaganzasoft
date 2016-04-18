@@ -5,9 +5,7 @@
  */
 package armaganzasoft;
 
-import armaganzasoft.interfaces.Usuarios;
-import armaganzasoft.models.User;
-import armaganzasoft.repositorys.UserRepository;
+import armaganzasoft.interfaces.Bienvenida;
 
 /**
  *
@@ -21,9 +19,9 @@ public class ArmaganzaSoft {
      */
     public static void main(String[] args) {        
                        
-         java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Usuarios().setVisible(true);
+                new Bienvenida().setVisible(true);
             }
         });
                 
