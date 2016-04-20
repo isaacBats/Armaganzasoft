@@ -1,25 +1,23 @@
 package armaganzasoft.repositorys;
 
-import armaganzasoft.models.Costumer;
+import armaganzasoft.models.Customer;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.ResultSet;
 
 /**
  *
  * @author ErwinValle
  */
-public class CostumerRepository extends BaseRepository {
+public class CustomerRepository extends BaseRepository {
     
     private PreparedStatement query;
     
-    public CostumerRepository() {
+    public CustomerRepository() {
         
     }
     
-     public boolean addCustom(Costumer customer){
+     public boolean addCustom(Customer customer){
         
         try {
             
@@ -41,7 +39,7 @@ public class CostumerRepository extends BaseRepository {
             
             query.setString(1, customer.getIdentified());
             query.setString(2, customer.getName());
-            query.setString(3, customer.getLastName());
+            query.setString(3, customer.getLast_name());
             query.setString(4, customer.getEmail());
             query.setString(5, customer.getTelephone());
             query.setString(6, customer.getMovil());
@@ -62,13 +60,14 @@ public class CostumerRepository extends BaseRepository {
         }finally{
             return false;
         }
-    }
+    }   
      
-    public Costumer buscarCliente(Costumer cliente){
+     
+    public Customer buscarCliente(Customer cliente){
     
         String where ="";
         ResultSet rs;
-        Costumer busqueda = new Costumer();
+        Customer busqueda = new Customer();
         if(cliente.getIdentified() != null ||
            cliente.getIdentified() != ""   ||
            cliente.getName()       != null ||
@@ -87,7 +86,7 @@ public class CostumerRepository extends BaseRepository {
                 //while(rs.next())
                 busqueda.setIdentified(rs.getString("identified"));
                 busqueda.setName(rs.getString("name"));
-                busqueda.setLastName(rs.getString("last_name"));
+                busqueda.setLast_name(rs.getString("last_name"));
                 return busqueda;
             }
             
@@ -96,7 +95,4 @@ public class CostumerRepository extends BaseRepository {
         }
         return null;
     }
-
-    
-    
 }
