@@ -7,12 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import armaganzasoft.interfaces.Menu;
-
+import armaganzasoft.models.User;
+import java.util.Hashtable;
 /**
  *
  * @author ErwinValle
  */
-public class Costumer {
+public class Customer {
     
 /**
  * @author ErwinValle
@@ -32,8 +33,9 @@ public class Costumer {
     private String sub_costumer;
     private String  customer_id;
    
-   private Statement stmt;
+   private Statement stm;
    private ResultSet rs;
+   private Statement stmt;
    
       private String sql;
       private BaseDatos db;
@@ -42,14 +44,14 @@ public class Costumer {
       /**
        * Default Construct 
        */
-      public Costumer(){
+      public Customer(){
       
       }
-       public Object[][] ConsultarCliente(){
+   public Object[][] ConsultarCliente(){
     Object [][] datos =new Object[id][];
         try {
             if(conectar()){
-                sql="SELECT *FROM orders";
+                sql="SELECT *FROM customers";
                 Statement stmt=this.stmt;
                 ResultSet res=stmt.executeQuery(sql);
                 int fila=0;
@@ -63,11 +65,12 @@ public class Costumer {
                 //desconectar();
             }
         } catch (Exception e) {
-            System.out.println("Excepción al Consultar Cliente : "+e);
+            System.out.println("ExcepciÃ³n al Consultar Cliente : "+e);
         }
         return datos;
     }
-       
+
+  //ingreso datos  
     public int getId() {
         return id;
     }
@@ -88,11 +91,11 @@ public class Costumer {
         this.name = name;
     }
 
-    public String getLastName() {
+    public String getLast_name() {
         return last_name;
     }
 
-    public void setLastName(String last_name) {
+    public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
 
