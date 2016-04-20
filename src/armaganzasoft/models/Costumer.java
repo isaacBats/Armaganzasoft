@@ -12,7 +12,7 @@ import armaganzasoft.interfaces.Menu;
  *
  * @author ErwinValle
  */
-public class Costumers {
+public class Costumer {
     
 /**
  * @author ErwinValle
@@ -42,7 +42,7 @@ public class Costumers {
       /**
        * Default Construct 
        */
-      public Costumers(){
+      public Costumer(){
       
       }
        public Object[][] ConsultarCliente(){
@@ -67,109 +67,7 @@ public class Costumers {
         }
         return datos;
     }
-    public int ContarClienteBuscado(String ClienteBuscado){
-        int cantidad=0;
-        try {
-            if(conectar()){
-                sql="SELECT count(identified) As cantidad FROM costumers WHERE (identified LIKE'%"+ClienteBuscado+"%' OR name LIKE'%"+ClienteBuscado+"%')";
-                Statement  stmt= this.stmt;
-                ResultSet res=stmt.executeQuery(sql);
-
-                if(res.next())
-                   cantidad=res.getInt("cantidad");
-                res.close();
-                stmt.close();
-                //desconectar();
-            }
-        } catch (Exception e) {
-            System.out.println("Excepción al Contar a Cliente Buscado: "+e);
-        }
-        return cantidad;
-    }
-    
-    public Object[][] ConsultarClienteBuscado( String ClienteBuscado){
-        Object [][] datos =new Object[ContarClienteBuscado(ClienteBuscado)][12];
-        try {
-            if(conectar()){
-                sql="SELECT *FROM cotumers WHERE (identified LIKE'%"+ClienteBuscado+"%' OR name LIKE'%"+ClienteBuscado+"%') ";
-             Statement stmt=this.stmt;
-                ResultSet res=stmt.executeQuery(sql);
-                int fila=0;
-                while(res.next()){
-                    for(int columna=0; columna<12; columna++)
-                    datos [fila][columna]= res.getObject(columna+1);
-                    fila ++;
-            }
-                res.close();
-                stmt.close();
-               // desconectar();
-            }
-        } catch (Exception e) {
-            System.out.println("Excepción al Consultar a un cliente buscado : "+e);
-        }
-        return datos;
-    }
-    public Object[] eligeOrden(String cliente){
-        Object[] datos = new Object[8];
-        try {
-            if(conectar()){
-                sql="SELECT * FROM costumers WHERE identified="+cliente;
-                Statement stmt=this.stmt;
-                ResultSet res=stmt.executeQuery(sql);
-                if(res.next()){
-                    
-
-                    datos [0]=res.getString("identified");
-                    datos [1]=res.getString("name");
-                    datos [2]=res.getString("last_name");
-                    datos [3]=res.getString("email");
-                    datos [4]=res.getString("telephone");
-                    datos [5]=res.getString("movil");
-                    datos [6]=res.getString("rfc");
-                    datos [7]=res.getString("adress");
-                    datos [8]=res.getString("city");
-                    datos [9]=res.getString("zip_code");
-                    datos [10]=res.getString("sub_costumer");
-                    datos [11]=res.getString("costumer_id");
-                    
-                  
-                }
-                res.close();
-                stmt.close();
-               // desconectar();
-            }
-        } catch (Exception e) {
-            System.out.println("Excepción al Elegir un Cliente : "+e);
-        }
-        return datos;
-    }
-      
-    /*
-    public Boolean validarUsuario(String Login, String password) throws SQLException{
-        String nombre="";
-            if(conectar()){
-                String sql = "SELECT * FROM users WHERE name like '"+Login+"';";
-                Statement stmt = this.conn.createStatement();
-                ResultSet res = stmt.executeQuery(sql);
-                if(res.next() && password.equals(res.getString("password"))){
-                        nombre = "Bienvenido a Armaganza Soft";
-                        System.out.println(nombre);
-                        //JOptionPane.showMessageDialog(this,"BIENVENIDO A ARMAGANZA SOFT");
-                        return true;
-                 
-                }else{
-                        nombre = "Contraseña invalida";
-                        System.out.println(nombre);
-                        return false;
-                    }
-                }else{
-                    //return "No se encontro registro";
-                    System.out.println("No se pudo conectar a la base de datos");
-                    this.conn.close();
-                    return false;
-                }    
-    }*/
-    
+       
     public int getId() {
         return id;
     }
@@ -190,11 +88,11 @@ public class Costumers {
         this.name = name;
     }
 
-    public String getLast_name() {
+    public String getLastName() {
         return last_name;
     }
 
-    public void setLast_name(String last_name) {
+    public void setLastName(String last_name) {
         this.last_name = last_name;
     }
 
