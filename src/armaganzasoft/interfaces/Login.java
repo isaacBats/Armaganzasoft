@@ -7,26 +7,8 @@ package armaganzasoft.interfaces;
 
 import armaganzasoft.services.BaseDatos;
 import armaganzasoft.models.User;
-import armaganzasoft.models.Usuarios;
-import armaganzasoft.interfaces.Menu;
-import java.sql.Array;
-import java.sql.Blob;
-import java.sql.CallableStatement;
-import java.sql.Clob;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.NClob;
-import java.sql.PreparedStatement;
-import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
-import java.sql.SQLWarning;
-import java.sql.SQLXML;
-import java.sql.Savepoint;
-import java.sql.Statement;
-import java.sql.Struct;
-import java.util.Map;
-import java.util.Properties;
-import java.util.concurrent.Executor;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,6 +19,7 @@ public class Login extends javax.swing.JFrame {
   
      private BaseDatos db;
      private Connection conn;
+     private Object login;
          
     
 
@@ -48,7 +31,14 @@ public class Login extends javax.swing.JFrame {
         this.conn = db.getConnection();
         
         initComponents();
+        limpiar();
      }
+    
+    public void limpiar()
+    {
+        jTextField1.setText("");
+        jPasswordField1.setText("");
+    }
     
 //    Connection conn = new Connection();
 
@@ -102,7 +92,35 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        String nombre = jTextField1.getText();
+        String password = jPasswordField1.getText();
+            
+            User user;
+            
+            user = new User();
+         try {
+             if(user.validarUsuario(nombre, password)){
+                 JOptionPane.showMessageDialog(this,"BIENVENIDO A ARMAGANZA SOFT");
+                 dispose();
+                 java.awt.EventQueue.invokeLater(new Runnable() {
+                      public void run() {
+                            new Menu().setVisible(true);
+                           }
+                  });
+                 
+             }else{
+                 //System.out.println("No te Puedes Conectar&");
+                 JOptionPane.showMessageDialog(this,"DATOS INCORRECTOS NO TE PUEDES CONECTAR");
+                limpiar();
+                 /* Hacer que cuando no te logees correctamente
+                    se limpien los campos del formulario
+                 */
+                //jTextField1.;
+                //jPasswordField1.removeAll();
+             }
+         } catch (SQLException ex) {
+             System.out.println("Error: "+ ex);
+         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

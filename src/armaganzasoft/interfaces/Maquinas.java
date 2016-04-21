@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package armaganzasoft.models;
+package armaganzasoft.interfaces;
 
 /**
  *
  * @author Rodrigo
  */
-public class Cliente extends javax.swing.JFrame {
+public class Maquinas extends javax.swing.JFrame {
 
     /**
-     * Creates new form Cliente
+     * Creates new form Maquinas
      */
-    public Cliente() {
+    public Maquinas() {
         initComponents();
     }
 
@@ -27,154 +27,146 @@ public class Cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel7 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-
-        jLabel7.setText("jLabel7");
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
-        getContentPane().add(jTextField10);
-        jTextField10.setBounds(680, 230, 280, 40);
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setText("C.P.");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(580, 240, 24, 15);
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton4.setText("ELIMINAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(640, 460, 103, 40);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setText("MODIFICAR");
         getContentPane().add(jButton3);
-        jButton3.setBounds(840, 470, 170, 40);
-
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("ELIMINAR");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(1134, 350, 170, 40);
+        jButton3.setBounds(1030, 350, 103, 40);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("AGREGAR");
         getContentPane().add(jButton2);
-        jButton2.setBounds(840, 350, 170, 40);
+        jButton2.setBounds(640, 350, 103, 40);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("BUSCAR CLIENTE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jButton1.setText("BUSCAR MAQUINA");
         getContentPane().add(jButton1);
-        jButton1.setBounds(560, 30, 140, 40);
-        getContentPane().add(jTextField9);
-        jTextField9.setBounds(680, 160, 280, 40);
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setText("CIUDAD");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(560, 170, 48, 15);
+        jButton1.setBounds(500, 30, 150, 40);
         getContentPane().add(jTextField8);
-        jTextField8.setBounds(680, 100, 280, 40);
+        jTextField8.setBounds(140, 440, 280, 30);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setText("DIRECCION");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(550, 100, 68, 15);
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setText("ESTADO");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(50, 450, 49, 15);
         getContentPane().add(jTextField7);
-        jTextField7.setBounds(160, 480, 260, 40);
+        jTextField7.setBounds(140, 390, 280, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("RFC");
+        jLabel6.setText("RANGO");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(50, 490, 23, 15);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(160, 420, 260, 40);
+        jLabel6.setBounds(40, 390, 43, 15);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("CELULAR");
+        jLabel5.setText("VALOR");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 430, 55, 15);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(90, 30, 440, 40);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(160, 350, 260, 40);
+        jLabel5.setBounds(40, 340, 42, 15);
+        getContentPane().add(jTextField6);
+        jTextField6.setBounds(140, 340, 280, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("TELEFONO");
+        jLabel4.setText("TIPO DE SEÑAL");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 360, 70, 15);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(160, 270, 260, 40);
+        jLabel4.setBounds(20, 290, 92, 15);
+        getContentPane().add(jTextField5);
+        jTextField5.setBounds(140, 280, 280, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("E - MAIL");
+        jLabel3.setText("# DE VIAS");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 280, 52, 15);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(160, 190, 260, 40);
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(160, 110, 260, 40);
+        jLabel3.setBounds(30, 230, 63, 15);
+        getContentPane().add(jTextField4);
+        jTextField4.setBounds(140, 220, 280, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("APELLIDOS");
+        jLabel2.setText("CODIGO");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 210, 69, 15);
+        jLabel2.setBounds(40, 170, 48, 15);
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(140, 160, 280, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("NOMBRE");
+        jLabel1.setText("NOMBRE ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 120, 52, 15);
+        jLabel1.setBounds(30, 120, 56, 15);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(140, 110, 280, 30);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(40, 30, 420, 40);
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton5.setText("PRINCIPAL");
         getContentPane().add(jButton5);
-        jButton5.setBounds(1140, 470, 170, 40);
+        jButton5.setBounds(1020, 480, 100, 40);
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(0, 0, 1380, 1070);
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setText("OPERACIONES");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(830, 80, 87, 15);
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setText("NOMBRE");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(750, 170, 60, 15);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setText("CODIGO");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(750, 120, 50, 15);
+        getContentPane().add(jTextField9);
+        jTextField9.setBounds(830, 110, 250, 30);
+        getContentPane().add(jTextField10);
+        jTextField10.setBounds(830, 160, 250, 30);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(0, 20, 1690, 1020);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,20 +185,20 @@ public class Cliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Maquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Maquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Maquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Maquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cliente().setVisible(true);
+                new Maquinas().setVisible(true);
             }
         });
     }
@@ -219,7 +211,7 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -8,23 +8,21 @@ package armaganzasoft;
 import armaganzasoft.interfaces.Bienvenida;
 
 /**
- *
  * @author isaac daniel
  */
-//prueba comentario
 public class ArmaganzaSoft {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {        
-                       
-         java.awt.EventQueue.invokeLater(new Runnable() {
+          
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Bienvenida().setVisible(true);
             }
         });
-                
+                  
     }
-    
 }
+    
