@@ -21,7 +21,7 @@ public class AtributosRepository extends BaseRepository {
         
     }
     
-     public boolean addAtrib(Atributo atributo){
+    public boolean addAtrib(Atributo atributo){
         
         try {
             
@@ -34,6 +34,7 @@ public class AtributosRepository extends BaseRepository {
   
             
             if( !query.execute() ){
+                System.out.println("Se a insertado el atributo "+atributo.getIdentified());
                 return true;
             }
             query.close();
@@ -43,7 +44,33 @@ public class AtributosRepository extends BaseRepository {
         }finally{
             return false;
         }
-    }    
+    }
+    /**
+     * Method Edit for a attribute
+     * @param atributo
+     * @return boolean  : TRUE if the attribute is edited, FALSE if not
+     */
+    public boolean edit(Atributo atributo){
+        
+        try {
+            
+            query = con.prepareStatement("UPDATE attributes SET name_attribute = ? WHERE id = ?;");
+            query.setString(1, atributo.getIdentified());
+            query.setInt(2, atributo.getId());
+            
+            if( !query.execute() ){
+                System.out.println("Se edito el atributo correctamente");
+                return true;
+            }
+            
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al editar un atributo: "+ ex);
+        }
+        
+        return false;
+    } 
 
     
     

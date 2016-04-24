@@ -18,7 +18,8 @@ import armaganzasoft.interfaces.Menu;
  * @author ErwinValle
  */
 public class Branch {
-     private int     id;
+    
+    private int     id;
     private String  name;
     private String  adress;
     private String  telephone;
@@ -27,21 +28,19 @@ public class Branch {
     private String  rfc;
     private String email;
     
-    private Statement stm;
-    private ResultSet rs;
-   
-      private String sql;
-      private BaseDatos db;
-      private Connection conn= null;
       
-      public Branch(){
+    public Branch(){ }     
       
-      }     
-           public int getid() {
+      
+    public int getId() {
         return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }   
     
-   public String getName() {
+    public String getName() {
         return name;
     }
 
@@ -97,18 +96,7 @@ public class Branch {
         this.email = email;
     }
     
-    
-   
-    private boolean conectar() {
-        this.db = new BaseDatos();
-        this.conn = db.getConnection();
-        if(this.conn != null){
-            return true;
-        }else{
-            return false;
-        }}
-
-      }
+}
 
 
 
