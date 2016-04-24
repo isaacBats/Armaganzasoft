@@ -14,27 +14,11 @@ public class ArmaganzaSoft {
      */
     public static void main(String[] args) {        
           
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Login().setVisible(true);
-//            }
-//        });
-        
-        Branch suc = new Branch();
-        
-        suc.setId(2);
-        suc.setName("Cementera Tlalnepantla");
-        suc.setAdress("Colonia San Isidro");
-        suc.setCity("México");
-        suc.setEmail("cemtlal@gmail.com");
-        suc.setTelephone("0938947836");
-        suc.setZip_code("87654");
-        suc.setRfc("lskjhflidñldksfjñoiej");
-        
-        
-        BranchRepository br = new BranchRepository();
-        
-        br.edit(suc);
+       java.awt.EventQueue.invokeLater(new Runnable() {
+           public void run() {
+               new Login().setVisible(true);
+           }
+       });
                   
     }
 }
