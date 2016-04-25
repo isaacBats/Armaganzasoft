@@ -1,6 +1,6 @@
 package armaganzasoft.repositorys;
 
-import armaganzasoft.models.Customer;
+import armaganzasoft.models.Costumer;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -9,15 +9,15 @@ import java.sql.ResultSet;
  *
  * @author ErwinValle
  */
-public class CustomerRepository extends BaseRepository {
+public class CostumerRepository extends BaseRepository {
     
     private PreparedStatement query;
     
-    public CustomerRepository() {
+    public CostumerRepository() {
         
     }
     
-     public boolean addCustom(Customer customer){
+     public boolean addCustom(Costumer customer){
         
         try {
             
