@@ -8,7 +8,6 @@ package armaganzasoft.interfaces;
 import armaganzasoft.interfaces.Menu;
 import armaganzasoft.services.BaseDatos;
 import armaganzasoft.models.Customer;
-import armaganzasoft.models.Customer;
 import armaganzasoft.repositorys.CustomerRepository;
 import armaganzasoft.repositorys.UserRepository;
 import java.sql.Connection;

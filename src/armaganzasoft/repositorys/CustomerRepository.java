@@ -9,11 +9,11 @@ import java.sql.ResultSet;
  *
  * @author ErwinValle
  */
-public class CostumerRepository extends BaseRepository {
+public class CustomerRepository extends BaseRepository {
     
     private PreparedStatement query;
     
-    public CostumerRepository() {
+    public CustomerRepository() {
         
     }
     
@@ -27,11 +27,11 @@ public class CostumerRepository extends BaseRepository {
                                                           + "telephone, "
                                                           + "movil, "
                                                           + "rfc, "
-                                                          + "adress, "
+                                                          + "address, "
                                                           + "city, "
                                                           + "zip_code, " 
                                                           + "sub_customer, "
-                                                          + "customer_id) "
+                                                          + "costumer_id) "
                                         + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
                                         );
             
@@ -48,7 +48,7 @@ public class CostumerRepository extends BaseRepository {
             query.setString(9, customer.getZip_code());
             query.setString(10, customer.getSub_customer());
             query.setString(11, customer.getCustomer_id());
-            
+            System.out.println(customer.getCustomer_id());
             if( !query.execute() ){
                 return true;
             }
@@ -95,5 +95,50 @@ public class CostumerRepository extends BaseRepository {
             System.out.println("Erro al consultar un Cliente: "+ex);
         }
         return null;
+    }
+    
+    public boolean edit(Customer cliente){
+        
+        try {
+            
+            query = con.prepareStatement("UPDATE customers SET   identified   = ?, "
+                                                           +"    name         = ?, "
+                                                           +"    last_name    = ?, "
+                                                           +"    email        = ?, "
+                                                           +"    telephone    = ?, "
+                                                           +"    movil        = ?, "
+                                                           +"    rfc          = ?, "
+                                                           +"    address      = ?, "
+                                                           +"    city         = ?, "
+                                                           +"    zip_code     = ?, "
+                                                           +"    sub_customer = ?, "
+                                                           +"    costumer_id  = ? "
+                                                           +" WHERE id = ?;");
+            query.setString(1, cliente.getIdentified());
+            query.setString(2, cliente.getName());
+            query.setString(3, cliente.getLast_name());
+            query.setString(4, cliente.getEmail());
+            query.setString(5, cliente.getTelephone());
+            query.setString(6, cliente.getMovil());
+            query.setString(7, cliente.getRfc());
+            query.setString(8, cliente.getAdress());
+            query.setString(9, cliente.getCity());
+            query.setString(10, cliente.getZip_code());
+            query.setString(11, cliente.getSub_customer());
+            query.setString(12, cliente.getCustomer_id());
+            query.setInt(13, cliente.getId());
+            
+            if( !query.execute() ){
+                System.out.println("Se edito el cliente correctamente");
+                return true;
+            }
+            
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al editar el cliente: "+ ex);
+        }
+        
+        return false;
     }
 }

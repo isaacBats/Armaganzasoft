@@ -1,8 +1,6 @@
 package armaganzasoft;
 
 import armaganzasoft.interfaces.Login;
-import armaganzasoft.models.Branch;
-import armaganzasoft.repositorys.BranchRepository;
 
 /**
  * @author isaac daniel
