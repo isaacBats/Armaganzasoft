@@ -28,12 +28,6 @@ public class Atributo {
     private String  identified;
 
    
-   private Statement stm;
-   private ResultSet rs;
-   
-      private String sql;
-      private BaseDatos db;
-      private Connection conn= null;
       
       /**
        * Default Construct 
@@ -42,6 +36,9 @@ public class Atributo {
       
       }
   
+    public void setId(int id) {
+        this.id = id;
+    }
     
     public int getId() {
         return id;
@@ -54,18 +51,6 @@ public class Atributo {
     public void setIdentified(String identified) {
         this.identified = identified;
     }
-
-   
-    private boolean conectar() {
-        this.db = new BaseDatos();
-        this.conn = db.getConnection();
-        if(this.conn != null){
-            return true;
-        }else{
-            return false;
-        }}
-
-    
       
 }
     
