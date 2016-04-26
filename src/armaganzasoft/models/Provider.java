@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package armaganzasoft.models;
 
 import armaganzasoft.services.BaseDatos;
@@ -12,16 +7,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import armaganzasoft.interfaces.Menu;
-import armaganzasoft.models.User;
-import java.util.Hashtable;
+
 /**
  *
- * @author daniel
+ * @author ErwinValle
  */
 public class Provider {
     
 /**
- * @author Isaac Daniel
+ * @author ErwinValle
  */
     
     private int     id;
@@ -36,6 +30,7 @@ public class Provider {
    
    private Statement stm;
    private ResultSet rs;
+   private Statement stmt;
    
       private String sql;
       private BaseDatos db;
@@ -47,32 +42,29 @@ public class Provider {
       public Provider(){
       
       }
-    /*
-    public Boolean validarUsuario(String Login, String password) throws SQLException{
-        String nombre="";
+  public Object[][] ConsultarProvedor(){
+    Object [][] datos =new Object[id][];
+        try {
             if(conectar()){
-                String sql = "SELECT * FROM users WHERE name like '"+Login+"';";
-                Statement stmt = this.conn.createStatement();
-                ResultSet res = stmt.executeQuery(sql);
-                if(res.next() && password.equals(res.getString("password"))){
-                        nombre = "Bienvenido a Armaganza Soft";
-                        System.out.println(nombre);
-                        //JOptionPane.showMessageDialog(this,"BIENVENIDO A ARMAGANZA SOFT");
-                        return true;
-                 
-                }else{
-                        nombre = "Contraseña invalida";
-                        System.out.println(nombre);
-                        return false;
-                    }
-                }else{
-                    //return "No se encontro registro";
-                    System.out.println("No se pudo conectar a la base de datos");
-                    this.conn.close();
-                    return false;
-                }    
-    }*/
-    
+                sql="SELECT *FROM providers";
+                Statement stmt=this.stmt;
+                ResultSet res=stmt.executeQuery(sql);
+                int fila=0;
+                while(res.next()){
+                    for(int columna=0; columna<8; columna++)
+                    datos [fila][columna]= res.getObject(columna+1);
+                    fila ++;
+            }
+                res.close();
+                stmt.close();
+                //desconectar();
+            }
+        } catch (Exception e) {
+            System.out.println("Excepcion al Consultar Cliente : "+e);
+        }
+        return datos;
+    }
+
     public int getId() {
         return id;
     }
