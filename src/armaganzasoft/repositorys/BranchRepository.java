@@ -7,6 +7,7 @@ package armaganzasoft.repositorys;
 import armaganzasoft.models.Branch;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 /**
  *
@@ -54,42 +55,76 @@ public class BranchRepository extends BaseRepository {
         }finally{
             return false;
         }
+    }    
+   
+      public Branch buscarPlanta(String identified){
+        String where ="";
+        ResultSet rs;
+        Branch busqueda = new Branch();
+        if(identified != null || identified != ""){
+        where = "WHERE name LIKE '"+identified+"' OR rfc LIKE '"+identified+"' OR email LIKE '"+identified+"';";
+        }
+            try {
+            query = con.prepareStatement("SELECT * FROM branches "+where);
+            rs = query.executeQuery();
+          
+                while(rs.next()){
+                
+                busqueda.setName(rs.getString("name"));
+                busqueda.setAdress(rs.getString("adress"));
+                busqueda.setTelephone(rs.getString("telephone"));
+                busqueda.setCity(rs.getString("city"));
+                busqueda.setZip_code(rs.getString("zip_code"));
+                busqueda.setRfc(rs.getString("rfc"));
+                busqueda.setEmail(rs.getString("email"));
+                }             
+                
+                //aqui aun pueden incluir mas campos de la tabla costumers
+                return busqueda;
+//                  System.out.println(rs.getString("name")+ " y su correo es "+rs.getString("email"));  
+            
+            } catch (SQLException ex) {
+            System.out.println("Erro al consultar un Cliente: "+ex);
+        }
+        return null;
     }
-     
-     public boolean edit(Branch sucursal){
+    
+    public boolean edit(Branch cliente){
         
         try {
             
-            query = con.prepareStatement("UPDATE branches SET   name        = ?, "
-                                                           +"   adress      = ?, "
-                                                           +"   telephone   = ?, "
-                                                           +"   city        = ?, "
-                                                           +"   zip_code    = ?, "
-                                                           +"   rfc         = ?, "
-                                                           +"   email       = ?  "
+            query = con.prepareStatement("UPDATE customers SET   name         = ?, "
+                                                           +"    adress    = ?, "
+                                                           +"    telephone        = ?, "
+                                                           +"    city    = ?, "
+                                                           +"    zip_code        = ?, "
+                                                           +"    rfc          = ?, "
+                                                           +"    email      = ?, "
                                                            +" WHERE id = ?;");
-            query.setString(1, sucursal.getName());
-            query.setString(2, sucursal.getAdress());
-            query.setString(3, sucursal.getTelephone());
-            query.setString(4, sucursal.getCity());
-            query.setString(5, sucursal.getZip_code());
-            query.setString(6, sucursal.getRfc());
-            query.setString(7, sucursal.getEmail());
-            query.setInt(8, sucursal.getId());
             
+            query.setString(1, cliente.getName());
+            query.setString(2, cliente.getAdress());
+            query.setString(3, cliente.getTelephone());
+            query.setString(4, cliente.getCity());
+            query.setString(5, cliente.getZip_code());
+            query.setString(5, cliente.getRfc());           
+            query.setString(6, cliente.getEmail());
+           
+                               
             if( !query.execute() ){
-                System.out.println("Se edito la sucursal correctamente");
+                System.out.println("Se edito el cliente correctamente");
                 return true;
             }
             
             query.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al editar la sucursal: "+ ex);
+            System.out.println("Error al editar el cliente: "+ ex);
         }
         
         return false;
     }
-    
-    
 }
+     
+    
+
