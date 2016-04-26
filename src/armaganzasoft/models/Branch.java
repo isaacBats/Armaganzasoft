@@ -15,11 +15,10 @@ import armaganzasoft.interfaces.Menu;
 
 /**
  *
- * @author ErwinValle
+ * @author daniel
  */
 public class Branch {
-    
-    private int     id;
+     private int     id;
     private String  name;
     private String  adress;
     private String  telephone;
@@ -28,19 +27,46 @@ public class Branch {
     private String  rfc;
     private String email;
     
+    private Statement stm;
+    private ResultSet rs;
+    private Statement stmt;
+   
+      private String sql;
+      private BaseDatos db;
+      private Connection conn= null;
       
-    public Branch(){ }     
-      
-      
-    public int getId() {
-        return id;
+      public Object[][] ConsultarCliente(){
+    Object [][] datos =new Object[id][];
+        try {
+            if(conectar()){
+                sql="SELECT *FROM branches";
+                Statement stmt=this.stmt;
+                ResultSet res=stmt.executeQuery(sql);
+                int fila=0;
+                while(res.next()){
+                    for(int columna=0; columna<7; columna++)
+                    datos [fila][columna]= res.getObject(columna+1);
+                    fila ++;
+            }
+                res.close();
+                stmt.close();
+                //desconectar();
+            }
+        } catch (Exception e) {
+            System.out.println("ExcepciÃ³n al Consultar Cliente : "+e);
+        }
+        return datos;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }   
+      
+      public Branch(){
+      
+      }     
+           public int getid() {
+        return id;
+    }
     
-    public String getName() {
+   public String getName() {
         return name;
     }
 
@@ -96,8 +122,16 @@ public class Branch {
         this.email = email;
     }
     
-}
+    
+   
+    private boolean conectar() {
+        this.db = new BaseDatos();
+        this.conn = db.getConnection();
+        if(this.conn != null){
+            return true;
+        }else{
+            return false;
+        }}
 
+      }
 
-
-  
