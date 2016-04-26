@@ -1,6 +1,9 @@
 package armaganzasoft;
 
 import armaganzasoft.interfaces.Login;
+import armaganzasoft.models.User;
+import armaganzasoft.repositorys.UserRepository;
+import java.util.Date;
 
 /**
  * @author isaac daniel
@@ -17,6 +20,5 @@ public class ArmaganzaSoft {
                new Login().setVisible(true);
            }
        });
-                  
     }
 }

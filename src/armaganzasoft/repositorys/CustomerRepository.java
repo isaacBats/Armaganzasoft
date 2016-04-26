@@ -1,6 +1,6 @@
 package armaganzasoft.repositorys;
 
-import armaganzasoft.models.Costumer;
+import armaganzasoft.models.Customer;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -9,19 +9,19 @@ import java.sql.ResultSet;
  *
  * @author ErwinValle
  */
-public class CostumerRepository extends BaseRepository {
+public class CustomerRepository extends BaseRepository {
     
     private PreparedStatement query;
     
-    public CostumerRepository() {
+    public CustomerRepository() {
         
     }
     
-     public boolean addCustom(Costumer customer){
+     public boolean addCustom(Customer customer){
         
         try {
             
-            query = con.prepareStatement("INSERT INTO customers (name, "
+            query = con.prepareStatement("INSERT INTO customers (identified, name, "
                                                           + "last_name, "
                                                           + "email, "
                                                           + "telephone, "
@@ -32,22 +32,23 @@ public class CostumerRepository extends BaseRepository {
                                                           + "zip_code, " 
                                                           + "sub_customer, "
                                                           + "costumer_id) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
                                         );
             
             
-          
-            query.setString(1, customer.getName());
-            query.setString(2, customer.getLast_name());
-            query.setString(3, customer.getEmail());
-            query.setString(4, customer.getTelephone());
-            query.setString(5, customer.getMovil());
-            query.setString(6, customer.getRfc());
-            query.setString(7, customer.getAdress());
-            query.setString(8, customer.getCity());
-            query.setString(9, customer.getZip_code());
-            query.setString(10, customer.getSub_customer());
-            query.setString(11, customer.getCustomer_id());
+            customer.setIdentified("CL00");
+            query.setString(1, customer.getIdentified());
+            query.setString(2, customer.getName());
+            query.setString(3, customer.getLast_name());
+            query.setString(4, customer.getEmail());
+            query.setString(5, customer.getTelephone());
+            query.setString(6, customer.getMovil());
+            query.setString(7, customer.getRfc());
+            query.setString(8, customer.getAdress());
+            query.setString(9, customer.getCity());
+            query.setString(10, customer.getZip_code());
+            query.setString(11, customer.getSub_customer());
+            query.setString(12, customer.getCustomer_id());
             System.out.println(customer.getCustomer_id());
             if( !query.execute() ){
                 return true;
@@ -71,7 +72,7 @@ public class CostumerRepository extends BaseRepository {
            cliente.getName()       != ""   ||
            cliente.getEmail()      != null ||
            cliente.getEmail()      != ""){
-        where = "WHERE customer_id LIKE '"+cliente.getCustomer_id()+"' OR "
+        where = "WHERE costumer_id LIKE '"+cliente.getCustomer_id()+"' OR "
               + "name       LIKE '"+cliente.getName()+"' OR "
               + "email      LIKE '"+cliente.getEmail()+"';";
         }
@@ -80,7 +81,7 @@ public class CostumerRepository extends BaseRepository {
             rs = query.executeQuery();
             if(rs.next()){
                 while(rs.next())             
-                busqueda.setCustomer_id(rs.getString("customer_id"));
+                busqueda.setCustomer_id(rs.getString("costumer_id"));
                 busqueda.setName(rs.getString("name"));
                 busqueda.setLast_name(rs.getString("last_name"));
                 busqueda.setEmail(rs.getString("email"));

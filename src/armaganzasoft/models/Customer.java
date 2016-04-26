@@ -13,7 +13,7 @@ import java.util.Hashtable;
  *
  * @author ErwinValle
  */
-public class Costumer {
+public class Customer {
     
 /**
  * @author ErwinValle
@@ -44,7 +44,7 @@ public class Costumer {
       /**
        * Default Construct 
        */
-      public Costumer(){
+      public Customer(){
       
       }
    public Object[][] ConsultarCliente(){

@@ -1,9 +1,9 @@
 package armaganzasoft.interfaces;
 
 
-import armaganzasoft.models.Costumer;
+import armaganzasoft.models.Customer;
 import armaganzasoft.services.BaseDatos;
-import armaganzasoft.repositorys.CostumerRepository;
+import armaganzasoft.repositorys.CustomerRepository;
 import armaganzasoft.repositorys.UserRepository;
 import java.awt.Event;
 import java.sql.Connection;
@@ -24,7 +24,7 @@ public class Cliente extends javax.swing.JFrame {
     
     
 
-    CostumerRepository costumers=new CostumerRepository();
+    CustomerRepository costumers=new CustomerRepository();
 private Object[][] datos= null;
     private Object[][] datosURLBD;
     private int cantidad =0;
@@ -261,74 +261,27 @@ private Object[][] datos= null;
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-Costumer costumer;
-        costumer = new Costumer();
-         String buscarCliente=jTextField1.getText();
-        if(!buscarCliente.isEmpty()){
-            cantidad=0;
-                   
-    CostumerRepository  costumRepo = new CostumerRepository();    
-   
-        sql="SELECT *FROM costumers";
-                Statement stmt=this.stmt;
-   
- String sub_costumer =jTextField11.getText();
- String costumer_id =jTextField12.getText();
- String name =jTextField2.getText();
- String last_name =jTextField3.getText();
- String email =jTextField4.getText();
- String telephone =jTextField5.getText();
- String movil =jTextField6.getText();
- String rfc =jTextField7.getText();
- String adress =jTextField8.getText();
- String city =jTextField9.getText();
- String zip_code =jTextField10.getText();
+        Customer costumer, busqueda;
+        costumer = new Customer();
         
-                
-   
-                
-       jTextField11.setText(sub_costumer);
-        jTextField12.setText(costumer_id);
-        jTextField2.setText(buscarCliente);
-        jTextField3.setText("last_name");
-        jTextField4.setText("email");
-        jTextField5.setText("telephone");
-        jTextField6.setText("movil");
-        jTextField7.setText("rfc");
-        jTextField8.setText("adress");
-        jTextField9.setText("city");
-        jTextField10.setText("zip_code");
+        busqueda = new Customer();
+        busqueda.setEmail(jTextField1.getText());
+        CustomerRepository  cr = new CustomerRepository(); 
         
-
-                             
+         costumer = cr.buscarCliente(busqueda);
+            jTextField11.setText(costumer.getSub_customer());
+            jTextField12.setText(costumer.getCustomer_id());
+            jTextField2.setText(costumer.getName());
+            jTextField3.setText(costumer.getLast_name());
+            jTextField4.setText(costumer.getEmail());
+            jTextField5.setText(costumer.getTelephone());
+            jTextField6.setText(costumer.getMovil());
+            jTextField7.setText(costumer.getRfc());
+            jTextField8.setText(costumer.getAdress());
+            jTextField9.setText(costumer.getCity());
+            jTextField10.setText(costumer.getZip_code());
         
- if( !costumRepo.addCustom(costumer) ){
            
- 
- }else{
-            System.out.println("El cliente "+costumer.getName()+" se esta buscando el cliente");
-            JOptionPane.showMessageDialog(this,"No se pudo encontrar el cliente");                                        
-        }
-   
-        
-                                                  
-          
-      
- /*this.jTextField11.setText(sub_costumer);
-  this.jTextField12.setText(costumer_id);
-   this.jTextField2.setText(name);
-    this.jTextField3.setText(last_name);
-     this.jTextField4.setText(email);
-      this.jTextField5.setText(telephone);
-       this.jTextField6.setText(movil);
-        this.jTextField7.setText(rfc);
-         this.jTextField8.setText(adress);
-          this.jTextField9.setText(city);
-           this.jTextField10.setText(zip_code);*/
-           
-             }   
- 
- //con.Add
       
     }                                        
 
@@ -344,8 +297,8 @@ Menu principal=new Menu();
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-Costumer costumer;
-        costumer = new Costumer();
+Customer costumer;
+        costumer = new Customer();
         
         
         costumer.setName(jTextField2.getText());
@@ -357,12 +310,12 @@ Costumer costumer;
         costumer.setAdress(jTextField8.getText());
         costumer.setCity(jTextField9.getText());
         costumer.setZip_code(jTextField10.getText());
-        costumer.setSub_costumer(jTextField11.getText());
-        costumer.setCostumer_id(jTextField12.getText());
+        costumer.setSub_customer(jTextField11.getText());
+        costumer.setCustomer_id(jTextField12.getText());
         
         
         
-        CostumerRepository  costumRepo = new CostumerRepository();
+        CustomerRepository  costumRepo = new CustomerRepository();
 
         if( !costumRepo.addCustom(costumer) ){
             System.out.println("El cliente "+costumer.getName()+" se ha insertado Correctamente");
