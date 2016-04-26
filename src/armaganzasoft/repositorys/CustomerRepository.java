@@ -1,6 +1,6 @@
 package armaganzasoft.repositorys;
 
-import armaganzasoft.models.Customer;
+import armaganzasoft.models.Costumer;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -9,19 +9,19 @@ import java.sql.ResultSet;
  *
  * @author ErwinValle
  */
-public class CustomerRepository extends BaseRepository {
+public class CostumerRepository extends BaseRepository {
     
     private PreparedStatement query;
     
-    public CustomerRepository() {
+    public CostumerRepository() {
         
     }
     
-     public boolean addCustom(Customer customer){
+     public boolean addCostum(Costumer costumer){
         
         try {
             
-            query = con.prepareStatement("INSERT INTO customers (identified, name, "
+            query = con.prepareStatement("INSERT INTO costumers (name, "
                                                           + "last_name, "
                                                           + "email, "
                                                           + "telephone, "
@@ -31,25 +31,24 @@ public class CustomerRepository extends BaseRepository {
                                                           + "city, "
                                                           + "zip_code, " 
                                                           + "sub_customer, "
-                                                          + "costumer_id) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                                                          + "customer_id) "
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);"
                                         );
             
             
-            customer.setIdentified("CL00");
-            query.setString(1, customer.getIdentified());
-            query.setString(2, customer.getName());
-            query.setString(3, customer.getLast_name());
-            query.setString(4, customer.getEmail());
-            query.setString(5, customer.getTelephone());
-            query.setString(6, customer.getMovil());
-            query.setString(7, customer.getRfc());
-            query.setString(8, customer.getAdress());
-            query.setString(9, customer.getCity());
-            query.setString(10, customer.getZip_code());
-            query.setString(11, customer.getSub_customer());
-            query.setString(12, customer.getCustomer_id());
-            System.out.println(customer.getCustomer_id());
+            
+            query.setString(1, costumer.getName());
+            query.setString(2, costumer.getLast_name());
+            query.setString(3, costumer.getEmail());
+            query.setString(4, costumer.getTelephone());
+            query.setString(5, costumer.getMovil());
+            query.setString(6, costumer.getRfc());
+            query.setString(7, costumer.getAddress());
+            query.setString(8, costumer.getCity());
+            query.setString(9, costumer.getZip_code());
+            query.setString(10, costumer.getSub_costumer());
+            query.setString(11, costumer.getCostumer_id());
+            
             if( !query.execute() ){
                 return true;
             }
@@ -62,25 +61,30 @@ public class CustomerRepository extends BaseRepository {
         }
     }   
      
-    public Customer buscarCliente(String identified){
+     public Costumer buscarCliente(String identified){
         String where ="";
         ResultSet rs;
-        Customer busqueda = new Customer();
+        Costumer busqueda = new Costumer ();
         if(identified != null || identified != ""){
-        where = "WHERE email LIKE '"+identified+"' OR name LIKE '"+identified+"' OR last_name LIKE '"+identified+"';";
+        where = "WHERE email LIKE '"+identified+"' OR rfc LIKE '"+identified+"' OR costumer_id LIKE '"+identified+"';";
         }
             try {
-            query = con.prepareStatement("SELECT * FROM customers "+where);
+            query = con.prepareStatement("SELECT * FROM costumers "+where);
             rs = query.executeQuery();
           
                 while(rs.next()){
-                busqueda.setCustomer_id(rs.getString("costumer_id"));
+                
+                busqueda.setSub_costumer(rs.getString("sub_costumer"));
+                busqueda.setCostumer_id(rs.getString("costumer_id"));
                 busqueda.setName(rs.getString("name"));
                 busqueda.setLast_name(rs.getString("last_name"));
                 busqueda.setEmail(rs.getString("email"));
                 busqueda.setTelephone(rs.getString("telephone"));
                 busqueda.setMovil(rs.getString("movil"));
                 busqueda.setRfc(rs.getString("rfc"));
+                busqueda.setAddress(rs.getString("address"));
+                busqueda.setCity(rs.getString("city"));
+                busqueda.setZip_code(rs.getString("zip_code"));
                 }             
                 
                 //aqui aun pueden incluir mas campos de la tabla costumers
@@ -93,12 +97,11 @@ public class CustomerRepository extends BaseRepository {
         return null;
     }
     
-    public boolean edit(Customer cliente){
+    public boolean edit(Costumer cliente){
         
         try {
             
-            query = con.prepareStatement("UPDATE customers SET   identified   = ?, "
-                                                           +"    name         = ?, "
+            query = con.prepareStatement("UPDATE costumers SET     name         = ?, "
                                                            +"    last_name    = ?, "
                                                            +"    email        = ?, "
                                                            +"    telephone    = ?, "
@@ -107,22 +110,22 @@ public class CustomerRepository extends BaseRepository {
                                                            +"    address      = ?, "
                                                            +"    city         = ?, "
                                                            +"    zip_code     = ?, "
-                                                           +"    sub_customer = ?, "
+                                                           +"    sub_costumer = ?, "
                                                            +"    costumer_id  = ? "
                                                            +" WHERE id = ?;");
-            query.setString(1, cliente.getIdentified());
-            query.setString(2, cliente.getName());
-            query.setString(3, cliente.getLast_name());
-            query.setString(4, cliente.getEmail());
-            query.setString(5, cliente.getTelephone());
-            query.setString(6, cliente.getMovil());
-            query.setString(7, cliente.getRfc());
-            query.setString(8, cliente.getAdress());
-            query.setString(9, cliente.getCity());
-            query.setString(10, cliente.getZip_code());
-            query.setString(11, cliente.getSub_customer());
-            query.setString(12, cliente.getCustomer_id());
-            query.setInt(13, cliente.getId());
+            
+            query.setString(1, cliente.getName());
+            query.setString(2, cliente.getLast_name());
+            query.setString(3, cliente.getEmail());
+            query.setString(4, cliente.getTelephone());
+            query.setString(5, cliente.getMovil());
+            query.setString(6, cliente.getRfc());
+            query.setString(7, cliente.getAddress());
+            query.setString(8, cliente.getCity());
+            query.setString(9, cliente.getZip_code());
+            query.setString(10, cliente.getSub_costumer());
+            query.setString(11, cliente.getCostumer_id());
+            query.setInt(12, cliente.getId());
             
             if( !query.execute() ){
                 System.out.println("Se edito el cliente correctamente");
