@@ -27,15 +27,12 @@ public class MaquinasRepository extends BaseRepository {
         
         try {
             
-            query = con.prepareStatement("INSERT INTO machines (name "
-                                        +"code)"
-                                        + "VALUES(?,?);"
+            query = con.prepareStatement("INSERT INTO machines (name, "
+                                        +"code,"
+                                        +"value)"
+                                        + "VALUES(?,?,?);"
                                         );
-            query = con.prepareStatement("INSERT INTO machine_attribute (value)"                                        
-                                        + "VALUES(?);"
-                                        );
-            
-            
+                      
             
             query.setString(1, machines.getName());
             query.setString(2, machines.getCode());
