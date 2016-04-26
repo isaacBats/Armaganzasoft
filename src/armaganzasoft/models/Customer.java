@@ -13,25 +13,25 @@ import java.util.Hashtable;
  *
  * @author ErwinValle
  */
-public class Customer {
+public class Costumer {
     
 /**
  * @author ErwinValle
  */
     
     private int     id;
-    private String  identified;
+    private String identified;
     private String  name;
     private String  last_name;
     private String  email;
     private String  telephone;
     private String  movil;
     private String  rfc;
-    private String  adress;
+    private String  address;
     private String  city;
     private String  zip_code;
     private String sub_costumer;
-    private String  customer_id;
+    private String  costumer_id;
    
    private Statement stm;
    private ResultSet rs;
@@ -44,14 +44,14 @@ public class Customer {
       /**
        * Default Construct 
        */
-      public Customer(){
+     public Costumer(){
       
       }
    public Object[][] ConsultarCliente(){
     Object [][] datos =new Object[id][];
         try {
             if(conectar()){
-                sql="SELECT *FROM customers";
+                sql="SELECT *FROM costumers";
                 Statement stmt=this.stmt;
                 ResultSet res=stmt.executeQuery(sql);
                 int fila=0;
@@ -65,29 +65,17 @@ public class Customer {
                 //desconectar();
             }
         } catch (Exception e) {
-            System.out.println("ExcepciÃ³n al Consultar Cliente : "+e);
+            System.out.println("Excepcion al Consultar Cliente : "+e);
         }
         return datos;
     }
+
 
   //ingreso datos  
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    
-    
-   public String getIdentified() {
-        return identified;
-    }
-
-    public void setIdentified(String identified) {
-        this.identified = identified;
-    }
+  
 
     public String getName() {
         return name;
@@ -137,12 +125,12 @@ public class Customer {
         this.rfc = rfc;
     }
     
-     public String getAdress() {
-        return adress;
+     public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String adress) {
+        this.address = adress;
     }
     
      public String getCity() {
@@ -161,20 +149,20 @@ public class Customer {
         this.zip_code = zip_code;
     }
     
-    public String getSub_customer() {
+    public String getSub_costumer() {
         return sub_costumer;
     }
 
-    public void setSub_customer(String sub_costumer) {
+    public void setSub_costumer(String sub_costumer) {
         this.sub_costumer = sub_costumer;
     }
 
-    public String getCustomer_id() {
-        return customer_id;
+    public String getCostumer_id() {
+        return costumer_id;
     }
 
-    public void setCustomer_id(String customer_id) {
-        this.customer_id = customer_id;
+    public void setCostumer_id(String costumer_id) {
+        this.costumer_id = costumer_id;
     }
     
     private boolean conectar() {
@@ -189,5 +177,3 @@ public class Customer {
     
       
 }
-    
-
