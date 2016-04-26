@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Isaac Daniel
@@ -16,20 +18,20 @@ import java.util.Hashtable;
 public class User {
     
     private int     id;
-    private int     branch_id;
     private String  num_employee;
     private String  name;
     private String  last_name;
     private String  email;
-    private String  user;
     private String  password;
+    private String  usuario;
     private String  position;
     private String  roll;
-    private boolean active;
+    private String active;
     private Date    update_at;
     private Date    created_at;
    private Statement stm;
    private ResultSet rs;
+   private Statement stmt;
    
       private String sql;
       private BaseDatos db;
@@ -38,14 +40,39 @@ public class User {
       /**
        * Default Construct 
        */
+       public Object[][] ConsultarUsuario(){
+    Object [][] datos =new Object[id][];
+        try {
+            if(conectar()){
+                sql="SELECT *FROM users";
+                Statement stmt=this.stmt;
+                ResultSet res=stmt.executeQuery(sql);
+                int fila=0;
+                while(res.next()){
+                    for(int columna=0; columna<9; columna++)
+                    datos [fila][columna]= res.getObject(columna+1);
+                    fila ++;
+            }
+                res.close();
+                stmt.close();
+                //desconectar();
+            }
+        } catch (Exception e) {
+            System.out.println("ExcepciÃ³n al Consultar Cliente : "+e);
+        }
+        return datos;
+    }
+      
       public User(){
       
       }
     
-    public Boolean validarUsuario(String Login, String password) throws SQLException{
+    public boolean validarUsuario(String Login, String password) throws SQLException{
         String nombre="";
             if(conectar()){
-                String sql = "SELECT * FROM users WHERE name like '"+Login+"';";
+               String sql = "SELECT * FROM users WHERE usuario like '"+Login+"';";
+                
+               //String sql = "SELECT * FROM users WHERE name like '"+Login+"';";
                 Statement stmt = this.conn.createStatement();
                 ResultSet res = stmt.executeQuery(sql);
                 if(res.next() && password.equals(res.getString("password"))){
@@ -67,28 +94,33 @@ public class User {
                 }    
     }
     
-   
+    
+    
+    public boolean BuscarUsuario (String Clave)throws SQLException{
+        if(conectar()){
+            String sql = "SELECT * FROM users WHERE num_employee like'"+Clave+"';";
+            Statement stmt = this.conn.createStatement();
+            ResultSet res = stmt.executeQuery(sql);
+            return true;
+        }
+     
 
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
+else{
+                   
+                    System.out.println("No se encontro el registro");
+        try {
+            this.conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        } return false;
+                } }   
+    
+    
+    
     public int getId() {
         return id;
     }
     
-    public int getBranch_id() {
-        return branch_id;
-    }
-
-    public void setBranch_id(int branch_id) {
-        this.branch_id = branch_id;
-    }
-
     public String getNum_employee() {
         return num_employee;
     }
@@ -128,6 +160,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 
     public String getPosition() {
         return position;
@@ -145,11 +185,11 @@ public class User {
         this.roll = roll;
     }
 
-    public boolean isActive() {
+    public String getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(String active) {
         this.active = active;
     }
 
@@ -180,4 +220,3 @@ public class User {
 
     
       
-}
