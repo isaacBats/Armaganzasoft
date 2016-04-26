@@ -62,25 +62,18 @@ public class CustomerRepository extends BaseRepository {
         }
     }   
      
-    public Customer buscarCliente(Customer cliente){
+    public Customer buscarCliente(String identified){
         String where ="";
         ResultSet rs;
         Customer busqueda = new Customer();
-        if(cliente.getCustomer_id() != null ||
-           cliente.getCustomer_id() != ""   ||
-           cliente.getName()       != null ||
-           cliente.getName()       != ""   ||
-           cliente.getEmail()      != null ||
-           cliente.getEmail()      != ""){
-        where = "WHERE costumer_id LIKE '"+cliente.getCustomer_id()+"' OR "
-              + "name       LIKE '"+cliente.getName()+"' OR "
-              + "email      LIKE '"+cliente.getEmail()+"';";
+        if(identified != null || identified != ""){
+        where = "WHERE email LIKE '"+identified+"' OR name LIKE '"+identified+"' OR last_name LIKE '"+identified+"';";
         }
             try {
             query = con.prepareStatement("SELECT * FROM customers "+where);
             rs = query.executeQuery();
-            if(rs.next()){
-                while(rs.next())             
+          
+                while(rs.next()){
                 busqueda.setCustomer_id(rs.getString("costumer_id"));
                 busqueda.setName(rs.getString("name"));
                 busqueda.setLast_name(rs.getString("last_name"));
@@ -88,10 +81,12 @@ public class CustomerRepository extends BaseRepository {
                 busqueda.setTelephone(rs.getString("telephone"));
                 busqueda.setMovil(rs.getString("movil"));
                 busqueda.setRfc(rs.getString("rfc"));
+                }             
                 
                 //aqui aun pueden incluir mas campos de la tabla costumers
                 return busqueda;
-            }
+//                  System.out.println(rs.getString("name")+ " y su correo es "+rs.getString("email"));  
+            
             } catch (SQLException ex) {
             System.out.println("Erro al consultar un Cliente: "+ex);
         }

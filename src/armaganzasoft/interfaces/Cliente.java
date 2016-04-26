@@ -261,14 +261,15 @@ private Object[][] datos= null;
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        Customer costumer, busqueda;
+        Customer costumer;
+        String identified = "";
         costumer = new Customer();
         
-        busqueda = new Customer();
-        busqueda.setEmail(jTextField1.getText());
+       
+        identified = jTextField1.getText();
         CustomerRepository  cr = new CustomerRepository(); 
         
-         costumer = cr.buscarCliente(busqueda);
+         costumer = cr.buscarCliente(identified);
             jTextField11.setText(costumer.getSub_customer());
             jTextField12.setText(costumer.getCustomer_id());
             jTextField2.setText(costumer.getName());
