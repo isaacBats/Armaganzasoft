@@ -5,16 +5,6 @@
  */
 package armaganzasoft.interfaces;
 
-import armaganzasoft.models.Cliente;
-import armaganzasoft.models.EntregasParciales;
-import armaganzasoft.models.EquipoDeTrabajo;
-import armaganzasoft.models.Formulas;
-import armaganzasoft.models.Ordenes;
-import armaganzasoft.models.Plantas;
-import armaganzasoft.models.Proveedores;
-import armaganzasoft.models.Receta;
-import armaganzasoft.models.Usuarios;
-
 /**
  * Call metod to display init
  * @author rodri

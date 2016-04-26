@@ -7,7 +7,6 @@ package armaganzasoft.interfaces;
 
 import armaganzasoft.services.BaseDatos;
 import armaganzasoft.models.User;
-import armaganzasoft.models.Usuarios;
 import armaganzasoft.interfaces.Menu;
 import java.sql.Array;
 import java.sql.Blob;
@@ -52,8 +51,14 @@ public class Login extends javax.swing.JFrame {
         this.conn = db.getConnection();
         
         initComponents();
+        limpiar();
      }
     
+    public void limpiar()
+    {
+        jTextField1.setText("");
+        jPasswordField1.setText("");
+    }
 //    Connection conn = new Connection();
 
     /**
@@ -125,7 +130,7 @@ public class Login extends javax.swing.JFrame {
              }else{
                  //System.out.println("No te Puedes Conectar&");
                  JOptionPane.showMessageDialog(this,"DATOS INCORRECTOS NO TE PUEDES CONECTAR");
-                
+                limpiar();
                  /* Hacer que cuando no te logees correctamente
                     se limpien los campos del formulario
                  */

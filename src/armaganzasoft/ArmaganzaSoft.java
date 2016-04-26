@@ -1,59 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package armaganzasoft;
 
-import armaganzasoft.components.Valvula;
-import armaganzasoft.interfaces.Bienvenida;
-import armaganzasoft.repositorys.ValvulaRepository;
-
+import armaganzasoft.interfaces.Login;
 
 /**
- *
  * @author isaac daniel
  */
-//prueba comentario
 public class ArmaganzaSoft {
-//private  Bienvenida obj= new Bienvenida(); 
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {        
-               
-        
-        Valvula valvulaAgua;
-       // Valvula valvulaAditivo;
-       // Valvula valvulaAditivo2;
-        //Valvula valvulaAditivo3;
-        
-        ValvulaRepository vr;        
-        
-        valvulaAgua = new Valvula("V002", "Valvula Agua 2");
-        //valvulaAditivo = new Valvula("V003", "Valvula Aditivo 1");
-        
-        //valvulaAditivo2 = new Valvula("V006", "Valvula Aditivo HP");
-        //valvulaAditivo3 = new Valvula("V009", "Valvula Aditivo nueve");
-        
-        
-        //vr = new ValvulaRepository();
-        //vr.addValvula(valvulaAgua);
-        
-        //vr.addValvula(valvulaAditivo);
-        
-          //vr.addValvula(valvulaAditivo2);
-         // if(vr.addValvula(valvulaAditivo3) == true){
           
-          //  System.out.println(valvulaAditivo3.getName());
-           
-          
-          java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Bienvenida().setVisible(true);
+                new Login().setVisible(true);
             }
         });
                   
-          }
     }
-    
+}
