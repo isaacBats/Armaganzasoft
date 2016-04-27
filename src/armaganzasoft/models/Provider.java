@@ -12,16 +12,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import armaganzasoft.interfaces.Menu;
-import armaganzasoft.models.User;
-import java.util.Hashtable;
+
 /**
  *
- * @author daniel
+ * @author ErwinValle
  */
 public class Provider {
     
 /**
- * @author Isaac Daniel
+ * @author ErwinValle
  */
     
     private int     id;

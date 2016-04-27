@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Rodrigo
+ * @author ErwinValle
  */
 public class Cliente extends javax.swing.JFrame {
 
@@ -397,49 +397,31 @@ Costumer costumer;
     }//GEN-LAST:event_jTextField12ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-  Costumer costumer;
-        
+ Costumer costumer;
         costumer = new Costumer();
         
        
+        costumer.setName(jTextField2.getText());
+        costumer.setLast_name(jTextField3.getText());
+        costumer.setEmail(jTextField4.getText());
+        costumer.setTelephone(jTextField5.getText());
+        costumer.setMovil(jTextField6.getText());
+        costumer.setRfc(jTextField7.getText());
+        costumer.setAddress(jTextField8.getText());
+        costumer.setCity(jTextField9.getText());
+        costumer.setZip_code(jTextField10.getText());
+        costumer.setSub_costumer(jTextField11.getText());
+        costumer.setCostumer_id(jTextField12.getText());
         
-        CostumerRepository  cr = new CostumerRepository(); 
-        
-     boolean cliente = cr.edit(costumer);
-            costumer.setSub_costumer(jTextField11.getText());
-            costumer.setCostumer_id(jTextField12.getText());
-            costumer.setName(jTextField2.getText());
-            costumer.setLast_name(jTextField3.getText());
-            costumer.setEmail(jTextField4.getText());
-            costumer.setTelephone(jTextField5.getText());
-            costumer.setMovil(jTextField6.getText());
-            costumer.setRfc(jTextField7.getText());
-            costumer.setAddress(jTextField8.getText());
-            costumer.setCity(jTextField9.getText());
-            costumer.setZip_code(jTextField10.getText());
-            
-            
-            
-           /* jTextField11.setText(costumer.getSub_costumer());
-            jTextField12.setText(costumer.getCostumer_id());
-            jTextField2.setText(costumer.getName());
-            jTextField3.setText(costumer.getLast_name());
-            jTextField4.setText(costumer.getEmail());
-            jTextField5.setText(costumer.getTelephone());
-            jTextField6.setText(costumer.getMovil());
-            jTextField7.setText(costumer.getRfc());
-            jTextField8.setText(costumer.getAddress());
-            jTextField9.setText(costumer.getCity());
-            jTextField10.setText(costumer.getZip_code());*/
             
              CostumerRepository  costumRepo = new CostumerRepository();
 
         if( !costumRepo.edit(costumer) ){
-            System.out.println("El cliente "+costumer.getName()+" se ha insertado Correctamente");
+            System.out.println("El cliente "+costumer.getName()+" se ha modificado Correctamente");
             JOptionPane.showMessageDialog(this,"SEA A MODIFICADO EL CLIENTE CORRECTAMENTE");
             limpiar();
         }else{
-            System.out.println("El cliente "+costumer.getName()+" se ha insertado Correctamente");
+            System.out.println("El cliente "+costumer.getName()+" no se ha modificado Correctamente");
             JOptionPane.showMessageDialog(this,"NO SE PUDO MODIFICAR ");
             limpiar();
         }

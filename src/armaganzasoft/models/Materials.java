@@ -19,8 +19,8 @@ public class Materials {
     private int     id;
     private String  name; 
     private String  code;
-    private String value;
-    
+    private String atributo;
+    private String tipo;
 
    
    private Statement stm;
@@ -29,6 +29,7 @@ public class Materials {
       private String sql;
       private BaseDatos db;
       private Connection conn= null;
+    private Statement stmt;
       
       /**
        * Default Construct 
@@ -36,6 +37,30 @@ public class Materials {
       public Materials(){
       
       }
+       public Object[][] ConsultarMaterial(){
+    Object [][] datos =new Object[id][];
+        try {
+            if(conectar()){
+                sql="SELECT *FROM materials";
+                Statement stmt=this.stmt;
+                ResultSet res=stmt.executeQuery(sql);
+                int fila=0;
+                while(res.next()){
+                    for(int columna=0; columna<3; columna++)
+                    datos [fila][columna]= res.getObject(columna+1);
+                    fila ++;
+            }
+                res.close();
+                stmt.close();
+                //desconectar();
+            }
+        } catch (Exception e) {
+            System.out.println("Excepcion al Consultar Material : "+e);
+        }
+        return datos;
+    }
+
+
   
     
     public int getId() {
@@ -58,13 +83,22 @@ public class Materials {
         this.code = code;
     }
     
-        public String getValue() {
-        return value;
+        public String getAtributo() {
+        return atributo;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setAtributo(String atributo) {
+        this.atributo = atributo;
     }
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
     
     
    

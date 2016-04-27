@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author rodri
+ * @author ErwinValle
  */
 public class ProveedoresRepository extends BaseRepository {
     
