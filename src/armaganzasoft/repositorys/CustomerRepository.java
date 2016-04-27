@@ -1,6 +1,6 @@
 package armaganzasoft.repositorys;
 
-import armaganzasoft.models.Costumer;
+import armaganzasoft.models.Customer;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -9,15 +9,15 @@ import java.sql.ResultSet;
  *
  * @author ErwinValle
  */
-public class CostumerRepository extends BaseRepository {
+public class CustomerRepository extends BaseRepository {
     
     private PreparedStatement query;
     
-    public CostumerRepository() {
+    public CustomerRepository() {
         
     }
     
-     public boolean addCostum(Costumer costumer){
+     public boolean addCostum(Customer costumer){
         
         try {
             
@@ -61,20 +61,20 @@ public class CostumerRepository extends BaseRepository {
         }
     }   
      
-     public Costumer buscarCliente(String identified){
+     public Customer buscarCliente(String identified){
         String where ="";
         ResultSet rs;
-        Costumer busqueda = new Costumer ();
+        Customer busqueda = new Customer ();
         if(identified != null || identified != ""){
         where = "WHERE email LIKE '"+identified+"' OR rfc LIKE '"+identified+"' OR costumer_id LIKE '"+identified+"';";
         }
             try {
-            query = con.prepareStatement("SELECT * FROM costumers "+where);
+            query = con.prepareStatement("SELECT * FROM customers "+where);
             rs = query.executeQuery();
           
                 while(rs.next()){
                 
-                busqueda.setSub_costumer(rs.getString("sub_costumer"));
+                busqueda.setSub_costumer(rs.getString("sub_customer"));
                 busqueda.setCostumer_id(rs.getString("costumer_id"));
                 busqueda.setName(rs.getString("name"));
                 busqueda.setLast_name(rs.getString("last_name"));
@@ -97,11 +97,11 @@ public class CostumerRepository extends BaseRepository {
         return null;
     }
     
-    public boolean edit(Costumer cliente){
+    public boolean edit(Customer cliente){
         
         try {
             
-            query = con.prepareStatement("UPDATE costumers SET     name         = ?, "
+            query = con.prepareStatement("UPDATE customers SET     name         = ?, "
                                                            +"    last_name    = ?, "
                                                            +"    email        = ?, "
                                                            +"    telephone    = ?, "
@@ -110,7 +110,7 @@ public class CostumerRepository extends BaseRepository {
                                                            +"    address      = ?, "
                                                            +"    city         = ?, "
                                                            +"    zip_code     = ?, "
-                                                           +"    sub_costumer = ?, "
+                                                           +"    sub_customer = ?, "
                                                            +"    costumer_id  = ? "
                                                            +" WHERE id = ?;");
             

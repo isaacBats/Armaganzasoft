@@ -2,12 +2,12 @@ package armaganzasoft.interfaces;
 
 
 import armaganzasoft.services.BaseDatos;
-import armaganzasoft.models.Costumer;
+import armaganzasoft.models.Customer;
 import armaganzasoft.repositorys.UserRepository;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.awt.Event;
-import armaganzasoft.repositorys.CostumerRepository;
+import armaganzasoft.repositorys.CustomerRepository;
 import armaganzasoft.services.BaseDatos;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -25,7 +25,7 @@ public class Cliente extends javax.swing.JFrame {
     /**
      * Creates new form Cliente
      */
- CostumerRepository costumers=new CostumerRepository();
+ CustomerRepository costumers=new CustomerRepository();
 private Object[][] datos= null;
     private Object[][] datosURLBD;
     private int cantidad =0;
@@ -283,13 +283,13 @@ private Object[][] datos= null;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-      Costumer costumer;
+      Customer costumer;
         String identified = "";
-        costumer = new Costumer();
+        costumer = new Customer();
         
        
         identified = jTextField1.getText();
-        CostumerRepository  cr = new CostumerRepository(); 
+        CustomerRepository  cr = new CustomerRepository(); 
         
          costumer = cr.buscarCliente(identified);
             jTextField11.setText(costumer.getSub_costumer());
@@ -319,8 +319,8 @@ Menu principal=new Menu();
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-Costumer costumer;
-        costumer = new Costumer();
+Customer costumer;
+        costumer = new Customer();
         
        
         costumer.setName(jTextField2.getText());
@@ -337,7 +337,7 @@ Costumer costumer;
         
         
         
-        CostumerRepository  costumRepo = new CostumerRepository();
+        CustomerRepository  costumRepo = new CustomerRepository();
 
         if( !costumRepo.addCostum(costumer) ){
             System.out.println("El cliente "+costumer.getName()+" se ha insertado Correctamente");
@@ -392,13 +392,13 @@ Costumer costumer;
     }                                            
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-  Costumer costumer;
+  Customer costumer;
         
-        costumer = new Costumer();
+        costumer = new Customer();
         
        
         
-        CostumerRepository  cr = new CostumerRepository(); 
+        CustomerRepository  cr = new CustomerRepository(); 
         
      boolean cliente = cr.edit(costumer);
             costumer.setSub_costumer(jTextField11.getText());
@@ -427,7 +427,7 @@ Costumer costumer;
             jTextField9.setText(costumer.getCity());
             jTextField10.setText(costumer.getZip_code());*/
             
-             CostumerRepository  costumRepo = new CostumerRepository();
+             CustomerRepository  costumRepo = new CustomerRepository();
 
         if( !costumRepo.edit(costumer) ){
             System.out.println("El cliente "+costumer.getName()+" se ha insertado Correctamente");

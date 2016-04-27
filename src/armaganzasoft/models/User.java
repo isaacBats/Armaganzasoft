@@ -70,7 +70,7 @@ public class User {
     public boolean validarUsuario(String Login, String password) throws SQLException{
         String nombre="";
             if(conectar()){
-               String sql = "SELECT * FROM users WHERE usuario like '"+Login+"';";
+               String sql = "SELECT * FROM users WHERE user like '"+Login+"';";
                 
                //String sql = "SELECT * FROM users WHERE name like '"+Login+"';";
                 Statement stmt = this.conn.createStatement();
@@ -216,7 +216,9 @@ else{
             return true;
         }else{
             return false;
-        }}
-
+        }
+    }
+    
+}
     
       

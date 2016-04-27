@@ -37,7 +37,7 @@ public class UserRepository extends BaseRepository {
                                                           + "last_name, "
                                                           + "email, "
                                                           + "password,"
-                                                          + "usuario, "
+                                                          + "user, "
                                                           + "position, "
                                                           + "roll, "
                                                           + "active) "
@@ -75,7 +75,7 @@ public class UserRepository extends BaseRepository {
         ResultSet rs;
         User busqueda = new User();
         if(identified != null || identified != ""){
-        where = "WHERE email LIKE '"+identified+"' OR usuario LIKE '"+identified+"' OR num_employee LIKE '"+identified+"';";
+        where = "WHERE email LIKE '"+identified+"' OR user LIKE '"+identified+"' OR num_employee LIKE '"+identified+"';";
         }
             try {
             query = con.prepareStatement("SELECT * FROM users "+where);
@@ -88,7 +88,7 @@ public class UserRepository extends BaseRepository {
                 busqueda.setLast_name(rs.getString("last_name"));
                 busqueda.setEmail(rs.getString("email"));
                 busqueda.setPassword(rs.getString("password"));
-                busqueda.setUsuario(rs.getString("usuario"));
+                busqueda.setUsuario(rs.getString("user"));
                 busqueda.setPosition(rs.getString("position"));
                 busqueda.setRoll(rs.getString("roll"));
                 busqueda.setActive(rs.getString("active"));
@@ -113,7 +113,7 @@ public class UserRepository extends BaseRepository {
                                                            +"    last_name    = ?, "
                                                            +"    email        = ?, "
                                                            +"    password    = ?, "
-                                                           +"    usuario        = ?, "
+                                                           +"    user        = ?, "
                                                            +"    position      = ?, "
                                                            +"    roll      = ?, "
                                                            +"    active         = ?, ");
