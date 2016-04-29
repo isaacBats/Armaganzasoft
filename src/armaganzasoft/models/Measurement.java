@@ -16,7 +16,7 @@ import java.util.Hashtable;
 public class Measurement {
     
 /**
- * @author ErwinOrlando
+ * @author ErwinValle
  */
     
     private int     id;
