@@ -140,4 +140,46 @@ public class CostumerRepository extends BaseRepository {
         
         return false;
     }
+    public boolean eliminar(Costumer costumer){
+        
+        try {
+            
+            query = con.prepareStatement("REMOVE costumers SET name=?, "
+                                                          + "last_name=?, "
+                                                          + "telephone=?, "
+                                                          + "movil=?, "
+                                                          + "address=?, "
+                                                          + "city=?, "
+                                                          + "zip_code=?, " 
+                                                          + "sub_costumer=? "
+                                                          );
+                                                          
+            
+            query.setString(1, costumer.getName());
+            query.setString(2, costumer.getLast_name());
+            query.setString(3, costumer.getTelephone());
+            query.setString(4, costumer.getMovil());
+            query.setString(5, costumer.getAddress());
+            query.setString(6, costumer.getCity());
+            query.setString(7, costumer.getZip_code());
+            query.setString(8, costumer.getSub_costumer());
+            
+          
+            
+            if( !query.execute() ){
+                System.out.println("Se modifico el cliente correctamente");
+                return true;
+            }
+            
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al modifico el cliente: "+ ex);
+        }
+        
+        return false;
+ 
+    }
+ 
+}
 }
