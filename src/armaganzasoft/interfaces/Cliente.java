@@ -2,12 +2,12 @@ package armaganzasoft.interfaces;
 
 
 import armaganzasoft.services.BaseDatos;
-import armaganzasoft.models.Customer;
+import armaganzasoft.models.Costumer;
 import armaganzasoft.repositorys.UserRepository;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.awt.Event;
-import armaganzasoft.repositorys.CustomerRepository;
+import armaganzasoft.repositorys.CostumerRepository;
 import armaganzasoft.services.BaseDatos;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -25,7 +25,7 @@ public class Cliente extends javax.swing.JFrame {
     /**
      * Creates new form Cliente
      */
- CustomerRepository costumers=new CustomerRepository();
+ CostumerRepository costumers=new CostumerRepository();
 private Object[][] datos= null;
     private Object[][] datosURLBD;
     private int cantidad =0;
@@ -134,6 +134,11 @@ private Object[][] datos= null;
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setText("ELIMINAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 350, 170, 40));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -283,13 +288,13 @@ private Object[][] datos= null;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-      Customer costumer;
+      Costumer costumer;
         String identified = "";
-        costumer = new Customer();
+        costumer = new Costumer();
         
        
         identified = jTextField1.getText();
-        CustomerRepository  cr = new CustomerRepository(); 
+        CostumerRepository  cr = new CostumerRepository(); 
         
          costumer = cr.buscarCliente(identified);
             jTextField11.setText(costumer.getSub_costumer());
@@ -319,8 +324,8 @@ Menu principal=new Menu();
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-Customer costumer;
-        costumer = new Customer();
+Costumer costumer;
+        costumer = new Costumer();
         
        
         costumer.setName(jTextField2.getText());
@@ -337,7 +342,7 @@ Customer costumer;
         
         
         
-        CustomerRepository  costumRepo = new CustomerRepository();
+        CostumerRepository  costumRepo = new CostumerRepository();
 
         if( !costumRepo.addCostum(costumer) ){
             System.out.println("El cliente "+costumer.getName()+" se ha insertado Correctamente");
@@ -392,55 +397,97 @@ Customer costumer;
     }                                            
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-  Customer costumer;
-        
-        costumer = new Customer();
+/* Costumer costumer;
+        String identified = "";
+        costumer = new Costumer();
         
        
+      
+       
+        costumer.setName(jTextField2.getText());
+        costumer.setLast_name(jTextField3.getText());
+        costumer.setEmail(jTextField4.getText());
+        costumer.setTelephone(jTextField5.getText());
+        costumer.setMovil(jTextField6.getText());
+        costumer.setRfc(jTextField7.getText());
+        costumer.setAddress(jTextField8.getText());
+        costumer.setCity(jTextField9.getText());
+        costumer.setZip_code(jTextField10.getText());
+        costumer.setSub_costumer(jTextField11.getText());
+        costumer.setCostumer_id(jTextField12.getText());
         
-        CustomerRepository  cr = new CustomerRepository(); 
-        
-     boolean cliente = cr.edit(costumer);
-            costumer.setSub_costumer(jTextField11.getText());
-            costumer.setCostumer_id(jTextField12.getText());
-            costumer.setName(jTextField2.getText());
-            costumer.setLast_name(jTextField3.getText());
-            costumer.setEmail(jTextField4.getText());
-            costumer.setTelephone(jTextField5.getText());
-            costumer.setMovil(jTextField6.getText());
-            costumer.setRfc(jTextField7.getText());
-            costumer.setAddress(jTextField8.getText());
-            costumer.setCity(jTextField9.getText());
-            costumer.setZip_code(jTextField10.getText());
             
-            
-            
-           /* jTextField11.setText(costumer.getSub_costumer());
-            jTextField12.setText(costumer.getCostumer_id());
-            jTextField2.setText(costumer.getName());
-            jTextField3.setText(costumer.getLast_name());
-            jTextField4.setText(costumer.getEmail());
-            jTextField5.setText(costumer.getTelephone());
-            jTextField6.setText(costumer.getMovil());
-            jTextField7.setText(costumer.getRfc());
-            jTextField8.setText(costumer.getAddress());
-            jTextField9.setText(costumer.getCity());
-            jTextField10.setText(costumer.getZip_code());*/
-            
-             CustomerRepository  costumRepo = new CustomerRepository();
+             CostumerRepository  costumRepo = new CostumerRepository();
 
         if( !costumRepo.edit(costumer) ){
-            System.out.println("El cliente "+costumer.getName()+" se ha insertado Correctamente");
+            System.out.println("El cliente "+costumer.getName()+" se ha modificado Correctamente");
             JOptionPane.showMessageDialog(this,"SEA A MODIFICADO EL CLIENTE CORRECTAMENTE");
+          
             limpiar();
+            
         }else{
-            System.out.println("El cliente "+costumer.getName()+" se ha insertado Correctamente");
+            System.out.println("El cliente "+costumer.getName()+" no se ha modificado Correctamente");
             JOptionPane.showMessageDialog(this,"NO SE PUDO MODIFICAR ");
             limpiar();
         }
         
         
-                                          
+              */
+Costumer costumer;
+        String identified = "";
+        costumer = new Costumer();
+CostumerRepository  costumRepo = new CostumerRepository();
+if( !costumRepo.edit(costumer) ){
+            //abrir la edicion de texto
+            jTextField11.setEditable(true);
+        }
+        jTextField2.setEditable(true);
+        jTextField3.setEditable(true);
+       
+        jTextField5.setEditable(true);
+        jTextField6.setEditable(true);
+       
+        jTextField8.setEditable(true);
+        jTextField9.setEditable(true);
+        jTextField10.setEditable(true);
+        
+
+        jButton4.setEnabled(false);//inabilitar el boton de eliminar
+
+        jButton3.setEnabled(true);//habilitamos el boton guardar
+    
+        // TODO add your handling code here:
+    }                                        
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+Costumer costumer;
+        String identified = "";
+        costumer = new Costumer();
+CostumerRepository  costumRepo = new CostumerRepository();
+        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar este Cliente", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
+            for (int bd = 0; bd < 5; bd++) {
+               
+if( !costumRepo.eliminar(costumer)){
+                    if( !costumRepo.edit(costumer) ){
+            System.out.println("El cliente "+costumer.getName()+" se ha eliminado Correctamente");
+            JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL CLIENTE CORRECTAMENTE");
+          
+            limpiar();
+            
+        }else{
+            System.out.println("El cliente "+costumer.getName()+" no se ha eliminado Correctamente");
+            JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
+            limpiar();
+                    
+
+                    }
+}
+            }
+            
+        }
+    
+                                            
 
         // TODO add your handling code here:
     }                                        
@@ -512,4 +559,6 @@ Customer costumer;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration                   
+private javax.swing.JOptionPane mensaje;
 }
+
