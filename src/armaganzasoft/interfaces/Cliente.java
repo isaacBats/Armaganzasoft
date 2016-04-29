@@ -397,42 +397,7 @@ Costumer costumer;
     }                                            
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-/* Costumer costumer;
-        String identified = "";
-        costumer = new Costumer();
-        
-       
-      
-       
-        costumer.setName(jTextField2.getText());
-        costumer.setLast_name(jTextField3.getText());
-        costumer.setEmail(jTextField4.getText());
-        costumer.setTelephone(jTextField5.getText());
-        costumer.setMovil(jTextField6.getText());
-        costumer.setRfc(jTextField7.getText());
-        costumer.setAddress(jTextField8.getText());
-        costumer.setCity(jTextField9.getText());
-        costumer.setZip_code(jTextField10.getText());
-        costumer.setSub_costumer(jTextField11.getText());
-        costumer.setCostumer_id(jTextField12.getText());
-        
-            
-             CostumerRepository  costumRepo = new CostumerRepository();
 
-        if( !costumRepo.edit(costumer) ){
-            System.out.println("El cliente "+costumer.getName()+" se ha modificado Correctamente");
-            JOptionPane.showMessageDialog(this,"SEA A MODIFICADO EL CLIENTE CORRECTAMENTE");
-          
-            limpiar();
-            
-        }else{
-            System.out.println("El cliente "+costumer.getName()+" no se ha modificado Correctamente");
-            JOptionPane.showMessageDialog(this,"NO SE PUDO MODIFICAR ");
-            limpiar();
-        }
-        
-        
-              */
 Costumer costumer;
         String identified = "";
         costumer = new Costumer();
