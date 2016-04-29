@@ -436,7 +436,7 @@ CostumerRepository  costumRepo = new CostumerRepository();
 if( !costumRepo.eliminar(costumer)){
                     if( !costumRepo.edit(costumer) ){
             System.out.println("El cliente "+costumer.getName()+" se ha eliminado Correctamente");
-            JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL CLIENTE CORRECTAMENTE");
+            
           
             limpiar();
             
