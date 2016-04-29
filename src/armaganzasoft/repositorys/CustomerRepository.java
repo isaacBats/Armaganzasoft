@@ -167,14 +167,14 @@ public class CostumerRepository extends BaseRepository {
           
             
             if( !query.execute() ){
-                System.out.println("Se modifico el cliente correctamente");
+                System.out.println("Se elimino el cliente correctamente");
                 return true;
             }
             
             query.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al modifico el cliente: "+ ex);
+            System.out.println("Error al eliminar el cliente: "+ ex);
         }
         
         return false;
