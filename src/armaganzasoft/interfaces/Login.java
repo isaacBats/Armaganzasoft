@@ -7,29 +7,9 @@ package armaganzasoft.interfaces;
 
 import armaganzasoft.services.BaseDatos;
 import armaganzasoft.models.User;
-import armaganzasoft.interfaces.Menu;
-import java.sql.Array;
-import java.sql.Blob;
-import java.sql.CallableStatement;
-import java.sql.Clob;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.NClob;
-import java.sql.PreparedStatement;
-import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
-import java.sql.SQLWarning;
-import java.sql.SQLXML;
-import java.sql.Savepoint;
-import java.sql.Statement;
-import java.sql.Struct;
-import java.util.Map;
-import java.util.Properties;
-import java.util.concurrent.Executor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import static sun.security.jgss.GSSUtil.login;
 
 /**
  *
@@ -39,7 +19,7 @@ public class Login extends javax.swing.JFrame {
   
      private BaseDatos db;
      private Connection conn;
-    private Object login;
+     private Object login;
          
     
 
@@ -59,6 +39,7 @@ public class Login extends javax.swing.JFrame {
         jTextField1.setText("");
         jPasswordField1.setText("");
     }
+    
 //    Connection conn = new Connection();
 
     /**
@@ -111,8 +92,8 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            String nombre = jTextField1.getText();
-            String password = jPasswordField1.getText();
+        String nombre = jTextField1.getText();
+        String password = jPasswordField1.getText();
             
             User user;
             

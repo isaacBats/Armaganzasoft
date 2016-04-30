@@ -7,34 +7,31 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import armaganzasoft.interfaces.Menu;
-
-import armaganzasoft.services.BaseDatos;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
-
+import armaganzasoft.models.User;
+import java.util.Hashtable;
 /**
  *
  * @author ErwinValle
  */
-public class Provider {
+public class Costumer {
     
 /**
  * @author ErwinValle
  */
     
     private int     id;
-    private String  contact_name;
-    private String  company;
+    private String identified;
+    private String  name;
+    private String  last_name;
     private String  email;
     private String  telephone;
-    private String  fax;
-    private String  movil_1;
-    private String  notes;
-    private boolean active;
+    private String  movil;
+    private String  rfc;
+    private String  address;
+    private String  city;
+    private String  zip_code;
+    private String sub_costumer;
+    private String  costumer_id;
    
    private Statement stm;
    private ResultSet rs;
@@ -47,19 +44,19 @@ public class Provider {
       /**
        * Default Construct 
        */
-      public Provider(){
+     public Costumer(){
       
       }
-  public Object[][] ConsultarProvedor(){
+   public Object[][] ConsultarCliente(){
     Object [][] datos =new Object[id][];
         try {
             if(conectar()){
-                sql="SELECT *FROM providers";
+                sql="SELECT *FROM costumers";
                 Statement stmt=this.stmt;
                 ResultSet res=stmt.executeQuery(sql);
                 int fila=0;
                 while(res.next()){
-                    for(int columna=0; columna<8; columna++)
+                    for(int columna=0; columna<12; columna++)
                     datos [fila][columna]= res.getObject(columna+1);
                     fila ++;
             }
@@ -73,24 +70,27 @@ public class Provider {
         return datos;
     }
 
+
+  //ingreso datos  
     public int getId() {
         return id;
     }
-    
-   public String getContact_name() {
-        return contact_name;
+  
+
+    public String getName() {
+        return name;
     }
 
-    public void setContact_name(String contact_name) {
-        this.contact_name = contact_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCompany() {
-        return company;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getEmail() {
@@ -109,39 +109,62 @@ public class Provider {
         this.telephone = telephone;
     }
 
-    public String getFax() {
-        return fax;
+    public String getMovil() {
+        return movil;
     }
 
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
-
-    public String getMovil_1() {
-        return movil_1;
-    }
-
-    public void setMovil_1(String movil_1) {
-        this.movil_1 = movil_1;
+    public void setMovil(String movil) {
+        this.movil = movil;
     }
     
-    public String getNotes() {
-        return notes;
+    public String getRfc() {
+        return rfc;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setRfc(String rfc) {
+        this.rfc = rfc;
     }
     
-    public boolean isActive() {
-        return active;
+     public String getAddress() {
+        return address;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setAddress(String adress) {
+        this.address = adress;
+    }
+    
+     public String getCity() {
+        return city;
     }
 
-   
+    public void setCity(String city) {
+        this.city = city;
+    }
+    
+     public String getZip_code() {
+        return zip_code;
+    }
+
+    public void setZip_code(String zip_code) {
+        this.zip_code = zip_code;
+    }
+    
+    public String getSub_costumer() {
+        return sub_costumer;
+    }
+
+    public void setSub_costumer(String sub_costumer) {
+        this.sub_costumer = sub_costumer;
+    }
+
+    public String getCostumer_id() {
+        return costumer_id;
+    }
+
+    public void setCostumer_id(String costumer_id) {
+        this.costumer_id = costumer_id;
+    }
+    
     private boolean conectar() {
         this.db = new BaseDatos();
         this.conn = db.getConnection();
@@ -154,5 +177,3 @@ public class Provider {
     
       
 }
-    
-

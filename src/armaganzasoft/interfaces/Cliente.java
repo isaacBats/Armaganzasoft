@@ -560,6 +560,7 @@ if( !costumRepo.eliminar(costumer)){
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
 private javax.swing.JOptionPane mensaje;
 }
 

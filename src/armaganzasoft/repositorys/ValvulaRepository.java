@@ -7,7 +7,9 @@ package armaganzasoft.repositorys;
 
 import armaganzasoft.components.Valvula;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -89,6 +91,23 @@ public class ValvulaRepository extends BaseRepository{
         }
         return false;
     }
+    
+    public void all(){
+        try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM machines");
+            while (rs.next())
+            {
+               System.out.println("nombre = "+rs.getString("code"));
+            }
+                
+        }catch(SQLException e){
+            System.out.println("Error al consultar en base de datos "+ e);
+        }
+        
+        
+    }
+
 
     
     

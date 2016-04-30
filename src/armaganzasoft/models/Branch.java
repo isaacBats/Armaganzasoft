@@ -1,14 +1,9 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package armaganzasoft.models;
-
-import armaganzasoft.services.BaseDatos;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 
 /**
@@ -25,36 +20,8 @@ public class Branch {
     private String  rfc;
     private String email;
     
-    private Statement stm;
-    private ResultSet rs;
-    private Statement stmt;
-   
-      private String sql;
-      private BaseDatos db;
-      private Connection conn= null;
+    
       
-      public Object[][] ConsultarPlanta(){
-    Object [][] datos =new Object[id][];
-        try {
-            if(conectar()){
-                sql="SELECT *FROM branches";
-                Statement stmt=this.stmt;
-                ResultSet res=stmt.executeQuery(sql);
-                int fila=0;
-                while(res.next()){
-                    for(int columna=0; columna<7; columna++)
-                    datos [fila][columna]= res.getObject(columna+1);
-                    fila ++;
-            }
-                res.close();
-                stmt.close();
-                //desconectar();
-            }
-        } catch (Exception e) {
-            System.out.println("ExcepciÃ³n al Consultar Cliente : "+e);
-        }
-        return datos;
-    }
 
       
       public Branch(){
@@ -62,10 +29,6 @@ public class Branch {
       }     
            public int getid() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
     
    public String getName() {
@@ -80,7 +43,7 @@ public class Branch {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String adress) {
         this.address = address;
     }
 
@@ -126,14 +89,6 @@ public class Branch {
     
     
    
-    private boolean conectar() {
-        this.db = new BaseDatos();
-        this.conn = db.getConnection();
-        if(this.conn != null){
-            return true;
-        }else{
-            return false;
-        }}
 
       }
 

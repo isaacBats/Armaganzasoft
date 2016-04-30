@@ -33,6 +33,7 @@ public class BaseDatos {
     
     public void closeConnection() throws SQLException{
         conn.close();
+        System.out.println("Close Connection");
     }
     
 }
