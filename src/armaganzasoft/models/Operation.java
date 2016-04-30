@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
-import armaganzasoft.interfaces.EquipoDeTrabajo;
+import armaganzasoft.interfaces.Maquinas;
+import armaganzasoft.interfaces.Materiales;
 import armaganzasoft.interfaces.Menu;
 import java.util.Hashtable;
 /**

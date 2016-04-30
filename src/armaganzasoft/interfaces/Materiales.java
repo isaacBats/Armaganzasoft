@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author user
+ * @author ErwinValle
  */
 public class Materiales extends javax.swing.JFrame {
 

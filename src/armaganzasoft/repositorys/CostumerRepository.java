@@ -30,9 +30,9 @@ public class CostumerRepository extends BaseRepository {
                                                           + "address, "
                                                           + "city, "
                                                           + "zip_code, " 
-                                                          + "sub_customer, "
-                                                          + "customer_id) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);"
+                                                          + "sub_costumer, "
+                                                          + "costumer_id) "
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
                                         );
             
             
@@ -92,52 +92,91 @@ public class CostumerRepository extends BaseRepository {
 //                  System.out.println(rs.getString("name")+ " y su correo es "+rs.getString("email"));  
             
             } catch (SQLException ex) {
-            System.out.println("Erro al consultar un Cliente: "+ex);
+            System.out.println("Error al consultar un Cliente: "+ex);
         }
         return null;
     }
     
-    public boolean edit(Costumer cliente){
+    public boolean edit(Costumer costumer){
         
         try {
             
-            query = con.prepareStatement("UPDATE costumers SET     name         = ?, "
-                                                           +"    last_name    = ?, "
-                                                           +"    email        = ?, "
-                                                           +"    telephone    = ?, "
-                                                           +"    movil        = ?, "
-                                                           +"    rfc          = ?, "
-                                                           +"    address      = ?, "
-                                                           +"    city         = ?, "
-                                                           +"    zip_code     = ?, "
-                                                           +"    sub_costumer = ?, "
-                                                           +"    costumer_id  = ? "
-                                                           +" WHERE id = ?;");
+            query = con.prepareStatement("UPDATE costumers SET name=?, "
+                                                          + "last_name=?, "
+                                                          + "telephone=?, "
+                                                          + "movil=?, "
+                                                          + "address=?, "
+                                                          + "city=?, "
+                                                          + "zip_code=?, " 
+                                                          + "sub_costumer=? "
+                                                          );
+                                                          
             
-            query.setString(1, cliente.getName());
-            query.setString(2, cliente.getLast_name());
-            query.setString(3, cliente.getEmail());
-            query.setString(4, cliente.getTelephone());
-            query.setString(5, cliente.getMovil());
-            query.setString(6, cliente.getRfc());
-            query.setString(7, cliente.getAddress());
-            query.setString(8, cliente.getCity());
-            query.setString(9, cliente.getZip_code());
-            query.setString(10, cliente.getSub_costumer());
-            query.setString(11, cliente.getCostumer_id());
-            query.setInt(12, cliente.getId());
+            query.setString(1, costumer.getName());
+            query.setString(2, costumer.getLast_name());
+            query.setString(3, costumer.getTelephone());
+            query.setString(4, costumer.getMovil());
+            query.setString(5, costumer.getAddress());
+            query.setString(6, costumer.getCity());
+            query.setString(7, costumer.getZip_code());
+            query.setString(8, costumer.getSub_costumer());
+            
+          
             
             if( !query.execute() ){
-                System.out.println("Se edito el cliente correctamente");
+                System.out.println("Se modifico el cliente correctamente");
                 return true;
             }
             
             query.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al editar el cliente: "+ ex);
+            System.out.println("Error al modifico el cliente: "+ ex);
         }
         
         return false;
+ 
     }
+
+      public boolean eliminar(Costumer costumer){
+        
+        try {
+            
+            query = con.prepareStatement("DELETE * FROM costumers name=?, "
+                                                          + "last_name=?, "
+                                                          + "telephone=?, "
+                                                          + "movil=?, "
+                                                          + "address=?, "
+                                                          + "city=?, "
+                                                          + "zip_code=?, " 
+                                                          + "sub_costumer=? "
+                                                          );
+                                                          
+            
+            query.setString(1, costumer.getName());
+            query.setString(2, costumer.getLast_name());
+            query.setString(3, costumer.getTelephone());
+            query.setString(4, costumer.getMovil());
+            query.setString(5, costumer.getAddress());
+            query.setString(6, costumer.getCity());
+            query.setString(7, costumer.getZip_code());
+            query.setString(8, costumer.getSub_costumer());
+            
+          
+            
+            if( !query.execute() ){
+                System.out.println("Se modifico el cliente correctamente");
+                return true;
+            }
+            
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al modifico el cliente: "+ ex);
+        }
+        
+        return false;
+ 
+    }
+ 
 }

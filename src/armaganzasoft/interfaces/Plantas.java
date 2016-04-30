@@ -5,16 +5,9 @@
  */
 package armaganzasoft.interfaces;
 
-import armaganzasoft.interfaces.Menu;
+
 import armaganzasoft.repositorys.BranchRepository;
-import armaganzasoft.services.BaseDatos;
 import armaganzasoft.models.Branch;
-import armaganzasoft.models.Branch;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
         
 
@@ -128,8 +121,26 @@ public class Plantas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 558, 40));
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 250, 40));
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 250, 41));
+
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 250, 40));
 
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -155,9 +166,19 @@ public class Plantas extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1189, 97, 151, 55));
 
         jButton3.setText("MODIFICAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1189, 186, 151, 54));
 
         jButton4.setText("ELIMINAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1189, 284, 151, 55));
 
         jButton5.setText("PRINCIPAL");
@@ -188,7 +209,7 @@ Branch branch;
         
        
         branch.setName(jTextField2.getText());
-        branch.setAdress(jTextField3.getText());
+        branch.setAddress(jTextField3.getText());
         branch.setTelephone(jTextField8.getText());
         branch.setCity(jTextField4.getText());
         branch.setZip_code(jTextField5.getText());
@@ -232,7 +253,7 @@ Branch branch;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
       Branch branch;
-        String identified = "";
+        String identified;
         branch = new Branch();
         
        
@@ -242,7 +263,7 @@ Branch branch;
          branch = br.buscarPlanta(identified);
            
             jTextField2.setText(branch.getName());
-            jTextField3.setText(branch.getAdress());
+            jTextField3.setText(branch.getAddress());
             jTextField4.setText(branch.getCity());
             jTextField5.setText(branch.getZip_code());
             jTextField6.setText(branch.getEmail());
@@ -252,6 +273,73 @@ Branch branch;
        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+Branch branch;
+      
+        branch = new Branch();
+BranchRepository  BranchRepo = new BranchRepository();
+if( !BranchRepo.edit(branch) ){
+            //abrir la edicion de texto
+           jTextField2.setEditable(true);
+        }
+        
+        jTextField3.setEditable(true);
+       
+        jTextField4.setEditable(true);
+        jTextField5.setEditable(true);
+       
+        jTextField6.setEditable(true);
+        jTextField7.setEditable(true);
+        jTextField8.setEditable(true);
+        
+
+       
+
+        jButton3.setEnabled(true);//habilitamos el boton guardar
+    
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+
+        Branch branch;
+        branch = new Branch();
+        BranchRepository  BranchRepo = new BranchRepository();
+        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar la Planta", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
+            branch = BranchRepo.buscarPlanta(jTextField7.getText());
+
+            if( BranchRepo.eliminar(branch)){
+
+                
+                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO LA PLANTA CORRECTAMENTE");
+
+                limpiar();
+
+            }else{
+                
+                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
+               
+
+
+            }
+        }   
+                           // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,4 +399,5 @@ Branch branch;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
+private javax.swing.JOptionPane mensaje;
 }

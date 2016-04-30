@@ -9,9 +9,7 @@ import armaganzasoft.services.BaseDatos;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.SQLException;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
+
 
 /**
  *
@@ -20,7 +18,7 @@ import armaganzasoft.interfaces.Menu;
 public class Branch {
      private int     id;
     private String  name;
-    private String  adress;
+    private String  address;
     private String  telephone;
     private String  city;
     private String  zip_code;
@@ -35,7 +33,7 @@ public class Branch {
       private BaseDatos db;
       private Connection conn= null;
       
-      public Object[][] ConsultarCliente(){
+      public Object[][] ConsultarPlanta(){
     Object [][] datos =new Object[id][];
         try {
             if(conectar()){
@@ -65,6 +63,10 @@ public class Branch {
            public int getid() {
         return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
    public String getName() {
         return name;
@@ -74,12 +76,12 @@ public class Branch {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTelephone() {

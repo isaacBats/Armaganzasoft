@@ -26,7 +26,7 @@ public class BranchRepository extends BaseRepository {
         try {
             
             query = con.prepareStatement("INSERT INTO branches (name, "
-                                                          + "adress, "
+                                                          + "address, "
                                                           + "telephone, "
                                                           + "city, "
                                                           + "zip_code, "
@@ -37,7 +37,7 @@ public class BranchRepository extends BaseRepository {
             
             
             query.setString(1, branch.getName());
-            query.setString(2, branch.getAdress());
+            query.setString(2, branch.getAddress());
             query.setString(3, branch.getTelephone());
             query.setString(4, branch.getCity());
             query.setString(5, branch.getZip_code());
@@ -71,12 +71,13 @@ public class BranchRepository extends BaseRepository {
                 while(rs.next()){
                 
                 busqueda.setName(rs.getString("name"));
-                busqueda.setAdress(rs.getString("adress"));
+                busqueda.setAddress(rs.getString("address"));
                 busqueda.setTelephone(rs.getString("telephone"));
                 busqueda.setCity(rs.getString("city"));
                 busqueda.setZip_code(rs.getString("zip_code"));
                 busqueda.setRfc(rs.getString("rfc"));
                 busqueda.setEmail(rs.getString("email"));
+                busqueda.setId(rs.getInt("id"));
                 }             
                 
                 //aqui aun pueden incluir mas campos de la tabla costumers
@@ -89,37 +90,63 @@ public class BranchRepository extends BaseRepository {
         return null;
     }
     
-    public boolean edit(Branch cliente){
+    public boolean edit(Branch branch){
         
         try {
             
-            query = con.prepareStatement("UPDATE customers SET   name         = ?, "
-                                                           +"    adress    = ?, "
+            query = con.prepareStatement("UPDATE branches SET   name         = ?, "
+                                                           +"    address    = ?, "
                                                            +"    telephone        = ?, "
                                                            +"    city    = ?, "
                                                            +"    zip_code        = ?, "
                                                            +"    rfc          = ?, "
                                                            +"    email      = ?, "
-                                                           +" WHERE id = ?;");
+                                                           );
             
-            query.setString(1, cliente.getName());
-            query.setString(2, cliente.getAdress());
-            query.setString(3, cliente.getTelephone());
-            query.setString(4, cliente.getCity());
-            query.setString(5, cliente.getZip_code());
-            query.setString(5, cliente.getRfc());           
-            query.setString(6, cliente.getEmail());
+            query.setString(1, branch.getName());
+            query.setString(2, branch.getAddress());
+            query.setString(3, branch.getTelephone());
+            query.setString(4, branch.getCity());
+            query.setString(5, branch.getZip_code());
+            query.setString(6, branch.getRfc());           
+            query.setString(7, branch.getEmail());
            
                                
             if( !query.execute() ){
-                System.out.println("Se edito el cliente correctamente");
+                System.out.println("Se editar Planta correctamente");
                 return true;
             }
             
             query.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al editar el cliente: "+ ex);
+            System.out.println("Error al editar Planta: "+ ex);
+        }
+        
+        return false;
+    }
+
+
+
+      public boolean eliminar(Branch branch){
+        
+        try {
+            
+           query = con.prepareStatement("DELETE  FROM branches WHERE   rfc = '"+branch.getRfc()+"'");
+            
+       
+            
+            
+                               
+            if( !query.execute() ){
+                System.out.println("Se elimino la planta correctamente");
+                return true;
+            }
+            
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar la planta: "+ ex);
         }
         
         return false;

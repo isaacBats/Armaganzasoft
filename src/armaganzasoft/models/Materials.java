@@ -7,7 +7,7 @@ package armaganzasoft.models;
 
 /**
  *
- * @author rodri
+ * @author ErwinValle
  */
 import armaganzasoft.services.BaseDatos;
 import java.sql.Connection;

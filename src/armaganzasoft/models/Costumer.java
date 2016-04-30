@@ -3,12 +3,9 @@ package armaganzasoft.models;
 import armaganzasoft.services.BaseDatos;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
-import armaganzasoft.models.User;
-import java.util.Hashtable;
+
+
 /**
  *
  * @author ErwinValle
@@ -69,6 +66,7 @@ public class Costumer {
         }
         return datos;
     }
+   
 
 
   //ingreso datos  

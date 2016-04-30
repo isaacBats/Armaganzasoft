@@ -310,11 +310,11 @@ Recet recet;
         
         RecetaRepository  recRepo = new RecetaRepository();
 
-        if( !recRepo.addRece(recet) ){
-            System.out.println("La receta "+recet.getId()+" se ha insertado Correctamente");
+        if( recRepo.addRece(recet) ){
+            System.out.println("La receta "+recet.getCode()+" se ha insertado Correctamente");
             JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");                                        
         }else{
-            System.out.println("La receta "+recet.getId()+" se ha insertado Correctamente");
+            System.out.println("La receta "+recet.getCode()+" se ha insertado Correctamente");
             JOptionPane.showMessageDialog(this,"No se pudo agregar");                                        
         }
 

@@ -16,7 +16,8 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.Date;
 import armaganzasoft.interfaces.Menu;
-import armaganzasoft.interfaces.EquipoDeTrabajo;
+import armaganzasoft.interfaces.Materiales;
+import armaganzasoft.interfaces.Maquinas;
 import java.util.Hashtable;
 
 public class Recet {

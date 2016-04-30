@@ -5,7 +5,7 @@
  */
 package armaganzasoft.interfaces;
 
-import armaganzasoft.interfaces.Menu;
+
 import armaganzasoft.services.BaseDatos;
 import armaganzasoft.models.Provider;
 import armaganzasoft.models.Provider;
@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Rodrigo
+ * @author ErwinValle
  */
 public class Proveedores extends javax.swing.JFrame {
 

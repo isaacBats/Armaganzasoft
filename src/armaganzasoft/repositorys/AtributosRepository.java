@@ -6,7 +6,8 @@
 package armaganzasoft.repositorys;
 
 import armaganzasoft.models.Atributo;
-import armaganzasoft.interfaces.EquipoDeTrabajo;
+import armaganzasoft.interfaces.Materiales;
+import armaganzasoft.interfaces.Maquinas;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

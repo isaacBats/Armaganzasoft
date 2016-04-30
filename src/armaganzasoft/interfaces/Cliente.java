@@ -6,18 +6,14 @@
 package armaganzasoft.interfaces;
 
 
-import armaganzasoft.services.BaseDatos;
+
 import armaganzasoft.models.Costumer;
-import armaganzasoft.repositorys.UserRepository;
-import java.sql.*;
-import javax.swing.JOptionPane;
 import java.awt.Event;
 import armaganzasoft.repositorys.CostumerRepository;
 import armaganzasoft.services.BaseDatos;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -139,6 +135,11 @@ private Object[][] datos= null;
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setText("ELIMINAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 350, 170, 40));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -349,7 +350,7 @@ Costumer costumer;
             JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");
             limpiar();
         }else{
-            System.out.println("El cliente "+costumer.getName()+" se ha insertado Correctamente");
+            System.out.println("El cliente "+costumer.getName()+" }NO se inserto Correctamente");
             JOptionPane.showMessageDialog(this,"No se pudo agregar");
             limpiar();
         }
@@ -397,9 +398,12 @@ Costumer costumer;
     }//GEN-LAST:event_jTextField12ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- Costumer costumer;
+/* Costumer costumer;
+        String identified = "";
         costumer = new Costumer();
         
+       
+      
        
         costumer.setName(jTextField2.getText());
         costumer.setLast_name(jTextField3.getText());
@@ -419,7 +423,9 @@ Costumer costumer;
         if( !costumRepo.edit(costumer) ){
             System.out.println("El cliente "+costumer.getName()+" se ha modificado Correctamente");
             JOptionPane.showMessageDialog(this,"SEA A MODIFICADO EL CLIENTE CORRECTAMENTE");
+          
             limpiar();
+            
         }else{
             System.out.println("El cliente "+costumer.getName()+" no se ha modificado Correctamente");
             JOptionPane.showMessageDialog(this,"NO SE PUDO MODIFICAR ");
@@ -427,10 +433,65 @@ Costumer costumer;
         }
         
         
-                                          
+              */
+Costumer costumer;
+        String identified = "";
+        costumer = new Costumer();
+CostumerRepository  costumRepo = new CostumerRepository();
+if( !costumRepo.edit(costumer) ){
+            //abrir la edicion de texto
+            jTextField11.setEditable(true);
+        }
+        jTextField2.setEditable(true);
+        jTextField3.setEditable(true);
+       
+        jTextField5.setEditable(true);
+        jTextField6.setEditable(true);
+       
+        jTextField8.setEditable(true);
+        jTextField9.setEditable(true);
+        jTextField10.setEditable(true);
+        
 
+        jButton4.setEnabled(false);//inabilitar el boton de eliminar
+
+        jButton3.setEnabled(true);//habilitamos el boton guardar
+    
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+Costumer costumer;
+       
+        costumer = new Costumer();
+CostumerRepository  costumRepo = new CostumerRepository();
+        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar este Cliente", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
+            for (int bd = 0; bd < 5; bd++) {
+               
+if( !costumRepo.eliminar(costumer)){
+                    if( !costumRepo.edit(costumer) ){
+            System.out.println("El cliente "+costumer.getName()+" se ha eliminado Correctamente");
+            //JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL CLIENTE CORRECTAMENTE");
+          
+            limpiar();
+            
+        }else{
+            System.out.println("El cliente "+costumer.getName()+" no se ha eliminado Correctamente");
+            JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
+            limpiar();
+                    
+
+                    }
+}
+            }
+            
+        }
+    
+                                            
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -499,4 +560,6 @@ Costumer costumer;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+private javax.swing.JOptionPane mensaje;
 }
+

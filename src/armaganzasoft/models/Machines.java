@@ -16,20 +16,24 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.Date;
 import armaganzasoft.interfaces.Menu;
-import armaganzasoft.interfaces.EquipoDeTrabajo;
 import java.util.Hashtable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Machines {
     
    private int     id;
     private String  name; 
     private String  code;
-    private String value;
-    
-
+    private String material_uso;
+    private String estado;
+    private String alarma;
+    private String atributo;
+    private String u_medida;
    
    private Statement stm;
    private ResultSet rs;
+   private Statement stmt;
    
       private String sql;
       private BaseDatos db;
@@ -38,6 +42,29 @@ public class Machines {
       /**
        * Default Construct 
        */
+      public Object[][] ConsultarMaquina(){
+    Object [][] datos =new Object[id][];
+        try {
+            if(conectar()){
+                sql="SELECT *FROM machines";
+                Statement stmt=this.stmt;
+                ResultSet res=stmt.executeQuery(sql);
+                int fila=0;
+                while(res.next()){
+                    for(int columna=0; columna<7; columna++)
+                    datos [fila][columna]= res.getObject(columna+1);
+                    fila ++;
+            }
+                res.close();
+                stmt.close();
+                //desconectar();
+            }
+        } catch (Exception e) {
+            System.out.println("ExcepciÃ³n al Consultar Cliente : "+e);
+        }
+        return datos;
+    }
+      
       public Machines(){
       
       }
@@ -63,17 +90,46 @@ public class Machines {
         this.code = code;
     }
     
-        public String getValue() {
-        return value;
+        public String getMaterial_uso() {
+        return material_uso;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setMaterial_uso(String material_uso) {
+        this.material_uso = material_uso;
     }
     
+      public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+     
+               public String getAlarma() {
+        return alarma;
+    }
+
+    public void setAlarma(String alarma) {
+        this.alarma = alarma;
+    }
+     
+          public String getAtributo() {
+        return atributo;
+    }
+
+    public void setAtributo(String atributo) {
+        this.atributo = atributo;
+    }
     
-   
-   
+      public String getU_medida() {
+        return u_medida;
+    }
+
+    public void setU_medida(String u_medida) {
+        this.u_medida = u_medida;
+    }
+       
     private boolean conectar() {
         this.db = new BaseDatos();
         this.conn = db.getConnection();

@@ -10,7 +10,8 @@ package armaganzasoft.repositorys;
  * @author Rodrigo
  */
 import armaganzasoft.models.Recet;
-import armaganzasoft.interfaces.EquipoDeTrabajo;
+import armaganzasoft.interfaces.Materiales;
+import armaganzasoft.interfaces.Maquinas;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -53,9 +54,9 @@ public class RecetaRepository extends BaseRepository {
             
         } catch (SQLException ex) {
             System.out.println("Error: "+ ex);
-        }finally{
+        }
             return false;
         }
     }    
 
-}
+
