@@ -10,7 +10,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import armaganzasoft.interfaces.Menu;
 import armaganzasoft.models.Atributo;
-import armaganzasoft.models.Machines;
 import armaganzasoft.repositorys.OperationRepository;
 import javax.swing.JOptionPane;
 import armaganzasoft.services.BaseDatos;

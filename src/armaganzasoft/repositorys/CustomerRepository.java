@@ -9,11 +9,11 @@ import java.sql.ResultSet;
  *
  * @author ErwinValle
  */
-public class CostumerRepository extends BaseRepository {
+public class CustomerRepository extends BaseRepository {
     
     private PreparedStatement query;
     
-    public CostumerRepository() {
+    public CustomerRepository() {
         
     }
     
@@ -182,4 +182,4 @@ public class CostumerRepository extends BaseRepository {
     }
  
 }
-}
+

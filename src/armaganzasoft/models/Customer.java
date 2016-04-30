@@ -13,7 +13,7 @@ import java.util.Hashtable;
  *
  * @author ErwinValle
  */
-public class Costumer {
+public class Customer {
     
 /**
  * @author ErwinValle
@@ -44,7 +44,7 @@ public class Costumer {
       /**
        * Default Construct 
        */
-     public Costumer(){
+     public Customer(){
       
       }
    public Object[][] ConsultarCliente(){
@@ -57,7 +57,10 @@ public class Costumer {
                 int fila=0;
                 while(res.next()){
                     for(int columna=0; columna<12; columna++)
-                    datos [fila][columna]= res.getObject(columna+1);
+                  
+                        
+                        
+                        datos [fila][columna]= res.getObject(columna+1);
                     fila ++;
             }
                 res.close();
