@@ -92,6 +92,9 @@ public class ValvulaRepository extends BaseRepository{
         return false;
     }
     
+    /** 
+     * Search all Valves...
+     */
     public void all(){
         try{
             Statement st = con.createStatement();
