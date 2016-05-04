@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package armaganzasoft.repositorys;
 
 import armaganzasoft.models.Provider;
@@ -7,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author ErwinValle
+ * @author rodri
  */
 public class ProveedoresRepository extends BaseRepository {
     
@@ -21,7 +26,8 @@ public class ProveedoresRepository extends BaseRepository {
         
         try {
             
-            query = con.prepareStatement("INSERT INTO providers (contact_name, "
+            query = con.prepareStatement("INSERT INTO providers (code,"
+                                                          + "contact_name, "
                                                           + "company, "
                                                           + "email, "
                                                           + "telephone, "
@@ -29,18 +35,19 @@ public class ProveedoresRepository extends BaseRepository {
                                                           + "movil_1, "
                                                           + "notes, "
                                                           + "active) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?);"
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);"
                                         );
             
             
-            query.setString(1, provider.getContact_name());
-            query.setString(2, provider.getCompany());
-            query.setString(3, provider.getEmail());
-            query.setString(4, provider.getTelephone());
-            query.setString(5, provider.getFax());
-            query.setString(6, provider.getMovil_1());
-            query.setString(7, provider.getNotes());
-            query.setBoolean(8, provider.isActive());
+            query.setString(1, provider.getCode());
+            query.setString(2, provider.getContact_name());
+            query.setString(3, provider.getCompany());
+            query.setString(4, provider.getEmail());
+            query.setString(5, provider.getTelephone());
+            query.setString(6, provider.getFax());
+            query.setString(7, provider.getMovil_1());
+            query.setString(8, provider.getNotes());
+            query.setString(9, provider.getActive());
             
             if( !query.execute() ){
                 return true;
@@ -58,7 +65,7 @@ public class ProveedoresRepository extends BaseRepository {
         ResultSet rs;
         Provider busqueda = new Provider ();
         if(identified != null || identified != ""){
-        where = "WHERE contact_name LIKE '"+identified+"' OR company LIKE '"+identified+"' OR email LIKE '"+identified+"';";
+        where = "WHERE contact_name LIKE '"+identified+"' OR code LIKE '"+identified+"' OR email LIKE '"+identified+"';";
         }
             try {
             query = con.prepareStatement("SELECT * FROM providers "+where);
@@ -66,6 +73,7 @@ public class ProveedoresRepository extends BaseRepository {
           
                 while(rs.next()){
                 
+                busqueda.setCode(rs.getString("code"));
                 busqueda.setContact_name(rs.getString("contact_name"));
                 busqueda.setCompany(rs.getString("company"));
                 busqueda.setEmail(rs.getString("email"));
@@ -73,7 +81,8 @@ public class ProveedoresRepository extends BaseRepository {
                 busqueda.setFax(rs.getString("fax"));
                 busqueda.setMovil_1(rs.getString("movil_1"));
                 busqueda.setNotes(rs.getString("notes"));
-               
+                busqueda.setActive(rs.getString("active"));
+                busqueda.setId(rs.getInt("id"));
                 }             
                 
                 //aqui aun pueden incluir mas campos de la tabla costumers
@@ -90,25 +99,27 @@ public class ProveedoresRepository extends BaseRepository {
         
         try {
             
-            query = con.prepareStatement("UPDATE providers SET    (contact_name, "
-                                                          + "company, "
-                                                          + "email, "
-                                                          + "telephone, "
-                                                          + "fax, "
-                                                          + "movil_1, "
-                                                          + "notes, "
-                                                          + "active) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?);"
-                                        );
+            query = con.prepareStatement("UPDATE providers SET  code =?,"
+                                                          + "contact_name =?, "
+                                                          + "company =?, "
+                                                          + "email =?, "
+                                                          + "telephone=?, "
+                                                          + "fax=?, "
+                                                          + "movil_1=?, "
+                                                          + "notes=?, "
+                                                          + "active=? "
+                                                          + "WHERE id=?");
             
-            query.setString(1, provider.getContact_name());
-            query.setString(2, provider.getCompany());
-            query.setString(3, provider.getEmail());
-            query.setString(4, provider.getTelephone());
-            query.setString(5, provider.getFax());
-            query.setString(6, provider.getMovil_1());
-            query.setString(7, provider.getNotes());
-            query.setBoolean(8, provider.isActive());
+            query.setString(1, provider.getCode());
+            query.setString(2, provider.getContact_name());
+            query.setString(3, provider.getCompany());
+            query.setString(4, provider.getEmail());
+            query.setString(5, provider.getTelephone());
+            query.setString(6, provider.getFax());
+            query.setString(7, provider.getMovil_1());
+            query.setString(8, provider.getNotes());
+            query.setString(9, provider.getActive());
+            query.setInt(10, provider.getId());
             
             if( !query.execute() ){
                 System.out.println("Se edito el proveedor correctamente");
@@ -123,8 +134,36 @@ public class ProveedoresRepository extends BaseRepository {
         
         return false;
     }
+
+
+public boolean eliminar(Provider provider){
+        
+        try {
+            
+           query = con.prepareStatement("DELETE  FROM providers WHERE   id = "+provider.getId());
+            
+       
+            
+            
+                               
+            if( !query.execute() ){
+                System.out.println("Se elimino el proveedor correctamente");
+                return true;
+            }
+            
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar el proveedor: "+ ex);
+        }
+        
+        return false;
+    }
 }
+     
     
 
 
-   
+
+    
+
