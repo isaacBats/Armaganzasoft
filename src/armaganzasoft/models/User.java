@@ -24,19 +24,13 @@ public class User {
     private String active;
     private Date    update_at;
     private Date    created_at;
-   private Statement stm;
-   private ResultSet rs;
-   private Statement stmt;
-   
-      private String sql;
+  
       private BaseDatos db;
       private Connection conn= null;
       
-     /**
-      * Default Construct 
-      */  
-      public User(){
+     
       
+      public User(){
       }
     
     public boolean validarUsuario(String Login, String password) throws SQLException{
@@ -44,13 +38,11 @@ public class User {
             if(conectar()){
                String sql = "SELECT * FROM users WHERE usuario like '"+Login+"';";
                 
-               //String sql = "SELECT * FROM users WHERE name like '"+Login+"';";
                 Statement stmt = this.conn.createStatement();
                 ResultSet res = stmt.executeQuery(sql);
                 if(res.next() && password.equals(res.getString("password"))){
                         nombre = "Bienvenido a Armaganza Soft";
                         System.out.println(nombre);
-                        //JOptionPane.showMessageDialog(this,"BIENVENIDO A ARMAGANZA SOFT");
                         return true;
                  
                 }else{
@@ -59,17 +51,19 @@ public class User {
                         return false;
                     }
                 }else{
-                    //return "No se encontro registro";
-                    System.out.println("No se pudo conectar a la base de datos");
+                     System.out.println("No se pudo conectar a la base de datos");
                     this.conn.close();
                     return false;
                 }    
     }
     
     
-    
     public int getId() {
         return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
     
     public String getNum_employee() {
@@ -167,8 +161,5 @@ public class User {
             return true;
         }else{
             return false;
-        }
-    }
-  
+        }}
 }
-    
