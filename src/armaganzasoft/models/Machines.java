@@ -9,16 +9,6 @@ package armaganzasoft.models;
  *
  * @author rodri
  */
-import armaganzasoft.services.BaseDatos;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.SQLException;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
-import java.util.Hashtable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Machines {
     
@@ -31,40 +21,12 @@ public class Machines {
     private String atributo;
     private String u_medida;
    
-   private Statement stm;
-   private ResultSet rs;
-   private Statement stmt;
-   
-      private String sql;
-      private BaseDatos db;
-      private Connection conn= null;
+  
       
       /**
        * Default Construct 
        */
-      public Object[][] ConsultarMaquina(){
-    Object [][] datos =new Object[id][];
-        try {
-            if(conectar()){
-                sql="SELECT *FROM machines";
-                Statement stmt=this.stmt;
-                ResultSet res=stmt.executeQuery(sql);
-                int fila=0;
-                while(res.next()){
-                    for(int columna=0; columna<7; columna++)
-                    datos [fila][columna]= res.getObject(columna+1);
-                    fila ++;
-            }
-                res.close();
-                stmt.close();
-                //desconectar();
-            }
-        } catch (Exception e) {
-            System.out.println("ExcepciÃ³n al Consultar Cliente : "+e);
-        }
-        return datos;
-    }
-      
+           
       public Machines(){
       
       }
@@ -72,6 +34,10 @@ public class Machines {
     
     public int getId() {
         return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
     
    public String getName() {
@@ -130,15 +96,4 @@ public class Machines {
         this.u_medida = u_medida;
     }
        
-    private boolean conectar() {
-        this.db = new BaseDatos();
-        this.conn = db.getConnection();
-        if(this.conn != null){
-            return true;
-        }else{
-            return false;
-        }}
-
-    
-    
 }
