@@ -4,7 +4,6 @@ import armaganzasoft.models.User;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-
 /**
  *
  * @author rodri
@@ -37,7 +36,7 @@ public class UserRepository extends BaseRepository {
                                                           + "last_name, "
                                                           + "email, "
                                                           + "password,"
-                                                          + "user, "
+                                                          + "usuario, "
                                                           + "position, "
                                                           + "roll, "
                                                           + "active) "
@@ -75,7 +74,7 @@ public class UserRepository extends BaseRepository {
         ResultSet rs;
         User busqueda = new User();
         if(identified != null || identified != ""){
-        where = "WHERE email LIKE '"+identified+"' OR user LIKE '"+identified+"' OR num_employee LIKE '"+identified+"';";
+        where = "WHERE email LIKE '"+identified+"' OR usuario LIKE '"+identified+"' OR num_employee LIKE '"+identified+"';";
         }
             try {
             query = con.prepareStatement("SELECT * FROM users "+where);
@@ -88,10 +87,11 @@ public class UserRepository extends BaseRepository {
                 busqueda.setLast_name(rs.getString("last_name"));
                 busqueda.setEmail(rs.getString("email"));
                 busqueda.setPassword(rs.getString("password"));
-                busqueda.setUsuario(rs.getString("user"));
+                busqueda.setUsuario(rs.getString("usuario"));
                 busqueda.setPosition(rs.getString("position"));
                 busqueda.setRoll(rs.getString("roll"));
                 busqueda.setActive(rs.getString("active"));
+                busqueda.setId(rs.getInt("id"));
                 }             
                 
                 //aqui aun pueden incluir mas campos de la tabla costumers
@@ -99,7 +99,7 @@ public class UserRepository extends BaseRepository {
 //                  System.out.println(rs.getString("name")+ " y su correo es "+rs.getString("email"));  
             
             } catch (SQLException ex) {
-            System.out.println("Erro al consultar un Cliente: "+ex);
+            System.out.println("Erro al consultar el usuario: "+ex);
         }
         return null;
     }
@@ -113,10 +113,11 @@ public class UserRepository extends BaseRepository {
                                                            +"    last_name    = ?, "
                                                            +"    email        = ?, "
                                                            +"    password    = ?, "
-                                                           +"    user        = ?, "
+                                                           +"    usuario        = ?, "
                                                            +"    position      = ?, "
                                                            +"    roll      = ?, "
-                                                           +"    active         = ?, ");
+                                                           +"    active         = ?"
+                                                           + "WHERE id =?"      );
             query.setString(1, usuario.getNum_employee());
             query.setString(2, usuario.getName());
             query.setString(3, usuario.getLast_name());
@@ -126,18 +127,45 @@ public class UserRepository extends BaseRepository {
             query.setString(7, usuario.getPosition());
             query.setString(8, usuario.getRoll());
             query.setString(9, usuario.getActive());
+             query.setInt(10, usuario.getId());
             
             if( !query.execute() ){
-                System.out.println("Se edito el cliente correctamente");
+                System.out.println("Se edito el usuario correctamente");
                 return true;
             }
             
             query.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al editar el cliente: "+ ex);
+            System.out.println("Error al editar el usuario: "+ ex);
         }
         
         return false;
     }
-}  
+
+
+public boolean eliminar(User user){
+        
+        try {
+            
+           query = con.prepareStatement("DELETE  FROM users WHERE   id = "+user.getId());
+             
+            
+                               
+            if( !query.execute() ){
+                System.out.println("Se elimino el usuario correctamente");
+                return true;
+            }
+            
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar el usuario: "+ ex);
+        }
+        
+        return false;
+    }}
+     
+    
+
+
