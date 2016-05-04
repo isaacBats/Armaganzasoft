@@ -1,32 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package armaganzasoft.models;
-
-import armaganzasoft.services.BaseDatos;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
-
-import armaganzasoft.services.BaseDatos;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
-
 /**
  *
- * @author ErwinValle
+ * @author daniel
  */
 public class Provider {
     
 /**
- * @author ErwinValle
+ * @author Isaac Daniel
  */
     
     private int     id;
+    private String code;
     private String  contact_name;
     private String  company;
     private String  email;
@@ -34,47 +23,30 @@ public class Provider {
     private String  fax;
     private String  movil_1;
     private String  notes;
-    private boolean active;
+    private String active;
    
-   private Statement stm;
-   private ResultSet rs;
-   private Statement stmt;
-   
-      private String sql;
-      private BaseDatos db;
-      private Connection conn= null;
-      
+        
       /**
        * Default Construct 
        */
       public Provider(){
       
       }
-  public Object[][] ConsultarProvedor(){
-    Object [][] datos =new Object[id][];
-        try {
-            if(conectar()){
-                sql="SELECT *FROM providers";
-                Statement stmt=this.stmt;
-                ResultSet res=stmt.executeQuery(sql);
-                int fila=0;
-                while(res.next()){
-                    for(int columna=0; columna<8; columna++)
-                    datos [fila][columna]= res.getObject(columna+1);
-                    fila ++;
-            }
-                res.close();
-                stmt.close();
-                //desconectar();
-            }
-        } catch (Exception e) {
-            System.out.println("Excepcion al Consultar Cliente : "+e);
-        }
-        return datos;
-    }
-
+  
     public int getId() {
         return id;
+    }
+    
+    public void setId (int id){
+        this.id = id;
+    }
+    
+     public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
     
    public String getContact_name() {
@@ -133,26 +105,13 @@ public class Provider {
         this.notes = notes;
     }
     
-    public boolean isActive() {
+    public String getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(String active) {
         this.active = active;
     }
-
-   
-    private boolean conectar() {
-        this.db = new BaseDatos();
-        this.conn = db.getConnection();
-        if(this.conn != null){
-            return true;
-        }else{
-            return false;
-        }}
-
-    
       
 }
-    
-
+  
