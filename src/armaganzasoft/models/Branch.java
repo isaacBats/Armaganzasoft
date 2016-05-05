@@ -1,50 +1,76 @@
-
+ /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package armaganzasoft.models;
-
-
 /**
  *
- * @author ErwinValle
+ * @author daniel
  */
-public class Branch {
-     private int     id;
-    private String  name;
-    private String  address;
+public class Provider {
+    
+/**
+ * @author Isaac Daniel
+ */
+    
+    private int     id;
+    private String code;
+    private String  contact_name;
+    private String  company;
+    private String  email;
     private String  telephone;
-    private String  city;
-    private String  zip_code;
-    private String  rfc;
-    private String email;
-    
-    
+    private String  fax;
+    private String  movil_1;
+    private String  notes;
+    private String active;
+   
+        
+      /**
+       * Default Construct 
+       */
+      public Provider(){
       
-
-      
-      public Branch(){
-      
-      }     
-           public int getid() {
+      }
+  
+    public int getId() {
         return id;
     }
-
-    public void setId(int id) {
+    
+    public void setId (int id){
         this.id = id;
     }
     
-   public String getName() {
-        return name;
+     public String getCode() {
+        return code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCode(String code) {
+        this.code = code;
+    }
+    
+   public String getContact_name() {
+        return contact_name;
     }
 
-    public String getAddress() {
-        return address;
+    public void setContact_name(String contact_name) {
+        this.contact_name = contact_name;
     }
 
-     public void setAddress(String address) {
-        this.address = address;
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTelephone() {
@@ -55,40 +81,38 @@ public class Branch {
         this.telephone = telephone;
     }
 
-    public String getCity() {
-        return city;
+    public String getFax() {
+        return fax;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setFax(String fax) {
+        this.fax = fax;
     }
 
-    public String getZip_code() {
-        return zip_code;
+    public String getMovil_1() {
+        return movil_1;
     }
 
-    public void setZip_code(String zip_code) {
-        this.zip_code = zip_code;
-    }
-
-    public String getRfc() {
-        return rfc;
-    }
-
-    public void setRfc(String rfc) {
-        this.rfc = rfc;
+    public void setMovil_1(String movil_1) {
+        this.movil_1 = movil_1;
     }
     
-    public String getEmail() {
-        return email;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
     
-    
-   
+    public String getActive() {
+        return active;
+    }
 
-      }
+    public void setActive(String active) {
+        this.active = active;
+    }
+      
+}
+    
 

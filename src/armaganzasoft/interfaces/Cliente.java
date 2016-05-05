@@ -7,10 +7,16 @@ package armaganzasoft.interfaces;
 
 
 
-import armaganzasoft.models.Customer;
-import armaganzasoft.repositorys.CustomerRepository;
-import javax.swing.JOptionPane;
 
+import armaganzasoft.models.Customer;
+import java.awt.Event;
+import armaganzasoft.repositorys.CustomerRepository;
+import armaganzasoft.services.BaseDatos;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,20 +28,31 @@ public class Cliente extends javax.swing.JFrame {
     /**
      * Creates new form Cliente
      */
- CustomerRepository customers=new CustomerRepository();
-
+ CustomerRepository costumers=new CustomerRepository();
+private Object[][] datos= null;
+    private Object[][] datosURLBD;
+    private int cantidad =0;
+    private Event evt;
+    private DefaultTableModel model;
+    int conn =0;
+      private Statement stm;
+   private ResultSet rs;
+   private Statement stmt;
+   
+      private String sql;
+      private BaseDatos db;
     
+      
+     private void Llenar(){
+   
+    
+    }
+   
     
     public Cliente() {
         initComponents();
         limpiar();
     }
-   
-    
-    
-   
-    
-    
     
     public void limpiar (){
         jTextField1.setText("");
@@ -121,11 +138,6 @@ public class Cliente extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setText("ELIMINAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 350, 170, 40));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -189,12 +201,6 @@ public class Cliente extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("CELULAR");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 440, 20));
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -274,7 +280,7 @@ public class Cliente extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel14.setText("\"CLIENTE\"");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
@@ -291,7 +297,7 @@ public class Cliente extends javax.swing.JFrame {
         
        
         identified = jTextField1.getText();
-        CustomerRepository  cr = new CustomerRepository(); 
+       CustomerRepository  cr = new CustomerRepository(); 
         
          customer = cr.buscarCliente(identified);
             jTextField11.setText(customer.getSub_customer());
@@ -339,14 +345,14 @@ Customer customer;
         
         
         
-        CustomerRepository  customRepo = new CustomerRepository();
+         CustomerRepository  customRepo = new  CustomerRepository();
 
         if( !customRepo.addCustom(customer) ){
             System.out.println("El cliente "+customer.getName()+" se ha insertado Correctamente");
             JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");
             limpiar();
         }else{
-            System.out.println("El cliente "+customer.getName()+" }NO se inserto Correctamente");
+            System.out.println("El cliente "+customer.getName()+" se ha insertado Correctamente");
             JOptionPane.showMessageDialog(this,"No se pudo agregar");
             limpiar();
         }
@@ -394,67 +400,47 @@ Customer customer;
     }//GEN-LAST:event_jTextField12ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-Customer customer;
-      
-        customer = new Customer();
-        CustomerRepository  CustomRepo = new CustomerRepository();
+  Customer customer;
         
-         customer.setName(jTextField2.getText());
-        customer.setLast_name(jTextField3.getText());
-        customer.setEmail(jTextField4.getText());
-        customer.setTelephone(jTextField5.getText());
-        customer.setMovil(jTextField6.getText());
-        customer.setRfc(jTextField7.getText());
-        customer.setAddress(jTextField8.getText());
-        customer.setCity(jTextField9.getText());
-        customer.setZip_code(jTextField10.getText());
-        customer.setSub_customer(jTextField11.getText());
-        customer.setCustomer_id(jTextField12.getText());
+        customer = new Customer();
+        
        
         
-        Customer busqueda= CustomRepo.buscarCliente(customer.getRfc());
-        customer.setId(busqueda.getId());
-       if( CustomRepo.edit(customer) ){
+       CustomerRepository  cr = new CustomerRepository();  
+        
+     boolean cliente = cr.edit(customer);
+            customer.setSub_customer(jTextField11.getText());
+            customer.setCustomer_id(jTextField12.getText());
+            customer.setName(jTextField2.getText());
+            customer.setLast_name(jTextField3.getText());
+            customer.setEmail(jTextField4.getText());
+            customer.setTelephone(jTextField5.getText());
+            customer.setMovil(jTextField6.getText());
+            customer.setRfc(jTextField7.getText());
+            customer.setAddress(jTextField8.getText());
+            customer.setCity(jTextField9.getText());
+            customer.setZip_code(jTextField10.getText());
             
-            JOptionPane.showMessageDialog(this,"SE EDITO: "+customer.getName());
+            
+       
+            
+             CustomerRepository  costumRepo = new CustomerRepository();
+
+        if( costumRepo.edit(customer) ){
+            System.out.println("El cliente "+customer.getName()+" se ha insertado Correctamente");
+            JOptionPane.showMessageDialog(this,"SEA A MODIFICADO EL CLIENTE CORRECTAMENTE");
             limpiar();
-         
-       }
+        }else{
+            System.out.println("El cliente "+customer.getName()+" se ha insertado Correctamente");
+            JOptionPane.showMessageDialog(this,"NO SE PUDO MODIFICAR ");
+            limpiar();
+        }
+        
+        
+                                          
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-Customer customer;
-      
-        customer = new Customer();
-        CustomerRepository  CustomRepo = new CustomerRepository();
-        
-        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar el Cliente", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
-        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
-            customer = CustomRepo.buscarCliente(jTextField7.getText());
-
-            if( CustomRepo.eliminar(customer)){
-
-                
-                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL CLIENTE CORRECTAMENTE");
-
-                limpiar();
-
-            }else{
-                
-                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
-               
-
-
-            }
-        }                                           
-                  // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -524,7 +510,4 @@ Customer customer;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
-
-private javax.swing.JOptionPane mensaje;
 }
-

@@ -1,16 +1,11 @@
 package armaganzasoft.models;
 
-import armaganzasoft.interfaces.Menu;
-import armaganzasoft.models.User;
 import armaganzasoft.services.BaseDatos;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
-import java.util.Hashtable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author Isaac Daniel
@@ -29,42 +24,13 @@ public class User {
     private String active;
     private Date    update_at;
     private Date    created_at;
-   private Statement stm;
-   private ResultSet rs;
-   private Statement stmt;
-   
-      private String sql;
+  
       private BaseDatos db;
       private Connection conn= null;
       
-      /**
-       * Default Construct 
-       */
-       public Object[][] ConsultarUsuario(){
-    Object [][] datos =new Object[id][];
-        try {
-            if(conectar()){
-                sql="SELECT *FROM users";
-                Statement stmt=this.stmt;
-                ResultSet res=stmt.executeQuery(sql);
-                int fila=0;
-                while(res.next()){
-                    for(int columna=0; columna<9; columna++)
-                    datos [fila][columna]= res.getObject(columna+1);
-                    fila ++;
-            }
-                res.close();
-                stmt.close();
-                //desconectar();
-            }
-        } catch (Exception e) {
-            System.out.println("ExcepciÃ³n al Consultar Cliente : "+e);
-        }
-        return datos;
-    }
+     
       
       public User(){
-      
       }
     
     public boolean validarUsuario(String Login, String password) throws SQLException{
@@ -72,13 +38,11 @@ public class User {
             if(conectar()){
                String sql = "SELECT * FROM users WHERE usuario like '"+Login+"';";
                 
-               //String sql = "SELECT * FROM users WHERE name like '"+Login+"';";
                 Statement stmt = this.conn.createStatement();
                 ResultSet res = stmt.executeQuery(sql);
                 if(res.next() && password.equals(res.getString("password"))){
                         nombre = "Bienvenido a Armaganza Soft";
                         System.out.println(nombre);
-                        //JOptionPane.showMessageDialog(this,"BIENVENIDO A ARMAGANZA SOFT");
                         return true;
                  
                 }else{
@@ -87,38 +51,19 @@ public class User {
                         return false;
                     }
                 }else{
-                    //return "No se encontro registro";
-                    System.out.println("No se pudo conectar a la base de datos");
+                     System.out.println("No se pudo conectar a la base de datos");
                     this.conn.close();
                     return false;
                 }    
     }
     
     
-    
-    public boolean BuscarUsuario (String Clave)throws SQLException{
-        if(conectar()){
-            String sql = "SELECT * FROM users WHERE num_employee like'"+Clave+"';";
-            Statement stmt = this.conn.createStatement();
-            ResultSet res = stmt.executeQuery(sql);
-            return true;
-        }
-     
-
-else{
-                   
-                    System.out.println("No se encontro el registro");
-        try {
-            this.conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-        } return false;
-                } }   
-    
-    
-    
     public int getId() {
         return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
     
     public String getNum_employee() {
@@ -216,8 +161,5 @@ else{
             return true;
         }else{
             return false;
-        }
-    }
-  
+        }}
 }
-    
