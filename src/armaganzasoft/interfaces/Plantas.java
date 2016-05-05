@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author user
+ * @author ErwinValle
  */
 public class Plantas extends javax.swing.JFrame {
 
@@ -66,11 +66,12 @@ public class Plantas extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, 490, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 490, -1));
 
         jButton1.setText("Buscar Planta");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +79,7 @@ public class Plantas extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 11, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +190,10 @@ public class Plantas extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1189, 381, 151, 55));
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setText("\"PLANTAS\"");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, -1, -1));
+
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1610, 1070));
 
@@ -218,14 +223,14 @@ Branch branch;
        
         BranchRepository  branRepo = new BranchRepository();
 
-        if( !branRepo.addBranch(branch) ){
+        if( branRepo.addBranch(branch) ){
             System.out.println("El usuario "+branch.getName()+" se ha insertado Correctamente");
             JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");
             limpiar();
         }else{
             System.out.println("El usuario "+branch.getName()+" se ha insertado Correctamente");
             JOptionPane.showMessageDialog(this,"No se pudo agregar");                                        
-            limpiar();
+           
         }
         // TODO add your handling code here:
                             // TODO add your handling code here:
@@ -278,25 +283,29 @@ Branch branch;
 Branch branch;
       
         branch = new Branch();
-BranchRepository  BranchRepo = new BranchRepository();
-if( !BranchRepo.edit(branch) ){
-            //abrir la edicion de texto
-           jTextField2.setEditable(true);
+        BranchRepository  BranchRepo = new BranchRepository();
+        
+        branch.setName(jTextField2.getText());
+        branch.setAddress(jTextField3.getText());
+        branch.setTelephone(jTextField8.getText());
+        branch.setCity(jTextField4.getText());
+        branch.setZip_code(jTextField5.getText());
+        branch.setRfc(jTextField7.getText());
+        branch.setEmail(jTextField3.getText());
+        
+        
+        Branch busqueda= BranchRepo.buscarPlanta(branch.getRfc());
+        branch.setId(busqueda.getid());
+       if( BranchRepo.edit(branch) ){
+            
+            JOptionPane.showMessageDialog(this,"SE EDITO: "+branch.getName());
+            limpiar();
+         
         }
         
-        jTextField3.setEditable(true);
        
-        jTextField4.setEditable(true);
-        jTextField5.setEditable(true);
-       
-        jTextField6.setEditable(true);
-        jTextField7.setEditable(true);
-        jTextField8.setEditable(true);
+
         
-
-       
-
-        jButton3.setEnabled(true);//habilitamos el boton guardar
     
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -389,6 +398,7 @@ if( !BranchRepo.edit(branch) ){
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

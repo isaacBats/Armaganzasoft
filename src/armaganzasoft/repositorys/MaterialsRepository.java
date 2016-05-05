@@ -66,6 +66,7 @@ public class MaterialsRepository extends BaseRepository {
                 busqueda.setCode(rs.getString("code"));
                 busqueda.setAtributo(rs.getString("atributo"));
                 busqueda.setAtributo(rs.getString("tipo"));
+                busqueda.setId(rs.getInt("id"));
                 
                 }             
                 
@@ -88,7 +89,7 @@ public class MaterialsRepository extends BaseRepository {
                                                            +"    atributo        = ?, "
                                                            +"    tipo        = ? "
                                                            
-                                                           +" WHERE id = ?;");
+                                                           +" WHERE id = ?");
             
             query.setString(1, materials.getName());
             query.setString(2, materials.getCode());
@@ -105,6 +106,29 @@ public class MaterialsRepository extends BaseRepository {
             
         } catch (SQLException ex) {
             System.out.println("Error al modificar material: "+ ex);
+        }
+        
+        return false;
+    }
+     public boolean eliminar(Materials materials){
+        
+        try {
+            
+           query = con.prepareStatement("DELETE  FROM materials WHERE   id = "+materials.getId());
+            
+       
+            
+            
+                               
+            if( !query.execute() ){
+                System.out.println("Se elimino el material correctamente");
+                return true;
+            }
+            
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar material: "+ ex);
         }
         
         return false;

@@ -58,6 +58,7 @@ public class Materiales extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,7 +69,7 @@ public class Materiales extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 11, 587, 28));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 587, 28));
 
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +77,7 @@ public class Materiales extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 11, 100, 28));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 100, 28));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +118,11 @@ public class Materiales extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 250, 120, 40));
 
         jButton3.setText("ELIMINAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 260, 120, 40));
 
         jButton4.setText("MODIFICAR");
@@ -128,6 +134,11 @@ public class Materiales extends javax.swing.JFrame {
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 360, 120, 40));
 
         jButton5.setText("PRINCIPAL");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 640, 110, 40));
 
         jButton6.setText("LIMPIAR TODO");
@@ -136,6 +147,10 @@ public class Materiales extends javax.swing.JFrame {
 
         jLabel5.setText("TIPO");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setText("\"MATERIALES\"");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 1080));
@@ -152,6 +167,25 @@ public class Materiales extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+Materials materials;
+      materials = new Materials();
+      MaterialsRepository mateRepo = new MaterialsRepository();
+      
+      
+        materials.setName(jTextField2.getText());
+        materials.setCode(jTextField3.getText());
+        materials.setAtributo(jTextField4.getText());
+        materials.setTipo(jTextField5.getText());
+
+        Materials busqueda= mateRepo.buscarMaterial(materials.getCode());
+        materials.setId(busqueda.getId());
+        if(mateRepo.edit(materials)){
+            
+            JOptionPane.showMessageDialog(this,"SE EDITO: "+materials.getName());
+            limpiar();
+            
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -189,9 +223,12 @@ Materials materials;
 Materials materials;
         materials = new Materials();
         
+          MaterialsRepository  mateRepo = new MaterialsRepository();
        
         materials.setName(jTextField2.getText());
         materials.setCode(jTextField3.getText());
+         if( !mateRepo.addMat(materials) ){
+            System.out.println("El material "+materials.getName()+" se ha insertado Correctamente");
         bloquear();
         materials.setAtributo(jTextField4.getText());
         materials.setTipo(jTextField5.getText());
@@ -199,20 +236,59 @@ Materials materials;
         
         
         
-        MaterialsRepository  costumRepo = new MaterialsRepository();
+      
 
-        if( !costumRepo.addMat(materials) ){
-            System.out.println("El cliente "+materials.getName()+" se ha insertado Correctamente");
+        if( !mateRepo.addMat(materials) ){
+            System.out.println("El materias "+materials.getName()+" se ha insertado Correctamente");
             JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");
             limpiar();
         }else{
-            System.out.println("El cliente "+materials.getName()+" se ha insertado Correctamente");
+            System.out.println("El material "+materials.getName()+" se ha insertado Correctamente");
             JOptionPane.showMessageDialog(this,"No se pudo agregar");
-            limpiar();
+            
         }
+         }
                                          
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       Materials materials;
+       materials= new Materials();
+       MaterialsRepository mateRepo = new MaterialsRepository();
+        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar el Material", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
+         materials = mateRepo.buscarMaterial(jTextField3.getText());
+
+            if( mateRepo.eliminar(materials)){
+
+                
+                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL MATERIAL CORRECTAMENTE");
+
+                limpiar();
+
+            }else{
+                
+                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
+               
+
+
+            }
+        }   
+                    
+       
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+     
+Menu principal=new Menu();
+        principal.setVisible(true);
+        dispose();        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,10 +337,12 @@ Materials materials;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+private javax.swing.JOptionPane mensaje;
 }

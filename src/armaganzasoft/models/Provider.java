@@ -1,20 +1,12 @@
 package armaganzasoft.models;
 
-import armaganzasoft.services.BaseDatos;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
+
 
 import armaganzasoft.services.BaseDatos;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
+
 
 /**
  *
@@ -50,32 +42,16 @@ public class Provider {
       public Provider(){
       
       }
-  public Object[][] ConsultarProvedor(){
-    Object [][] datos =new Object[id][];
-        try {
-            if(conectar()){
-                sql="SELECT *FROM providers";
-                Statement stmt=this.stmt;
-                ResultSet res=stmt.executeQuery(sql);
-                int fila=0;
-                while(res.next()){
-                    for(int columna=0; columna<8; columna++)
-                    datos [fila][columna]= res.getObject(columna+1);
-                    fila ++;
-            }
-                res.close();
-                stmt.close();
-                //desconectar();
-            }
-        } catch (Exception e) {
-            System.out.println("Excepcion al Consultar Cliente : "+e);
-        }
-        return datos;
-    }
+  
 
     public int getId() {
         return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     
    public String getContact_name() {
         return contact_name;

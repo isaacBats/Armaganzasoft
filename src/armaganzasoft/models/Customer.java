@@ -3,12 +3,7 @@ package armaganzasoft.models;
 import armaganzasoft.services.BaseDatos;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
-import armaganzasoft.models.User;
-import java.util.Hashtable;
 /**
  *
  * @author ErwinValle
@@ -30,8 +25,8 @@ public class Customer {
     private String  address;
     private String  city;
     private String  zip_code;
-    private String sub_costumer;
-    private String  costumer_id;
+    private String sub_customer;
+    private String  customer_id;
    
    private Statement stm;
    private ResultSet rs;
@@ -47,37 +42,19 @@ public class Customer {
      public Customer(){
       
       }
-   public Object[][] ConsultarCliente(){
-    Object [][] datos =new Object[id][];
-        try {
-            if(conectar()){
-                sql="SELECT *FROM costumers";
-                Statement stmt=this.stmt;
-                ResultSet res=stmt.executeQuery(sql);
-                int fila=0;
-                while(res.next()){
-                    for(int columna=0; columna<12; columna++)
-                  
-                        
-                        
-                        datos [fila][columna]= res.getObject(columna+1);
-                    fila ++;
-            }
-                res.close();
-                stmt.close();
-                //desconectar();
-            }
-        } catch (Exception e) {
-            System.out.println("Excepcion al Consultar Cliente : "+e);
-        }
-        return datos;
-    }
 
+   
 
   //ingreso datos  
     public int getId() {
         return id;
     }
+   
+     public void setId(int id) {
+        this.id = id;
+    }
+  
+    
   
 
     public String getName() {
@@ -152,31 +129,23 @@ public class Customer {
         this.zip_code = zip_code;
     }
     
-    public String getSub_costumer() {
-        return sub_costumer;
+    public String getSub_customer() {
+        return sub_customer;
     }
 
-    public void setSub_costumer(String sub_costumer) {
-        this.sub_costumer = sub_costumer;
+    public void setSub_customer(String sub_customer) {
+        this.sub_customer = sub_customer;
     }
 
-    public String getCostumer_id() {
-        return costumer_id;
+    public String getCustomer_id() {
+        return customer_id;
     }
 
-    public void setCostumer_id(String costumer_id) {
-        this.costumer_id = costumer_id;
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
     }
     
-    private boolean conectar() {
-        this.db = new BaseDatos();
-        this.conn = db.getConnection();
-        if(this.conn != null){
-            return true;
-        }else{
-            return false;
-        }}
-
+   
     
       
 }

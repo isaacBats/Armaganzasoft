@@ -6,16 +6,8 @@
 package armaganzasoft.interfaces;
 
 
-import armaganzasoft.services.BaseDatos;
-import armaganzasoft.models.Provider;
 import armaganzasoft.models.Provider;
 import armaganzasoft.repositorys.ProveedoresRepository;
-import armaganzasoft.repositorys.UserRepository;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
         
 
@@ -129,8 +121,18 @@ public class Proveedores extends javax.swing.JFrame {
         });
 
         jButton3.setText("MODIFICAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("ELIMINAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("PRINCIPAL");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -369,6 +371,66 @@ Menu principal=new Menu();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+Provider provider;
+         provider = new Provider();
+         ProveedoresRepository provRepo = new ProveedoresRepository();
+         
+         provider.setContact_name(jTextField7.getText());
+        provider.setCompany(jTextField2.getText());
+        provider.setEmail(jTextField4.getText());
+        provider.setTelephone(jTextField5.getText());
+        provider.setFax(jTextField6.getText());
+        provider.setMovil_1(jTextField8.getText());
+        provider.setNotes(jTextField3.getText());
+        provider.setActive(true);
+        
+        
+        Provider busqueda = provRepo.buscarProveedor(getCompany());
+        provider.setId(busqueda.getId());
+        if (provRepo.edit(provider)){
+            
+            JOptionPane.showMessageDialog(this,"SE EDITO: "+provider.getContact_name());
+            limpiar();
+         
+        }
+        
+       
+
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+Provider provider;
+        provider = new Provider();
+        ProveedoresRepository  provRepo = new ProveedoresRepository();
+        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar la Planta", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
+            provider = provRepo.buscarProveedor(jTextField7.getText());
+
+            if( provRepo.eliminar(provider)){
+
+                
+                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL PROVEEDOR CORRECTAMENTE");
+
+                limpiar();
+
+            }else{
+                
+                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
+               
+
+
+            }
+        }   
+                           // TODO add your handling code here:
+               
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -428,4 +490,5 @@ Menu principal=new Menu();
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
+private javax.swing.JOptionPane mensaje;
 }

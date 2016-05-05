@@ -100,8 +100,8 @@ public class BranchRepository extends BaseRepository {
                                                            +"    city    = ?, "
                                                            +"    zip_code        = ?, "
                                                            +"    rfc          = ?, "
-                                                           +"    email      = ?, "
-                                                           );
+                                                           +"    email      = ? "
+                                                    + "WHERE id =?"      );
             
             query.setString(1, branch.getName());
             query.setString(2, branch.getAddress());
@@ -110,6 +110,7 @@ public class BranchRepository extends BaseRepository {
             query.setString(5, branch.getZip_code());
             query.setString(6, branch.getRfc());           
             query.setString(7, branch.getEmail());
+            query.setInt(8, branch.getid());
            
                                
             if( !query.execute() ){
@@ -132,7 +133,7 @@ public class BranchRepository extends BaseRepository {
         
         try {
             
-           query = con.prepareStatement("DELETE  FROM branches WHERE   rfc = '"+branch.getRfc()+"'");
+           query = con.prepareStatement("DELETE  FROM branches WHERE   id = "+branch.getid());
             
        
             

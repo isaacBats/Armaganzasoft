@@ -73,10 +73,11 @@ public class ProveedoresRepository extends BaseRepository {
                 busqueda.setFax(rs.getString("fax"));
                 busqueda.setMovil_1(rs.getString("movil_1"));
                 busqueda.setNotes(rs.getString("notes"));
+                 busqueda.setId(rs.getInt("id"));
                
                 }             
                 
-                //aqui aun pueden incluir mas campos de la tabla costumers
+                
                 return busqueda;
 //                  System.out.println(rs.getString("name")+ " y su correo es "+rs.getString("email"));  
             
@@ -90,15 +91,15 @@ public class ProveedoresRepository extends BaseRepository {
         
         try {
             
-            query = con.prepareStatement("UPDATE providers SET    (contact_name, "
-                                                          + "company, "
-                                                          + "email, "
-                                                          + "telephone, "
-                                                          + "fax, "
-                                                          + "movil_1, "
-                                                          + "notes, "
-                                                          + "active) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?);"
+            query = con.prepareStatement("UPDATE providers SET    (contact_name=?, "
+                                                          + "company=?, "
+                                                          + "email=?, "
+                                                          + "telephone=?, "
+                                                          + "fax=?, "
+                                                          + "movil_1=?, "
+                                                          + "notes=?, "
+                                                          + "active=?) "
+                                        + "WHERE id =?"
                                         );
             
             query.setString(1, provider.getContact_name());
@@ -109,6 +110,7 @@ public class ProveedoresRepository extends BaseRepository {
             query.setString(6, provider.getMovil_1());
             query.setString(7, provider.getNotes());
             query.setBoolean(8, provider.isActive());
+            query.setInt(9, provider.getId());
             
             if( !query.execute() ){
                 System.out.println("Se edito el proveedor correctamente");
@@ -119,6 +121,29 @@ public class ProveedoresRepository extends BaseRepository {
             
         } catch (SQLException ex) {
             System.out.println("Error al editar el proveedor: "+ ex);
+        }
+        
+        return false;
+    }
+     public boolean eliminar(Provider provider){
+        
+        try {
+            
+           query = con.prepareStatement("DELETE  FROM providers WHERE   contact_name = "+provider.getContact_name());
+            
+       
+            
+            
+                               
+            if( !query.execute() ){
+                System.out.println("Se elimino el proveedor correctamente");
+                return true;
+            }
+            
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar proveedor: "+ ex);
         }
         
         return false;
