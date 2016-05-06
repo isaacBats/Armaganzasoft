@@ -8,7 +8,7 @@ package armaganzasoft.interfaces;
 
 import armaganzasoft.repositorys.BranchRepository;
 import armaganzasoft.services.BaseDatos;
-import armaganzasoft.models.;
+import armaganzasoft.models.Branch;
 import javax.swing.JOptionPane;
         
 
@@ -182,7 +182,7 @@ Branch branch;
         
        
         branch.setName(jTextField2.getText());
-        branch.setAdress(jTextField3.getText());
+        branch.setAddress(jTextField3.getText());
         branch.setTelephone(jTextField8.getText());
         branch.setCity(jTextField4.getText());
         branch.setZip_code(jTextField5.getText());
@@ -236,7 +236,7 @@ Branch branch;
          branch = br.buscarPlanta(identified);
            
             jTextField2.setText(branch.getName());
-            jTextField3.setText(branch.getAdress());
+            jTextField3.setText(branch.getAddress());
             jTextField4.setText(branch.getCity());
             jTextField5.setText(branch.getZip_code());
             jTextField6.setText(branch.getEmail());

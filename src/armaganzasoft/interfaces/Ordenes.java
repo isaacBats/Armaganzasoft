@@ -78,6 +78,7 @@ public class Ordenes extends javax.swing.JFrame {
         jLabelDirEntrega = new javax.swing.JLabel();
         jTextFieldContacto = new javax.swing.JTextField();
         jTextFieldRFC = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jTextFieldTelefono1 = new javax.swing.JTextField();
         jTextFieldDirFiscal = new javax.swing.JTextField();
         jLabelCliente = new javax.swing.JLabel();
@@ -327,6 +328,12 @@ public class Ordenes extends javax.swing.JFrame {
         getContentPane().add(jLabelDirEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 345, 140, 30));
         getContentPane().add(jTextFieldContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 350, -1));
         getContentPane().add(jTextFieldRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 350, -1));
+
+        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("DETALLE DE ORDENES");
+        jLabel2.setDisplayedMnemonicIndex(2);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, 90, 550, 90));
         getContentPane().add(jTextFieldTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 245, 350, -1));
         getContentPane().add(jTextFieldDirFiscal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 350, -1));
 
@@ -427,6 +434,7 @@ Menu principal=new Menu();
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabelAd1;

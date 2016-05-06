@@ -110,7 +110,7 @@ public class BranchRepository extends BaseRepository {
             query.setString(5, branch.getZip_code());
             query.setString(6, branch.getRfc());           
             query.setString(7, branch.getEmail());
-            query.setInt(8, branch.getid());
+            query.setInt(8, branch.getId());
            
                                
             if( !query.execute() ){
@@ -133,7 +133,7 @@ public class BranchRepository extends BaseRepository {
         
         try {
             
-           query = con.prepareStatement("DELETE  FROM branches WHERE   id = "+branch.getid());
+           query = con.prepareStatement("DELETE  FROM branches WHERE   id = "+branch.getId());
             
        
             

@@ -146,10 +146,7 @@ public class CustomerRepository extends BaseRepository {
         
         try {
             
-            
-       
-            
-            
+                query = con.prepareStatement("DELETE  FROM customers WHERE   id = "+customer.getId());         
                                
             if( !query.execute() ){
                 System.out.println("Se elimino el cliente correctamente");
@@ -166,4 +163,3 @@ public class CustomerRepository extends BaseRepository {
     }
 }
      
-           query = con.prepareStatement("DELETE  FROM customers WHERE   id = "+customer.getId());
