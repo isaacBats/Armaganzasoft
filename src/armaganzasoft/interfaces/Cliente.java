@@ -340,8 +340,7 @@ Customer customer;
         customer.setAddress(jTextField8.getText());
         customer.setCity(jTextField9.getText());
         customer.setZip_code(jTextField10.getText());
-        customer.setSub_customer(jTextField11.getText());
-        customer.setCustomer_id(jTextField12.getText());
+        customer.setIdentified(jTextField12.getText());
         
         
         

@@ -32,12 +32,12 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButtonBuscarOrden">
       <Properties>
         <Property name="text" type="java.lang.String" value=" Buscar Orden"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuscarOrdenActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -59,7 +59,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="java.awt.Button" name="button1">
+    <Component class="java.awt.Button" name="jButtonAddOrder">
       <Properties>
         <Property name="label" type="java.lang.String" value="AGREGAR"/>
       </Properties>
@@ -69,7 +69,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="java.awt.Button" name="buttonModificar">
+    <Component class="java.awt.Button" name="jButtonEdit">
       <Properties>
         <Property name="label" type="java.lang.String" value="MODIFICAR"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -82,7 +82,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="java.awt.Button" name="buttonEliminar">
+    <Component class="java.awt.Button" name="jButtonDelete">
       <Properties>
         <Property name="label" type="java.lang.String" value="ELIMINAR"/>
       </Properties>
@@ -152,9 +152,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldPedido">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPedidoActionPerformed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="160" y="445" width="100" height="-1"/>
@@ -162,9 +159,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldProducto">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldProductoActionPerformed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="160" y="470" width="100" height="-1"/>
@@ -341,9 +335,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField31">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField31ActionPerformed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="550" y="160" width="80" height="-1"/>
@@ -465,9 +456,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldPedidos">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPedidosActionPerformed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="400" y="445" width="100" height="-1"/>
@@ -623,9 +611,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField33">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField33ActionPerformed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="380" y="160" width="80" height="-1"/>

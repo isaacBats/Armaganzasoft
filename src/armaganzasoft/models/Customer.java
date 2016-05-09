@@ -144,6 +144,14 @@ public class Customer {
     public void setCustomer_id(String customer_id) {
         this.customer_id = customer_id;
     }
+
+    public String getIdentified() {
+        return identified;
+    }
+
+    public void setIdentified(String identified) {
+        this.identified = identified;
+    }
     
    
     

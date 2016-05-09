@@ -32,12 +32,12 @@ public class Ordenes extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonBuscarOrden = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jTextFieldDirEntrega = new javax.swing.JTextField();
-        button1 = new java.awt.Button();
-        buttonModificar = new java.awt.Button();
-        buttonEliminar = new java.awt.Button();
+        jButtonAddOrder = new java.awt.Button();
+        jButtonEdit = new java.awt.Button();
+        jButtonDelete = new java.awt.Button();
         buttonPrincipal = new java.awt.Button();
         jLabel1 = new javax.swing.JLabel();
         jLabelRFC = new javax.swing.JLabel();
@@ -90,25 +90,25 @@ public class Ordenes extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 320, -1));
 
-        jButton1.setText(" Buscar Orden");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBuscarOrden.setText(" Buscar Orden");
+        jButtonBuscarOrden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonBuscarOrdenActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 150, -1, -1));
+        getContentPane().add(jButtonBuscarOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 150, -1, -1));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 120, 30));
         getContentPane().add(jTextFieldDirEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 345, 350, -1));
 
-        button1.setLabel("AGREGAR");
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 644, 120, 30));
+        jButtonAddOrder.setLabel("AGREGAR");
+        getContentPane().add(jButtonAddOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 644, 120, 30));
 
-        buttonModificar.setLabel("MODIFICAR");
-        buttonModificar.setMinimumSize(new java.awt.Dimension(74, 23));
-        getContentPane().add(buttonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 644, 120, 30));
+        jButtonEdit.setLabel("MODIFICAR");
+        jButtonEdit.setMinimumSize(new java.awt.Dimension(74, 23));
+        getContentPane().add(jButtonEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 644, 120, 30));
 
-        buttonEliminar.setLabel("ELIMINAR");
-        getContentPane().add(buttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 644, 120, 30));
+        jButtonDelete.setLabel("ELIMINAR");
+        getContentPane().add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 644, 120, 30));
 
         buttonPrincipal.setLabel("PRINCIPAL");
         buttonPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -130,19 +130,7 @@ public class Ordenes extends javax.swing.JFrame {
         jLabelContacto.setText("CONTACTO");
         getContentPane().add(jLabelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 320, 80, 30));
         getContentPane().add(jTextFieldOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 100, -1));
-
-        jTextFieldPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPedidoActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextFieldPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 445, 100, -1));
-
-        jTextFieldProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldProductoActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextFieldProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 100, -1));
 
         jLabelKGSOrden.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -196,12 +184,6 @@ public class Ordenes extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel23.setText("REMISION");
         getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, -1, -1));
-
-        jTextField31.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField31ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 80, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, -1));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
@@ -301,12 +283,6 @@ public class Ordenes extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 380, 170));
         getContentPane().add(jTextFieldPVSR, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 100, -1));
-
-        jTextFieldPedidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPedidosActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextFieldPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 445, 100, -1));
 
         jLabelPVSR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -348,12 +324,6 @@ public class Ordenes extends javax.swing.JFrame {
         jLabelTelefono1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTelefono1.setText("TELEFONO");
         getContentPane().add(jLabelTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 245, 70, 20));
-
-        jTextField33.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField33ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 80, -1));
 
         pack();
@@ -366,29 +336,9 @@ Menu principal=new Menu();
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonPrincipalActionPerformed
 
-    private void jTextFieldProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldProductoActionPerformed
+    private void jButtonBuscarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarOrdenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldProductoActionPerformed
-
-    private void jTextFieldPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPedidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPedidoActionPerformed
-
-    private void jTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField31ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField31ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextFieldPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPedidosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPedidosActionPerformed
-
-    private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField33ActionPerformed
+    }//GEN-LAST:event_jButtonBuscarOrdenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,12 +376,12 @@ Menu principal=new Menu();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
-    private java.awt.Button buttonEliminar;
-    private java.awt.Button buttonModificar;
     private java.awt.Button buttonPrincipal;
     private javax.swing.JTextArea headerFondo;
-    private javax.swing.JButton jButton1;
+    private java.awt.Button jButtonAddOrder;
+    private javax.swing.JButton jButtonBuscarOrden;
+    private java.awt.Button jButtonDelete;
+    private java.awt.Button jButtonEdit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;

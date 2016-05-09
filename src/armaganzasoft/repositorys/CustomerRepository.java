@@ -31,8 +31,9 @@ public class CustomerRepository extends BaseRepository {
                                                           + "city, "
                                                           + "zip_code, " 
                                                           + "sub_customer, "
-                                                          + "customer_id) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                                                          + "customer_id,"
+                                                          + "identified) "
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
                                         );
             
             
@@ -48,6 +49,7 @@ public class CustomerRepository extends BaseRepository {
             query.setString(9, customer.getZip_code());
             query.setString(10, customer.getSub_customer());
             query.setString(11, customer.getCustomer_id());
+            query.setString(12, customer.getIdentified());
             
             if( !query.execute() ){
                 return true;
