@@ -43,31 +43,26 @@ public class EntregasParciales extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         button1.setLabel("Buscar Entrega");
-        getContentPane().add(button1);
-        button1.setBounds(450, 20, 101, 24);
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
 
         textField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(textField1);
-        textField1.setBounds(20, 20, 401, 20);
+        getContentPane().add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 401, -1));
 
         textField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(textField2);
-        textField2.setBounds(140, 500, 91, 20);
-        getContentPane().add(canvas2);
-        canvas2.setBounds(950, 280, 90, 0);
-        getContentPane().add(canvas3);
-        canvas3.setBounds(690, 100, 340, 340);
+        getContentPane().add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 500, 91, -1));
+        getContentPane().add(canvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 280, 90, -1));
+        getContentPane().add(canvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 340, 340));
 
         button2.setLabel("AGREGAR");
         button2.addActionListener(new java.awt.event.ActionListener() {
@@ -75,16 +70,13 @@ public class EntregasParciales extends javax.swing.JFrame {
                 button2ActionPerformed(evt);
             }
         });
-        getContentPane().add(button2);
-        button2.setBounds(1180, 90, 140, 60);
+        getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 150, 140, 60));
 
         button3.setLabel("MODIFICAR");
-        getContentPane().add(button3);
-        button3.setBounds(1180, 220, 140, 60);
+        getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, 140, 60));
 
         button4.setLabel("ELIMINAR");
-        getContentPane().add(button4);
-        button4.setBounds(1180, 330, 140, 70);
+        getContentPane().add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 140, 70));
 
         button5.setLabel("PRINCIPAL");
         button5.addActionListener(new java.awt.event.ActionListener() {
@@ -92,22 +84,18 @@ public class EntregasParciales extends javax.swing.JFrame {
                 button5ActionPerformed(evt);
             }
         });
-        getContentPane().add(button5);
-        button5.setBounds(1180, 450, 140, 70);
+        getContentPane().add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 480, 140, 70));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("NUMERO DE ORDEN");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 500, 110, 14);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 110, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("NOTAS");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(820, 70, 40, 14);
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 40, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 0, 1360, 1080);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
