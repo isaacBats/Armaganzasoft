@@ -21,7 +21,7 @@ public class CustomerRepository extends BaseRepository {
         
         try {
             
-            query = con.prepareStatement("INSERT INTO customers (name, "
+            query = con.prepareStatement("INSERT INTO costumers (name, "
                                                           + "last_name, "
                                                           + "email, "
                                                           + "telephone, "
@@ -30,10 +30,9 @@ public class CustomerRepository extends BaseRepository {
                                                           + "address, "
                                                           + "city, "
                                                           + "zip_code, " 
-                                                          + "sub_customer, "
-                                                          + "customer_id,"
-                                                          + "identified) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                                                          + "sub_costumer, "
+                                                          + "costumer_id) "
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
                                         );
             
             
@@ -49,7 +48,6 @@ public class CustomerRepository extends BaseRepository {
             query.setString(9, customer.getZip_code());
             query.setString(10, customer.getSub_customer());
             query.setString(11, customer.getCustomer_id());
-            query.setString(12, customer.getIdentified());
             
             if( !query.execute() ){
                 return true;
@@ -68,16 +66,16 @@ public class CustomerRepository extends BaseRepository {
         ResultSet rs;
         Customer busqueda = new Customer ();
         if(identified != null || identified != ""){
-        where = "WHERE email LIKE '"+identified+"' OR rfc LIKE '"+identified+"' OR customer_id LIKE '"+identified+"';";
+        where = "WHERE email LIKE '"+identified+"' OR rfc LIKE '"+identified+"' OR costumer_id LIKE '"+identified+"';";
         }
             try {
-            query = con.prepareStatement("SELECT * FROM customers "+where);
+            query = con.prepareStatement("SELECT * FROM costumers "+where);
             rs = query.executeQuery();
           
                 while(rs.next()){
                 
-                busqueda.setSub_customer(rs.getString("sub_customer"));
-                busqueda.setCustomer_id(rs.getString("customer_id"));
+                busqueda.setSub_customer(rs.getString("sub_costumer"));
+                busqueda.setCustomer_id(rs.getString("costumer_id"));
                 busqueda.setName(rs.getString("name"));
                 busqueda.setLast_name(rs.getString("last_name"));
                 busqueda.setEmail(rs.getString("email"));
@@ -95,7 +93,7 @@ public class CustomerRepository extends BaseRepository {
 //                  System.out.println(rs.getString("name")+ " y su correo es "+rs.getString("email"));  
             
             } catch (SQLException ex) {
-            System.out.println("Error al consultar un Cliente: "+ex);
+            System.out.println("Erro al consultar un Cliente: "+ex);
         }
         return null;
     }
@@ -103,7 +101,7 @@ public class CustomerRepository extends BaseRepository {
   public boolean edit (Customer customer) {
       try{
           
-          query=con.prepareStatement("UPDATE customers SET name=?,"
+          query=con.prepareStatement("UPDATE costumers SET name=?,"
                                                        +" last_name=?,"
                                                        +" email=?,"
                                                        +"telephone=?,"
@@ -112,8 +110,8 @@ public class CustomerRepository extends BaseRepository {
                                                        +"address=?,"
                                                        +"city=?,"
                                                        +"zip_code=?,"
-                                                       +"sub_customer=?,"
-                                                       +"customer_id=?"
+                                                       +"sub_costumer=?,"
+                                                       +"costumer_id=?"
                                                         +"WHERE id=?"     );
             query.setString(1, customer.getName());
             query.setString(2, customer.getLast_name());
@@ -148,7 +146,11 @@ public class CustomerRepository extends BaseRepository {
         
         try {
             
-                query = con.prepareStatement("DELETE  FROM customers WHERE   id = "+customer.getId());         
+           query = con.prepareStatement("DELETE  FROM costumers WHERE   id = "+customer.getId());
+            
+       
+            
+            
                                
             if( !query.execute() ){
                 System.out.println("Se elimino el cliente correctamente");
@@ -165,3 +167,4 @@ public class CustomerRepository extends BaseRepository {
     }
 }
      
+    

@@ -25,7 +25,8 @@ public class MaterialsRepository extends BaseRepository {
             query = con.prepareStatement("INSERT INTO materials (name, "
                                         +"code,"
                                         +"atributo,"
-                                        +"tipo)"
+                                        +"tipo,"
+                                        +"valor)"
                                         + "VALUES(?,?,?,?);"
                                         );
                        
@@ -66,6 +67,7 @@ public class MaterialsRepository extends BaseRepository {
                 busqueda.setCode(rs.getString("code"));
                 busqueda.setAtributo(rs.getString("atributo"));
                 busqueda.setAtributo(rs.getString("tipo"));
+                busqueda.setAtributo(rs.getString("valor"));
                 busqueda.setId(rs.getInt("id"));
                 
                 }             
@@ -87,7 +89,8 @@ public class MaterialsRepository extends BaseRepository {
             query = con.prepareStatement("UPDATE materials SET     name         = ?, "
                                                            +"    code    = ?, "
                                                            +"    atributo        = ?, "
-                                                           +"    tipo        = ? "
+                                                           +"    tipo        = ?, "
+                                                           +"    valor        = ? "
                                                            
                                                            +" WHERE id = ?");
             
@@ -95,7 +98,8 @@ public class MaterialsRepository extends BaseRepository {
             query.setString(2, materials.getCode());
             query.setString(3, materials.getAtributo());
             query.setString(4, materials.getTipo());
-            query.setInt(5, materials.getId());
+               query.setString(5, materials.getValor());
+            query.setInt(6, materials.getId());
             
             if( !query.execute() ){
                 System.out.println("Se modifico el material correctamente");

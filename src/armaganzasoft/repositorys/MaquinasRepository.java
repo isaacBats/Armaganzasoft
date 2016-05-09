@@ -33,8 +33,9 @@ public class MaquinasRepository extends BaseRepository {
                                         +"estado,"
                                         + "u_medida,"
                                         + "alarma,"
-                                        +"atributo)"
-                                        + "VALUES(?,?,?,?,?,?,?);"
+                                        +"atributo,"
+                                        + "valor)"
+                                        + "VALUES(?,?,?,?,?,?,?,?);"
                                         );
                       
             
@@ -45,6 +46,8 @@ public class MaquinasRepository extends BaseRepository {
             query.setString(5, machines.getU_medida());
             query.setString(6, machines.getAlarma());
             query.setString(7, machines.getAtributo());
+            query.setString(8, machines.getValor());
+            
             
 
   
@@ -81,6 +84,7 @@ public class MaquinasRepository extends BaseRepository {
                 busqueda.setU_medida(rs.getString("u_medida"));
                 busqueda.setAlarma(rs.getString("alarma"));
                 busqueda.setAtributo(rs.getString("atributo"));
+                busqueda.setValor(rs.getString("valor"));
                 busqueda.setId(rs.getInt("id"));
                 }             
                 
@@ -104,7 +108,8 @@ public class MaquinasRepository extends BaseRepository {
                                         +"estado=?,"
                                         + "u_medida=?,"
                                         + "alarma=?,"
-                                        +"atributo=?"
+                                        +"atributo=?,"
+                                        + "valor=?"
                                         + "WHERE id =?" );
                       
             
@@ -115,7 +120,8 @@ public class MaquinasRepository extends BaseRepository {
             query.setString(5, machines.getU_medida());
             query.setString(6, machines.getAlarma());
             query.setString(7, machines.getAtributo());
-            query.setInt(8, machines.getId());
+            query.setString(8, machines.getValor());
+            query.setInt(9, machines.getId());
 
   
             
