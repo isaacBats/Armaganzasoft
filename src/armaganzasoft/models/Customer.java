@@ -1,9 +1,4 @@
 package armaganzasoft.models;
-
-import armaganzasoft.services.BaseDatos;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 /**
  *
  * @author ErwinValle
@@ -15,7 +10,6 @@ public class Customer {
  */
     
     private int     id;
-    private String identified;
     private String  name;
     private String  last_name;
     private String  email;
@@ -28,14 +22,7 @@ public class Customer {
     private String sub_customer;
     private String  customer_id;
    
-   private Statement stm;
-   private ResultSet rs;
-   private Statement stmt;
    
-      private String sql;
-      private BaseDatos db;
-      private Connection conn= null;
-      
       /**
        * Default Construct 
        */
@@ -143,14 +130,6 @@ public class Customer {
 
     public void setCustomer_id(String customer_id) {
         this.customer_id = customer_id;
-    }
-
-    public String getIdentified() {
-        return identified;
-    }
-
-    public void setIdentified(String identified) {
-        this.identified = identified;
     }
     
    

@@ -1,33 +1,30 @@
- /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package armaganzasoft.models;
+
+
 /**
  *
- * @author daniel
+ * @author ErwinValle
  */
-public class Branch{
-    
-/**
- * @author Isaac Daniel
- */
-    
-    private int id;
-    private String name;
-    private String address;
-    private String telephone;
-    private String city;
-    private String zip_code;
-    private String rfc;
+public class Branch {
+     private int     id;
+    private int code;
+    private String  name;
+    private String  address;
+    private String  telephone;
+    private String  city;
+    private String  zip_code;
+    private String  rfc;
     private String email;
-   
-    public Branch() {
-        
-    }
+    
+    
+      
 
-    public int getId() {
+      
+      public Branch(){
+      
+      }     
+           public int getid() {
         return id;
     }
 
@@ -35,7 +32,15 @@ public class Branch{
         this.id = id;
     }
 
-    public String getName() {
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+       
+   public String getName() {
         return name;
     }
 
@@ -47,7 +52,7 @@ public class Branch{
         return address;
     }
 
-    public void setAddress(String address) {
+     public void setAddress(String address) {
         this.address = address;
     }
 
@@ -82,7 +87,7 @@ public class Branch{
     public void setRfc(String rfc) {
         this.rfc = rfc;
     }
-
+    
     public String getEmail() {
         return email;
     }
@@ -90,8 +95,9 @@ public class Branch{
     public void setEmail(String email) {
         this.email = email;
     }
-      
     
-}
     
+   
+
+      }
 

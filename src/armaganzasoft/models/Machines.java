@@ -20,6 +20,7 @@ public class Machines {
     private String alarma;
     private String atributo;
     private String u_medida;
+    private String valor;
    
   
       
@@ -95,5 +96,13 @@ public class Machines {
     public void setU_medida(String u_medida) {
         this.u_medida = u_medida;
     }
-       
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+           
 }

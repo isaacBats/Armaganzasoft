@@ -8,15 +8,6 @@ package armaganzasoft.models;
  *
  * @author Rodrigo
  */
-import armaganzasoft.services.BaseDatos;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
-import armaganzasoft.models.User;
-import java.util.Hashtable;
 
 public class Forms {
     
@@ -34,13 +25,7 @@ public class Forms {
     private String habilitado;
   
    
-   private Statement stm;
-   private ResultSet rs;
-   
-      private String sql;
-      private BaseDatos db;
-      private Connection conn= null;
-      
+        
       /**
        * Default Construct 
        */
@@ -134,14 +119,7 @@ public class Forms {
     }
     
      
-    private boolean conectar() {
-        this.db = new BaseDatos();
-        this.conn = db.getConnection();
-        if(this.conn != null){
-            return true;
-        }else{
-            return false;
-        }}}
+    }
 
     
       

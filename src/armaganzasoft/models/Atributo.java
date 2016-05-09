@@ -4,21 +4,11 @@
  * and open the template in the editor.
  */
 package armaganzasoft.models;
-
-import armaganzasoft.services.BaseDatos;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.SQLException;
-import java.util.Date;
-import armaganzasoft.interfaces.Menu;
-import armaganzasoft.models.Atributo;
-import java.util.Hashtable;
 /**
 
 /**
  *
- * @author ErwinValle
+ * @author rodri
  */
 public class Atributo {
    
@@ -28,17 +18,13 @@ public class Atributo {
     private String  identified;
 
    
-      
-      /**
+     /**
        * Default Construct 
        */
       public Atributo(){
       
       }
   
-    public void setId(int id) {
-        this.id = id;
-    }
     
     public int getId() {
         return id;
@@ -51,14 +37,11 @@ public class Atributo {
     public void setIdentified(String identified) {
         this.identified = identified;
     }
+  
       
 }
     
 
 
-    
-
-
-     
     
 
