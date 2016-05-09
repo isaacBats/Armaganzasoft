@@ -13,6 +13,7 @@ import java.util.Date;
 public class User {
     
     private int     id;
+    private String  branch_id;
     private String  num_employee;
     private String  name;
     private String  last_name;
@@ -36,7 +37,7 @@ public class User {
     public boolean validarUsuario(String Login, String password) throws SQLException{
         String nombre="";
             if(conectar()){
-               String sql = "SELECT * FROM users WHERE user like '"+Login+"';";
+               String sql = "SELECT * FROM users WHERE usuario like '"+Login+"';";
                 
                 Statement stmt = this.conn.createStatement();
                 ResultSet res = stmt.executeQuery(sql);
@@ -65,7 +66,15 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
-    
+
+    public String getBranch_id() {
+        return branch_id;
+    }
+
+    public void setBranch_id(String branch_id) {
+        this.branch_id = branch_id;
+    }
+        
     public String getNum_employee() {
         return num_employee;
     }
