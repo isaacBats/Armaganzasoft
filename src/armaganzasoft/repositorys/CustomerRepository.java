@@ -46,7 +46,7 @@ public class CustomerRepository extends BaseRepository {
             query.setString(7, customer.getAddress());
             query.setString(8, customer.getCity());
             query.setString(9, customer.getZip_code());
-            query.setString(10, customer.getSub_customer());
+            query.setBoolean(10, customer.getSub_customer());
             query.setString(11, customer.getCustomer_id());
             
             if( !query.execute() ){
@@ -74,7 +74,7 @@ public class CustomerRepository extends BaseRepository {
           
                 while(rs.next()){
                 
-                busqueda.setSub_customer(rs.getString("sub_costumer"));
+                busqueda.setSub_customer(rs.getBoolean("sub_costumer"));
                 busqueda.setCustomer_id(rs.getString("costumer_id"));
                 busqueda.setName(rs.getString("name"));
                 busqueda.setLast_name(rs.getString("last_name"));
@@ -122,7 +122,7 @@ public class CustomerRepository extends BaseRepository {
             query.setString(7, customer.getAddress());
             query.setString(8, customer.getCity());
             query.setString(9, customer.getZip_code());
-            query.setString(10, customer.getSub_customer());
+            query.setBoolean(10, customer.getSub_customer());
             query.setString(11, customer.getCustomer_id());
             query.setInt(12, customer.getId());
           

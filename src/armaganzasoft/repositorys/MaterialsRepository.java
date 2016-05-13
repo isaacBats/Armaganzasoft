@@ -26,8 +26,8 @@ public class MaterialsRepository extends BaseRepository {
                                         +"code,"
                                         +"atributo,"
                                         +"tipo,"
-                                        +"valor)"
-                                        + "VALUES(?,?,?,?);"
+                                        + "valor)"
+                                        + "VALUES(?,?,?,?,?);"
                                         );
                        
             
@@ -35,7 +35,7 @@ public class MaterialsRepository extends BaseRepository {
             query.setString(2, materials.getCode());
             query.setString(3, materials.getAtributo());
             query.setString(4, materials.getTipo());
-
+            query.setString(5, materials.getValor());
   
             
             if( !query.execute() ){
@@ -90,15 +90,14 @@ public class MaterialsRepository extends BaseRepository {
                                                            +"    code    = ?, "
                                                            +"    atributo        = ?, "
                                                            +"    tipo        = ?, "
-                                                           +"    valor        = ? "
-                                                           
+                                                           + "valor=?"
                                                            +" WHERE id = ?");
             
             query.setString(1, materials.getName());
             query.setString(2, materials.getCode());
             query.setString(3, materials.getAtributo());
             query.setString(4, materials.getTipo());
-               query.setString(5, materials.getValor());
+            query.setString(5, materials.getValor());
             query.setInt(6, materials.getId());
             
             if( !query.execute() ){

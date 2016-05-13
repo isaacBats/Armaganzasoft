@@ -93,11 +93,13 @@ public class MaquinasRepository extends BaseRepository {
 //                  System.out.println(rs.getString("name")+ " y su correo es "+rs.getString("email"));  
             
             } catch (SQLException ex) {
-            System.out.println("Erro al consultar un Cliente: "+ex);
+            System.out.println("Erro al consultar una maquina: "+ex);
         }
         return null;
     }
+   
     
+   
     public boolean edit(Machines machines){
         
         try {

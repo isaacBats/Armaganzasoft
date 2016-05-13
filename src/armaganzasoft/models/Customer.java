@@ -19,7 +19,7 @@ public class Customer {
     private String  address;
     private String  city;
     private String  zip_code;
-    private String sub_customer;
+    private Boolean sub_customer;
     private String  customer_id;
    
    
@@ -115,15 +115,15 @@ public class Customer {
     public void setZip_code(String zip_code) {
         this.zip_code = zip_code;
     }
-    
-    public String getSub_customer() {
+
+    public Boolean getSub_customer() {
         return sub_customer;
     }
 
-    public void setSub_customer(String sub_customer) {
+    public void setSub_customer(Boolean sub_customer) {
         this.sub_customer = sub_customer;
     }
-
+    
     public String getCustomer_id() {
         return customer_id;
     }
@@ -131,8 +131,5 @@ public class Customer {
     public void setCustomer_id(String customer_id) {
         this.customer_id = customer_id;
     }
-    
    
-    
-      
 }

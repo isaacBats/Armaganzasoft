@@ -75,13 +75,8 @@ public class Materials {
     public void setValor(String valor) {
         this.valor = valor;
     }
-    
-    
-    
-    
-   
-   
-   
+     
+  
 
     
 }
