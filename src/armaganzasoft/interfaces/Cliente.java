@@ -387,7 +387,7 @@ public class Cliente extends javax.swing.JFrame {
         
         
          customer = cr.buscarCliente(identified);
-            jCheckBox1.setText(customer.getSub_customer());
+            jCheckBox1.setBorderPaintedFlat(customer.getSub_customer());
             jTextField12.setText(customer.getCustomer_id());
             jTextField2.setText(customer.getName());
             jTextField3.setText(customer.getLast_name());
@@ -420,7 +420,7 @@ Customer customer;
         customer.setAddress(jTextField8.getText());
         customer.setCity(jTextField9.getText());
         customer.setZip_code(jTextField10.getText());
-        customer.setSub_customer(jTextField11.getText());
+        customer.setSub_customer(jCheckBox1.isSelected());
         customer.setCustomer_id(jTextField12.getText());
         
         
@@ -490,7 +490,7 @@ Customer customer;
         customer.setAddress(jTextField8.getText());
         customer.setCity(jTextField9.getText());
         customer.setZip_code(jTextField10.getText());
-        customer.setSub_customer(jTextField11.getText());
+        customer.setSub_customer(jCheckBox1.isSelected());
         customer.setCustomer_id(jTextField12.getText());
        
         
