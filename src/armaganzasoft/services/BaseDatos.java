@@ -1,26 +1,34 @@
 package armaganzasoft.services;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * @author Isaac Daniel
  */
 public class BaseDatos {
     
+    
+    
     private final String URL        = "jdbc:mysql://localhost:3306/";
-    private final String DB         = "armaganza";
-    private final String USER       = "armaganza";
-    private final String PASSWORD   = "armaganza";
     
     private Connection conn = null;
     
     public Connection getConnection(){
         
-        try{            
+        Properties properties = new Properties();
+        InputStream input = null;
+        
+        try{ 
+            input = new FileInputStream("config_db.properties");
+            properties.load(input);
+            
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(URL+DB, USER, PASSWORD);
+            conn = DriverManager.getConnection( URL+properties.getProperty("database"), properties.getProperty("dbuser"), properties.getProperty("dbpassword") );
             if(conn != null){
                 System.out.println("Open Connection");
             }            
