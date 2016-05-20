@@ -53,8 +53,9 @@ public class Cliente extends javax.swing.JFrame {
         jTextField8.setText("");
         jTextField9.setText("");
         jTextField10.setText("");
+        jTextField11.setText("");
         jTextField12.setText("");
-        jCheckBox1.equals(""); 
+        
                 
     }
 //
@@ -93,8 +94,9 @@ public class Cliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
         lbhora = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -152,13 +154,13 @@ public class Cliente extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, 170, 30));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("BUSCAR CLIENTE");
+        jButton1.setText("BUSCAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 140, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 90, -1));
 
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,23 +268,21 @@ public class Cliente extends javax.swing.JFrame {
         jLabel13.setText("ID_CLIENTE");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
-        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jCheckBox1.setText("SUBCLIENTE - FRENTE");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
-
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         lbhora.setForeground(new java.awt.Color(240, 240, 240));
         lbhora.setText("00:00:00");
         getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, -1, 44));
+        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 260, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setText("SUBCLIENTE - FRENTE");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 1070));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1410, 1070));
+
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CLIENTES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jMenu1.setText("NAVEGACION");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -387,7 +387,7 @@ public class Cliente extends javax.swing.JFrame {
         
         
          customer = cr.buscarCliente(identified);
-            jCheckBox1.setBorderPaintedFlat(customer.getSub_customer());
+            jTextField11.setText(customer.getSub_customer());
             jTextField12.setText(customer.getCustomer_id());
             jTextField2.setText(customer.getName());
             jTextField3.setText(customer.getLast_name());
@@ -420,7 +420,7 @@ Customer customer;
         customer.setAddress(jTextField8.getText());
         customer.setCity(jTextField9.getText());
         customer.setZip_code(jTextField10.getText());
-        customer.setSub_customer(jCheckBox1.isSelected());
+        customer.setSub_customer(jTextField11.getText());
         customer.setCustomer_id(jTextField12.getText());
         
         
@@ -490,7 +490,7 @@ Customer customer;
         customer.setAddress(jTextField8.getText());
         customer.setCity(jTextField9.getText());
         customer.setZip_code(jTextField10.getText());
-        customer.setSub_customer(jCheckBox1.isSelected());
+        customer.setSub_customer(jTextField11.getText());
         customer.setCustomer_id(jTextField12.getText());
        
         
@@ -602,11 +602,6 @@ Login inicio = new Login();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-   
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -647,9 +642,9 @@ Login inicio = new Login();
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -673,6 +668,7 @@ Login inicio = new Login();
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

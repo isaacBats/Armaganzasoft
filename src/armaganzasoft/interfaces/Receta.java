@@ -82,7 +82,7 @@ public class Receta extends javax.swing.JFrame {
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 12, 544, -1));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("BUSCAR CLAVE DE RECETA");
+        jButton1.setText("BUSCAR");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(608, 11, -1, -1));
 
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -216,6 +216,8 @@ public class Receta extends javax.swing.JFrame {
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 740));
+
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RECETA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jMenu1.setText("NAVEGACION");
 
