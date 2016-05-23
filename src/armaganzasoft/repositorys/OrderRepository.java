@@ -1,8 +1,12 @@
 package armaganzasoft.repositorys;
 
 import armaganzasoft.models.Order;
+import java.awt.List;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -61,6 +65,30 @@ public class OrderRepository extends BaseRepository {
         }finally{
             return false;
         }
-    }    
+    }
+    
+    public ResultSet getDetailForm( int formId ){
+    
+        Statement stmt = null;
+        List<String> detailForm;
+        
+        detailForm = new ArrayList<String>();
+        String sql = "SELECT df.order, ope.code, ope.name, mat.name, CONCAT(df.value, df.type) as value " +
+                     "FROM detail_form df " +
+                     "INNER JOIN operations ope on df.operation_id = ope.id " +
+                     "INNER JOIN materials mat oN df.material_id = mat.id " +
+                     "WHERE form_id = 1";
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery( sql );
+
+            while (rs.next()) {
+                detailForm.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            System.out.println("No se ejecuto el query "+ sql);
+        }
+        
+    }
     
 }
