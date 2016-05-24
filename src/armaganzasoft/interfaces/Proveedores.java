@@ -6,7 +6,6 @@
 package armaganzasoft.interfaces;
 
 import armaganzasoft.interfaces.Menu;
-import armaganzasoft.models.HiloReloj;
 import armaganzasoft.services.BaseDatos;
 import armaganzasoft.models.Provider;
 import armaganzasoft.models.Provider;
@@ -26,7 +25,6 @@ import javax.swing.JOptionPane;
  */
 public class Proveedores extends javax.swing.JFrame {
 
-    HiloReloj hilor;
     /**
      * Creates new form Proveedores
      */
@@ -35,9 +33,6 @@ public class Proveedores extends javax.swing.JFrame {
         limpiar();
         bloquear();
         desbloquear();
-        
-       hilor = new HiloReloj(lbhora);
-       hilor.start();
     }
     
     public void limpiar(){
@@ -58,7 +53,18 @@ public class Proveedores extends javax.swing.JFrame {
     
     public void desbloquear(){
          }
+    
 
+public boolean Email (String email){
+    Pattern pat=null;
+    Matcher mat=null;
+    
+    pat=Pattern.compile("^[\\w\\-\\_\\+]+{\\.[\\w\\-\\_+]]")
+    
+}
+  
+        
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,13 +92,12 @@ public class Proveedores extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        lbhora = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -113,13 +118,13 @@ public class Proveedores extends javax.swing.JFrame {
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 354, -1));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("BUSCAR");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoBuscar64w.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 16, 90, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 60, 50));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("NOTAS");
@@ -140,40 +145,41 @@ public class Proveedores extends javax.swing.JFrame {
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 543, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("ELIMINAR");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(942, 606, 155, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 260, 50, 40));
 
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton6.setText("LIMPIAR PANTALLA");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar-icon.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 606, -1, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 330, 70, 60));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("AGREGAR");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addbutton.jpg"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 606, 155, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 50, 50));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("MODIFICAR");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar boton.jpg"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(662, 606, 155, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 190, 50, 40));
 
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -219,14 +225,6 @@ public class Proveedores extends javax.swing.JFrame {
         jLabel4.setText("TELEFONO");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 341, -1, -1));
 
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 270, 284, -1));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("E - MAIL");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 272, -1, -1));
@@ -255,15 +253,20 @@ public class Proveedores extends javax.swing.JFrame {
         jLabel7.setText("PERSONA DE CONTACTO");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 136, -1, -1));
 
-        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        lbhora.setForeground(new java.awt.Color(240, 240, 240));
-        lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, -1, 44));
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
+            }
+        });
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 280, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1560, 750));
-
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PROVEEDOR", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1560, 750));
 
         jMenu1.setText("NAVEGACION");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -391,10 +394,6 @@ public class Proveedores extends javax.swing.JFrame {
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
@@ -571,6 +570,18 @@ Ordenes inicio = new Ordenes();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+
+        
+        
+        
+        
+    }//GEN-LAST:event_jTextField4FocusLost
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -643,7 +654,6 @@ Ordenes inicio = new Ordenes();
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
 }

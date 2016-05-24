@@ -6,7 +6,6 @@
 package armaganzasoft.interfaces;
 
 import armaganzasoft.interfaces.Menu;
-import armaganzasoft.models.HiloReloj;
 import armaganzasoft.models.Recipe;
 import armaganzasoft.repositorys.RecipeRepository;
 import javax.swing.JOptionPane;
@@ -16,16 +15,12 @@ import javax.swing.JOptionPane;
  * @author user
  */
 public class Receta extends javax.swing.JFrame {
-    
-    HiloReloj hilor;
 
     /**
      * Creates new form Receta
      */
     public Receta() {
         initComponents();
-         hilor = new HiloReloj(lbhora);
-       hilor.start();
     }
 
     /**
@@ -61,7 +56,6 @@ public class Receta extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jComboBox2 = new javax.swing.JComboBox<>();
-        lbhora = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -82,8 +76,8 @@ public class Receta extends javax.swing.JFrame {
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 12, 544, -1));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("BUSCAR");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(608, 11, -1, -1));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoBuscar64w.png"))); // NOI18N
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(608, 11, 60, 60));
 
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -192,13 +186,13 @@ public class Receta extends javax.swing.JFrame {
         jLabel13.setText("%");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 608, -1, -1));
 
-        jToggleButton1.setText("AGREGAR");
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addbutton.jpg"))); // NOI18N
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 640, 160, 32));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 540, 50, 50));
 
         jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OPB 101", "OPB 102", "OPB 103", "OPB 104", "OPB 105", "OPB 106", "OPB 107", "OPB 108", "OPB 109", "OPB 110", "OPB 111", "OPB 112", "OPB 113", "OPB 114", "OPB 115", "OPB 116", "OPB 117", "OPB 118", "OPB 200", "OPB 201", "OPB 202", "OPB 203", "OPB 204", "OPB 300", "OPB 301", "OPB 302", "OPB 303", "OPB 304", "OPB 401", "OPB 402", "OPB 403", "OPB 404", "OPB 500", "OPB 501", "OPB 600", "OPB 601", "OPB 602", "OPB 603" }));
@@ -207,17 +201,10 @@ public class Receta extends javax.swing.JFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(608, 102, 91, -1));
-
-        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        lbhora.setForeground(new java.awt.Color(240, 240, 240));
-        lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 10, -1, 44));
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 350, 91, -1));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 740));
-
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RECETA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jMenu1.setText("NAVEGACION");
 
@@ -502,6 +489,5 @@ Login inicio = new Login();
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
 }

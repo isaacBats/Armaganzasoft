@@ -5,7 +5,6 @@
  */
 package armaganzasoft.interfaces;
 
-import armaganzasoft.models.HiloReloj;
 import armaganzasoft.models.Materials;
 import armaganzasoft.repositorys.MaterialsRepository;
 import javax.swing.JOptionPane;
@@ -15,17 +14,22 @@ import javax.swing.JOptionPane;
  * @author ErwinValle
  */
 public class Materiales extends javax.swing.JFrame {
- HiloReloj hilor;
+
     /**
      * Creates new form Materiales
      */
     public Materiales() {
         initComponents();
           limpiar();
-           hilor = new HiloReloj(lbhora);
-       hilor.start();
     }
-    
+     public void limpiar_todo(){
+       jTextField3.setText("");
+       jTextField2.setText("");
+       jTextField4.setText("");
+       jTextField5.setText("");
+       jTextField6.setText("");        
+       }
+
     public void limpiar (){
         jTextField2.setText("");
         jTextField3.setText("");
@@ -52,20 +56,13 @@ public class Materiales extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        lbhora = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -78,6 +75,11 @@ public class Materiales extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -90,13 +92,13 @@ public class Materiales extends javax.swing.JFrame {
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 11, 587, 28));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("BUSCAR");
+        jButton1.setText("BUSCAR MATERIAL");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 11, 90, 28));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 11, 150, 28));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,11 +121,6 @@ public class Materiales extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 242, 29));
 
-        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        lbhora.setForeground(new java.awt.Color(240, 240, 240));
-        lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 10, -1, 44));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("NOMBRE");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, -1));
@@ -135,37 +132,6 @@ public class Materiales extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("ATRIBUTO");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, -1, -1));
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("AGREGAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 630, 140, 30));
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("ELIMINAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 630, 140, 30));
-
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("MODIFICAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, 140, 30));
-
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton6.setText("LIMPIAR TODO");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 630, 140, 30));
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 240, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -177,44 +143,13 @@ public class Materiales extends javax.swing.JFrame {
         jLabel6.setText("VALOR");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Atributo", "Valor"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 210, 240));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 800));
-
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MATERIALES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Wallpaper FullHD Mundo.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 780));
 
         jMenu1.setText("NAVEGACION");
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem1.setText("MAQUINAS");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +158,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem2.setText("PROVEEDORES");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +167,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem3.setText("PLANTAS");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,6 +176,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem3);
 
+        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem4.setText("CLIENTES");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,6 +185,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
+        jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem5.setText("USUARIOS");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,6 +194,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem5);
 
+        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem6.setText("FORMULAS");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,6 +203,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem6);
 
+        jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem7.setText("RECETA");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,6 +212,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem7);
 
+        jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem8.setText("ORDENES");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,6 +221,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem8);
 
+        jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem9.setText("LOGOUT");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,6 +231,51 @@ public class Materiales extends javax.swing.JFrame {
         jMenu1.add(jMenuItem9);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("OPCIONES");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        jCheckBoxMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("AGREGAR");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem1);
+
+        jCheckBoxMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem2.setSelected(true);
+        jCheckBoxMenuItem2.setText("MODIFICAR");
+        jCheckBoxMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem2);
+
+        jCheckBoxMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem3.setSelected(true);
+        jCheckBoxMenuItem3.setText("ELIMINAR");
+        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem3);
+
+        jCheckBoxMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem4.setSelected(true);
+        jCheckBoxMenuItem4.setText("LIMPIAR TODO");
+        jCheckBoxMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem4);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -301,30 +289,6 @@ public class Materiales extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-Materials materials;
-      materials = new Materials();
-      MaterialsRepository mateRepo = new MaterialsRepository();
-      
-      
-        materials.setName(jTextField2.getText());
-        materials.setCode(jTextField3.getText());
-        materials.setAtributo(jTextField4.getText());
-        materials.setTipo(jTextField5.getText());
-        materials.setValor(jTextField6.getText());
-
-        Materials busqueda= mateRepo.buscarMaterial(materials.getCode());
-        materials.setId(busqueda.getId());
-        if(mateRepo.edit(materials)){
-            
-            JOptionPane.showMessageDialog(this,"SE EDITO: "+materials.getName());
-            limpiar();
-            
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 Materials materials;
@@ -356,72 +320,6 @@ Materials materials;
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-Materials materials;
-        materials = new Materials();
-        
-          MaterialsRepository  mateRepo = new MaterialsRepository();
-       
-        materials.setName(jTextField2.getText());
-        materials.setCode(jTextField3.getText());
-        
-        
-         if( !mateRepo.addMat(materials) ){
-            System.out.println("El material "+materials.getName()+" se ha insertado Correctamente");
-        
-            
-        bloquear();
-        materials.setAtributo(jTextField4.getText());
-        materials.setTipo(jTextField5.getText());
-        materials.setValor(jTextField6.getText());
-        
-        
-        
-      
-
-        if( !mateRepo.addMat(materials) ){
-            System.out.println("El materias "+materials.getName()+" se ha insertado Correctamente");
-            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");
-            limpiar();
-        }else{
-            System.out.println("El material "+materials.getName()+" se ha insertado Correctamente");
-            JOptionPane.showMessageDialog(this,"No se pudo agregar");
-            
-        }
-         }
-                                         
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       Materials materials;
-       materials= new Materials();
-       MaterialsRepository mateRepo = new MaterialsRepository();
-        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar el Material", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
-        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
-         materials = mateRepo.buscarMaterial(jTextField3.getText());
-
-            if( mateRepo.eliminar(materials)){
-
-                
-                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL MATERIAL CORRECTAMENTE");
-
-                limpiar();
-
-            }else{
-                
-                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
-               
-
-
-            }
-        }   
-                    
-       
-
-
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 Maquinas inicio = new Maquinas();
@@ -486,6 +384,96 @@ Login inicio = new Login();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+Materials materials;
+        materials = new Materials();
+        
+          MaterialsRepository  mateRepo = new MaterialsRepository();
+       
+        materials.setName(jTextField2.getText());
+        materials.setCode(jTextField3.getText());
+        
+        
+         if( !mateRepo.addMat(materials) ){
+            System.out.println("El material "+materials.getName()+" se ha insertado Correctamente");
+        
+            
+        bloquear();
+        materials.setAtributo(jTextField4.getText());
+        materials.setTipo(jTextField5.getText());
+        materials.setValor(jTextField6.getText());
+        
+        
+        
+      
+
+        if( !mateRepo.addMat(materials) ){
+            System.out.println("El materias "+materials.getName()+" se ha insertado Correctamente");
+            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");
+            limpiar();
+        }else{
+            System.out.println("El material "+materials.getName()+" se ha insertado Correctamente");
+            JOptionPane.showMessageDialog(this,"No se pudo agregar");
+            
+        }
+         }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void jCheckBoxMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem2ActionPerformed
+Materials materials;
+      materials = new Materials();
+      MaterialsRepository mateRepo = new MaterialsRepository();
+      
+      
+        materials.setName(jTextField2.getText());
+        materials.setCode(jTextField3.getText());
+        materials.setAtributo(jTextField4.getText());
+        materials.setTipo(jTextField5.getText());
+        materials.setValor(jTextField6.getText());
+
+        Materials busqueda= mateRepo.buscarMaterial(materials.getCode());
+        materials.setId(busqueda.getId());
+        if(mateRepo.edit(materials)){
+            
+            JOptionPane.showMessageDialog(this,"SE EDITO: "+materials.getName());
+            limpiar();
+            
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem2ActionPerformed
+
+    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
+       Materials materials;
+       materials= new Materials();
+       MaterialsRepository mateRepo = new MaterialsRepository();
+        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar el Material", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
+         materials = mateRepo.buscarMaterial(jTextField3.getText());
+
+            if( mateRepo.eliminar(materials)){
+
+                
+                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL MATERIAL CORRECTAMENTE");
+
+                limpiar();
+
+            }else{
+                
+                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
+               
+
+
+            }
+        }   
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
+
+    private void jCheckBoxMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem4ActionPerformed
+limpiar_todo();
+JOptionPane.showMessageDialog(this,"MATERIAL REGISTRADO EXITOSAMENTE"); 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -523,10 +511,10 @@ Login inicio = new Login();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -534,6 +522,7 @@ Login inicio = new Login();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -544,15 +533,12 @@ Login inicio = new Login();
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
 }

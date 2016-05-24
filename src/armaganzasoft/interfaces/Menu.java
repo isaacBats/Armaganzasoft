@@ -6,10 +6,8 @@
 package armaganzasoft.interfaces;
 
 import armaganzasoft.models.HiloReloj;
-import armaganzasoft.interfaces.Login;
-
-
-
+import armaganzasoft.repositorys.UserRepository;
+import armaganzasoft.models.User;
 /**
  * Call metod to display init
  * @author rodri
@@ -17,6 +15,7 @@ import armaganzasoft.interfaces.Login;
 public class Menu extends javax.swing.JFrame {
     
      HiloReloj hilor;
+      private String  name;
 
     /**
      * Creates new form Menu
@@ -25,7 +24,13 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         hilor = new HiloReloj(lbhora);
        hilor.start();
-          }
+       User user;
+      
+        user = new User();
+        
+       jLabel2.setText("Bienvenido "+user.getName());
+      
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,7 +45,7 @@ public class Menu extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         lbhora = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        bienvenida = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -74,7 +79,7 @@ public class Menu extends javax.swing.JFrame {
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         lbhora.setForeground(new java.awt.Color(240, 240, 240));
         lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, 44));
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, 44));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setText("RECETA");
@@ -85,13 +90,12 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 391, 123, -1));
 
-        bienvenida.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        bienvenida.setForeground(new java.awt.Color(240, 240, 240));
-        bienvenida.setText("BIENVENIDO USUARIO");
-        getContentPane().add(bienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(240, 240, 240));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 250, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cementera_Puebla.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, -30, 1470, 760));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, -30, 1280, 760));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setText("PLANTAS");
@@ -167,6 +171,7 @@ Maquinas inicio = new Maquinas();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+hilor.detenerReloj();
         Login inicio = new Login();
         inicio.setVisible(true);
         dispose();
@@ -174,13 +179,15 @@ Maquinas inicio = new Maquinas();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-         Cliente inicio = new Cliente();
+ hilor.detenerReloj();
+        Cliente inicio = new Cliente();
         inicio.setVisible(true);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+hilor.detenerReloj();
         Usuarios inicio = new Usuarios();
         inicio.setVisible(true);
         dispose();
@@ -188,6 +195,7 @@ Maquinas inicio = new Maquinas();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+hilor.detenerReloj();
         Proveedores inicio = new Proveedores();
         inicio.setVisible(true);
         dispose();
@@ -195,6 +203,7 @@ Maquinas inicio = new Maquinas();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+hilor.detenerReloj();
         Plantas inicio = new Plantas();
         inicio.setVisible(true);
         dispose();
@@ -202,6 +211,7 @@ Maquinas inicio = new Maquinas();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+hilor.detenerReloj();
         Formulas inicio = new Formulas();
         inicio.setVisible(true);
         dispose();
@@ -209,6 +219,7 @@ Maquinas inicio = new Maquinas();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+hilor.detenerReloj();
         Receta inicio = new Receta();
         inicio.setVisible(true);
       dispose();
@@ -216,6 +227,7 @@ Maquinas inicio = new Maquinas();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+hilor.detenerReloj();
         Ordenes inicio = new Ordenes();
         inicio.setVisible(true);
         dispose();
@@ -223,6 +235,7 @@ Maquinas inicio = new Maquinas();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+hilor.detenerReloj();
         Materiales inicio = new Materiales();
         inicio.setVisible(true);
         dispose();
@@ -266,7 +279,6 @@ Maquinas inicio = new Maquinas();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bienvenida;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -278,6 +290,7 @@ Maquinas inicio = new Maquinas();
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
 }

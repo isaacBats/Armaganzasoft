@@ -7,7 +7,6 @@ package armaganzasoft.interfaces;
 
 
 import armaganzasoft.models.Forms;
-import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.FormulaRepository;
 import javax.swing.JOptionPane;
 
@@ -19,7 +18,6 @@ import javax.swing.JOptionPane;
  * @author user
  */
 public class Formulas extends javax.swing.JFrame {
-    HiloReloj hilor;
 
     /**
      * Creates new form Formulas
@@ -28,8 +26,6 @@ public class Formulas extends javax.swing.JFrame {
         initComponents();
         limpiar();
         limpiar_todo();
-         hilor = new HiloReloj(lbhora);
-       hilor.start();
     }
     
     
@@ -73,9 +69,6 @@ public class Formulas extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -92,8 +85,6 @@ public class Formulas extends javax.swing.JFrame {
         jTextField10 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        lbhora = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -106,6 +97,11 @@ public class Formulas extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -116,118 +112,85 @@ public class Formulas extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 280, 30));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 280, 30));
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 100, 30));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 100, 30));
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, 120, 30));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 110, -1));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 130, 30));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 120, 30));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 110, 30));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 130, 30));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setText("Buscar Formula");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(564, 11, -1, -1));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("AGREGAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 150, 40));
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("MODIFICAR");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 150, 40));
-
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("ELIMINAR");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 420, 150, 40));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("RECETA");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, 50, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 50, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("NOMBRE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 60, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 60, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("CODIGO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 60, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 50, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("OPB");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 30, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 30, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("MATERIAL");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 60, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 60, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("VALOR %");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 80, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 60, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("FORMULA");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 90, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 90, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("TARAJE PREVIO");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 110, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, -1, -1));
+        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 110, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("% TOLERANCIA");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, -1, -1));
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 120, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, -1, -1));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 120, 30));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("% VELOCIDAD");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 160, -1, -1));
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 120, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, -1, -1));
+        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 120, 30));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("HABILITADO");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 160, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 180, -1, -1));
 
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField11ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 180, 100, -1));
+        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 210, 100, 30));
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton6.setText("LIMPIAR TODO");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 130, 40));
-
-        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        lbhora.setForeground(new java.awt.Color(240, 240, 240));
-        lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, -1, 44));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Wallpaper FullHD Mundo.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1450, -1));
-
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FORMULAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jMenu1.setText("NAVEGACION");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -315,42 +278,50 @@ public class Formulas extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("OPCIONES");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        jCheckBoxMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("AGREGAR");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem1);
+
+        jCheckBoxMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem2.setSelected(true);
+        jCheckBoxMenuItem2.setText("MODIFICAR");
+        jMenu2.add(jCheckBoxMenuItem2);
+
+        jCheckBoxMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem3.setSelected(true);
+        jCheckBoxMenuItem3.setText("ELIMINAR");
+        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem3);
+
+        jCheckBoxMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem4.setSelected(true);
+        jCheckBoxMenuItem4.setText("LIMPIAR TODO");
+        jCheckBoxMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem4);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-Forms forms;
-        forms = new Forms();
-        
-       
-        forms.setCode(jTextField3.getText());
-        forms.setName(jTextField2.getText());
-        forms.setReceta(jTextField4.getText());
-        forms.setOperacion(jTextField5.getText());
-        forms.setMaterial_id(jTextField6.getText());
-        forms.setValor(jTextField7.getText());
-        forms.setTaraje(jTextField8.getText());
-        forms.setTolerancia(jTextField9.getText());
-        forms.setVelocidad(jTextField10.getText());
-        forms.setHabilitado(jTextField11.getText());
-        
-                 
-        FormulaRepository  frmRepo = new FormulaRepository();
-
-        if( !frmRepo.addFrm(forms) ){
-            System.out.println("La formula "+forms.getCode()+" se ha insertado Correctamente");
-            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");                                        
-       limpiar();
-        }else{
-            System.out.println("La formula "+forms.getCode()+" se ha insertado Correctamente");
-            JOptionPane.showMessageDialog(this,"No se pudo agregar");                                        
-        limpiar();
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -367,12 +338,6 @@ Forms forms;
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-limpiar_todo();
-JOptionPane.showMessageDialog(this,"FORMULA REGISTRADA EXITOSAMENTE"); 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 Maquinas inicio = new Maquinas();
@@ -436,6 +401,46 @@ Login inicio = new Login();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+Forms forms;
+        forms = new Forms();
+        
+       
+        forms.setCode(jTextField3.getText());
+        forms.setName(jTextField2.getText());
+        forms.setReceta(jTextField4.getText());
+        forms.setOperacion(jTextField5.getText());
+        forms.setMaterial_id(jTextField6.getText());
+        forms.setValor(jTextField7.getText());
+        forms.setTaraje(jTextField8.getText());
+        forms.setTolerancia(jTextField9.getText());
+        forms.setVelocidad(jTextField10.getText());
+        forms.setHabilitado(jTextField11.getText());
+        
+                 
+        FormulaRepository  frmRepo = new FormulaRepository();
+
+        if( !frmRepo.addFrm(forms) ){
+            System.out.println("La formula "+forms.getCode()+" se ha insertado Correctamente");
+            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");                                        
+       limpiar();
+        }else{
+            System.out.println("La formula "+forms.getCode()+" se ha insertado Correctamente");
+            JOptionPane.showMessageDialog(this,"No se pudo agregar");                                        
+        limpiar();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void jCheckBoxMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem4ActionPerformed
+limpiar_todo();
+JOptionPane.showMessageDialog(this,"FORMULA REGISTRADA EXITOSAMENTE"); 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -473,10 +478,10 @@ Login inicio = new Login();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -490,6 +495,7 @@ Login inicio = new Login();
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -511,6 +517,5 @@ Login inicio = new Login();
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
 }

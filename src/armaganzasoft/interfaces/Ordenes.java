@@ -351,8 +351,6 @@ public class Ordenes extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 80, -1));
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ORDENES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-
         jMenu1.setText("NAVEGACION");
 
         jMenuItem1.setText("MAQUINAS");

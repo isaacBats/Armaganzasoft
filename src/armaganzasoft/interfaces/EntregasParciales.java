@@ -5,8 +5,6 @@
  */
 package armaganzasoft.interfaces;
 
-import armaganzasoft.models.HiloReloj;
-
 
 
 /**
@@ -15,15 +13,11 @@ import armaganzasoft.models.HiloReloj;
  */
 public class EntregasParciales extends javax.swing.JFrame {
 
-     HiloReloj hilor;
     /**
      * Creates new form EntregasParciales
      */
     public EntregasParciales() {
         initComponents();
-         hilor = new HiloReloj(lbhora);
-       hilor.start();
-        
     }
 
     /**
@@ -46,7 +40,6 @@ public class EntregasParciales extends javax.swing.JFrame {
         button5 = new java.awt.Button();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        lbhora = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -105,11 +98,6 @@ public class EntregasParciales extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("NOTAS");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 50, -1));
-
-        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        lbhora.setForeground(new java.awt.Color(240, 240, 240));
-        lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, -1, 44));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, -1));
@@ -182,7 +170,6 @@ Menu principal=new Menu();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel lbhora;
     private java.awt.TextField textField1;
     private java.awt.TextField textField2;
     // End of variables declaration//GEN-END:variables

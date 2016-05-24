@@ -7,7 +7,6 @@
 //
 package armaganzasoft.interfaces;
 
-import armaganzasoft.models.HiloReloj;
 import armaganzasoft.models.User;
 import armaganzasoft.repositorys.UserRepository;
 import javax.swing.JOptionPane;
@@ -18,17 +17,13 @@ import javax.swing.JOptionPane;
 public class Usuarios extends javax.swing.JFrame {
     
     //private Object [][] datostabla;
-    HiloReloj hilor;
-
+    
      
     public Usuarios() {
         initComponents();
         limpiar();
         bloquear();
         desbloquear();
-        
-       hilor = new HiloReloj(lbhora);
-       hilor.start();
            }
     
     public void bloquear(){    
@@ -85,7 +80,6 @@ public class Usuarios extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        lbhora = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -104,22 +98,22 @@ public class Usuarios extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton6.setText("LIMPIAR PANTALLA");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar-icon.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, -1, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 70, 60));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("BUSCAR");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoBuscar64w.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 60, 50));
 
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
@@ -159,13 +153,13 @@ public class Usuarios extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 80, 27));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("AGREGAR");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addbutton.jpg"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 160, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 50, 50));
 
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 160, -1));
@@ -205,22 +199,22 @@ public class Usuarios extends javax.swing.JFrame {
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 160, -1));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("MODIFICAR");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar boton.jpg"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 160, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, 50, 50));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("ELIMINAR");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 520, 160, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 540, 50, 40));
 
         jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
@@ -256,6 +250,11 @@ public class Usuarios extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
+            }
+        });
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -286,15 +285,8 @@ public class Usuarios extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "alta", "baja" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 170, -1));
 
-        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        lbhora.setForeground(new java.awt.Color(240, 240, 240));
-        lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, 44));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 1860, 760));
-
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "USUARIOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Wallpaper FullHD Mundo.jpg"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1860, 760));
 
         jMenu1.setText("NAVEGACION");
         jMenu1.setToolTipText("MAQUINAS\nMATERIALES");
@@ -680,6 +672,10 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z'))evt.consume();
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6KeyTyped
 
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4FocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -755,7 +751,6 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z'))evt.consume();
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
 }

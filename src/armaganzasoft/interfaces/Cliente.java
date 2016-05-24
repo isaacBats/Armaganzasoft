@@ -8,7 +8,6 @@ package armaganzasoft.interfaces;
 
 
 import armaganzasoft.models.Customer;
-import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.CustomerRepository;
 import javax.swing.JOptionPane;
 
@@ -18,8 +17,6 @@ import javax.swing.JOptionPane;
  * @author ErwinValle
  */
 public class Cliente extends javax.swing.JFrame {
-    
-    HiloReloj hilor;
 
  
     /**
@@ -32,8 +29,6 @@ public class Cliente extends javax.swing.JFrame {
     public Cliente() {
         initComponents();
         limpiar();
-           hilor = new HiloReloj(lbhora);
-       hilor.start();
     }
    
     
@@ -53,9 +48,8 @@ public class Cliente extends javax.swing.JFrame {
         jTextField8.setText("");
         jTextField9.setText("");
         jTextField10.setText("");
-        jTextField11.setText("");
         jTextField12.setText("");
-        
+        jCheckBox1.equals("");
                 
     }
 //
@@ -71,9 +65,6 @@ public class Cliente extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jTextField9 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -94,9 +85,7 @@ public class Cliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        lbhora = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel12 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -109,6 +98,10 @@ public class Cliente extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
 
         jLabel7.setText("jLabel7");
 
@@ -126,41 +119,14 @@ public class Cliente extends javax.swing.JFrame {
         jLabel10.setText("C.P.");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 520, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("MODIFICAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 580, 170, 30));
-
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("ELIMINAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 580, 170, 30));
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("AGREGAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, 170, 30));
-
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("BUSCAR");
+        jButton1.setText("BUSCAR CLIENTE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 90, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 140, -1));
 
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,21 +234,18 @@ public class Cliente extends javax.swing.JFrame {
         jLabel13.setText("ID_CLIENTE");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
-        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        lbhora.setForeground(new java.awt.Color(240, 240, 240));
-        lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, -1, 44));
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 260, -1));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel11.setText("SUBCLIENTE - FRENTE");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jCheckBox1.setText("SUBCLIENTE - FRENTE");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1410, 1070));
-
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CLIENTES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Wallpaper FullHD Mundo.jpg"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 780));
 
         jMenu1.setText("NAVEGACION");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -370,6 +333,41 @@ public class Cliente extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("OPCIONES");
+        jMenu2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+        jCheckBoxMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("AGREGAR");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem1);
+
+        jCheckBoxMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem2.setSelected(true);
+        jCheckBoxMenuItem2.setText("MODIFICAR");
+        jCheckBoxMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem2);
+
+        jCheckBoxMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCheckBoxMenuItem3.setSelected(true);
+        jCheckBoxMenuItem3.setText("ELIMINAR");
+        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem3);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -383,8 +381,7 @@ public class Cliente extends javax.swing.JFrame {
         
        
         identified = jTextField1.getText();
-        CustomerRepository  cr = new CustomerRepository();
-        
+        CustomerRepository  cr = new CustomerRepository(); 
         
          customer = cr.buscarCliente(identified);
             jTextField11.setText(customer.getSub_customer());
@@ -405,39 +402,6 @@ public class Cliente extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-Customer customer;
-        customer = new Customer();
-        
-       
-        customer.setName(jTextField2.getText());
-        customer.setLast_name(jTextField3.getText());
-        customer.setEmail(jTextField4.getText());
-        customer.setTelephone(jTextField5.getText());
-        customer.setMovil(jTextField6.getText());
-        customer.setRfc(jTextField7.getText());
-        customer.setAddress(jTextField8.getText());
-        customer.setCity(jTextField9.getText());
-        customer.setZip_code(jTextField10.getText());
-        customer.setSub_customer(jTextField11.getText());
-        customer.setCustomer_id(jTextField12.getText());
-        
-        
-        
-        CustomerRepository  customRepo = new CustomerRepository();
-
-        if( !customRepo.addCustom(customer) ){
-            System.out.println("El cliente "+customer.getName()+" se ha insertado Correctamente");
-            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");
-            limpiar();
-        }else{
-            System.out.println("El cliente "+customer.getName()+" }NO se inserto Correctamente");
-            JOptionPane.showMessageDialog(this,"No se pudo agregar");
-            limpiar();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
@@ -474,65 +438,6 @@ Customer customer;
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField12ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-Customer customer;
-      
-        customer = new Customer();
-        CustomerRepository  CustomRepo = new CustomerRepository();
-        
-         customer.setName(jTextField2.getText());
-        customer.setLast_name(jTextField3.getText());
-        customer.setEmail(jTextField4.getText());
-        customer.setTelephone(jTextField5.getText());
-        customer.setMovil(jTextField6.getText());
-        customer.setRfc(jTextField7.getText());
-        customer.setAddress(jTextField8.getText());
-        customer.setCity(jTextField9.getText());
-        customer.setZip_code(jTextField10.getText());
-        customer.setSub_customer(jTextField11.getText());
-        customer.setCustomer_id(jTextField12.getText());
-       
-        
-        Customer busqueda= CustomRepo.buscarCliente(customer.getRfc());
-        customer.setId(busqueda.getId());
-       if( CustomRepo.edit(customer) ){
-            
-            JOptionPane.showMessageDialog(this,"SE EDITO: "+customer.getName());
-            limpiar();
-         
-       }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-Customer customer;
-      
-        customer = new Customer();
-        CustomerRepository  CustomRepo = new CustomerRepository();
-        
-        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar el Cliente", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
-        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
-            customer = CustomRepo.buscarCliente(jTextField7.getText());
-
-            if( CustomRepo.eliminar(customer)){
-
-                
-                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL CLIENTE CORRECTAMENTE");
-
-                limpiar();
-
-            }else{
-                
-                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
-               
-
-
-            }
-        }                                           
-                  // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -602,6 +507,105 @@ Login inicio = new Login();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+  
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+Customer customer;
+        customer = new Customer();
+        
+       
+        customer.setName(jTextField2.getText());
+        customer.setLast_name(jTextField3.getText());
+        customer.setEmail(jTextField4.getText());
+        customer.setTelephone(jTextField5.getText());
+        customer.setMovil(jTextField6.getText());
+        customer.setRfc(jTextField7.getText());
+        customer.setAddress(jTextField8.getText());
+        customer.setCity(jTextField9.getText());
+        customer.setZip_code(jTextField10.getText());
+        customer.setSub_customer(jTextField11.getText());
+        customer.setCustomer_id(jTextField12.getText());
+        
+        
+        
+        CustomerRepository  customRepo = new CustomerRepository();
+
+        if( !customRepo.addCustom(customer) ){
+            System.out.println("El cliente "+customer.getName()+" se ha insertado Correctamente");
+            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");
+            limpiar();
+        }else{
+            System.out.println("El cliente "+customer.getName()+" }NO se inserto Correctamente");
+            JOptionPane.showMessageDialog(this,"No se pudo agregar");
+            limpiar();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void jCheckBoxMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem2ActionPerformed
+Customer customer;
+      
+        customer = new Customer();
+        CustomerRepository  CustomRepo = new CustomerRepository();
+        
+         customer.setName(jTextField2.getText());
+        customer.setLast_name(jTextField3.getText());
+        customer.setEmail(jTextField4.getText());
+        customer.setTelephone(jTextField5.getText());
+        customer.setMovil(jTextField6.getText());
+        customer.setRfc(jTextField7.getText());
+        customer.setAddress(jTextField8.getText());
+        customer.setCity(jTextField9.getText());
+        customer.setZip_code(jTextField10.getText());
+        customer.setSub_customer(jTextField11.getText());
+        customer.setCustomer_id(jTextField12.getText());
+       
+        
+        Customer busqueda= CustomRepo.buscarCliente(customer.getRfc());
+        customer.setId(busqueda.getId());
+       if( CustomRepo.edit(customer) ){
+            
+            JOptionPane.showMessageDialog(this,"SE EDITO: "+customer.getName());
+            limpiar();
+         
+       }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem2ActionPerformed
+
+    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
+Customer customer;
+      
+        customer = new Customer();
+        CustomerRepository  CustomRepo = new CustomerRepository();
+        
+        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar el Cliente", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
+            customer = CustomRepo.buscarCliente(jTextField7.getText());
+
+            if( CustomRepo.eliminar(customer)){
+
+                
+                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL CLIENTE CORRECTAMENTE");
+
+                limpiar();
+
+            }else{
+                
+                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
+               
+
+
+            }
+        }                                           
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -639,12 +643,12 @@ Login inicio = new Login();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -656,6 +660,7 @@ Login inicio = new Login();
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -668,7 +673,6 @@ Login inicio = new Login();
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -678,7 +682,6 @@ Login inicio = new Login();
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
 
 private javax.swing.JOptionPane mensaje;
