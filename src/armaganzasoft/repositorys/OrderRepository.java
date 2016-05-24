@@ -69,26 +69,23 @@ public class OrderRepository extends BaseRepository {
     
     public ResultSet getDetailForm( int formId ){
     
-        Statement stmt = null;
-        List<String> detailForm;
+        Statement stmt = null;       
         
-        detailForm = new ArrayList<String>();
         String sql = "SELECT df.order, ope.code, ope.name, mat.name, CONCAT(df.value, df.type) as value " +
                      "FROM detail_form df " +
                      "INNER JOIN operations ope on df.operation_id = ope.id " +
                      "INNER JOIN materials mat oN df.material_id = mat.id " +
-                     "WHERE form_id = 1";
+                     "WHERE form_id = " + formId;
         try {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery( sql );
 
-            while (rs.next()) {
-                detailForm.add(rs.getString(1));
-            }
+            return rs;
         } catch (SQLException e) {
             System.out.println("No se ejecuto el query "+ sql);
         }
         
+        return null;
     }
     
 }
