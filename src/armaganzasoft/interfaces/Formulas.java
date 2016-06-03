@@ -7,6 +7,7 @@ package armaganzasoft.interfaces;
 
 
 import armaganzasoft.models.Forms;
+import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.FormulaRepository;
 import javax.swing.JOptionPane;
 
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author user
  */
 public class Formulas extends javax.swing.JFrame {
+    HiloReloj hilor;
 
     /**
      * Creates new form Formulas
@@ -25,13 +27,15 @@ public class Formulas extends javax.swing.JFrame {
     public Formulas() {
         initComponents();
         limpiar();
-        limpiar_todo();
+       hilor = new HiloReloj(lbhora);
+       hilor.start();
     }
     
-    
-    public void limpiar_todo(){
-       jTextField3.setText("");
+    public void limpiar(){
+      
+       jTextField1.setText("");        
        jTextField2.setText("");
+       jTextField3.setText("");
        jTextField4.setText("");
        jTextField5.setText("");
        jTextField6.setText("");        
@@ -40,18 +44,35 @@ public class Formulas extends javax.swing.JFrame {
        jTextField9.setText("");
        jTextField10.setText("");
        jTextField11.setText("");
-       }
-
-    
-    public void limpiar(){
-       jTextField5.setText("");
-       jTextField6.setText("");        
-       jTextField7.setText("");
-       jTextField8.setText("");
-       jTextField9.setText("");
-       jTextField10.setText("");
-       jTextField11.setText("");
-       }
+       jTextField12.setText("");        
+       jTextField13.setText("");
+       jTextField14.setText("");
+       jTextField15.setText("");
+       jTextField16.setText("");
+       jTextField17.setText("");
+       jTextField18.setText("");        
+       jTextField19.setText("");
+       jTextField20.setText("");
+       jTextField21.setText("");
+       jTextField22.setText("");
+       jTextField23.setText("");
+       jTextField24.setText("");        
+       jTextField25.setText("");
+       jTextField26.setText("");
+       jTextField27.setText("");
+       jTextField28.setText("");
+       jTextField29.setText("");
+       jTextField30.setText("");        
+       jTextField31.setText("");
+       jTextField32.setText("");
+       jTextField33.setText("");
+       jTextField34.setText("");
+       jTextField35.setText("");
+       jTextField36.setText("");        
+       jTextField37.setText("");
+       jTextField38.setText("");
+       jTextField39.setText("");
+         }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,30 +83,59 @@ public class Formulas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbhora = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jTextField14 = new javax.swing.JTextField();
+        jTextField15 = new javax.swing.JTextField();
+        jTextField16 = new javax.swing.JTextField();
+        jTextField17 = new javax.swing.JTextField();
+        jTextField18 = new javax.swing.JTextField();
+        jTextField19 = new javax.swing.JTextField();
+        jTextField20 = new javax.swing.JTextField();
+        jTextField21 = new javax.swing.JTextField();
+        jTextField22 = new javax.swing.JTextField();
+        jTextField23 = new javax.swing.JTextField();
+        jTextField24 = new javax.swing.JTextField();
+        jTextField25 = new javax.swing.JTextField();
+        jTextField26 = new javax.swing.JTextField();
+        jTextField27 = new javax.swing.JTextField();
+        jTextField28 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField29 = new javax.swing.JTextField();
+        jTextField30 = new javax.swing.JTextField();
+        jTextField31 = new javax.swing.JTextField();
+        jTextField32 = new javax.swing.JTextField();
+        jTextField33 = new javax.swing.JTextField();
+        jTextField34 = new javax.swing.JTextField();
+        jTextField35 = new javax.swing.JTextField();
+        jTextField36 = new javax.swing.JTextField();
+        jTextField37 = new javax.swing.JTextField();
+        jTextField38 = new javax.swing.JTextField();
+        jTextField39 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -96,15 +146,14 @@ public class Formulas extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        lbhora.setForeground(new java.awt.Color(240, 240, 240));
+        lbhora.setText("00:00:00");
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 10, -1, 44));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 12, 482, 30));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -112,91 +161,191 @@ public class Formulas extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 280, 30));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 280, 30));
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 100, 30));
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 120, 30));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 110, 30));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 130, 30));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 100, 30));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 100, 30));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("Buscar Formula");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(564, 11, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("RECETA");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 50, -1));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.jpg"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("NOMBRE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 60, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 60, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("CODIGO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 50, -1));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("OPB");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 30, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("MATERIAL");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 60, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 60, 20));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("VALOR %");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 60, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 133, 80, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 155, 90, -1));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 155, 130, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setText("FORMULA");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 90, 30));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("DESCRIPCION");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 132, -1, -1));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 186, 100, -1));
+        getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 224, 100, -1));
+        getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 262, 100, -1));
+        getContentPane().add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 100, -1));
+        getContentPane().add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 338, 100, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setText("TARAJE PREVIO");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, -1, -1));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 110, 30));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setText("% TOLERANCIA");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, -1, -1));
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 120, 30));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel11.setText("% VELOCIDAD");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, -1, -1));
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 120, 30));
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel12.setText("HABILITADO");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 180, -1, -1));
-
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        jTextField16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                jTextField16ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 210, 100, 30));
+        getContentPane().add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 100, -1));
+        getContentPane().add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 186, 130, -1));
+        getContentPane().add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 224, 130, -1));
+        getContentPane().add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 262, 130, -1));
+        getContentPane().add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 300, 130, -1));
+        getContentPane().add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 338, 130, -1));
+        getContentPane().add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 376, 130, -1));
+        getContentPane().add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 186, 90, -1));
+        getContentPane().add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 224, 90, -1));
+        getContentPane().add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 262, 90, -1));
+        getContentPane().add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 300, 90, -1));
+        getContentPane().add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 338, 90, -1));
+        getContentPane().add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 376, 90, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Wallpaper FullHD Mundo.jpg"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1450, -1));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1464223778_gnome-session-halt.png"))); // NOI18N
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 30, 30));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addbutton.jpg"))); // NOI18N
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 490, 70, 70));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 500, 70, 70));
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1464223990_system-software-update.png"))); // NOI18N
+        jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 400, 70, 70));
+
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar-icon.png"))); // NOI18N
+        jButton6.setBorderPainted(false);
+        jButton6.setContentAreaFilled(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 400, 70, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
+        jLabel7.setText("SOLUCIONES EN INGENIERIA ZARATE");
+        jLabel7.setToolTipText("");
+        jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 530, -1, -1));
+        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 100, -1));
+
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 130, -1));
+
+        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField10ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 100, -1));
+        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 100, -1));
+        getContentPane().add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 130, -1));
+        getContentPane().add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 100, -1));
+
+        jTextField31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField31ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 100, -1));
+        getContentPane().add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 130, -1));
+        getContentPane().add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 100, -1));
+
+        jTextField34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField34ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 100, -1));
+        getContentPane().add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 130, -1));
+
+        jTextField36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField36ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 100, -1));
+
+        jTextField37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField37ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 100, -1));
+        getContentPane().add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 130, -1));
+        getContentPane().add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, 100, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo gris.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 730));
+
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FORMULAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jMenu1.setText("NAVEGACION");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem1.setText("MAQUINAS");
+        jMenuItem1.setText("COMPONENTES");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -250,7 +399,7 @@ public class Formulas extends javax.swing.JFrame {
         jMenu1.add(jMenuItem6);
 
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem7.setText("RECETA");
+        jMenuItem7.setText("PROCESO");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -267,56 +416,7 @@ public class Formulas extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem8);
 
-        jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem9.setText("LOGOUT");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem9);
-
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("OPCIONES");
-        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-
-        jCheckBoxMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("AGREGAR");
-        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jCheckBoxMenuItem1);
-
-        jCheckBoxMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jCheckBoxMenuItem2.setSelected(true);
-        jCheckBoxMenuItem2.setText("MODIFICAR");
-        jMenu2.add(jCheckBoxMenuItem2);
-
-        jCheckBoxMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jCheckBoxMenuItem3.setSelected(true);
-        jCheckBoxMenuItem3.setText("ELIMINAR");
-        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jCheckBoxMenuItem3);
-
-        jCheckBoxMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jCheckBoxMenuItem4.setSelected(true);
-        jCheckBoxMenuItem4.setText("LIMPIAR TODO");
-        jCheckBoxMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jCheckBoxMenuItem4);
-
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -331,115 +431,299 @@ public class Formulas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-Maquinas inicio = new Maquinas();
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+Login inicio = new Login();
         inicio.setVisible(true);
         dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-Materiales inicio = new Materiales();
-        inicio.setVisible(true);
-        dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-Proveedores inicio = new Proveedores();
-        inicio.setVisible(true);
-        dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-Plantas inicio = new Plantas();
-        inicio.setVisible(true);
-        dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-Cliente inicio = new Cliente();
-        inicio.setVisible(true);
-        dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-Usuarios inicio = new Usuarios();
-        inicio.setVisible(true);
-        dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-Receta inicio = new Receta();
-        inicio.setVisible(true);
-      dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-Ordenes inicio = new Ordenes();
+        Ordenes inicio = new Ordenes();
         inicio.setVisible(true);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-Login inicio = new Login();
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        Proceso inicio = new Proceso();
         inicio.setVisible(true);
         dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        Usuarios inicio = new Usuarios();
+        inicio.setVisible(true);
+        dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        Cliente inicio = new Cliente();
+        inicio.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        Plantas inicio = new Plantas();
+        inicio.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        Proveedores inicio = new Proveedores();
+        inicio.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Materiales inicio = new Materiales();
+        inicio.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Componentes inicio = new Componentes();
+        inicio.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+limpiar();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+   Forms forms;
+        String identified = "";
+        forms = new Forms();
+        
+        identified = jTextField1.getText();
+        FormulaRepository  cr = new  FormulaRepository(); 
+        
+            forms = cr.buscarFormula(identified);
+            
+            jTextField3.setText(forms.getCode());
+            jTextField2.setText(forms.getName());
+            jTextField6.setText(forms.getMaterial_id());
+            jTextField4.setText(forms.getDescripcion());
+            jTextField7.setText(forms.getValor());
+            jTextField5.setText(forms.getMaterial_id1());
+            jTextField17.setText(forms.getDescripcion1());
+            jTextField23.setText(forms.getValor1());
+            jTextField12.setText(forms.getMaterial_id2());
+            jTextField18.setText(forms.getDescripcion2());
+            jTextField24.setText(forms.getValor2());
+            jTextField13.setText(forms.getMaterial_id3());
+            jTextField19.setText(forms.getDescripcion3());
+            jTextField25.setText(forms.getValor3());
+            jTextField14.setText(forms.getMaterial_id4());
+            jTextField20.setText(forms.getDescripcion4());
+            jTextField26.setText(forms.getValor4());
+            jTextField15.setText(forms.getMaterial_id5());
+            jTextField21.setText(forms.getDescripcion5());
+            jTextField27.setText(forms.getValor5());
+            jTextField16.setText(forms.getMaterial_id6());
+            jTextField22.setText(forms.getDescripcion6());
+            jTextField28.setText(forms.getValor6());
+            jTextField8.setText(forms.getMaterial_id7());
+            jTextField9.setText(forms.getDescripcion7());
+            jTextField10.setText(forms.getValor7());
+            jTextField11.setText(forms.getMaterial_id8());
+            jTextField29.setText(forms.getDescripcion8());
+            jTextField30.setText(forms.getValor8());
+            jTextField31.setText(forms.getMaterial_id9());
+            jTextField32.setText(forms.getDescripcion9());
+            jTextField33.setText(forms.getValor9());
+            jTextField34.setText(forms.getMaterial_id10());
+            jTextField35.setText(forms.getDescripcion10());
+            jTextField36.setText(forms.getValor10());
+            jTextField37.setText(forms.getMaterial_id11());
+            jTextField38.setText(forms.getDescripcion11());
+            jTextField39.setText(forms.getValor11());
+            
+            
+           
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        Forms forms;
+        forms = new Forms();
+        FormulaRepository  FrmRepo = new FormulaRepository();
+        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar la Formula", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
+            forms = FrmRepo.buscarFormula(jTextField3.getText());
+
+            if( FrmRepo.eliminar(forms)){
+
+                
+                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO LA FORMULA CORRECTAMENTE");
+
+                limpiar();
+
+            }else{
+                
+                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
+               
+
+
+            }
+        }   
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
 Forms forms;
         forms = new Forms();
         
-       
+            
         forms.setCode(jTextField3.getText());
         forms.setName(jTextField2.getText());
-        forms.setReceta(jTextField4.getText());
-        forms.setOperacion(jTextField5.getText());
         forms.setMaterial_id(jTextField6.getText());
+        forms.setDescripcion(jTextField4.getText());
         forms.setValor(jTextField7.getText());
-        forms.setTaraje(jTextField8.getText());
-        forms.setTolerancia(jTextField9.getText());
-        forms.setVelocidad(jTextField10.getText());
-        forms.setHabilitado(jTextField11.getText());
+        forms.setMaterial_id1(jTextField5.getText());
+        forms.setDescripcion1(jTextField17.getText());
+        forms.setValor1(jTextField23.getText());
+        forms.setMaterial_id2(jTextField12.getText());
+        forms.setDescripcion2(jTextField18.getText());
+        forms.setValor2(jTextField24.getText());
+        forms.setMaterial_id3(jTextField13.getText());
+        forms.setDescripcion3(jTextField19.getText());
+        forms.setValor3(jTextField25.getText());
+        forms.setMaterial_id4(jTextField14.getText());
+        forms.setDescripcion4(jTextField20.getText());
+        forms.setValor4(jTextField26.getText());
+        forms.setMaterial_id5(jTextField15.getText());
+        forms.setDescripcion5(jTextField21.getText());
+        forms.setValor5(jTextField27.getText());
+        forms.setMaterial_id6(jTextField16.getText());
+        forms.setDescripcion6(jTextField22.getText());
+        forms.setValor6(jTextField28.getText());
+        forms.setMaterial_id7(jTextField8.getText());
+        forms.setDescripcion7(jTextField9.getText());
+        forms.setValor7(jTextField10.getText());
+        forms.setMaterial_id8(jTextField11.getText());
+        forms.setDescripcion8(jTextField29.getText());
+        forms.setValor8(jTextField30.getText());
+        forms.setMaterial_id9(jTextField31.getText());
+        forms.setDescripcion9(jTextField32.getText());
+        forms.setValor9(jTextField33.getText());
+        forms.setMaterial_id10(jTextField34.getText());
+        forms.setDescripcion10(jTextField35.getText());
+        forms.setValor10(jTextField36.getText());
+        forms.setMaterial_id11(jTextField37.getText());
+        forms.setDescripcion11(jTextField38.getText());
+        forms.setValor11(jTextField39.getText());
         
-                 
         FormulaRepository  frmRepo = new FormulaRepository();
 
-        if( !frmRepo.addFrm(forms) ){
-            System.out.println("La formula "+forms.getCode()+" se ha insertado Correctamente");
-            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");                                        
-       limpiar();
-        }else{
-            System.out.println("La formula "+forms.getCode()+" se ha insertado Correctamente");
+        if( frmRepo.addFrm(forms) ){            
             JOptionPane.showMessageDialog(this,"No se pudo agregar");                                        
-        limpiar();
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+limpiar();
+        }else{
+            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE");
+limpiar();
+         
+        }
 
-    private void jCheckBoxMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem4ActionPerformed
-limpiar_todo();
-JOptionPane.showMessageDialog(this,"FORMULA REGISTRADA EXITOSAMENTE"); 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem4ActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+Forms forms;
+      
+        forms = new Forms();
+        FormulaRepository  FrmRepo = new FormulaRepository();
+
+         forms.setCode(jTextField3.getText());
+        forms.setName(jTextField2.getText());
+        forms.setMaterial_id(jTextField6.getText());
+        forms.setDescripcion(jTextField4.getText());
+        forms.setValor(jTextField7.getText());
+        forms.setMaterial_id1(jTextField5.getText());
+        forms.setDescripcion1(jTextField17.getText());
+        forms.setValor1(jTextField23.getText());
+        forms.setMaterial_id2(jTextField12.getText());
+        forms.setDescripcion2(jTextField18.getText());
+        forms.setValor2(jTextField24.getText());
+        forms.setMaterial_id3(jTextField13.getText());
+        forms.setDescripcion3(jTextField19.getText());
+        forms.setValor3(jTextField25.getText());
+        forms.setMaterial_id4(jTextField14.getText());
+        forms.setDescripcion4(jTextField20.getText());
+        forms.setValor4(jTextField26.getText());
+        forms.setMaterial_id5(jTextField15.getText());
+        forms.setDescripcion5(jTextField21.getText());
+        forms.setValor5(jTextField27.getText());
+        forms.setMaterial_id6(jTextField16.getText());
+        forms.setDescripcion6(jTextField22.getText());
+        forms.setValor6(jTextField28.getText());
+        forms.setMaterial_id7(jTextField8.getText());
+        forms.setDescripcion7(jTextField9.getText());
+        forms.setValor7(jTextField10.getText());
+        forms.setMaterial_id8(jTextField11.getText());
+        forms.setDescripcion8(jTextField29.getText());
+        forms.setValor8(jTextField30.getText());
+        forms.setMaterial_id9(jTextField31.getText());
+        forms.setDescripcion9(jTextField32.getText());
+        forms.setValor9(jTextField33.getText());
+        forms.setMaterial_id10(jTextField34.getText());
+        forms.setDescripcion10(jTextField35.getText());
+        forms.setValor10(jTextField36.getText());
+        forms.setMaterial_id11(jTextField37.getText());
+        forms.setDescripcion11(jTextField38.getText());
+        forms.setValor11(jTextField39.getText());
+               
+        Forms busqueda= FrmRepo.buscarFormula(forms.getCode());
+        forms.setId(busqueda.getId());
+       if( FrmRepo.edit(forms) ){
+            
+            JOptionPane.showMessageDialog(this,"SE EDITO: "+forms.getName());
+            limpiar();
+         
+        }
+        
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField16ActionPerformed
+
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10ActionPerformed
+
+    private void jTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField31ActionPerformed
+
+    private void jTextField34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField34ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField34ActionPerformed
+
+    private void jTextField36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField36ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField36ActionPerformed
+
+    private void jTextField37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField37ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField37ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -478,24 +762,19 @@ JOptionPane.showMessageDialog(this,"FORMULA REGISTRADA EXITOSAMENTE");
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -505,17 +784,46 @@ JOptionPane.showMessageDialog(this,"FORMULA REGISTRADA EXITOSAMENTE");
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField jTextField21;
+    private javax.swing.JTextField jTextField22;
+    private javax.swing.JTextField jTextField23;
+    private javax.swing.JTextField jTextField24;
+    private javax.swing.JTextField jTextField25;
+    private javax.swing.JTextField jTextField26;
+    private javax.swing.JTextField jTextField27;
+    private javax.swing.JTextField jTextField28;
+    private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField30;
+    private javax.swing.JTextField jTextField31;
+    private javax.swing.JTextField jTextField32;
+    private javax.swing.JTextField jTextField33;
+    private javax.swing.JTextField jTextField34;
+    private javax.swing.JTextField jTextField35;
+    private javax.swing.JTextField jTextField36;
+    private javax.swing.JTextField jTextField37;
+    private javax.swing.JTextField jTextField38;
+    private javax.swing.JTextField jTextField39;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
+private javax.swing.JOptionPane mensaje;
 }
