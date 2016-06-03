@@ -1,7 +1,7 @@
 package armaganzasoft.repositorys;
 
 import armaganzasoft.models.Measurement;
-import armaganzasoft.models.Recipe;
+import armaganzasoft.models.Process;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import armaganzasoft.repositorys.BaseRepository;

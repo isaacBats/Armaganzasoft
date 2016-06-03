@@ -26,8 +26,16 @@ public class MaterialsRepository extends BaseRepository {
                                         +"code,"
                                         +"atributo,"
                                         +"tipo,"
-                                        + "valor)"
-                                        + "VALUES(?,?,?,?,?);"
+                                        + "valor,"
+                                        + "atributo1,"
+                                        + "valor1,"
+                                        + "atributo2,"
+                                        + "valor2,"
+                                        + "atributo3,"
+                                        + "valor3,"
+                                        + "atributo4,"
+                                        + "valor4)"
+                                        + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);"
                                         );
                        
             
@@ -36,7 +44,14 @@ public class MaterialsRepository extends BaseRepository {
             query.setString(3, materials.getAtributo());
             query.setString(4, materials.getTipo());
             query.setString(5, materials.getValor());
-  
+            query.setString(6, materials.getAtributo1());
+            query.setString(7, materials.getValor1());
+            query.setString(8, materials.getAtributo2());
+            query.setString(9, materials.getValor2());
+            query.setString(10, materials.getAtributo3());
+            query.setString(11, materials.getValor3());
+            query.setString(12, materials.getAtributo4());
+            query.setString(13, materials.getValor4());
             
             if( !query.execute() ){
                 return true;
@@ -66,8 +81,16 @@ public class MaterialsRepository extends BaseRepository {
                 busqueda.setName(rs.getString("name"));
                 busqueda.setCode(rs.getString("code"));
                 busqueda.setAtributo(rs.getString("atributo"));
-                busqueda.setAtributo(rs.getString("tipo"));
-                busqueda.setAtributo(rs.getString("valor"));
+                busqueda.setTipo(rs.getString("tipo"));
+                busqueda.setValor(rs.getString("valor"));
+                busqueda.setAtributo1(rs.getString("atributo1"));
+                busqueda.setValor1(rs.getString("valor1"));
+                busqueda.setAtributo2(rs.getString("atributo2"));
+                busqueda.setValor2(rs.getString("valor2"));
+                busqueda.setAtributo3(rs.getString("atributo3"));
+                busqueda.setValor3(rs.getString("valor3"));
+                busqueda.setAtributo4(rs.getString("atributo4"));
+                busqueda.setValor4(rs.getString("valor4"));
                 busqueda.setId(rs.getInt("id"));
                 
                 }             
@@ -90,7 +113,15 @@ public class MaterialsRepository extends BaseRepository {
                                                            +"    code    = ?, "
                                                            +"    atributo        = ?, "
                                                            +"    tipo        = ?, "
-                                                           + "valor=?"
+                                                           + "valor=?,"
+                                                           + "atributo1=?,"
+                                                           + "valor1=?,"
+                                                           + "atributo2=?,"
+                                                           + "valor2=?,"
+                                                           + "atributo3=?,"
+                                                           + "valor3=?,"
+                                                           + "atributo4=?,"
+                                                           + "valor4=?"
                                                            +" WHERE id = ?");
             
             query.setString(1, materials.getName());
@@ -98,7 +129,15 @@ public class MaterialsRepository extends BaseRepository {
             query.setString(3, materials.getAtributo());
             query.setString(4, materials.getTipo());
             query.setString(5, materials.getValor());
-            query.setInt(6, materials.getId());
+            query.setString(6, materials.getAtributo1());
+            query.setString(7, materials.getValor1());
+            query.setString(8, materials.getAtributo2());
+            query.setString(9, materials.getValor2());
+            query.setString(10, materials.getAtributo3());
+            query.setString(11, materials.getValor3());
+            query.setString(12, materials.getAtributo4());
+            query.setString(13, materials.getValor4());
+            query.setInt(14, materials.getId());
             
             if( !query.execute() ){
                 System.out.println("Se modifico el material correctamente");
