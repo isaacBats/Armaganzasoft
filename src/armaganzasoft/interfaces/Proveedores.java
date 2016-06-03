@@ -5,17 +5,9 @@
  */
 package armaganzasoft.interfaces;
 
-import armaganzasoft.interfaces.Menu;
-import armaganzasoft.services.BaseDatos;
-import armaganzasoft.models.Provider;
+import armaganzasoft.models.HiloReloj;
 import armaganzasoft.models.Provider;
 import armaganzasoft.repositorys.ProveedoresRepository;
-import armaganzasoft.repositorys.UserRepository;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
         
 
@@ -24,12 +16,15 @@ import javax.swing.JOptionPane;
  * @author Rodrigo
  */
 public class Proveedores extends javax.swing.JFrame {
+    HiloReloj hilor;
 
     /**
      * Creates new form Proveedores
      */
     public Proveedores() {
         initComponents();
+        hilor = new HiloReloj(lbhora);
+       hilor.start();
         limpiar();
         bloquear();
         desbloquear();
@@ -54,14 +49,14 @@ public class Proveedores extends javax.swing.JFrame {
     public void desbloquear(){
          }
     
-
+/*
 public boolean Email (String email){
     Pattern pat=null;
     Matcher mat=null;
     
     pat=Pattern.compile("^[\\w\\-\\_\\+]+{\\.[\\w\\-\\_+]]")
     
-}
+}*/
   
         
         
@@ -98,6 +93,10 @@ public boolean Email (String email){
         jTextField7 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        lbhora = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -115,27 +114,30 @@ public boolean Email (String email){
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 354, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 430, -1));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoBuscar64w.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 60, 50));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 70, 70));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("NOTAS");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 82, -1, -1));
 
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 66, 284, -1));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 284, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("ID PROVEEDOR");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 68, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 541, 284, -1));
@@ -146,40 +148,52 @@ public boolean Email (String email){
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 260, 50, 40));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 370, 50, 40));
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar-icon.png"))); // NOI18N
+        jButton6.setBorder(null);
+        jButton6.setBorderPainted(false);
+        jButton6.setContentAreaFilled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 330, 70, 60));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 440, 70, 60));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addbutton.jpg"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 50, 50));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 220, 50, 50));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar boton.jpg"))); // NOI18N
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 190, 50, 40));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 300, 50, 40));
 
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -247,11 +261,11 @@ public boolean Email (String email){
                 jTextField7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 134, 284, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 284, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("PERSONA DE CONTACTO");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 136, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -265,8 +279,31 @@ public boolean Email (String email){
         });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 280, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/planet_1920x1200.jpg"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1560, 750));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton5.setBorder(null);
+        jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 0, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 20, -1, -1));
+
+        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        lbhora.setForeground(new java.awt.Color(240, 240, 240));
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, 100, 40));
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 90, -1, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo gris.jpg"))); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 760));
+
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PROVEEDORES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jMenu1.setText("NAVEGACION");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -326,7 +363,7 @@ public boolean Email (String email){
         jMenu1.add(jMenuItem6);
 
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem7.setText("RECETA");
+        jMenuItem7.setText("PROCESO");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -508,7 +545,7 @@ Provider provider;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-Maquinas inicio = new Maquinas();
+Componentes inicio = new Componentes();
         inicio.setVisible(true);
         dispose();
         // TODO add your handling code here:
@@ -550,7 +587,7 @@ Formulas inicio = new Formulas();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-Receta inicio = new Receta();
+Proceso inicio = new Proceso();
         inicio.setVisible(true);
       dispose();
         // TODO add your handling code here:
@@ -581,6 +618,12 @@ Ordenes inicio = new Ordenes();
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+Login inicio = new Login();
+        inicio.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -622,9 +665,12 @@ Ordenes inicio = new Ordenes();
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -654,6 +700,7 @@ Ordenes inicio = new Ordenes();
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
 }

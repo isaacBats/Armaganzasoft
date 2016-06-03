@@ -7,15 +7,17 @@
 //
 package armaganzasoft.interfaces;
 
+import armaganzasoft.models.HiloReloj;
 import armaganzasoft.models.User;
 import armaganzasoft.repositorys.UserRepository;
+import static java.awt.event.KeyEvent.VK_SPACE;
 import javax.swing.JOptionPane;
 
 
  // @author ErwinValle
 
 public class Usuarios extends javax.swing.JFrame {
-    
+    HiloReloj hilor;
     //private Object [][] datostabla;
     
      
@@ -24,6 +26,9 @@ public class Usuarios extends javax.swing.JFrame {
         limpiar();
         bloquear();
         desbloquear();
+        
+         hilor = new HiloReloj(lbhora);
+       hilor.start();
            }
     
     public void bloquear(){    
@@ -80,6 +85,10 @@ public class Usuarios extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
+        lbhora = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -91,7 +100,6 @@ public class Usuarios extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -99,21 +107,27 @@ public class Usuarios extends javax.swing.JFrame {
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar-icon.png"))); // NOI18N
+        jButton6.setBorder(null);
+        jButton6.setBorderPainted(false);
+        jButton6.setContentAreaFilled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 70, 60));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 70, 70));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoBuscar64w.png"))); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 60, 50));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 70, 70));
 
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +135,7 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 315, -1));
+        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 10, 420, 30));
 
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -129,11 +143,11 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 160, -1));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 160, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("USUARIO");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -146,27 +160,30 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField1KeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 170, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 170, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("NOMBRE ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 80, 27));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 80, 27));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addbutton.jpg"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo_usuario.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 50, 50));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 60, 60));
 
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 160, -1));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("PASSWORD");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, -1, -1));
 
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -179,11 +196,11 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField2KeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 170, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 170, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("APELLIDOS");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -196,25 +213,31 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField7KeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 160, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 160, -1));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar boton.jpg"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, 50, 50));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 70, 70));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/trash.png"))); // NOI18N
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 540, 50, 40));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 510, 70, 70));
 
         jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
@@ -227,15 +250,15 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField11KeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 160, -1));
+        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 260, 160, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("PUESTO");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("AREA");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 260, -1, -1));
 
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -243,11 +266,11 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 170, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("# DE EMPLEADO");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -260,19 +283,19 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 170, -1));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("E - MAIL");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 60, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 60, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("ESTATUS");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("PLANTA");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 340, -1, -1));
 
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -280,13 +303,39 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField6KeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 160, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 340, 160, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "alta", "baja" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 170, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 170, -1));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Wallpaper FullHD Mundo.jpg"))); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1860, 760));
+        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        lbhora.setForeground(new java.awt.Color(240, 240, 240));
+        lbhora.setText("00:00:00");
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 0, -1, 44));
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 0, 70, -1));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
+        jLabel12.setText("SOLUCIONES EN INGENIERIA ZARATE");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 510, -1, -1));
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 70, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo gris.jpg"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 720));
+
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "USUARIOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jMenu1.setText("NAVEGACION");
         jMenu1.setToolTipText("MAQUINAS\nMATERIALES");
@@ -352,7 +401,7 @@ public class Usuarios extends javax.swing.JFrame {
         jMenu1.add(jMenuItem7);
 
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem8.setText("RECETA");
+        jMenuItem8.setText("PROCESO");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -368,15 +417,6 @@ public class Usuarios extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem9);
-
-        jMenuItem10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem10.setText("LOGOUT");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem10);
 
         jMenuBar1.add(jMenu1);
 
@@ -573,7 +613,7 @@ limpiar();
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-Maquinas inicio = new Maquinas();
+Componentes inicio = new Componentes();
         inicio.setVisible(true);
         dispose();
 
@@ -619,7 +659,7 @@ Plantas inicio = new Plantas();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-Receta inicio = new Receta();
+Proceso inicio = new Proceso();
         inicio.setVisible(true);
       dispose();
 
@@ -634,47 +674,45 @@ Ordenes inicio = new Ordenes();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
- Login inicio = new Login();
-        inicio.setVisible(true);
-        dispose();
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
 char c = evt.getKeyChar();
-if((c<'a' || c>'z')&& (c<'A' || c>'Z'))evt.consume();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
   char c = evt.getKeyChar();
-if((c<'a' || c>'z')&& (c<'A' || c>'Z'))evt.consume();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyTyped
  char c = evt.getKeyChar();
-if((c<'a' || c>'z')&& (c<'A' || c>'Z'))evt.consume();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField11KeyTyped
 
     private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
  char c = evt.getKeyChar();
-if((c<'a' || c>'z')&& (c<'A' || c>'Z'))evt.consume();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7KeyTyped
 
     private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
  char c = evt.getKeyChar();
-if((c<'a' || c>'z')&& (c<'A' || c>'Z'))evt.consume();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6KeyTyped
 
     private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4FocusLost
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+ Login inicio = new Login();
+        inicio.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -717,11 +755,14 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z'))evt.consume();
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -733,7 +774,6 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z'))evt.consume();
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
@@ -751,6 +791,7 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z'))evt.consume();
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
 }

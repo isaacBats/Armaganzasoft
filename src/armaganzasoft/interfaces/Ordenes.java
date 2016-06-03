@@ -6,6 +6,7 @@
 package armaganzasoft.interfaces;
 
 import armaganzasoft.interfaces.Menu;
+import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.OrderRepository;
 import javax.swing.JOptionPane;
 
@@ -14,12 +15,15 @@ import javax.swing.JOptionPane;
  * @author user
  */
 public class Ordenes extends javax.swing.JFrame {
+    HiloReloj hilor;
 
     /**
      * Creates new form Ordenes
      */
     public Ordenes() {
         initComponents();
+        hilor = new HiloReloj(lbhora);
+       hilor.start();
     }
 
     /**
@@ -59,10 +63,12 @@ public class Ordenes extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jTextField31 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton2 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableOrdenes = new javax.swing.JTable();
         titulo2Soluciones = new javax.swing.JLabel();
+        lbhora = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         headerFondo = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -93,7 +99,6 @@ public class Ordenes extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -205,6 +210,12 @@ public class Ordenes extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 80, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, -1));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, -1, -1));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
 
         jTableOrdenes.setModel(new javax.swing.table.DefaultTableModel(
@@ -260,6 +271,10 @@ public class Ordenes extends javax.swing.JFrame {
         titulo2Soluciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         titulo2Soluciones.setDisplayedMnemonicIndex(1);
         getContentPane().add(titulo2Soluciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 310, 40));
+
+        lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        lbhora.setForeground(new java.awt.Color(240, 240, 240));
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 20, 120, 30));
 
         headerFondo.setBackground(new java.awt.Color(114, 159, 207));
         headerFondo.setColumns(20);
@@ -351,6 +366,8 @@ public class Ordenes extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 80, -1));
 
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ORDENES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
         jMenu1.setText("NAVEGACION");
 
         jMenuItem1.setText("MAQUINAS");
@@ -409,21 +426,13 @@ public class Ordenes extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem7);
 
-        jMenuItem8.setText("RECETA");
+        jMenuItem8.setText("PROCESO");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem8);
-
-        jMenuItem9.setText("LOGOUT");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem9);
 
         jMenuBar1.add(jMenu1);
 
@@ -457,7 +466,7 @@ public class Ordenes extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField33ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-Maquinas inicio = new Maquinas();
+Componentes inicio = new Componentes();
         inicio.setVisible(true);
         dispose();
         // TODO add your handling code here:
@@ -505,18 +514,11 @@ Formulas inicio = new Formulas();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-Receta inicio = new Receta();
+Proceso inicio = new Proceso();
         inicio.setVisible(true);
       dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-
-Login inicio = new Login();
-        inicio.setVisible(true);
-        dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -559,6 +561,7 @@ Login inicio = new Login();
     private java.awt.Button buttonModificar;
     private javax.swing.JTextArea headerFondo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel22;
@@ -592,7 +595,6 @@ Login inicio = new Login();
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -616,6 +618,7 @@ Login inicio = new Login();
     private javax.swing.JTextField jTextFieldRFC;
     private javax.swing.JTextField jTextFieldTelefono;
     private javax.swing.JTextField jTextFieldTelefono1;
+    private javax.swing.JLabel lbhora;
     private javax.swing.JLabel titulo2Soluciones;
     // End of variables declaration//GEN-END:variables
 }

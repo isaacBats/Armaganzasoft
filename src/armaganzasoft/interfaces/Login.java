@@ -10,7 +10,6 @@ import armaganzasoft.models.User;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import armaganzasoft.interfaces.Menu;
 
 /**
  *
@@ -33,7 +32,7 @@ public class Login extends javax.swing.JFrame {
         
         initComponents();
         limpiar();
-             
+        
      }
     
     public void limpiar()
@@ -138,13 +137,13 @@ public class Login extends javax.swing.JFrame {
              if(user.validarUsuario(nombre, password)){
                  JOptionPane.showMessageDialog(this,"BIENVENIDO A ARMAGANZA SOFT");
                  dispose();
-                    
                  java.awt.EventQueue.invokeLater(new Runnable() {
-                      public void run() {   
+                      public void run() {
                             new Menu().setVisible(true);
-                           }
+                               }
                   });
                  
+                                  
              }else{
                  //System.out.println("No te Puedes Conectar&");
                  JOptionPane.showMessageDialog(this,"DATOS INCORRECTOS NO TE PUEDES CONECTAR");
@@ -202,10 +201,11 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
+
             }
         });
     }
-
+//
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
