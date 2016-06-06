@@ -138,97 +138,153 @@ public class Formulas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        lbhora.setForeground(new java.awt.Color(240, 240, 240));
+        lbhora.setForeground(new java.awt.Color(204, 204, 204));
         lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 10, -1, 44));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 12, 482, 30));
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 10, -1, 30));
 
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 482, 20));
+
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 280, 30));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 280, 20));
 
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 100, 30));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 100, 30));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 100, 20));
+
+        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 100, 20));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.jpg"))); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 102, 102));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search-icon-60x60.png"))); // NOI18N
+        jButton1.setText("FORMULAS");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 170, 60));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("NOMBRE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 60, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 60, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("CODIGO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 60, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("MATERIAL");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 60, 20));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 60, 20));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("VALOR %");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 133, 80, -1));
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 155, 90, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 155, 130, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 60, -1));
+
+        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 100, -1));
+
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 130, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("DESCRIPCION");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 132, -1, -1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 186, 100, -1));
-        getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 224, 100, -1));
-        getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 262, 100, -1));
-        getContentPane().add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 100, -1));
-        getContentPane().add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 338, 100, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
 
+        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 100, -1));
+
+        jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 100, -1));
+
+        jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 100, -1));
+
+        jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 100, -1));
+
+        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 100, -1));
+
+        jTextField16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField16ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 100, -1));
-        getContentPane().add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 186, 130, -1));
-        getContentPane().add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 224, 130, -1));
-        getContentPane().add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 262, 130, -1));
-        getContentPane().add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 300, 130, -1));
-        getContentPane().add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 338, 130, -1));
-        getContentPane().add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 376, 130, -1));
-        getContentPane().add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 186, 90, -1));
-        getContentPane().add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 224, 90, -1));
-        getContentPane().add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 262, 90, -1));
-        getContentPane().add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 300, 90, -1));
-        getContentPane().add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 338, 90, -1));
-        getContentPane().add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 376, 90, -1));
+        getContentPane().add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 100, -1));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1464223778_gnome-session-halt.png"))); // NOI18N
+        jTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 130, -1));
+
+        jTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 130, -1));
+
+        jTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 130, -1));
+
+        jTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 130, -1));
+
+        jTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 130, -1));
+
+        jTextField22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 130, -1));
+
+        jTextField23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 100, -1));
+
+        jTextField24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 100, -1));
+
+        jTextField25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 100, -1));
+
+        jTextField26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 100, -1));
+
+        jTextField27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 100, -1));
+
+        jTextField28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 100, -1));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -236,9 +292,9 @@ public class Formulas extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 30, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 0, 70, 60));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addbutton.jpg"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add-icon.png"))); // NOI18N
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -246,9 +302,9 @@ public class Formulas extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 490, 70, 70));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 570, 70, 70));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete_action_discard.png"))); // NOI18N
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -256,9 +312,9 @@ public class Formulas extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 500, 70, 70));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 580, 70, 70));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1464223990_system-software-update.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit_60_328965.png"))); // NOI18N
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -266,9 +322,9 @@ public class Formulas extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 400, 70, 70));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 580, 70, 70));
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar-icon.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eraser.png"))); // NOI18N
         jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -276,91 +332,72 @@ public class Formulas extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 400, 70, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, 90, 70));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
-        jLabel7.setText("SOLUCIONES EN INGENIERIA ZARATE");
         jLabel7.setToolTipText("");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 530, -1, -1));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 100, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 40, -1, -1));
+        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 100, -1));
 
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 130, -1));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 130, -1));
 
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 100, -1));
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 100, -1));
-        getContentPane().add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 130, -1));
-        getContentPane().add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 100, -1));
+        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 100, -1));
+        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 100, -1));
+        getContentPane().add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 130, -1));
+        getContentPane().add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 100, -1));
 
         jTextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField31ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 100, -1));
-        getContentPane().add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 130, -1));
-        getContentPane().add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 100, -1));
+        getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 100, -1));
+        getContentPane().add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 550, 130, -1));
+        getContentPane().add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 100, -1));
 
         jTextField34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField34ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 100, -1));
-        getContentPane().add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 130, -1));
+        getContentPane().add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 100, -1));
+        getContentPane().add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 580, 130, -1));
 
         jTextField36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField36ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 100, -1));
+        getContentPane().add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 580, 100, -1));
 
         jTextField37.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField37ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 100, -1));
-        getContentPane().add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 130, -1));
-        getContentPane().add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, 100, -1));
+        getContentPane().add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 100, -1));
+        getContentPane().add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, 130, -1));
+        getContentPane().add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 100, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo gris.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 730));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 710));
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FORMULAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jMenuBar1.setBorder(null);
 
-        jMenu1.setText("NAVEGACION");
+        jMenu1.setText("CAPTURA DE DATOS");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem1.setText("COMPONENTES");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem2.setText("MATERIALES");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem3.setText("PROVEEDORES");
@@ -398,6 +435,29 @@ public class Formulas extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem6);
 
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("PRODUCTOS");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem1.setText("COMPONENTES");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem2.setText("MATERIALES");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem7.setText("PROCESO");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -405,7 +465,21 @@ public class Formulas extends javax.swing.JFrame {
                 jMenuItem7ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem7);
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem9.setText("OPB");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem9);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("PRODUCCION");
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem8.setText("ORDENES");
@@ -414,9 +488,26 @@ public class Formulas extends javax.swing.JFrame {
                 jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem8);
+        jMenu3.add(jMenuItem8);
 
-        jMenuBar1.add(jMenu1);
+        jMenuItem10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem10.setText("OPERACION");
+        jMenu3.add(jMenuItem10);
+
+        jMenuItem11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem11.setText("DATOS DESPUES DE LA OPERACION");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem11);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("REPORTES");
+        jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -725,6 +816,16 @@ Forms forms;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField37ActionPerformed
 
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+Opb inicio = new Opb();
+        inicio.setVisible(true);
+        dispose();          // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -775,8 +876,13 @@ Forms forms;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -784,6 +890,7 @@ Forms forms;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
