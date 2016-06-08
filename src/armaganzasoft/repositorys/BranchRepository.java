@@ -25,24 +25,25 @@ public class BranchRepository extends BaseRepository {
         
         try {
             
-            query = con.prepareStatement("INSERT INTO branches (name, "
+            query = con.prepareStatement("INSERT INTO branches (code,"
+                                                          + "name, "
                                                           + "address, "
                                                           + "telephone, "
                                                           + "city, "
                                                           + "zip_code, "
                                                           + "rfc, "
                                                           + "email) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?);"
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?,?);"
                                         );
             
-            
-            query.setString(1, branch.getName());
-            query.setString(2, branch.getAddress());
-            query.setString(3, branch.getTelephone());
-            query.setString(4, branch.getCity());
-            query.setString(5, branch.getZip_code());
-            query.setString(6, branch.getRfc());
-            query.setString(7, branch.getEmail());
+            query.setString(1, branch.getCode());
+            query.setString(2, branch.getName());
+            query.setString(3, branch.getAddress());
+            query.setString(4, branch.getTelephone());
+            query.setString(5, branch.getCity());
+            query.setString(6, branch.getZip_code());
+            query.setString(7, branch.getRfc());
+            query.setString(8, branch.getEmail());
             
             
             if( !query.execute() ){
@@ -70,6 +71,7 @@ public class BranchRepository extends BaseRepository {
           
                 while(rs.next()){
                 
+                busqueda.setCode(rs.getString("code"));    
                 busqueda.setName(rs.getString("name"));
                 busqueda.setAddress(rs.getString("address"));
                 busqueda.setTelephone(rs.getString("telephone"));
@@ -94,7 +96,8 @@ public class BranchRepository extends BaseRepository {
         
         try {
             
-            query = con.prepareStatement("UPDATE branches SET   name         = ?, "
+            query = con.prepareStatement("UPDATE branches SET   code         = ?,"
+                                                           + "name=?, "
                                                            +"    address    = ?, "
                                                            +"    telephone        = ?, "
                                                            +"    city    = ?, "
@@ -103,14 +106,15 @@ public class BranchRepository extends BaseRepository {
                                                            +"    email      = ? "
                                                     + "WHERE id =?"      );
             
-            query.setString(1, branch.getName());
-            query.setString(2, branch.getAddress());
-            query.setString(3, branch.getTelephone());
-            query.setString(4, branch.getCity());
-            query.setString(5, branch.getZip_code());
-            query.setString(6, branch.getRfc());           
-            query.setString(7, branch.getEmail());
-            query.setInt(8, branch.getid());
+            query.setString(1, branch.getCode());
+            query.setString(2, branch.getName());
+            query.setString(3, branch.getAddress());
+            query.setString(4, branch.getTelephone());
+            query.setString(5, branch.getCity());
+            query.setString(6, branch.getZip_code());
+            query.setString(7, branch.getRfc());
+            query.setString(8, branch.getEmail());
+            query.setInt(9, branch.getid());
            
                                
             if( !query.execute() ){
