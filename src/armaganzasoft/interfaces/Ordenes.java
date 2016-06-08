@@ -8,7 +8,10 @@ package armaganzasoft.interfaces;
 import armaganzasoft.interfaces.Menu;
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.OrderRepository;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,13 +20,45 @@ import javax.swing.JOptionPane;
 public class Ordenes extends javax.swing.JFrame {
     HiloReloj hilor;
 
+    DefaultTableModel modelOrdenes;
+    
     /**
      * Creates new form Ordenes
      */
     public Ordenes() {
+        this.modelOrdenes = new DefaultTableModel(null, getColumnsStepsForms());
+        setFilasStepsForms();
         initComponents();
         hilor = new HiloReloj(lbhora);
        hilor.start();
+    }
+    
+    private String[] getColumnsStepsForms(){
+        
+        return  new String[]{ "ORDEN", "CODIGO", "DESCRIPCION", "MATERIAL", "VALOR P1" };    
+    }
+    
+    private void setFilasStepsForms(){
+        
+        OrderRepository or;
+        or = new OrderRepository();
+        
+        try{
+            ResultSet rs = or.getDetailForm(1);
+            Object datos[] = new Object[5];
+            
+            while(rs.next()){
+                for(int i = 0; i < 5; i++){
+                    datos[i] = rs.getObject( i + 1 );
+                }
+                this.modelOrdenes.addRow(datos);
+            }
+            rs.close();
+            
+        }catch(SQLException e){
+            System.out.println("Error al consultar los datos");
+        }
+    
     }
 
     /**
@@ -259,50 +294,7 @@ public class Ordenes extends javax.swing.JFrame {
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(0, 130, 0, 2);
 
-        jTableOrdenes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ORDEN", "CODIGO", "DESCRIPCION", "MATERIAL", "VALOR P1"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTableOrdenes.setModel(modelOrdenes);
         jScrollPane1.setViewportView(jTableOrdenes);
 
         getContentPane().add(jScrollPane1);
