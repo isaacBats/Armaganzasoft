@@ -580,9 +580,9 @@ Materiales inicio = new Materiales();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-Proveedores inicio = new Proveedores();
-        inicio.setVisible(true);
-        dispose();
+//        Proveedores inicio = new Proveedores();
+//        inicio.setVisible(true);
+//        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
