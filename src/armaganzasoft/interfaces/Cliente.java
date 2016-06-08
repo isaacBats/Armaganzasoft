@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class Cliente extends javax.swing.JFrame {
     
-    HiloReloj hilor;
+        HiloReloj hilor;
 
  
     /**
