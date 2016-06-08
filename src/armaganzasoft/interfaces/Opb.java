@@ -246,7 +246,7 @@ public class Opb extends javax.swing.JFrame {
         
         obasicas = ur.buscarOperacion(identified);
         
-        jTable1.setToolTipText(obasicas.getCode());
+        jTextField2.setText(obasicas.getCode());
         jTextField3.setText(obasicas.getDescripcion());
        
         // TODO add your handling code here:
