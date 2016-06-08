@@ -7,8 +7,10 @@ package armaganzasoft.interfaces;
 
 import armaganzasoft.interfaces.Menu;
 import armaganzasoft.repositorys.OrderRepository;
-import armaganzasoft.utilities.DFormModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,11 +18,43 @@ import javax.swing.JOptionPane;
  */
 public class Ordenes extends javax.swing.JFrame {
 
+    DefaultTableModel modelOrdenes;
+    
     /**
      * Creates new form Ordenes
      */
     public Ordenes() {
+        this.modelOrdenes = new DefaultTableModel(null, getColumnsStepsForms());
+        setFilasStepsForms();
         initComponents();
+    }
+    
+    private String[] getColumnsStepsForms(){
+        
+        return  new String[]{ "ORDEN", "CODIGO", "DESCRIPCION", "MATERIAL", "VALOR P1" };    
+    }
+    
+    private void setFilasStepsForms(){
+        
+        OrderRepository or;
+        or = new OrderRepository();
+        
+        try{
+            ResultSet rs = or.getDetailForm(1);
+            Object datos[] = new Object[5];
+            
+            while(rs.next()){
+                for(int i = 0; i < 5; i++){
+                    datos[i] = rs.getObject( i + 1 );
+                }
+                this.modelOrdenes.addRow(datos);
+            }
+            rs.close();
+            
+        }catch(SQLException e){
+            System.out.println("Error al consultar los datos");
+        }
+    
     }
 
     /**
@@ -208,7 +242,7 @@ public class Ordenes extends javax.swing.JFrame {
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, -1));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
 
-        jTableOrdenes.setModel(new DFormModel());
+        jTableOrdenes.setModel(modelOrdenes);
         jScrollPane1.setViewportView(jTableOrdenes);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 530, -1));
