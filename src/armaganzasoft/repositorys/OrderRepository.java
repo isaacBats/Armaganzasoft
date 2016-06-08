@@ -1,12 +1,10 @@
 package armaganzasoft.repositorys;
 
 import armaganzasoft.models.Order;
-import java.awt.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 /**
  *
