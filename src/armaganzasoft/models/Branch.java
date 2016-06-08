@@ -8,7 +8,7 @@ package armaganzasoft.models;
  */
 public class Branch {
      private int     id;
-    private int code;
+    private String code;
     private String  name;
     private String  address;
     private String  telephone;
@@ -32,11 +32,11 @@ public class Branch {
         this.id = id;
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
        
