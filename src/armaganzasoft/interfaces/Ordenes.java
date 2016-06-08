@@ -42,10 +42,11 @@ public class Ordenes extends javax.swing.JFrame {
         
         OrderRepository or;
         or = new OrderRepository();
+        String[] columnas = getColumnsStepsForms();
         
         try{
             ResultSet rs = or.getDetailForm(1);
-            Object datos[] = new Object[5];
+            Object datos[] = new Object[columnas.length];
             
             while(rs.next()){
                 for(int i = 0; i < 5; i++){
