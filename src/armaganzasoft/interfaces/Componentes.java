@@ -101,7 +101,6 @@ public class Componentes extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -173,7 +172,7 @@ public class Componentes extends javax.swing.JFrame {
         getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 0, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("PARAMETROS");
+        jLabel7.setText("PARAMETRO");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, -1, -1));
 
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -223,7 +222,7 @@ public class Componentes extends javax.swing.JFrame {
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 270, -1));
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 111, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "abierto/cerrado", "prendido/apagado" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "abierto", "cerrado", "prendido", "apagado", "habilitado", "desabilitado", "abierto/cerrado", "prendido/apagado", "habilitado/desabilitado" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 270, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "digital", "analogica", "digital/analogica" }));
@@ -278,15 +277,6 @@ public class Componentes extends javax.swing.JFrame {
 
         jMenu1.setText("CAPTURA DE DATOS");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem2.setText("PROVEEDORES");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem3.setText("PLANTAS");
@@ -420,11 +410,11 @@ machines = new Components();
         machines.setValor4(jTextField14.getText());
         
             if( !maquiRepo.addMaq(machines) ){
-            System.out.println("La maquina "+machines.getName()+" se ha insertado Correctamente");
+            System.out.println("El Componente "+machines.getName()+" se ha insertado Correctamente");
             JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE"); 
             limpiar();
         }else{
-            System.out.println("La maquina "+machines.getName()+" se ha insertado Correctamente");
+            System.out.println("El Componente "+machines.getName()+" se ha insertado Correctamente");
             JOptionPane.showMessageDialog(this,"No se pudo agregar");
             limpiar();
         } 
@@ -478,14 +468,14 @@ Components machines;
         Components machines;
         machines = new Components();
         ComponentesRepository  MaqRepo = new ComponentesRepository();
-        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar la Maquina", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar el Componente", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
         if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
             machines = MaqRepo.buscarMaquina(jTextField3.getText());
 
             if( MaqRepo.eliminar(machines)){
 
                 
-                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO LA MAQUINA CORRECTAMENTE");
+                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO EL COMPONENTE CORRECTAMENTE");
 
                 limpiar();
 
@@ -554,13 +544,6 @@ Materiales inicio = new Materiales();
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-Proveedores inicio = new Proveedores();
-        inicio.setVisible(true);
-        dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 Plantas inicio = new Plantas();
@@ -684,7 +667,6 @@ Login inicio = new Login();
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

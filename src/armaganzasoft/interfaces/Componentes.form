@@ -17,17 +17,6 @@
             </Property>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="PROVEEDORES"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -339,7 +328,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="PARAMETROS"/>
+        <Property name="text" type="java.lang.String" value="PARAMETRO"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -454,10 +443,17 @@
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
+          <StringArray count="10">
             <StringItem index="0" value=" "/>
-            <StringItem index="1" value="abierto/cerrado"/>
-            <StringItem index="2" value="prendido/apagado"/>
+            <StringItem index="1" value="abierto"/>
+            <StringItem index="2" value="cerrado"/>
+            <StringItem index="3" value="prendido"/>
+            <StringItem index="4" value="apagado"/>
+            <StringItem index="5" value="habilitado"/>
+            <StringItem index="6" value="desabilitado"/>
+            <StringItem index="7" value="abierto/cerrado"/>
+            <StringItem index="8" value="prendido/apagado"/>
+            <StringItem index="9" value="habilitado/desabilitado"/>
           </StringArray>
         </Property>
       </Properties>
