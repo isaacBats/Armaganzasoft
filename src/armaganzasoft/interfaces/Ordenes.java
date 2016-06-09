@@ -8,10 +8,7 @@ package armaganzasoft.interfaces;
 import armaganzasoft.interfaces.Menu;
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.OrderRepository;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,46 +17,13 @@ import javax.swing.table.DefaultTableModel;
 public class Ordenes extends javax.swing.JFrame {
     HiloReloj hilor;
 
-    DefaultTableModel modelOrdenes;
-    
     /**
      * Creates new form Ordenes
      */
     public Ordenes() {
-        this.modelOrdenes = new DefaultTableModel(null, getColumnsStepsForms());
-        setFilasStepsForms();
         initComponents();
         hilor = new HiloReloj(lbhora);
        hilor.start();
-    }
-    
-    private String[] getColumnsStepsForms(){
-        
-        return  new String[]{ "ORDEN", "CODIGO", "DESCRIPCION", "MATERIAL", "VALOR P1" };    
-    }
-    
-    private void setFilasStepsForms(){
-        
-        OrderRepository or;
-        or = new OrderRepository();
-        String[] columnas = getColumnsStepsForms();
-        
-        try{
-            ResultSet rs = or.getDetailForm(1);
-            Object datos[] = new Object[columnas.length];
-            
-            while(rs.next()){
-                for(int i = 0; i < 5; i++){
-                    datos[i] = rs.getObject( i + 1 );
-                }
-                this.modelOrdenes.addRow(datos);
-            }
-            rs.close();
-            
-        }catch(SQLException e){
-            System.out.println("Error al consultar los datos");
-        }
-    
     }
 
     /**
@@ -76,9 +40,6 @@ public class Ordenes extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jTextFieldDirEntrega = new javax.swing.JTextField();
-        button1 = new java.awt.Button();
-        buttonModificar = new java.awt.Button();
-        buttonEliminar = new java.awt.Button();
         jLabel1 = new javax.swing.JLabel();
         jLabelRFC = new javax.swing.JLabel();
         jLabelContacto = new javax.swing.JLabel();
@@ -125,19 +86,21 @@ public class Ordenes extends javax.swing.JFrame {
         jLabelTelefono1 = new javax.swing.JLabel();
         jTextField33 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
@@ -146,37 +109,27 @@ public class Ordenes extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1440, 770));
         setSize(new java.awt.Dimension(1440, 770));
         getContentPane().setLayout(null);
         getContentPane().add(jTextField1);
         jTextField1.setBounds(710, 150, 320, 20);
 
-        jButton1.setText(" Buscar Orden");
+        jButton1.setBackground(new java.awt.Color(153, 153, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCAR (2).png"))); // NOI18N
+        jButton1.setText(" Orden");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(1040, 150, 101, 23);
+        jButton1.setBounds(1040, 140, 109, 30);
         getContentPane().add(jTextField2);
         jTextField2.setBounds(170, 170, 120, 20);
         getContentPane().add(jTextFieldDirEntrega);
         jTextFieldDirEntrega.setBounds(150, 345, 350, 20);
-
-        button1.setLabel("AGREGAR");
-        getContentPane().add(button1);
-        button1.setBounds(640, 644, 120, 30);
-
-        buttonModificar.setLabel("MODIFICAR");
-        buttonModificar.setMinimumSize(new java.awt.Dimension(74, 23));
-        getContentPane().add(buttonModificar);
-        buttonModificar.setBounds(780, 644, 120, 30);
-
-        buttonEliminar.setLabel("ELIMINAR");
-        getContentPane().add(buttonEliminar);
-        buttonEliminar.setBounds(920, 644, 120, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("ORDEN DE PRODUCCION");
@@ -295,7 +248,50 @@ public class Ordenes extends javax.swing.JFrame {
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(0, 130, 0, 2);
 
-        jTableOrdenes.setModel(modelOrdenes);
+        jTableOrdenes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ORDEN", "CODIGO", "DESCRIPCION", "MATERIAL", "VALOR P1"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTableOrdenes);
 
         getContentPane().add(jScrollPane1);
@@ -417,6 +413,21 @@ public class Ordenes extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(1130, 10, 80, 90);
 
+        jButton3.setBackground(new java.awt.Color(153, 153, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AGREGAR.png"))); // NOI18N
+        getContentPane().add(jButton3);
+        jButton3.setBounds(710, 630, 50, 40);
+
+        jButton4.setBackground(new java.awt.Color(153, 153, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        getContentPane().add(jButton4);
+        jButton4.setBounds(850, 630, 50, 40);
+
+        jButton5.setBackground(new java.awt.Color(153, 153, 255));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
+        getContentPane().add(jButton5);
+        jButton5.setBounds(780, 630, 50, 40);
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 1360, 780);
@@ -425,15 +436,6 @@ public class Ordenes extends javax.swing.JFrame {
 
         jMenu1.setText("CAPTURA DE DATOS");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-
-        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem3.setText("PROVEEDORES");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
 
         jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem4.setText("PLANTAS");
@@ -462,20 +464,6 @@ public class Ordenes extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem6);
 
-        jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem8.setText("PROCESO");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem8);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("PRODUCTOS");
-        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem1.setText("COMPONENTES");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -483,16 +471,7 @@ public class Ordenes extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
-
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem2.setText("MATERIALES");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem2);
+        jMenu1.add(jMenuItem1);
 
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem7.setText("FORMULAS");
@@ -501,7 +480,21 @@ public class Ordenes extends javax.swing.JFrame {
                 jMenuItem7ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem7);
+        jMenu1.add(jMenuItem7);
+
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem2.setText("MATERIALES");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("PRODUCTOS");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jMenuItem10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem10.setText("OPB");
@@ -511,6 +504,15 @@ public class Ordenes extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem10);
+
+        jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem8.setText("PROCESO");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
 
@@ -579,13 +581,6 @@ Materiales inicio = new Materiales();
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-//        Proveedores inicio = new Proveedores();
-//        inicio.setVisible(true);
-//        dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
 Plantas inicio = new Plantas();
@@ -667,11 +662,11 @@ Proceso inicio = new Proceso();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
-    private java.awt.Button buttonEliminar;
-    private java.awt.Button buttonModificar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
@@ -707,7 +702,6 @@ Proceso inicio = new Proceso();
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
