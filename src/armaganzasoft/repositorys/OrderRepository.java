@@ -69,7 +69,7 @@ public class OrderRepository extends BaseRepository {
     
         Statement stmt = null;       
         
-        String sql = "SELECT df.order, ope.code, ope.name, mat.name, CONCAT(df.value, df.type) as value " +
+        String sql = "SELECT df.order, ope.code, ope.descripcion, mat.name, CONCAT(df.value, df.type) as value " +
                      "FROM detail_form df " +
                      "INNER JOIN operations ope on df.operation_id = ope.id " +
                      "INNER JOIN materials mat oN df.material_id = mat.id " +
@@ -80,7 +80,8 @@ public class OrderRepository extends BaseRepository {
 
             return rs;
         } catch (SQLException e) {
-            System.out.println("No se ejecuto el query "+ sql);
+            System.out.println("No se ejecuto el query "+ e);
+            System.out.println(sql);
         }
         
         return null;
