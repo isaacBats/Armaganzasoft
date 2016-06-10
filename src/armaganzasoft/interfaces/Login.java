@@ -134,7 +134,7 @@ public class Login extends javax.swing.JFrame {
                  dispose();
                  java.awt.EventQueue.invokeLater(new Runnable() {
                       public void run() {
-                            new Menu(nombre).setVisible(true);
+                            new Menu(jTextField1.getText()).setVisible(true);
                                }
                   });
                  

@@ -9,6 +9,7 @@ package armaganzasoft.interfaces;
 import armaganzasoft.repositorys.BranchRepository;
 import armaganzasoft.models.Branch;
 import armaganzasoft.models.HiloReloj;
+import static java.awt.event.KeyEvent.VK_SPACE;
 import javax.swing.JOptionPane;
         
 
@@ -118,6 +119,11 @@ public class Plantas extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 340, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -153,11 +159,21 @@ public class Plantas extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 510, 30));
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
             }
         });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 250, 30));
@@ -186,11 +202,21 @@ public class Plantas extends javax.swing.JFrame {
                 jTextField7ActionPerformed(evt);
             }
         });
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 250, 30));
 
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
+            }
+        });
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
             }
         });
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 250, 30));
@@ -224,9 +250,9 @@ public class Plantas extends javax.swing.JFrame {
 
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 0, -1, 20));
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 10, -1, 20));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
@@ -235,7 +261,7 @@ public class Plantas extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 0, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, -1, -1));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
@@ -371,7 +397,7 @@ Branch branch;
         branch.setCity(jTextField4.getText());
         branch.setZip_code(jTextField5.getText());
         branch.setRfc(jTextField7.getText());
-        branch.setEmail(jTextField3.getText());
+        branch.setEmail(jTextField6.getText());
        
         BranchRepository  branRepo = new BranchRepository();
 
@@ -443,7 +469,7 @@ Branch branch;
         branch.setCity(jTextField4.getText());
         branch.setZip_code(jTextField5.getText());
         branch.setRfc(jTextField7.getText());
-        branch.setEmail(jTextField3.getText());
+        branch.setEmail(jTextField6.getText());
         
         
         Branch busqueda= BranchRepo.buscarPlanta(branch.getRfc());
@@ -579,6 +605,36 @@ Login inicio = new Login();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+char c = evt.getKeyChar();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+ char c = evt.getKeyChar();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c<'0'||c>'9') && (c!=VK_SPACE))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+char c = evt.getKeyChar();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c<'0'||c>'9'))evt.consume();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7KeyTyped
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+char c = evt.getKeyChar();
+if((c<'0'||c>'9'))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+   char c = evt.getKeyChar();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4KeyTyped
 
     /**
      * @param args the command line arguments

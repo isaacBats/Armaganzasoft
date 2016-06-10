@@ -308,9 +308,9 @@ public class Usuarios extends javax.swing.JFrame {
 
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 0, -1, 20));
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, 20));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -318,7 +318,7 @@ public class Usuarios extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 0, 70, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 0, 40, 40));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel12.setText("SOLUCIONES EN INGENIERIA ZARATE");

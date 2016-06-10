@@ -328,13 +328,13 @@ HiloReloj hilor;
 
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lbhora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 0, 110, 20));
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, 90, 20));
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
         jButton7.setBorder(null);
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 0, 60, 60));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 0, 40, 40));
 
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

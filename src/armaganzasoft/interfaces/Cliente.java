@@ -10,6 +10,7 @@ package armaganzasoft.interfaces;
 import armaganzasoft.models.Customer;
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.CustomerRepository;
+import static java.awt.event.KeyEvent.VK_SPACE;
 import javax.swing.JOptionPane;
 
 
@@ -101,6 +102,7 @@ public class Cliente extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -130,6 +132,11 @@ public class Cliente extends javax.swing.JFrame {
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField10ActionPerformed(evt);
+            }
+        });
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField10KeyTyped(evt);
             }
         });
         getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 540, 110, 30));
@@ -187,6 +194,11 @@ public class Cliente extends javax.swing.JFrame {
                 jTextField9ActionPerformed(evt);
             }
         });
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 260, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -196,6 +208,11 @@ public class Cliente extends javax.swing.JFrame {
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
+            }
+        });
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
             }
         });
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 260, 30));
@@ -209,6 +226,11 @@ public class Cliente extends javax.swing.JFrame {
                 jTextField7ActionPerformed(evt);
             }
         });
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 260, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -218,6 +240,11 @@ public class Cliente extends javax.swing.JFrame {
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
+            }
+        });
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
             }
         });
         getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 260, 30));
@@ -236,6 +263,11 @@ public class Cliente extends javax.swing.JFrame {
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
+            }
+        });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
             }
         });
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 260, 30));
@@ -260,11 +292,21 @@ public class Cliente extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 260, 30));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
+            }
+        });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
             }
         });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 260, 30));
@@ -282,6 +324,11 @@ public class Cliente extends javax.swing.JFrame {
                 jTextField12ActionPerformed(evt);
             }
         });
+        jTextField12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField12KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 260, 30));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -290,14 +337,20 @@ public class Cliente extends javax.swing.JFrame {
 
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lbhora.setText("00:00:00");
-        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 0, -1, 30));
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 0, -1, 30));
+
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 50, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("SUBCLIENTE - FRENTE");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
@@ -306,7 +359,7 @@ public class Cliente extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 0, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 0, -1, -1));
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
@@ -315,6 +368,17 @@ public class Cliente extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel15.setText("SOLUCIONES EN INGENIERIA ZARATE");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 100, -1, -1));
+
+        jButton6.setBackground(new java.awt.Color(153, 153, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LIMPIAR.png"))); // NOI18N
+        jButton6.setBorder(null);
+        jButton6.setBorderPainted(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 130, 50, 40));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
@@ -651,6 +715,68 @@ Login inicio = new Login();
                // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+limpiar();      
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jTextField12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyTyped
+char c = evt.getKeyChar();
+if((c<'0' || c>'9'))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField12KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+ char c = evt.getKeyChar();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+char c = evt.getKeyChar();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+char c = evt.getKeyChar();
+if((c<'0' || c>'9'))evt.consume();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+char c = evt.getKeyChar();
+if((c<'0' || c>'9'))evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+char c = evt.getKeyChar();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c<'0' || c>'9'))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7KeyTyped
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+char c = evt.getKeyChar();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c<'0' || c>'9') && (c!=VK_SPACE))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+char c = evt.getKeyChar();
+if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9KeyTyped
+
+    private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
+char c = evt.getKeyChar();
+if((c<'0' || c>'9'))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10KeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -692,6 +818,7 @@ Login inicio = new Login();
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

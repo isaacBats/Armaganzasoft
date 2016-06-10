@@ -40,7 +40,7 @@ public class Materiales extends javax.swing.JFrame {
         jTextField11.setText("");
         jTextField12.setText("");
         jTextField13.setText("");
-        jTextField14.setText("");
+      
         jComboBox1.setSelectedIndex(0);
     }
 
@@ -82,8 +82,6 @@ public class Materiales extends javax.swing.JFrame {
         jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -227,12 +225,7 @@ public class Materiales extends javax.swing.JFrame {
         getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 240, 30));
         getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, 240, 30));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("PROOVEDOR");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, -1, -1));
-        getContentPane().add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 250, 30));
-
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
@@ -241,7 +234,7 @@ public class Materiales extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 0, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, -1, -1));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
@@ -642,7 +635,6 @@ Opb inicio = new Opb();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
@@ -665,7 +657,6 @@ Opb inicio = new Opb();
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

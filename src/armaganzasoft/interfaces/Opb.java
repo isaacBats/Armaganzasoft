@@ -244,7 +244,7 @@ public class Opb extends javax.swing.JFrame {
         
         obasicas = ur.buscarOperacion(identified);
         
-        jTable1.setToolTipText(obasicas.getCode());
+        jTextField2.setText(obasicas.getCode());
         jTextField3.setText(obasicas.getDescripcion());
        
         // TODO add your handling code here:
@@ -264,7 +264,7 @@ public class Opb extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"La OPB "+obasicas.getCode()+" se ha insertado Correctamente");
             limpiar();
         }else{
-            JOptionPane.showMessageDialog(this,"NO SE PUDO AGREGAR EL USUARIO");
+            JOptionPane.showMessageDialog(this,"NO SE PUDO AGREGAR LA OPERACION");
              
             limpiar();
         }

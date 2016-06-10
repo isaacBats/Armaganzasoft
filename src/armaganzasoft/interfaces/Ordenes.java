@@ -5,11 +5,11 @@
  */
 package armaganzasoft.interfaces;
 
+import armaganzasoft.interfaces.Menu;
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.OrderRepository;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.table.DefaultTableModel;
+import armaganzasoft.models.Order;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,78 +17,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Ordenes extends javax.swing.JFrame {
     HiloReloj hilor;
-    
-    DefaultTableModel modelOrdenes;
-    DefaultTableModel modelFormula;
+
     /**
      * Creates new form Ordenes
      */
     public Ordenes() {
-        this.modelOrdenes = new DefaultTableModel(null, getColumnsStepsForms());
-        this.modelFormula = new DefaultTableModel(null, getColumnForm());
-        setFilasStepsForms();
-        setFilasForm();
         initComponents();
         hilor = new HiloReloj(lbhora);
        hilor.start();
-    }
-    
-    
-    private String[] getColumnsStepsForms(){
-        
-        return  new String[]{ "ORDEN", "CODIGO", "DESCRIPCION", "MATERIAL", "VALOR P1" };    
-    }
-    
-    private String[] getColumnForm(){
-        return new String[] {"TIPO", "%", "TEORICO"};
-    }
-    
-    private void setFilasStepsForms(){
-        
-        OrderRepository or;
-        or = new OrderRepository();
-        String[] columnas = getColumnsStepsForms();
-        
-        try{
-            ResultSet rs = or.getDetailForm(1);
-            Object datos[] = new Object[columnas.length];
-            
-            while(rs.next()){
-                for(int i = 0; i < columnas.length; i++){
-                    datos[i] = rs.getObject( i + 1 );
-                }
-                this.modelOrdenes.addRow(datos);
-            }
-            rs.close();
-            
-        }catch(SQLException e){
-            System.out.println("Error al consultar los datos: " + e);
-        }
-    
-    }
-    
-    private void setFilasForm(){
-        
-        OrderRepository or;
-        or = new OrderRepository();
-        String[] columnas = getColumnForm();
-        
-        try{
-            ResultSet rs = or.getForm(1);
-            Object datos[] = new Object[columnas.length];
-            
-            while(rs.next()){
-                for(int i = 0; i < columnas.length; i++){
-                    datos[i] = rs.getObject( i + 1 );
-                }
-                this.modelFormula.addRow(datos);
-            }
-            rs.close();
-            
-        }catch(SQLException e){
-            System.out.println("Error al consultar los datos: " + e);
-        }
-    
     }
 
     /**
@@ -174,9 +110,9 @@ public class Ordenes extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(710, 150, 320, 19);
+        setSize(new java.awt.Dimension(1440, 770));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 320, -1));
 
         jButton1.setBackground(new java.awt.Color(153, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -188,242 +124,265 @@ public class Ordenes extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(1040, 140, 116, 30);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(170, 170, 120, 20);
-        getContentPane().add(jTextFieldDirEntrega);
-        jTextFieldDirEntrega.setBounds(150, 345, 350, 19);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 140, -1, 40));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 120, -1));
+        getContentPane().add(jTextFieldDirEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 345, 350, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("ORDEN DE PRODUCCION");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 170, 160, 20);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 160, 20));
 
         jLabelRFC.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelRFC.setText("RFC");
-        getContentPane().add(jLabelRFC);
-        jLabelRFC.setBounds(120, 270, 30, 20);
+        getContentPane().add(jLabelRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 30, 20));
 
         jLabelContacto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelContacto.setText("CONTACTO");
-        getContentPane().add(jLabelContacto);
-        jLabelContacto.setBounds(76, 320, 80, 30);
-        getContentPane().add(jTextFieldOrden);
-        jTextFieldOrden.setBounds(160, 420, 100, 19);
+        getContentPane().add(jLabelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 320, 80, 30));
+        getContentPane().add(jTextFieldOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 100, -1));
 
         jTextFieldPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPedidoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldPedido);
-        jTextFieldPedido.setBounds(160, 445, 100, 19);
+        getContentPane().add(jTextFieldPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 445, 100, -1));
 
         jTextFieldProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldProductoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldProducto);
-        jTextFieldProducto.setBounds(160, 470, 100, 19);
+        getContentPane().add(jTextFieldProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 100, -1));
 
         jLabelKGSOrden.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelKGSOrden.setText("KGS/ORDEN");
-        getContentPane().add(jLabelKGSOrden);
-        jLabelKGSOrden.setBounds(84, 430, 74, 14);
+        getContentPane().add(jLabelKGSOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 430, -1, -1));
 
         jLabelKGSPedido.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelKGSPedido.setText("KGS PEDIDO");
-        getContentPane().add(jLabelKGSPedido);
-        jLabelKGSPedido.setBounds(80, 455, 78, 14);
+        getContentPane().add(jLabelKGSPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 455, -1, -1));
 
         jLabelProducto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelProducto.setText("PRODUCTO");
-        getContentPane().add(jLabelProducto);
-        jLabelProducto.setBounds(86, 480, 71, 14);
+        getContentPane().add(jLabelProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 480, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setText("FORMULA");
-        getContentPane().add(jLabel15);
-        jLabel15.setBounds(50, 530, 75, 17);
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
 
         jLabelCemento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelCemento.setText("CEMENTO");
-        getContentPane().add(jLabelCemento);
-        jLabelCemento.setBounds(150, 560, 63, 14);
+        getContentPane().add(jLabelCemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, -1, -1));
 
         jLabelGrava.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelGrava.setText("GRAVA");
-        getContentPane().add(jLabelGrava);
-        jLabelGrava.setBounds(170, 580, 41, 14);
+        getContentPane().add(jLabelGrava, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 580, -1, -1));
 
         jLabelArena.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelArena.setText("ARENA");
-        getContentPane().add(jLabelArena);
-        jLabelArena.setBounds(170, 600, 41, 14);
+        getContentPane().add(jLabelArena, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 600, -1, -1));
 
         jLabelAgua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelAgua.setText("AGUA");
-        getContentPane().add(jLabelAgua);
-        jLabelAgua.setBounds(170, 620, 34, 14);
+        getContentPane().add(jLabelAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 620, -1, -1));
 
         jLabelAd1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelAd1.setText("ADITIVO1");
-        getContentPane().add(jLabelAd1);
-        jLabelAd1.setBounds(150, 640, 59, 14);
+        getContentPane().add(jLabelAd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 640, -1, -1));
 
         jLabelAd2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelAd2.setText("ADITIVO2");
-        getContentPane().add(jLabelAd2);
-        jLabelAd2.setBounds(150, 660, 59, 14);
+        getContentPane().add(jLabelAd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 660, -1, -1));
 
         jLabelAd3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelAd3.setText("ADITIVO3");
-        getContentPane().add(jLabelAd3);
-        jLabelAd3.setBounds(150, 680, 59, 20);
+        getContentPane().add(jLabelAd3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 680, -1, 20));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel22.setText("FECHA");
-        getContentPane().add(jLabel22);
-        jLabel22.setBounds(330, 170, 42, 14);
+        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel23.setText("REMISION");
-        getContentPane().add(jLabel23);
-        jLabel23.setBounds(480, 170, 62, 14);
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, -1, -1));
 
         jTextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField31ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField31);
-        jTextField31.setBounds(550, 160, 80, 19);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(660, 70, 0, 2);
+        getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 80, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, -1));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
-        getContentPane().add(jButton2);
-        jButton2.setBounds(1280, 0, 64, 64);
-        getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(0, 130, 0, 2);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 0, -1, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
 
-        jTableOrdenes.setModel(modelOrdenes);
+        jTableOrdenes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ORDEN", "CODIGO", "DESCRIPCION", "MATERIAL", "VALOR P1"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTableOrdenes);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(650, 210, 530, 403);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 530, 402));
 
         titulo2Soluciones.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        titulo2Soluciones.setText("SOLUCIONES EN INGENIERIA");
+        titulo2Soluciones.setText("SOLUCIONES EN INGENIERIA ZARATE");
         titulo2Soluciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        titulo2Soluciones.setDisplayedMnemonicIndex(1);
-        getContentPane().add(titulo2Soluciones);
-        titulo2Soluciones.setBounds(1050, 80, 240, 40);
+        getContentPane().add(titulo2Soluciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 80, 310, 40));
 
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        lbhora.setForeground(new java.awt.Color(240, 240, 240));
-        getContentPane().add(lbhora);
-        lbhora.setBounds(1160, 0, 120, 20);
+        getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, 80, 20));
 
-        jTableFormula.setModel(modelFormula);
+        jTableFormula.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "TIPO", "%", "TEORICO"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTableFormula.setRowHeight(20);
         jScrollPane3.setViewportView(jTableFormula);
 
-        getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(210, 530, 380, 170);
-        getContentPane().add(jTextFieldPVSR);
-        jTextFieldPVSR.setBounds(400, 420, 100, 19);
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 380, 170));
+        getContentPane().add(jTextFieldPVSR, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 100, -1));
 
         jTextFieldPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPedidosActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldPedidos);
-        jTextFieldPedidos.setBounds(400, 445, 100, 19);
+        getContentPane().add(jTextFieldPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 445, 100, -1));
 
         jLabelPVSR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelPVSR.setText("P vs R");
-        getContentPane().add(jLabelPVSR);
-        jLabelPVSR.setBounds(360, 430, 38, 14);
+        getContentPane().add(jLabelPVSR, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, -1, -1));
 
         jLabelPedidos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelPedidos.setText("PEDIDOS");
-        getContentPane().add(jLabelPedidos);
-        jLabelPedidos.setBounds(345, 455, 56, 14);
-        getContentPane().add(jTextFieldCliente);
-        jTextFieldCliente.setBounds(150, 195, 350, 19);
-        getContentPane().add(jTextFieldTelefono);
-        jTextFieldTelefono.setBounds(150, 370, 350, 19);
+        getContentPane().add(jLabelPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 455, -1, -1));
+        getContentPane().add(jTextFieldCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 195, 350, -1));
+        getContentPane().add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 350, -1));
 
         jLabelTelefono2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTelefono2.setText("TELEFONO");
-        getContentPane().add(jLabelTelefono2);
-        jLabelTelefono2.setBounds(80, 370, 70, 30);
+        getContentPane().add(jLabelTelefono2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 70, 30));
 
         jLabelDirEntrega.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelDirEntrega.setText("DIRECCION ENTREGA");
-        getContentPane().add(jLabelDirEntrega);
-        jLabelDirEntrega.setBounds(15, 345, 140, 30);
-        getContentPane().add(jTextFieldContacto);
-        jTextFieldContacto.setBounds(150, 320, 350, 19);
-        getContentPane().add(jTextFieldRFC);
-        jTextFieldRFC.setBounds(150, 270, 350, 19);
-        getContentPane().add(jTextFieldTelefono1);
-        jTextFieldTelefono1.setBounds(150, 245, 350, 19);
-        getContentPane().add(jTextFieldDirFiscal);
-        jTextFieldDirFiscal.setBounds(150, 220, 350, 19);
+        getContentPane().add(jLabelDirEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 345, 140, 30));
+        getContentPane().add(jTextFieldContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 350, -1));
+        getContentPane().add(jTextFieldRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 350, -1));
+        getContentPane().add(jTextFieldTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 245, 350, -1));
+        getContentPane().add(jTextFieldDirFiscal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 350, -1));
 
         jLabelCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelCliente.setText("CLIENTE");
-        getContentPane().add(jLabelCliente);
-        jLabelCliente.setBounds(95, 200, 60, 20);
+        getContentPane().add(jLabelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 200, 60, 20));
 
         jLabelDirFiscal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelDirFiscal.setText("DIRECCION FISCAL");
-        getContentPane().add(jLabelDirFiscal);
-        jLabelDirFiscal.setBounds(30, 220, 130, 20);
+        getContentPane().add(jLabelDirFiscal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 130, 20));
 
         jLabelTelefono1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTelefono1.setText("TELEFONO");
-        getContentPane().add(jLabelTelefono1);
-        jLabelTelefono1.setBounds(80, 245, 70, 20);
+        getContentPane().add(jLabelTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 245, 70, 20));
 
         jTextField33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField33ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField33);
-        jTextField33.setBounds(380, 160, 80, 19);
+        getContentPane().add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 80, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(1130, 10, 80, 90);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 0, -1, 90));
 
         jButton3.setBackground(new java.awt.Color(153, 153, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AGREGAR.png"))); // NOI18N
-        getContentPane().add(jButton3);
-        jButton3.setBounds(710, 630, 50, 40);
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 630, 50, 40));
 
         jButton4.setBackground(new java.awt.Color(153, 153, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
-        getContentPane().add(jButton4);
-        jButton4.setBounds(850, 630, 50, 40);
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 630, 50, 40));
 
         jButton5.setBackground(new java.awt.Color(153, 153, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
-        getContentPane().add(jButton5);
-        jButton5.setBounds(780, 630, 50, 40);
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 630, 50, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 0, 1360, 780);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 780));
 
         jMenuBar1.setBorder(null);
 
@@ -619,6 +578,12 @@ Proceso inicio = new Proceso();
          // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+   Login inicio = new Login();
+        inicio.setVisible(true);
+      dispose();     // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -726,4 +691,5 @@ Proceso inicio = new Proceso();
     private javax.swing.JLabel lbhora;
     private javax.swing.JLabel titulo2Soluciones;
     // End of variables declaration//GEN-END:variables
+private javax.swing.JOptionPane mensaje;
 }
