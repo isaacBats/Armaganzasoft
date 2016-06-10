@@ -5,10 +5,11 @@
  */
 package armaganzasoft.interfaces;
 
-import armaganzasoft.interfaces.Menu;
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.OrderRepository;
-import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,14 +17,78 @@ import javax.swing.JOptionPane;
  */
 public class Ordenes extends javax.swing.JFrame {
     HiloReloj hilor;
-
+    
+    DefaultTableModel modelOrdenes;
+    DefaultTableModel modelFormula;
     /**
      * Creates new form Ordenes
      */
     public Ordenes() {
+        this.modelOrdenes = new DefaultTableModel(null, getColumnsStepsForms());
+        this.modelFormula = new DefaultTableModel(null, getColumnForm());
+        setFilasStepsForms();
+        setFilasForm();
         initComponents();
         hilor = new HiloReloj(lbhora);
        hilor.start();
+    }
+    
+    
+    private String[] getColumnsStepsForms(){
+        
+        return  new String[]{ "ORDEN", "CODIGO", "DESCRIPCION", "MATERIAL", "VALOR P1" };    
+    }
+    
+    private String[] getColumnForm(){
+        return new String[] {"TIPO", "%", "TEORICO"};
+    }
+    
+    private void setFilasStepsForms(){
+        
+        OrderRepository or;
+        or = new OrderRepository();
+        String[] columnas = getColumnsStepsForms();
+        
+        try{
+            ResultSet rs = or.getDetailForm(1);
+            Object datos[] = new Object[columnas.length];
+            
+            while(rs.next()){
+                for(int i = 0; i < columnas.length; i++){
+                    datos[i] = rs.getObject( i + 1 );
+                }
+                this.modelOrdenes.addRow(datos);
+            }
+            rs.close();
+            
+        }catch(SQLException e){
+            System.out.println("Error al consultar los datos: " + e);
+        }
+    
+    }
+    
+    private void setFilasForm(){
+        
+        OrderRepository or;
+        or = new OrderRepository();
+        String[] columnas = getColumnForm();
+        
+        try{
+            ResultSet rs = or.getForm(1);
+            Object datos[] = new Object[columnas.length];
+            
+            while(rs.next()){
+                for(int i = 0; i < columnas.length; i++){
+                    datos[i] = rs.getObject( i + 1 );
+                }
+                this.modelFormula.addRow(datos);
+            }
+            rs.close();
+            
+        }catch(SQLException e){
+            System.out.println("Error al consultar los datos: " + e);
+        }
+    
     }
 
     /**
@@ -109,10 +174,9 @@ public class Ordenes extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(1440, 770));
         getContentPane().setLayout(null);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(710, 150, 320, 20);
+        jTextField1.setBounds(710, 150, 320, 19);
 
         jButton1.setBackground(new java.awt.Color(153, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -125,11 +189,11 @@ public class Ordenes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(1040, 140, 109, 30);
+        jButton1.setBounds(1040, 140, 116, 30);
         getContentPane().add(jTextField2);
         jTextField2.setBounds(170, 170, 120, 20);
         getContentPane().add(jTextFieldDirEntrega);
-        jTextFieldDirEntrega.setBounds(150, 345, 350, 20);
+        jTextFieldDirEntrega.setBounds(150, 345, 350, 19);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("ORDEN DE PRODUCCION");
@@ -146,7 +210,7 @@ public class Ordenes extends javax.swing.JFrame {
         getContentPane().add(jLabelContacto);
         jLabelContacto.setBounds(76, 320, 80, 30);
         getContentPane().add(jTextFieldOrden);
-        jTextFieldOrden.setBounds(160, 420, 100, 20);
+        jTextFieldOrden.setBounds(160, 420, 100, 19);
 
         jTextFieldPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,7 +218,7 @@ public class Ordenes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextFieldPedido);
-        jTextFieldPedido.setBounds(160, 445, 100, 20);
+        jTextFieldPedido.setBounds(160, 445, 100, 19);
 
         jTextFieldProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,72 +226,72 @@ public class Ordenes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextFieldProducto);
-        jTextFieldProducto.setBounds(160, 470, 100, 20);
+        jTextFieldProducto.setBounds(160, 470, 100, 19);
 
         jLabelKGSOrden.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelKGSOrden.setText("KGS/ORDEN");
         getContentPane().add(jLabelKGSOrden);
-        jLabelKGSOrden.setBounds(84, 430, 65, 14);
+        jLabelKGSOrden.setBounds(84, 430, 74, 14);
 
         jLabelKGSPedido.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelKGSPedido.setText("KGS PEDIDO");
         getContentPane().add(jLabelKGSPedido);
-        jLabelKGSPedido.setBounds(80, 455, 67, 14);
+        jLabelKGSPedido.setBounds(80, 455, 78, 14);
 
         jLabelProducto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelProducto.setText("PRODUCTO");
         getContentPane().add(jLabelProducto);
-        jLabelProducto.setBounds(86, 480, 61, 14);
+        jLabelProducto.setBounds(86, 480, 71, 14);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setText("FORMULA");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(50, 530, 69, 17);
+        jLabel15.setBounds(50, 530, 75, 17);
 
         jLabelCemento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelCemento.setText("CEMENTO");
         getContentPane().add(jLabelCemento);
-        jLabelCemento.setBounds(150, 560, 51, 14);
+        jLabelCemento.setBounds(150, 560, 63, 14);
 
         jLabelGrava.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelGrava.setText("GRAVA");
         getContentPane().add(jLabelGrava);
-        jLabelGrava.setBounds(170, 580, 39, 14);
+        jLabelGrava.setBounds(170, 580, 41, 14);
 
         jLabelArena.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelArena.setText("ARENA");
         getContentPane().add(jLabelArena);
-        jLabelArena.setBounds(170, 600, 37, 14);
+        jLabelArena.setBounds(170, 600, 41, 14);
 
         jLabelAgua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelAgua.setText("AGUA");
         getContentPane().add(jLabelAgua);
-        jLabelAgua.setBounds(170, 620, 32, 14);
+        jLabelAgua.setBounds(170, 620, 34, 14);
 
         jLabelAd1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelAd1.setText("ADITIVO1");
         getContentPane().add(jLabelAd1);
-        jLabelAd1.setBounds(150, 640, 55, 14);
+        jLabelAd1.setBounds(150, 640, 59, 14);
 
         jLabelAd2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelAd2.setText("ADITIVO2");
         getContentPane().add(jLabelAd2);
-        jLabelAd2.setBounds(150, 660, 55, 14);
+        jLabelAd2.setBounds(150, 660, 59, 14);
 
         jLabelAd3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelAd3.setText("ADITIVO3");
         getContentPane().add(jLabelAd3);
-        jLabelAd3.setBounds(150, 680, 55, 20);
+        jLabelAd3.setBounds(150, 680, 59, 20);
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel22.setText("FECHA");
         getContentPane().add(jLabel22);
-        jLabel22.setBounds(330, 170, 35, 14);
+        jLabel22.setBounds(330, 170, 42, 14);
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel23.setText("REMISION");
         getContentPane().add(jLabel23);
-        jLabel23.setBounds(480, 170, 56, 14);
+        jLabel23.setBounds(480, 170, 62, 14);
 
         jTextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,7 +299,7 @@ public class Ordenes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField31);
-        jTextField31.setBounds(550, 160, 80, 20);
+        jTextField31.setBounds(550, 160, 80, 19);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(660, 70, 0, 2);
 
@@ -244,58 +308,15 @@ public class Ordenes extends javax.swing.JFrame {
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         getContentPane().add(jButton2);
-        jButton2.setBounds(1280, 0, 65, 65);
+        jButton2.setBounds(1280, 0, 64, 64);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(0, 130, 0, 2);
 
-        jTableOrdenes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ORDEN", "CODIGO", "DESCRIPCION", "MATERIAL", "VALOR P1"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTableOrdenes.setModel(modelOrdenes);
         jScrollPane1.setViewportView(jTableOrdenes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(650, 210, 530, 402);
+        jScrollPane1.setBounds(650, 210, 530, 403);
 
         titulo2Soluciones.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         titulo2Soluciones.setText("SOLUCIONES EN INGENIERIA");
@@ -309,42 +330,14 @@ public class Ordenes extends javax.swing.JFrame {
         getContentPane().add(lbhora);
         lbhora.setBounds(1160, 0, 120, 20);
 
-        jTableFormula.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "TIPO", "%", "TEORICO"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTableFormula.setModel(modelFormula);
         jTableFormula.setRowHeight(20);
         jScrollPane3.setViewportView(jTableFormula);
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(210, 530, 380, 170);
         getContentPane().add(jTextFieldPVSR);
-        jTextFieldPVSR.setBounds(400, 420, 100, 20);
+        jTextFieldPVSR.setBounds(400, 420, 100, 19);
 
         jTextFieldPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,21 +345,21 @@ public class Ordenes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextFieldPedidos);
-        jTextFieldPedidos.setBounds(400, 445, 100, 20);
+        jTextFieldPedidos.setBounds(400, 445, 100, 19);
 
         jLabelPVSR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelPVSR.setText("P vs R");
         getContentPane().add(jLabelPVSR);
-        jLabelPVSR.setBounds(360, 430, 34, 14);
+        jLabelPVSR.setBounds(360, 430, 38, 14);
 
         jLabelPedidos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelPedidos.setText("PEDIDOS");
         getContentPane().add(jLabelPedidos);
-        jLabelPedidos.setBounds(345, 455, 49, 14);
+        jLabelPedidos.setBounds(345, 455, 56, 14);
         getContentPane().add(jTextFieldCliente);
-        jTextFieldCliente.setBounds(150, 195, 350, 20);
+        jTextFieldCliente.setBounds(150, 195, 350, 19);
         getContentPane().add(jTextFieldTelefono);
-        jTextFieldTelefono.setBounds(150, 370, 350, 20);
+        jTextFieldTelefono.setBounds(150, 370, 350, 19);
 
         jLabelTelefono2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTelefono2.setText("TELEFONO");
@@ -378,13 +371,13 @@ public class Ordenes extends javax.swing.JFrame {
         getContentPane().add(jLabelDirEntrega);
         jLabelDirEntrega.setBounds(15, 345, 140, 30);
         getContentPane().add(jTextFieldContacto);
-        jTextFieldContacto.setBounds(150, 320, 350, 20);
+        jTextFieldContacto.setBounds(150, 320, 350, 19);
         getContentPane().add(jTextFieldRFC);
-        jTextFieldRFC.setBounds(150, 270, 350, 20);
+        jTextFieldRFC.setBounds(150, 270, 350, 19);
         getContentPane().add(jTextFieldTelefono1);
-        jTextFieldTelefono1.setBounds(150, 245, 350, 20);
+        jTextFieldTelefono1.setBounds(150, 245, 350, 19);
         getContentPane().add(jTextFieldDirFiscal);
-        jTextFieldDirFiscal.setBounds(150, 220, 350, 20);
+        jTextFieldDirFiscal.setBounds(150, 220, 350, 19);
 
         jLabelCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelCliente.setText("CLIENTE");
@@ -407,7 +400,7 @@ public class Ordenes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField33);
-        jTextField33.setBounds(380, 160, 80, 20);
+        jTextField33.setBounds(380, 160, 80, 19);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
         getContentPane().add(jLabel2);

@@ -71,8 +71,8 @@ public class OrderRepository extends BaseRepository {
         
         String sql = "SELECT df.order, ope.code, ope.descripcion, mat.name, CONCAT(df.value, df.type) as value " +
                      "FROM detail_form df " +
-                     "INNER JOIN operations ope on df.operation_id = ope.id " +
-                     "INNER JOIN materials mat oN df.material_id = mat.id " +
+                     "INNER JOIN operations ope ON df.operation_id = ope.id " +
+                     "INNER JOIN materials mat ON df.material_id = mat.id " +
                      "WHERE form_id = " + formId;
         try {
             stmt = con.createStatement();
@@ -87,4 +87,25 @@ public class OrderRepository extends BaseRepository {
         return null;
     }
     
+    public ResultSet getForm( int formId ){
+    
+        Statement stmt = null;       
+        
+        String sql = "SELECT m.tipo, CONCAT(df.value, df.type) as porcentaje, '10%' as teorico " +
+                     "FROM detail_form df " +
+                     "INNER JOIN materials m ON df.material_id = m.id " +
+                     "WHERE df.form_id = " + formId;
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery( sql );
+
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("No se ejecuto el query "+ e);
+            System.out.println(sql);
+        }
+        
+        return null;
+    }
+        
 }
