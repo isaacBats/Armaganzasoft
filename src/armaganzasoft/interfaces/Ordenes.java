@@ -5,11 +5,7 @@
  */
 package armaganzasoft.interfaces;
 
-import armaganzasoft.interfaces.Menu;
 import armaganzasoft.models.HiloReloj;
-import armaganzasoft.repositorys.OrderRepository;
-import armaganzasoft.models.Order;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -109,7 +105,7 @@ public class Ordenes extends javax.swing.JFrame {
 
         jMenu3.setText("jMenu3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(1440, 770));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 320, -1));

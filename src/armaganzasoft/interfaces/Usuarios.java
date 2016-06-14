@@ -10,25 +10,35 @@ package armaganzasoft.interfaces;
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.models.User;
 import armaganzasoft.repositorys.UserRepository;
+import armaganzasoft.repositorys.ComboPlantas;
 import static java.awt.event.KeyEvent.VK_SPACE;
 import javax.swing.JOptionPane;
+//Librerias combo autollenable
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 
  // @author ErwinValle
 
 public class Usuarios extends javax.swing.JFrame {
+   private DefaultComboBoxModel modeloCombo;
     HiloReloj hilor;
     //private Object [][] datostabla;
-    
-     
+  
     public Usuarios() {
         initComponents();
         limpiar();
         bloquear();
         desbloquear();
-        
+                   
          hilor = new HiloReloj(lbhora);
        hilor.start();
+       
+       ComboPlantas.conectar();
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = ComboPlantas.llenar_combo();
+        for(int i = 0; i<lista.size();i++){
+         jComboBox2.addItem(lista.get(i));}
            }
     
     public void bloquear(){    
@@ -46,10 +56,15 @@ public class Usuarios extends javax.swing.JFrame {
        jTextField4.setText("");
        jTextField11.setText("");
        jTextField10.setText("");
-       jTextField6.setText("");
-       jComboBox1.setSelectedIndex(0);    
-   } 
-     
+       jComboBox1.setSelectedIndex(0); 
+       jComboBox2.setSelectedIndex(0); 
+         } 
+   
+
+        
+ 
+   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,12 +98,12 @@ public class Usuarios extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         lbhora = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -106,7 +121,7 @@ public class Usuarios extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -164,7 +179,7 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField1KeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 280, 20));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 280, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("NOMBRE(S) ");
@@ -228,7 +243,7 @@ public class Usuarios extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 130, 50, 40));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ELIMINARUSUARIO.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,14 +310,6 @@ public class Usuarios extends javax.swing.JFrame {
         jLabel4.setText("PLANTA");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, -1, -1));
 
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField6KeyTyped(evt);
-            }
-        });
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 170, -1));
-
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "alta", "baja" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 170, -1));
 
@@ -328,7 +335,17 @@ public class Usuarios extends javax.swing.JFrame {
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/giphy.gif"))); // NOI18N
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 10, -1, -1));
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jComboBox2.setKeySelectionManager(null);
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 170, -1));
+
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 780));
 
         jMenuBar1.setBorder(null);
@@ -460,7 +477,11 @@ public class Usuarios extends javax.swing.JFrame {
 
 Object numOperacion = jComboBox1.getSelectedItem();
        
-       String operacion = (String)numOperacion;        
+       String operacion = (String)numOperacion;   
+       
+Object numOper = jComboBox2.getSelectedItem();
+       
+       String oper = (String)numOper;   
        
         user.setName(jTextField1.getText());
         user.setLast_name(jTextField2.getText());
@@ -471,7 +492,7 @@ Object numOperacion = jComboBox1.getSelectedItem();
         user.setPosition(jTextField7.getText());
         user.setActive((String)jComboBox1.getSelectedItem());
         user.setRoll(jTextField11.getText());
-        user.setBranch_id(jTextField6.getText());
+        user.setBranch_id((String)jComboBox2.getSelectedItem());
         
         UserRepository  userRepo = new UserRepository();
         
@@ -496,6 +517,11 @@ User user;
         Object numOperacion = jComboBox1.getSelectedItem();
        
        String operacion = (String)numOperacion;
+       
+        Object numOper = jComboBox2.getSelectedItem();
+       
+       String oper = (String)numOper;
+       
              
         user.setName(jTextField1.getText());
         user.setLast_name(jTextField2.getText());
@@ -506,7 +532,7 @@ User user;
         user.setPosition(jTextField7.getText());
         user.setActive((String)jComboBox1.getSelectedItem());
         user.setRoll(jTextField11.getText());
-        user.setBranch_id(jTextField6.getText());
+        user.setBranch_id((String)jComboBox2.getSelectedItem());
                 
         
         User busqueda= URepo.buscarUsuario(user.getNum_employee());
@@ -554,6 +580,10 @@ desbloquear();
        
        String operacion = (String)numOperacion;
 
+       Object numOper = jComboBox2.getSelectedItem();
+       
+       String oper = (String)numOper;
+
         user = ur.buscarUsuario(identified);
         jTextField1.setText(user.getName());
         jTextField2.setText(user.getLast_name());
@@ -564,8 +594,8 @@ desbloquear();
         jTextField4.setText(user.getEmail());
         jComboBox1.setSelectedItem(user.getActive());
         jTextField11.setText(user.getRoll());
-        jTextField6.setText(user.getBranch_id());
-
+        jComboBox2.setSelectedItem(user.getBranch_id());
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
@@ -716,12 +746,6 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7KeyTyped
 
-    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
- char c = evt.getKeyChar();
-if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6KeyTyped
-
     private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4FocusLost
@@ -731,6 +755,12 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
         inicio.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -776,6 +806,7 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -812,7 +843,6 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables

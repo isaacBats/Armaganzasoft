@@ -153,7 +153,7 @@ public class Formulas extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -169,7 +169,7 @@ public class Formulas extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 280, 20));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 280, 30));
 
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +177,7 @@ public class Formulas extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 100, 20));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 100, 30));
 
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 100, 30));
@@ -329,8 +329,11 @@ public class Formulas extends javax.swing.JFrame {
         jLabel7.setToolTipText("");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 20, -1, -1));
+
+        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 100, -1));
 
+        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField9ActionPerformed(evt);
@@ -338,33 +341,49 @@ public class Formulas extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 130, -1));
 
+        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField10ActionPerformed(evt);
             }
         });
         getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 100, -1));
+
+        jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 100, -1));
+
+        jTextField29.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 130, -1));
+
+        jTextField30.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 100, -1));
 
+        jTextField31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField31ActionPerformed(evt);
             }
         });
         getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 100, -1));
+
+        jTextField32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 550, 130, -1));
+
+        jTextField33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 100, -1));
 
+        jTextField34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField34ActionPerformed(evt);
             }
         });
         getContentPane().add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 100, -1));
+
+        jTextField35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 580, 130, -1));
 
+        jTextField36.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField36ActionPerformed(evt);
@@ -372,13 +391,18 @@ public class Formulas extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 580, 100, -1));
 
+        jTextField37.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField37.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField37ActionPerformed(evt);
             }
         });
         getContentPane().add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 100, -1));
+
+        jTextField38.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, 130, -1));
+
+        jTextField39.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -386,7 +410,7 @@ public class Formulas extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 100, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 780));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 1420, 780));
 
         jMenuBar1.setBorder(null);
 

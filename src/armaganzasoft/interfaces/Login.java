@@ -7,6 +7,7 @@ package armaganzasoft.interfaces;
 
 import armaganzasoft.services.BaseDatos;
 import armaganzasoft.models.User;
+import static java.awt.event.KeyEvent.VK_ENTER;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -40,6 +41,7 @@ public class Login extends javax.swing.JFrame {
         jTextField1.setText("");
         jPasswordField1.setText("");
     }
+    
     
 //    Connection conn = new Connection();
 
@@ -82,6 +84,11 @@ public class Login extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jButton1KeyReleased(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 260, 100, 30));
 
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -122,6 +129,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
         String nombre = jTextField1.getText();
         String password = jPasswordField1.getText();
             
@@ -138,21 +146,17 @@ public class Login extends javax.swing.JFrame {
                                }
                   });
                  
+                 
                                   
              }else{
-                 //System.out.println("No te Puedes Conectar&");
-                 JOptionPane.showMessageDialog(this,"DATOS INCORRECTOS NO TE PUEDES CONECTAR");
+                JOptionPane.showMessageDialog(this,"DATOS INCORRECTOS NO TE PUEDES CONECTAR");
                 limpiar();
-                 /* Hacer que cuando no te logees correctamente
-                    se limpien los campos del formulario
-                 */
-                //jTextField1.;
-                //jPasswordField1.removeAll();
-             }
+                
+          }
          } catch (SQLException ex) {
              System.out.println("Error: "+ ex);
          }
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
@@ -164,6 +168,11 @@ public class Login extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
+
+           // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1KeyReleased
 
     /**
      * @param args the command line arguments
