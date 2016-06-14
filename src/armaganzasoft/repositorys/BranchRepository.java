@@ -63,7 +63,7 @@ public class BranchRepository extends BaseRepository {
         ResultSet rs;
         Branch busqueda = new Branch();
         if(identified != null || identified != ""){
-        where = "WHERE name LIKE '"+identified+"' OR rfc LIKE '"+identified+"' OR email LIKE '"+identified+"';";
+        where = "WHERE name LIKE '"+identified+"' OR rfc LIKE '"+identified+"' OR code LIKE '"+identified+"';";
         }
             try {
             query = con.prepareStatement("SELECT * FROM branches "+where);
@@ -87,7 +87,7 @@ public class BranchRepository extends BaseRepository {
 //                  System.out.println(rs.getString("name")+ " y su correo es "+rs.getString("email"));  
             
             } catch (SQLException ex) {
-            System.out.println("Erro al consultar un Cliente: "+ex);
+            System.out.println("Erro al consultar Planta: "+ex);
         }
         return null;
     }
@@ -97,7 +97,7 @@ public class BranchRepository extends BaseRepository {
         try {
             
             query = con.prepareStatement("UPDATE branches SET   code         = ?,"
-                                                           + "name=?, "
+                                                           +"    name =?, "
                                                            +"    address    = ?, "
                                                            +"    telephone        = ?, "
                                                            +"    city    = ?, "
