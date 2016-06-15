@@ -7,16 +7,28 @@ package armaganzasoft.interfaces;
 
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.models.Process;
+import armaganzasoft.repositorys.ComboMaterial;
 import armaganzasoft.repositorys.ProcessRepository;
 import armaganzasoft.repositorys.UserRepository;
 import static java.awt.event.KeyEvent.VK_SPACE;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 /**
  *
  * @author user
  */
 public class Proceso extends javax.swing.JFrame {
+    DefaultListModel modelo= new DefaultListModel();
+     private DefaultComboBoxModel modeloCombo;
 HiloReloj hilor;
     /**
      * Creates new form Proceso
@@ -25,22 +37,40 @@ HiloReloj hilor;
         initComponents();
          hilor = new HiloReloj(lbhora);
        hilor.start();
+       
+        ComboMaterial.conectar();
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = ComboMaterial.llenar_combo();
+        for(int i = 0; i<lista.size();i++){
+         jComboBox1.addItem(lista.get(i));}
+        
+        
+       
+        lista = ComboMaterial.llenar_combo();
+        for(int i = 0; i<lista.size();i++){
+         jComboBox2.addItem(lista.get(i));}
+        
+         lista = ComboMaterial.llenar_combo();
+        for(int i = 0; i<lista.size();i++){
+         jComboBox3.addItem(lista.get(i));}
+       
+       
     }
  public void limpiar (){
         jTextField1.setText("");
        jTextField2.setText("");
        jTextField3.setText("");
        jTextField5.setText("");
-       jTextField6.setText("");        
-       jTextField7.setText("");
+       jTextField6.setText("");
        jTextField8.setText("");
        jTextField9.setText("");
-       jTextField10.setText("");
        jTextField11.setText("");
        jTextField12.setText("");
-       jTextField13.setText("");
        jTextField14.setText("");
        jTextField15.setText("");
+       jComboBox1.setSelectedIndex(0); 
+       jComboBox2.setSelectedIndex(0); 
+       jComboBox3.setSelectedIndex(0); 
  }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,13 +87,10 @@ HiloReloj hilor;
         jTextField3 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
         jTextField14 = new javax.swing.JTextField();
         jTextField15 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -91,6 +118,9 @@ HiloReloj hilor;
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel17 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -154,6 +184,11 @@ HiloReloj hilor;
                 jTextField5ActionPerformed(evt);
             }
         });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
+        });
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 88, -1));
 
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -164,29 +199,15 @@ HiloReloj hilor;
         });
         getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 160, -1));
 
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 80, -1));
-
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 80, -1));
 
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 80, -1));
 
-        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, 80, -1));
-
         jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 300, 80, -1));
         getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 300, 80, -1));
-
-        jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 300, 80, -1));
 
         jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField14.addActionListener(new java.awt.event.ActionListener() {
@@ -334,6 +355,11 @@ HiloReloj hilor;
         jButton7.setBorder(null);
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 0, 40, 40));
 
         jTable1.setAutoCreateRowSorter(true);
@@ -390,6 +416,15 @@ HiloReloj hilor;
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("SOLUCIONES EN INGENIERIA ZARATE");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 100, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 80, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, 80, -1));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 300, 80, -1));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, -1));
@@ -523,22 +558,36 @@ HiloReloj hilor;
         identified = jTextField1.getText();
         ProcessRepository  pr = new ProcessRepository();
         
-        
+         Object numOperacion = jComboBox1.getSelectedItem();
+       
+       String operacion = (String)numOperacion; 
+       
+       Object numOperacion2 = jComboBox2.getSelectedItem();
+       
+       String operacion2 = (String)numOperacion2; 
+       
+       Object numOperacion3 = jComboBox3.getSelectedItem();
+       
+       String operacion3 = (String)numOperacion3; 
 
         process = pr.buscarProceso(identified);
         jTextField2.setText(process.getProducto());
         jTextField3.setText(process.getCode());
         jTextField5.setText(process.getOperacion());
         jTextField6.setText(process.getDes_operacion());
-        jTextField7.setText(process.getMaterial1());
+        jComboBox1.setSelectedItem(process.getMaterial1());
         jTextField8.setText(process.getValor1());
         jTextField9.setText(process.getTipop1()); 
-        jTextField10.setText(process.getMaterial2());
+        jComboBox2.setSelectedItem(process.getMaterial2());
         jTextField11.setText(process.getValor2());
         jTextField12.setText(process.getTipop2());  
-        jTextField13.setText(process.getMaterial3());
+        jComboBox3.setSelectedItem(process.getMaterial3());
         jTextField14.setText(process.getValor3());
-        jTextField15.setText(process.getTipop3());          
+        jTextField15.setText(process.getTipop3()); 
+        
+                                          
+
+
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -549,10 +598,6 @@ HiloReloj hilor;
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -570,18 +615,30 @@ HiloReloj hilor;
 
      Process process;
         process = new Process();      
+        
+        Object numOperacion = jComboBox1.getSelectedItem();
+       
+       String operacion = (String)numOperacion; 
+       
+       Object numOperacion2 = jComboBox2.getSelectedItem();
+       
+       String operacion2 = (String)numOperacion2; 
+       
+       Object numOperacion3 = jComboBox3.getSelectedItem();
+       
+       String operacion3 = (String)numOperacion3; 
        
         process.setProducto(jTextField2.getText());
         process.setCode(jTextField3.getText());
         process.setOperacion(jTextField5.getText());
         process.setDes_operacion(jTextField6.getText());
-        process.setMaterial1(jTextField7.getText());
+        process.setMaterial1((String)jComboBox1.getSelectedItem());
         process.setValor1(jTextField8.getText());
         process.setTipop1(jTextField9.getText());
-        process.setMaterial2(jTextField10.getText());
+        process.setMaterial2((String)jComboBox2.getSelectedItem());
         process.setValor2(jTextField11.getText());
         process.setTipop2(jTextField12.getText());
-        process.setMaterial3(jTextField13.getText());
+       process.setMaterial3((String)jComboBox3.getSelectedItem());
         process.setValor3(jTextField14.getText());
         process.setTipop3(jTextField15.getText());
         ProcessRepository  processRepo = new ProcessRepository();
@@ -603,19 +660,29 @@ Process process;
         process = new Process();
         ProcessRepository  PRepo = new ProcessRepository();
        
-    
+     Object numOperacion = jComboBox1.getSelectedItem();
+       
+       String operacion = (String)numOperacion; 
+       
+       Object numOperacion2 = jComboBox2.getSelectedItem();
+       
+       String operacion2 = (String)numOperacion2; 
+       
+       Object numOperacion3 = jComboBox3.getSelectedItem();
+       
+       String operacion3 = (String)numOperacion3; 
              
           process.setProducto(jTextField2.getText());
         process.setCode(jTextField3.getText());
         process.setOperacion(jTextField5.getText());
         process.setDes_operacion(jTextField6.getText());
-        process.setMaterial1(jTextField7.getText());
+        process.setMaterial1((String)jComboBox1.getSelectedItem());
         process.setValor1(jTextField8.getText());
         process.setTipop1(jTextField9.getText());
-        process.setMaterial2(jTextField10.getText());
+        process.setMaterial2((String)jComboBox2.getSelectedItem());
         process.setValor2(jTextField11.getText());
         process.setTipop2(jTextField12.getText());
-        process.setMaterial3(jTextField13.getText());
+        process.setMaterial3((String)jComboBox3.getSelectedItem());
         process.setValor3(jTextField14.getText());
         process.setTipop3(jTextField15.getText());
         
@@ -719,6 +786,41 @@ Opb inicio = new Opb();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+//cuando se de clic confirmar de cerrara la secion
+        int respuesta=mensaje.showConfirmDialog(rootPane, "¿Realmente deseas cerrar seción?", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        //guardar la respuesta en la variable respuesta y cerramos la secion cuando sea la respuesta que si
+        if(respuesta==mensaje.YES_NO_OPTION){
+            Login acceso= new Login();
+            acceso.setVisible(true);
+            dispose();
+        }//para cerrar la ventana que esta abierta y abrira la que queremos que es la de Acceco         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+     Connection cn;
+     if (this.jTextField5.getText().isEmpty()){
+        modelo.clear();
+    }
+     else{
+         try{
+             Class.forName("com.mysql.jdbc.Driver");
+             cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/armaganza","root","sasa"); 
+             String cad=this.jTextField5.getText();
+             PreparedStatement ps=cn.prepareStatement("SELECT descripcion FROM operations where descripcion like '"+cad+"%'");
+                ResultSet rs=ps.executeQuery();
+                while(rs.next()){
+                    modelo.addElement(rs.getObject(1));
+                }
+                this.jTextField6.setActionCommand(cad);
+            } catch (ClassNotFoundException | SQLException e) {
+                JOptionPane.showMessageDialog(rootPane,e.getMessage());
+            }
+            
+        }
+     // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5KeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -762,6 +864,9 @@ Opb inicio = new Opb();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -797,17 +902,14 @@ Opb inicio = new Opb();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbhora;
