@@ -10,6 +10,7 @@ import armaganzasoft.models.Process;
 import armaganzasoft.repositorys.ComboMaterial;
 import armaganzasoft.repositorys.ProcessRepository;
 import armaganzasoft.repositorys.UserRepository;
+import armaganzasoft.services.BaseDatos;
 import static java.awt.event.KeyEvent.VK_SPACE;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -179,14 +180,9 @@ HiloReloj hilor;
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 71, -1));
 
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField5KeyReleased(evt);
+                listenerKeyUp(evt);
             }
         });
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 88, -1));
@@ -431,7 +427,6 @@ HiloReloj hilor;
 
         jMenuBar1.setBorder(null);
 
-        jMenu1.setBorder(null);
         jMenu1.setText("CAPTURA DE DATOS");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
@@ -544,10 +539,6 @@ HiloReloj hilor;
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  Process process;
@@ -797,29 +788,22 @@ Opb inicio = new Opb();
         }//para cerrar la ventana que esta abierta y abrira la que queremos que es la de Acceco         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
-     Connection cn;
-     if (this.jTextField5.getText().isEmpty()){
-        modelo.clear();
-    }
-     else{
+    private void listenerKeyUp(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listenerKeyUp
          try{
-             Class.forName("com.mysql.jdbc.Driver");
-             cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/armaganza","root","sasa"); 
+             
+             BaseDatos db = new BaseDatos();
+             Connection cn = db.getConnection();
              String cad=this.jTextField5.getText();
              PreparedStatement ps=cn.prepareStatement("SELECT descripcion FROM operations where descripcion like '"+cad+"%'");
-                ResultSet rs=ps.executeQuery();
-                while(rs.next()){
-                    modelo.addElement(rs.getObject(1));
-                }
-                this.jTextField6.setActionCommand(cad);
-            } catch (ClassNotFoundException | SQLException e) {
+             ResultSet rs=ps.executeQuery();
+             if(rs.next()){
+                 this.jTextField6.setText(rs.getString("descripcion"));
+             }
+             this.jTextField6.setActionCommand(cad);
+            }catch (SQLException e) {
                 JOptionPane.showMessageDialog(rootPane,e.getMessage());
             }
-            
-        }
-     // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5KeyReleased
+    }//GEN-LAST:event_listenerKeyUp
 
     /**
      * @param args the command line arguments
