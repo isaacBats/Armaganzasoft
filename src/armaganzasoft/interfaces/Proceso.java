@@ -6,11 +6,12 @@
 package armaganzasoft.interfaces;
 
 import armaganzasoft.models.HiloReloj;
+import armaganzasoft.models.Obasicas;
 import armaganzasoft.models.Process;
+import armaganzasoft.repositorys.BasicasRepository;
 import armaganzasoft.repositorys.ComboMaterial;
 import armaganzasoft.repositorys.ProcessRepository;
 import armaganzasoft.repositorys.UserRepository;
-import armaganzasoft.services.BaseDatos;
 import static java.awt.event.KeyEvent.VK_SPACE;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -58,9 +59,27 @@ HiloReloj hilor;
        
     }
  public void limpiar (){
-        jTextField1.setText("");
+      
+     
+       jTextField1.setText("");
+       jTextField4.setText("");
+       jTextField5.setText("");
+       jTextField6.setText("");
+       jTextField8.setText("");
+       jTextField9.setText("");
+       jTextField11.setText("");
+       jTextField12.setText("");
+       jTextField14.setText("");
+       jTextField15.setText("");
+       jComboBox1.setSelectedIndex(0); 
+       jComboBox2.setSelectedIndex(0); 
+       jComboBox3.setSelectedIndex(0); 
+ }
+ public void limpiartodo (){
+       jTextField1.setText("");
        jTextField2.setText("");
        jTextField3.setText("");
+       jTextField4.setText("");
        jTextField5.setText("");
        jTextField6.setText("");
        jTextField8.setText("");
@@ -122,6 +141,8 @@ HiloReloj hilor;
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -177,16 +198,27 @@ HiloReloj hilor;
                 jTextField3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 71, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 71, -1));
 
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField5FocusLost(evt);
+            }
+        });
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                listenerKeyUp(evt);
+                jTextField5KeyReleased(evt);
             }
         });
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 88, -1));
 
+        jTextField6.setEditable(false);
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,7 +259,7 @@ HiloReloj hilor;
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("CODIGO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(153, 153, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AGREGAR.png"))); // NOI18N
@@ -422,11 +454,23 @@ HiloReloj hilor;
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 300, 80, -1));
 
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel18.setText("CONSECUTIVO");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 80, -1));
+
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, -1));
 
         jMenuBar1.setBorder(null);
 
+        jMenu1.setBorder(null);
         jMenu1.setText("CAPTURA DE DATOS");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
@@ -540,6 +584,10 @@ HiloReloj hilor;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  Process process;
         String identified = "";
@@ -564,6 +612,7 @@ HiloReloj hilor;
         process = pr.buscarProceso(identified);
         jTextField2.setText(process.getProducto());
         jTextField3.setText(process.getCode());
+        jTextField4.setText(process.getConsecutivo());
         jTextField5.setText(process.getOperacion());
         jTextField6.setText(process.getDes_operacion());
         jComboBox1.setSelectedItem(process.getMaterial1());
@@ -621,6 +670,7 @@ HiloReloj hilor;
        
         process.setProducto(jTextField2.getText());
         process.setCode(jTextField3.getText());
+        process.setConsecutivo(jTextField4.getText());
         process.setOperacion(jTextField5.getText());
         process.setDes_operacion(jTextField6.getText());
         process.setMaterial1((String)jComboBox1.getSelectedItem());
@@ -665,6 +715,7 @@ Process process;
              
           process.setProducto(jTextField2.getText());
         process.setCode(jTextField3.getText());
+        process.setConsecutivo(jTextField4.getText());
         process.setOperacion(jTextField5.getText());
         process.setDes_operacion(jTextField6.getText());
         process.setMaterial1((String)jComboBox1.getSelectedItem());
@@ -715,7 +766,7 @@ limpiar();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
- limpiar();        // TODO add your handling code here:
+ limpiartodo();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -788,23 +839,56 @@ Opb inicio = new Opb();
         }//para cerrar la ventana que esta abierta y abrira la que queremos que es la de Acceco         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void listenerKeyUp(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listenerKeyUp
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+     Connection cn;
+     if (this.jTextField5.getText().isEmpty()){
+        modelo.clear();
+    }
+     else{
          try{
-             
-             BaseDatos db = new BaseDatos();
-             Connection cn = db.getConnection();
+             Class.forName("com.mysql.jdbc.Driver");
+             cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/armaganza","root","sasa"); 
              String cad=this.jTextField5.getText();
              PreparedStatement ps=cn.prepareStatement("SELECT descripcion FROM operations where descripcion like '"+cad+"%'");
-             ResultSet rs=ps.executeQuery();
-             if(rs.next()){
-                 this.jTextField6.setText(rs.getString("descripcion"));
-             }
-             this.jTextField6.setActionCommand(cad);
-            }catch (SQLException e) {
+                ResultSet rs=ps.executeQuery();
+                while(rs.next()){
+                    modelo.addElement(rs.getObject(1));
+                }
+                this.jTextField6.setActionCommand(cad);
+            } catch (ClassNotFoundException | SQLException e) {
                 JOptionPane.showMessageDialog(rootPane,e.getMessage());
             }
-    }//GEN-LAST:event_listenerKeyUp
+            
+        }
+     // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5KeyReleased
 
+    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
+ String codigo = jTextField5.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Obasicas materials;
+        String identified = "";
+        materials = new Obasicas();
+        
+        identified = jTextField5.getText();
+        BasicasRepository  cr = new  BasicasRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField6.setText(materials.getDescripcion());  
+      }
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5FocusLost
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -860,6 +944,7 @@ Opb inicio = new Opb();
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -892,6 +977,7 @@ Opb inicio = new Opb();
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField8;
