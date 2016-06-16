@@ -13,6 +13,7 @@ public class Process {
      private int     id;
     private String  producto;
     private String  code;
+    private String  consecutivo;
     private String  operacion;
     private String  des_operacion;
     private String  material1;
@@ -51,6 +52,14 @@ public Process(){
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getConsecutivo() {
+        return consecutivo;
+    }
+
+    public void setConsecutivo(String consecutivo) {
+        this.consecutivo = consecutivo;
     }
 
     public String getOperacion() {
