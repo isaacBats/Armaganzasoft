@@ -10,6 +10,7 @@ import armaganzasoft.models.Process;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,6 +35,7 @@ public class ProcessRepository extends BaseRepository {
             
             query = con.prepareStatement("INSERT INTO process (producto,"
                                                           + "code, "
+                                                          + "consecutivo, "
                                                           + "operacion, "
                                                           + "des_operacion, "
                                                           + "material1, "
@@ -45,23 +47,24 @@ public class ProcessRepository extends BaseRepository {
                                                           + "material3,"
                                                           + "valor3, "
                                                           + "tipop3) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ? ,? ,?, ?, ?, ?);"
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ? ,? ,?, ?, ?, ?, ?);"
                                         );
             
             
             query.setString(1, process.getProducto());
             query.setString(2, process.getCode());
-            query.setString(3, process.getOperacion());
-            query.setString(4, process.getDes_operacion());
-            query.setString(5, process.getMaterial1());
-            query.setString(6, process.getValor1());
-            query.setString(7, process.getTipop1());
-            query.setString(8, process.getMaterial2());
-            query.setString(9, process.getValor2());
-            query.setString(10, process.getTipop2());
-            query.setString(11, process.getMaterial3());
-            query.setString(12, process.getValor3());
-            query.setString(13, process.getTipop3());
+            query.setString(3, process.getConsecutivo());
+            query.setString(4, process.getOperacion());
+            query.setString(5, process.getDes_operacion());
+            query.setString(6, process.getMaterial1());
+            query.setString(7, process.getValor1());
+            query.setString(8, process.getTipop1());
+            query.setString(9, process.getMaterial2());
+            query.setString(10, process.getValor2());
+            query.setString(11, process.getTipop2());
+            query.setString(12, process.getMaterial3());
+            query.setString(13, process.getValor3());
+            query.setString(14, process.getTipop3());
             
             
             
@@ -93,6 +96,7 @@ public class ProcessRepository extends BaseRepository {
                 
                 busqueda.setProducto(rs.getString("producto"));
                 busqueda.setCode(rs.getString("code"));
+                busqueda.setConsecutivo(rs.getString("consecutivo"));
                 busqueda.setOperacion(rs.getString("operacion"));
                 busqueda.setDes_operacion(rs.getString("des_operacion"));
                 busqueda.setMaterial1(rs.getString("material1"));
@@ -123,6 +127,7 @@ public class ProcessRepository extends BaseRepository {
             
             query = con.prepareStatement("UPDATE process SET  producto=?,"
                                                           + "code=?, "
+                                                          + "consecutivo=?, "
                                                           + "operacion=?, "
                                                           + "des_operacion=?, "
                                                           + "material1=?, "
@@ -137,18 +142,19 @@ public class ProcessRepository extends BaseRepository {
                                                            + "WHERE id =?"      );
            query.setString(1, process.getProducto());
             query.setString(2, process.getCode());
-            query.setString(3, process.getOperacion());
-            query.setString(4, process.getDes_operacion());
-            query.setString(5, process.getMaterial1());
-            query.setString(6, process.getValor1());
-            query.setString(7, process.getTipop1());
-            query.setString(8, process.getMaterial2());
-            query.setString(9, process.getValor2());
-            query.setString(10, process.getTipop2());
-            query.setString(11, process.getMaterial3());
-            query.setString(12, process.getValor3());
-            query.setString(13, process.getTipop3());
-            query.setInt(14, process.getId());
+            query.setString(3, process.getConsecutivo());
+            query.setString(4, process.getOperacion());
+            query.setString(5, process.getDes_operacion());
+            query.setString(6, process.getMaterial1());
+            query.setString(7, process.getValor1());
+            query.setString(8, process.getTipop1());
+            query.setString(9, process.getMaterial2());
+            query.setString(10, process.getValor2());
+            query.setString(11, process.getTipop2());
+            query.setString(12, process.getMaterial3());
+            query.setString(13, process.getValor3());
+            query.setString(14, process.getTipop3());
+            query.setInt(15, process.getId());
             
             if( !query.execute() ){
                 System.out.println("Se edito la operacion correctamente");
@@ -185,5 +191,14 @@ public boolean eliminar(Process process){
         }
         
         return false;
-    }
+}
+
+/*public DefaultTableModel restornarDatos(String sentenciaSQL){
+
+DefaultTableModel modelo= new DefaultTableModel();
+{ try
+}
+
+}*/
+
 }
