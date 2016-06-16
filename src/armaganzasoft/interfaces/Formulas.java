@@ -8,11 +8,10 @@ package armaganzasoft.interfaces;
 
 import armaganzasoft.models.Forms;
 import armaganzasoft.models.HiloReloj;
+import armaganzasoft.models.Materials;
 import armaganzasoft.repositorys.FormulaRepository;
+import armaganzasoft.repositorys.MaterialsRepository;
 import javax.swing.JOptionPane;
-
-
-
 
 /**
  *
@@ -27,7 +26,7 @@ public class Formulas extends javax.swing.JFrame {
     public Formulas() {
         initComponents();
         limpiar();
-       hilor = new HiloReloj(lbhora);
+         hilor = new HiloReloj(lbhora);
        hilor.start();
     }
     
@@ -73,7 +72,7 @@ public class Formulas extends javax.swing.JFrame {
        jTextField38.setText("");
        jTextField39.setText("");
          }
-
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -180,6 +179,16 @@ public class Formulas extends javax.swing.JFrame {
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 100, 30));
 
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField6FocusLost(evt);
+            }
+        });
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 100, 30));
 
         jButton1.setBackground(new java.awt.Color(153, 153, 255));
@@ -216,7 +225,17 @@ public class Formulas extends javax.swing.JFrame {
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 100, -1));
 
+        jTextField4.setEditable(false);
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField4.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                jTextField4AncestorMoved(evt);
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 130, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -224,21 +243,51 @@ public class Formulas extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
 
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField5FocusLost(evt);
+            }
+        });
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 100, -1));
 
         jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField12.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField12FocusLost(evt);
+            }
+        });
         getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 100, -1));
 
         jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField13.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField13FocusLost(evt);
+            }
+        });
         getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 100, -1));
 
         jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField14.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField14FocusLost(evt);
+            }
+        });
         getContentPane().add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 100, -1));
 
         jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField15.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField15FocusLost(evt);
+            }
+        });
         getContentPane().add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 100, -1));
 
         jTextField16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField16.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField16FocusLost(evt);
+            }
+        });
         jTextField16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField16ActionPerformed(evt);
@@ -246,21 +295,27 @@ public class Formulas extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 100, -1));
 
+        jTextField17.setEditable(false);
         jTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 130, -1));
 
+        jTextField18.setEditable(false);
         jTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 130, -1));
 
+        jTextField19.setEditable(false);
         jTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 130, -1));
 
+        jTextField20.setEditable(false);
         jTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 130, -1));
 
+        jTextField21.setEditable(false);
         jTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 130, -1));
 
+        jTextField22.setEditable(false);
         jTextField22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 130, -1));
 
@@ -331,8 +386,14 @@ public class Formulas extends javax.swing.JFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 20, -1, -1));
 
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField8.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField8FocusLost(evt);
+            }
+        });
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 100, -1));
 
+        jTextField9.setEditable(false);
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -350,8 +411,14 @@ public class Formulas extends javax.swing.JFrame {
         getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 100, -1));
 
         jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField11.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField11FocusLost(evt);
+            }
+        });
         getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 100, -1));
 
+        jTextField29.setEditable(false);
         jTextField29.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 130, -1));
 
@@ -359,6 +426,11 @@ public class Formulas extends javax.swing.JFrame {
         getContentPane().add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 100, -1));
 
         jTextField31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField31.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField31FocusLost(evt);
+            }
+        });
         jTextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField31ActionPerformed(evt);
@@ -366,6 +438,7 @@ public class Formulas extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 100, -1));
 
+        jTextField32.setEditable(false);
         jTextField32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 550, 130, -1));
 
@@ -373,6 +446,11 @@ public class Formulas extends javax.swing.JFrame {
         getContentPane().add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 100, -1));
 
         jTextField34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField34.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField34FocusLost(evt);
+            }
+        });
         jTextField34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField34ActionPerformed(evt);
@@ -380,6 +458,7 @@ public class Formulas extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 100, -1));
 
+        jTextField35.setEditable(false);
         jTextField35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 580, 130, -1));
 
@@ -392,6 +471,11 @@ public class Formulas extends javax.swing.JFrame {
         getContentPane().add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 580, 100, -1));
 
         jTextField37.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField37.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField37FocusLost(evt);
+            }
+        });
         jTextField37.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField37ActionPerformed(evt);
@@ -399,6 +483,7 @@ public class Formulas extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 100, -1));
 
+        jTextField38.setEditable(false);
         jTextField38.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, 130, -1));
 
@@ -532,9 +617,14 @@ public class Formulas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-Login inicio = new Login();
-        inicio.setVisible(true);
-        dispose();
+//cuando se de clic confirmar de cerrara la secion
+        int respuesta=mensaje.showConfirmDialog(rootPane, "¿Realmente deseas cerrar seción?", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        //guardar la respuesta en la variable respuesta y cerramos la secion cuando sea la respuesta que si
+        if(respuesta==mensaje.YES_NO_OPTION){
+            Login acceso= new Login();
+            acceso.setVisible(true);
+            dispose();
+        }//para cerrar la ventana que esta abierta y abrira la que queremos que es la de Acceco
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -827,6 +917,289 @@ Opb inicio = new Opb();
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+   String codigo = jTextField6.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField6.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField4.setText(materials.getName());
+        
+      }     
+    }//GEN-LAST:event_jTextField6FocusLost
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField4AncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextField4AncestorMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4AncestorMoved
+
+    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
+String codigo = jTextField5.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField5.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField17.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5FocusLost
+
+    private void jTextField12FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField12FocusLost
+String codigo = jTextField12.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField12.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField18.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField12FocusLost
+
+    private void jTextField13FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField13FocusLost
+String codigo = jTextField13.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField13.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField19.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField13FocusLost
+
+    private void jTextField14FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField14FocusLost
+String codigo = jTextField14.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField14.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField20.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField14FocusLost
+
+    private void jTextField15FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField15FocusLost
+String codigo = jTextField15.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField15.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField21.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField15FocusLost
+
+    private void jTextField16FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField16FocusLost
+String codigo = jTextField16.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField16.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField22.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField16FocusLost
+
+    private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
+String codigo = jTextField8.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField8.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField9.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8FocusLost
+
+    private void jTextField11FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField11FocusLost
+String codigo = jTextField11.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField11.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField29.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11FocusLost
+
+    private void jTextField31FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField31FocusLost
+String codigo = jTextField31.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField31.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField32.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField31FocusLost
+
+    private void jTextField34FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField34FocusLost
+String codigo = jTextField34.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField34.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField35.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField34FocusLost
+
+    private void jTextField37FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField37FocusLost
+String codigo = jTextField37.getText().toString();
+      if (codigo.equals("")){
+      JOptionPane.showMessageDialog(this,"El Codigo Ingresado No Existe");            
+             }
+      else
+      {
+          Materials materials;
+        String identified = "";
+        materials = new Materials();
+        
+        identified = jTextField37.getText();
+        MaterialsRepository  cr = new  MaterialsRepository(); 
+        
+            materials = cr.buscarDescripcion(identified);
+        
+         
+        jTextField38.setText(materials.getName());
+        
+      }     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField37FocusLost
 
     /**
      * @param args the command line arguments
