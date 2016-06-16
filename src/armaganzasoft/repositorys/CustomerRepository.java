@@ -4,6 +4,7 @@ import armaganzasoft.models.Customer;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -142,28 +143,36 @@ public class CustomerRepository extends BaseRepository {
         
         return false;
     }
-       public boolean eliminar(Customer customer){
+    public boolean eliminar(Customer customer){
+         try {
+             query = con.prepareStatement("DELETE  FROM customers WHERE   id = "+customer.getId());
+             if( !query.execute() ){
+                 System.out.println("Se elimino el cliente correctamente");
+                 return true;
+             }            
+             query.close();            
+         } catch (SQLException ex) {
+             System.out.println("Error al eliminar cliente: "+ ex);
+         }        
+         return false;
+    }
+    
+    public ResultSet getallCostumers(){
+    
+        Statement stmt;       
         
+        String sql = "SELECT * FROM customers";
         try {
-            
-           query = con.prepareStatement("DELETE  FROM customers WHERE   id = "+customer.getId());
-            
-       
-            
-            
-                               
-            if( !query.execute() ){
-                System.out.println("Se elimino el cliente correctamente");
-                return true;
-            }
-            
-            query.close();
-            
-        } catch (SQLException ex) {
-            System.out.println("Error al eliminar cliente: "+ ex);
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery( sql );
+
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("No se ejecuto el query "+ e);
+            System.out.println(sql);
         }
         
-        return false;
+        return null;
     }
 }
      
