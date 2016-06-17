@@ -195,7 +195,7 @@
     <Component class="javax.swing.JTextField" name="jTextField2">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="180" y="170" width="120" height="-1"/>
+          <AbsoluteConstraints x="180" y="160" width="120" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -215,7 +215,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="170" width="160" height="20"/>
+          <AbsoluteConstraints x="20" y="160" width="160" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -228,7 +228,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="120" y="270" width="30" height="20"/>
+          <AbsoluteConstraints x="120" y="190" width="30" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -443,7 +443,7 @@
     <Component class="javax.swing.JTextField" name="jTextFieldCliente">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="150" y="195" width="350" height="-1"/>
+          <AbsoluteConstraints x="150" y="220" width="350" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -488,9 +488,12 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldRFC">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="recolectaDatosCliente"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="150" y="270" width="350" height="-1"/>
+          <AbsoluteConstraints x="150" y="190" width="350" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -504,7 +507,7 @@
     <Component class="javax.swing.JTextField" name="jTextFieldDirFiscal">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="150" y="220" width="350" height="-1"/>
+          <AbsoluteConstraints x="150" y="270" width="350" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -517,7 +520,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="95" y="200" width="60" height="20"/>
+          <AbsoluteConstraints x="90" y="220" width="60" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -530,7 +533,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="220" width="130" height="20"/>
+          <AbsoluteConstraints x="30" y="270" width="130" height="20"/>
         </Constraint>
       </Constraints>
     </Component>

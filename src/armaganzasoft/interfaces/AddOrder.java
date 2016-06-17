@@ -8,13 +8,9 @@ package armaganzasoft.interfaces;
 import armaganzasoft.models.Customer;
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.CustomerRepository;
-import armaganzasoft.services.CustomerController;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,11 +18,14 @@ import java.util.logging.Logger;
  */
 public class AddOrder extends javax.swing.JFrame {
     HiloReloj hilor;
+    
+    private CustomerRepository cr;
 
     /**
      * Creates new form Ordenes
      */
     public AddOrder() {
+        this.cr = new CustomerRepository();
         initComponents();
         hilor = new HiloReloj(lbhora);
         hilor.start();
@@ -38,8 +37,8 @@ public class AddOrder extends javax.swing.JFrame {
     
     private void completaCliente(){
         
-        CustomerRepository cr = new CustomerRepository();
-        TextAutoCompleter textAutoCompleter = new TextAutoCompleter(jTextFieldCliente);
+        //TextAutoCompleter textAutoCompleterCliente = new TextAutoCompleter(jTextFieldCliente);
+        TextAutoCompleter textAutoCompleterRFC = new TextAutoCompleter(jTextFieldRFC);
         //CustomerController cc = new CustomerController();
         
         //List<Customer> listCustomers = cc.getCustomers( cr.getallCostumers() );
@@ -47,7 +46,8 @@ public class AddOrder extends javax.swing.JFrame {
         ResultSet rs = cr.getallCostumers();
         try {
             while(rs.next()){                
-                textAutoCompleter.addItem(rs.getString("name") + " " + rs.getString("last_name"));                
+                //textAutoCompleterCliente.addItem(rs.getString("name") + " " + rs.getString("last_name"));                
+                textAutoCompleterRFC.addItem( rs.getString( "rfc" ) );                
             }
             rs.close();
         } catch (SQLException ex) {
@@ -125,16 +125,16 @@ public class AddOrder extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 120, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 120, -1));
         getContentPane().add(jTextFieldDirEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 345, 350, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("ORDEN DE PRODUCCION");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 160, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, 20));
 
         jLabelRFC.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelRFC.setText("RFC");
-        getContentPane().add(jLabelRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 30, 20));
+        getContentPane().add(jLabelRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 30, 20));
 
         jLabelContacto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelContacto.setText("CONTACTO");
@@ -194,7 +194,7 @@ public class AddOrder extends javax.swing.JFrame {
         jLabelPedidos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelPedidos.setText("PEDIDOS");
         getContentPane().add(jLabelPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 455, -1, -1));
-        getContentPane().add(jTextFieldCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 195, 350, -1));
+        getContentPane().add(jTextFieldCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 350, -1));
         getContentPane().add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 350, -1));
 
         jLabelTelefono2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -205,17 +205,23 @@ public class AddOrder extends javax.swing.JFrame {
         jLabelDirEntrega.setText("DIRECCION ENTREGA");
         getContentPane().add(jLabelDirEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 345, 140, 30));
         getContentPane().add(jTextFieldContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 350, -1));
-        getContentPane().add(jTextFieldRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 350, -1));
+
+        jTextFieldRFC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                recolectaDatosCliente(evt);
+            }
+        });
+        getContentPane().add(jTextFieldRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 350, -1));
         getContentPane().add(jTextFieldTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 245, 350, -1));
-        getContentPane().add(jTextFieldDirFiscal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 350, -1));
+        getContentPane().add(jTextFieldDirFiscal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 350, -1));
 
         jLabelCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelCliente.setText("CLIENTE");
-        getContentPane().add(jLabelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 200, 60, 20));
+        getContentPane().add(jLabelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 60, 20));
 
         jLabelDirFiscal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelDirFiscal.setText("DIRECCION FISCAL");
-        getContentPane().add(jLabelDirFiscal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 130, 20));
+        getContentPane().add(jLabelDirFiscal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 130, 20));
 
         jLabelTelefono1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTelefono1.setText("TELEFONO");
@@ -411,6 +417,18 @@ Proceso inicio = new Proceso();
         inicio.setVisible(true);
       dispose();     // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void recolectaDatosCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_recolectaDatosCliente
+        String rfc = jTextFieldRFC.getText();
+        Customer cliente = cr.buscarCliente(rfc);
+        if( cliente.getId() > 0 ){
+            jTextFieldCliente.setText(cliente.getName() + " " + cliente.getLast_name());
+            jTextFieldTelefono1.setText(cliente.getTelephone());
+            jTextFieldDirFiscal.setText(cliente.getAddress());
+                    
+        } 
+        
+    }//GEN-LAST:event_recolectaDatosCliente
 
     /**
      * @param args the command line arguments
