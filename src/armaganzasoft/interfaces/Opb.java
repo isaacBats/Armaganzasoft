@@ -8,13 +8,21 @@ package armaganzasoft.interfaces;
 import armaganzasoft.models.Obasicas;
 import armaganzasoft.repositorys.BasicasRepository;
 import static java.awt.event.KeyEvent.VK_SPACE;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author rodri
  */
 public class Opb extends javax.swing.JFrame {
+ 
+  
 
     /**
      * Creates new form Opb
@@ -29,6 +37,30 @@ public class Opb extends javax.swing.JFrame {
        jTextField2.setText("");
        jTextField3.setText("");
     }
+   /* public void mostrarTabla() throws SQLException{
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Codigo");
+        model.addColumn("Decripcion");
+        jTable1.setModel(model);
+        String sql="Select * From operations";
+        String datos []= new String[2];
+        Statement st;
+        try{
+            st= cne.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString(1);
+                datos[1]=rs.getString(2);
+                model.addRow(datos);
+            }
+            jTable1.setModel(model);
+        } catch (SQLException e){
+            
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);*/
+        
+        
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -159,7 +191,7 @@ public class Opb extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Codigo", "Descripcion"
+                "", ""
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -248,7 +280,7 @@ public class Opb extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Obasicas obasicas;
+        /*Obasicas obasicas;
         String identified = "";
         obasicas = new Obasicas();
 
@@ -262,6 +294,35 @@ public class Opb extends javax.swing.JFrame {
         jTextField2.setText(obasicas.getCode());
         jTextField3.setText(obasicas.getDescripcion());
        
+    */
+      /*  try{
+            DefaultTableModel modeloOpb;
+            conectar =new conexion();
+            String codBuscar="";
+            codBuscar=JOptionPane.showInputDialog("Ingrese el codigo a buscar");
+            rsOpb=conectar.consultar("select code from operations");
+            boolean encontrado=false;
+            while (rsOpb.next()){
+                if(codBuscar.equals(rsOpb.getObject("code")))
+                {
+                    encontrado=true;
+                    break;
+                }
+                
+                
+            }
+            String SQL ="select + from operations where code="+codBuscar+"";
+            modeloOpb=conectar.retornarDatos(SQL);
+            jTable1.getViewport().add(jTable1);
+            if(encontrado==false)
+            {
+                JOptionPane.showMessageDialog(null,"No se encontro el codigo Buscado");
+                
+            } 
+            
+        } catch (SQLException e) {
+           System.out.println(e.getMessage());
+        }*/
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

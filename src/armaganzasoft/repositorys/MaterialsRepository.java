@@ -175,4 +175,28 @@ public class MaterialsRepository extends BaseRepository {
         
         return false;
     }
+     
+     public Materials buscarDescripcion(String identified){
+        String where ="";
+        ResultSet rs;
+        Materials busqueda = new Materials();
+        if(identified != null || identified != ""){
+        where = "WHERE code LIKE '"+identified+"';";
+        }
+            try {
+            query = con.prepareStatement("SELECT name FROM materials "+where);
+            rs = query.executeQuery();
+          
+                while(rs.next()){
+                
+                busqueda.setName(rs.getString("name"));
+                }             
+            
+                return busqueda;
+//                          
+            } catch (SQLException ex) {
+            System.out.println("Erro al consultar la Descripcion: "+ex);
+        }
+        return null;
+    }
 }

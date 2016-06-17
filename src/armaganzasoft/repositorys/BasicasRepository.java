@@ -8,6 +8,8 @@ import armaganzasoft.models.Obasicas;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -128,7 +130,75 @@ public boolean eliminar(Obasicas obasicas){
         }
         
         return false;
-    }}
+    }
+
+
+/*public DefaultTableModel restornarDatos(String sentenciaSQL){
+
+DefaultTableModel modelo= new DefaultTableModel();
+{ try {
+    ResultSet rsOpb= consultar (sentenciaSQL);
+    ResultSetMetaData metadatos=rsOpb.getMetaData();
+    int numeroColumnas=metadatos.getColumnCount();
+    Object[] etiquetas=new Object [numeroColumnas];
+    for (int i=0; i < numeroColumnas; i++){
+        etiquetas [i] = metadatos.getColumnLabel(i+1);
+        
+    }
+    modelo.setColumnIdentifiers(etiquetas);
+    while (rsOpb.next()){
+        Object[] datosFila=new Object [modelo.getColumnCount()];
+        
+        
+        for (int i=0; i < modelo.getColumnCount(); i++){
+            datosFila[i]=rs.getObject(i+1);
+        }
+        modelo.addRow(datosFila);        
+         }
+    
+} catch (Exception e){
+    System.out.println(e.getMessage());
+}
+return modelo;
+
+    
+    
+    
+}*/
+      public Obasicas buscarDescripcion(String identified){
+        String where ="";
+        ResultSet rs;
+        Obasicas busqueda = new Obasicas();
+        if(identified != null || identified != ""){
+        where = "WHERE code LIKE '"+identified+"';";
+        }
+            try {
+            query = con.prepareStatement("SELECT descripcion FROM operations "+where);
+            rs = query.executeQuery();
+          
+                while(rs.next()){
+                
+                busqueda.setDescripcion(rs.getString("descripcion"));
+                }             
+            
+                return busqueda;
+//                          
+            } catch (SQLException ex) {
+            System.out.println("Error al consultar la Descripcion: "+ex);
+        }
+        return null;
+    }
+}
+ 
+    
+
+   
+   
+    
+
+
+
+
      
     
    
