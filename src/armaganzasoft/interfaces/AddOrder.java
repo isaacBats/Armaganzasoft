@@ -6,11 +6,19 @@
 package armaganzasoft.interfaces;
 
 import armaganzasoft.models.Customer;
+import armaganzasoft.models.DetailOrders;
 import armaganzasoft.models.HiloReloj;
+import armaganzasoft.models.Order;
+import armaganzasoft.models.Partitions;
 import armaganzasoft.repositorys.CustomerRepository;
+import armaganzasoft.repositorys.FormulaRepository;
+import armaganzasoft.repositorys.OrderRepository;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,14 +26,18 @@ import java.sql.SQLException;
  */
 public class AddOrder extends javax.swing.JFrame {
     HiloReloj hilor;
+    DefaultComboBoxModel modelComboForms;
     
     private CustomerRepository cr;
+    private OrderRepository or;
 
     /**
      * Creates new form Ordenes
      */
     public AddOrder() {
         this.cr = new CustomerRepository();
+        this.or = new OrderRepository();
+        this.modelComboForms = new DefaultComboBoxModel();        
         initComponents();
         hilor = new HiloReloj(lbhora);
         hilor.start();
@@ -33,28 +45,41 @@ public class AddOrder extends javax.swing.JFrame {
         this.jTextField2.setText("MX-" + ordenproduccion);
         this.jTextField31.setText( "RM-" + String.format( "%08d", 2) );
         completaCliente();
+        modelComboForms.addElement("Selecciona una formula");
+        jComboBoxForms.setModel(modelComboForms);
+        llenaComboForms();
     }
     
     private void completaCliente(){
         
-        //TextAutoCompleter textAutoCompleterCliente = new TextAutoCompleter(jTextFieldCliente);
-        TextAutoCompleter textAutoCompleterRFC = new TextAutoCompleter(jTextFieldRFC);
-        //CustomerController cc = new CustomerController();
+        TextAutoCompleter textAutoCompleterIdentified = new TextAutoCompleter(jTextFieldIdentified);
         
-        //List<Customer> listCustomers = cc.getCustomers( cr.getallCostumers() );
-        
-        ResultSet rs = cr.getallCostumers();
+        ResultSet rs = cr.getallCostumers( 10 );
         try {
             while(rs.next()){                
                 //textAutoCompleterCliente.addItem(rs.getString("name") + " " + rs.getString("last_name"));                
-                textAutoCompleterRFC.addItem( rs.getString( "rfc" ) );                
+                textAutoCompleterIdentified.addItem( rs.getString( "identified" ) );                
             }
             rs.close();
         } catch (SQLException ex) {
             System.out.println("Error al traer los datos: " + ex);
+        }       
+    }
+    
+    private void llenaComboForms(){
+        
+        FormulaRepository fr = new FormulaRepository();
+        
+        ResultSet rs = fr.getAllForms();        
+        try {
+            while(rs.next()){
+                modelComboForms.insertElementAt(rs.getObject("name"), rs.getInt("id"));
+                jComboBoxForms.setModel(modelComboForms);
+            }
+        } catch (SQLException ex) {
+            System.out.println("AddOrder [Class]: No hay elementos: " + ex);
         }
-        
-        
+    
     }
 
     /**
@@ -74,10 +99,8 @@ public class AddOrder extends javax.swing.JFrame {
         jLabelContacto = new javax.swing.JLabel();
         jTextFieldOrden = new javax.swing.JTextField();
         jTextFieldPedido = new javax.swing.JTextField();
-        jTextFieldProducto = new javax.swing.JTextField();
         jLabelKGSOrden = new javax.swing.JLabel();
         jLabelKGSPedido = new javax.swing.JLabel();
-        jLabelProducto = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jTextField31 = new javax.swing.JTextField();
@@ -86,10 +109,6 @@ public class AddOrder extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         titulo2Soluciones = new javax.swing.JLabel();
         lbhora = new javax.swing.JLabel();
-        jTextFieldPVSR = new javax.swing.JTextField();
-        jTextFieldPedidos = new javax.swing.JTextField();
-        jLabelPVSR = new javax.swing.JLabel();
-        jLabelPedidos = new javax.swing.JLabel();
         jTextFieldCliente = new javax.swing.JTextField();
         jTextFieldTelefono = new javax.swing.JTextField();
         jLabelTelefono2 = new javax.swing.JLabel();
@@ -105,6 +124,9 @@ public class AddOrder extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jComboBoxForms = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldIdentified = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -125,12 +147,12 @@ public class AddOrder extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 120, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 120, -1));
         getContentPane().add(jTextFieldDirEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 345, 350, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("ORDEN DE PRODUCCION");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 160, 20));
 
         jLabelRFC.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelRFC.setText("RFC");
@@ -139,30 +161,25 @@ public class AddOrder extends javax.swing.JFrame {
         jLabelContacto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelContacto.setText("CONTACTO");
         getContentPane().add(jLabelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 320, 80, 30));
-        getContentPane().add(jTextFieldOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 100, -1));
-        getContentPane().add(jTextFieldPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 445, 100, -1));
-        getContentPane().add(jTextFieldProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 100, -1));
+        getContentPane().add(jTextFieldOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 100, -1));
+        getContentPane().add(jTextFieldPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 100, -1));
 
         jLabelKGSOrden.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelKGSOrden.setText("KGS/ORDEN");
-        getContentPane().add(jLabelKGSOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 430, -1, -1));
+        getContentPane().add(jLabelKGSOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, -1, -1));
 
         jLabelKGSPedido.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelKGSPedido.setText("KGS PEDIDO");
-        getContentPane().add(jLabelKGSPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 455, -1, -1));
-
-        jLabelProducto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabelProducto.setText("PRODUCTO");
-        getContentPane().add(jLabelProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 480, -1, -1));
+        getContentPane().add(jLabelKGSPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setText("FORMULA");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel23.setText("REMISION");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, -1, -1));
-        getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 110, -1));
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, -1, -1));
+        getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 110, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
@@ -184,16 +201,6 @@ public class AddOrder extends javax.swing.JFrame {
 
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, 80, 20));
-        getContentPane().add(jTextFieldPVSR, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 100, -1));
-        getContentPane().add(jTextFieldPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 445, 100, -1));
-
-        jLabelPVSR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabelPVSR.setText("P vs R");
-        getContentPane().add(jLabelPVSR, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, -1, -1));
-
-        jLabelPedidos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabelPedidos.setText("PEDIDOS");
-        getContentPane().add(jLabelPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 455, -1, -1));
         getContentPane().add(jTextFieldCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 350, -1));
         getContentPane().add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 350, -1));
 
@@ -205,12 +212,6 @@ public class AddOrder extends javax.swing.JFrame {
         jLabelDirEntrega.setText("DIRECCION ENTREGA");
         getContentPane().add(jLabelDirEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 345, 140, 30));
         getContentPane().add(jTextFieldContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 350, -1));
-
-        jTextFieldRFC.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                recolectaDatosCliente(evt);
-            }
-        });
         getContentPane().add(jTextFieldRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 350, -1));
         getContentPane().add(jTextFieldTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 245, 350, -1));
         getContentPane().add(jTextFieldDirFiscal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 350, -1));
@@ -232,6 +233,11 @@ public class AddOrder extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(153, 153, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AGREGAR.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveOrder(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 630, 50, 40));
 
         jButton4.setBackground(new java.awt.Color(153, 153, 255));
@@ -241,6 +247,19 @@ public class AddOrder extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(153, 153, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 630, 50, 40));
+
+        jComboBoxForms.setModel(modelComboForms);
+        getContentPane().add(jComboBoxForms, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 340, -1));
+
+        jLabel3.setText("Num. Cliente");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 100, -1));
+
+        jTextFieldIdentified.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                recolectaDatosCliente(evt);
+            }
+        });
+        getContentPane().add(jTextFieldIdentified, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 100, -1));
 
         jMenuBar1.setBorder(null);
 
@@ -419,17 +438,72 @@ Proceso inicio = new Proceso();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void recolectaDatosCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_recolectaDatosCliente
-        String rfc = jTextFieldRFC.getText();
-        Customer cliente = cr.buscarCliente(rfc);
+        String identified = jTextFieldIdentified.getText();
+        Customer cliente = cr.buscarCliente(identified);
         if( cliente.getId() > 0 ){
             jTextFieldCliente.setText(cliente.getName() + " " + cliente.getLast_name());
             jTextFieldTelefono1.setText(cliente.getTelephone());
             jTextFieldDirFiscal.setText(cliente.getAddress());
+            jTextFieldRFC.setText(cliente.getRfc());
                     
-        } 
-        
+        }
     }//GEN-LAST:event_recolectaDatosCliente
 
+    private void SaveOrder(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveOrder
+        String numclient = jTextFieldIdentified.getText();
+        Customer client = cr.buscarCliente(numclient);
+        
+        int sucursalid = cr.getMyBranchId();
+        float quantity = Float.parseFloat( jTextFieldOrden.getText() );
+        int mu = 1;        
+        float price = 980 * quantity; 
+        int idSelectedForm = jComboBoxForms.getSelectedIndex();
+        Date date = new Date();
+        String contact = jTextFieldContacto.getText();
+        String mobil = jTextFieldTelefono.getText();
+        String dirEntrega = jTextFieldDirEntrega.getText();
+        String value = jTextFieldPedido.getText();
+        
+        Order orden = new Order(client.getId(), sucursalid, quantity, mu, price );
+        int idOrden = or.addOrden(orden);
+        
+        DetailOrders detailOrder = new DetailOrders(idOrden, idSelectedForm, date);
+        
+        int idDetailOrder = or.addDetailOrder(detailOrder);
+        
+        Partitions partition = new Partitions(idDetailOrder, contact, mobil, dirEntrega, value);
+        
+        if(or.addPartition(partition)){
+            
+        }
+        if( or.addPartition(partition) ){
+            System.out.println("Tu Orden se ha generado correctamente");
+            JOptionPane.showMessageDialog(this,"Tu Orden se ha generado correctamente");
+            limpiar();
+        }else{
+            System.out.println("NO SE HA INSERTADO TU  ORDEN!!!");
+            JOptionPane.showMessageDialog(this,"NO SE HA INSERTADO TU  ORDEN!!!");
+        }
+        
+    }//GEN-LAST:event_SaveOrder
+
+    private void limpiar(){
+        jTextField2.setText("");
+        jTextField31.setText("");
+        jTextFieldCliente.setText("");
+        jTextFieldContacto.setText("");
+        jTextFieldDirEntrega.setText("");
+        jTextFieldDirFiscal.setText("");
+        jTextFieldIdentified.setText("");
+        jTextFieldOrden.setText("");
+        jTextFieldPedido.setText("");
+        jTextFieldRFC.setText("");
+        jTextFieldTelefono.setText("");
+        jTextFieldTelefono1.setText("");
+        
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -471,19 +545,18 @@ Proceso inicio = new Proceso();
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JComboBox jComboBoxForms;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelCliente;
     private javax.swing.JLabel jLabelContacto;
     private javax.swing.JLabel jLabelDirEntrega;
     private javax.swing.JLabel jLabelDirFiscal;
     private javax.swing.JLabel jLabelKGSOrden;
     private javax.swing.JLabel jLabelKGSPedido;
-    private javax.swing.JLabel jLabelPVSR;
-    private javax.swing.JLabel jLabelPedidos;
-    private javax.swing.JLabel jLabelProducto;
     private javax.swing.JLabel jLabelRFC;
     private javax.swing.JLabel jLabelTelefono1;
     private javax.swing.JLabel jLabelTelefono2;
@@ -510,11 +583,9 @@ Proceso inicio = new Proceso();
     private javax.swing.JTextField jTextFieldContacto;
     private javax.swing.JTextField jTextFieldDirEntrega;
     private javax.swing.JTextField jTextFieldDirFiscal;
+    private javax.swing.JTextField jTextFieldIdentified;
     private javax.swing.JTextField jTextFieldOrden;
-    private javax.swing.JTextField jTextFieldPVSR;
     private javax.swing.JTextField jTextFieldPedido;
-    private javax.swing.JTextField jTextFieldPedidos;
-    private javax.swing.JTextField jTextFieldProducto;
     private javax.swing.JTextField jTextFieldRFC;
     private javax.swing.JTextField jTextFieldTelefono;
     private javax.swing.JTextField jTextFieldTelefono1;

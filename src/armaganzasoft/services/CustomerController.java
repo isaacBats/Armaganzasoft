@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import armaganzasoft.models.Customer;
+import armaganzasoft.repositorys.CustomerRepository;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -48,6 +49,13 @@ public class CustomerController {
             System.out.println("CustomerController: A ocurrido un error: " + ex);
         }
         return null;
+    }
+    
+    public String generateIdentifiedClient(){
+        
+        CustomerRepository cr = new CustomerRepository();
+        
+        return "CLI-" + String.format( "%05d", ( cr.getLastIdCustomer() + 1 ) );
     }
     
     

@@ -10,6 +10,7 @@ public class Customer {
  */
     
     private int     id;
+    private String  identified;
     private String  name;
     private String  last_name;
     private String  email;
@@ -39,6 +40,14 @@ public class Customer {
    
      public void setId(int id) {
         this.id = id;
+    }
+
+    public String getIdentified() {
+        return identified;
+    }
+
+    public void setIdentified(String identified) {
+        this.identified = identified;
     }
   
     

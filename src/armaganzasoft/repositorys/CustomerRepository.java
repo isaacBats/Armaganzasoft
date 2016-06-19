@@ -1,6 +1,7 @@
 package armaganzasoft.repositorys;
 
 import armaganzasoft.models.Customer;
+import armaganzasoft.services.CustomerController;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -22,7 +23,8 @@ public class CustomerRepository extends BaseRepository {
         
         try {
             
-            query = con.prepareStatement("INSERT INTO customers (name, "
+            query = con.prepareStatement("INSERT INTO customers (identified,"
+                                                          + "name, "
                                                           + "last_name, "
                                                           + "email, "
                                                           + "telephone, "
@@ -33,22 +35,24 @@ public class CustomerRepository extends BaseRepository {
                                                           + "zip_code, " 
                                                           + "sub_customer, "
                                                           + "customer_id) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
                                         );
             
+            CustomerController cc = new CustomerController();
+            String identified = cc.generateIdentifiedClient();
             
-            
-            query.setString(1, customer.getName());
-            query.setString(2, customer.getLast_name());
-            query.setString(3, customer.getEmail());
-            query.setString(4, customer.getTelephone());
-            query.setString(5, customer.getMovil());
-            query.setString(6, customer.getRfc());
-            query.setString(7, customer.getAddress());
-            query.setString(8, customer.getCity());
-            query.setString(9, customer.getZip_code());
-            query.setString(10, customer.getSub_customer());
-            query.setString(11, customer.getCustomer_id());
+            query.setString(1, identified);
+            query.setString(2, customer.getName());
+            query.setString(3, customer.getLast_name());
+            query.setString(4, customer.getEmail());
+            query.setString(5, customer.getTelephone());
+            query.setString(6, customer.getMovil());
+            query.setString(7, customer.getRfc());
+            query.setString(8, customer.getAddress());
+            query.setString(9, customer.getCity());
+            query.setString(10, customer.getZip_code());
+            query.setString(11, customer.getSub_customer());
+            query.setString(12, customer.getCustomer_id());
             
             if( !query.execute() ){
                 return true;
@@ -60,14 +64,35 @@ public class CustomerRepository extends BaseRepository {
         }finally{
             return false;
         }
-    }   
+    }
+    
+    public int getLastIdCustomer() {
+        
+        Statement stmt;
+        int id = 0;
+        
+        String sql = "SELECT MAX(id) AS id FROM customers";
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery( sql );
+            while(rs.next()){
+                id = rs.getInt("id");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("No se ejecuto el query "+ e);
+            System.out.println(sql);
+        }
+        
+        return id;    
+    }
      
      public Customer buscarCliente(String identified){
         String where ="";
         ResultSet rs;
         Customer busqueda = new Customer ();
         if(identified != null || identified != ""){
-        where = "WHERE email LIKE '"+identified+"' OR rfc LIKE '"+identified+"' OR customer_id LIKE '"+identified+"';";
+        where = "WHERE email LIKE '"+identified+"' OR rfc LIKE '"+identified+"' OR identified LIKE '"+identified+"';";
         }
             try {
             query = con.prepareStatement("SELECT * FROM customers "+where);
@@ -162,6 +187,24 @@ public class CustomerRepository extends BaseRepository {
         Statement stmt;       
         
         String sql = "SELECT * FROM customers";
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery( sql );
+
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("No se ejecuto el query "+ e);
+            System.out.println(sql);
+        }
+        
+        return null;
+    }
+    
+    public ResultSet getallCostumers( int limit ){
+    
+        Statement stmt;       
+        
+        String sql = "SELECT * FROM customers ORDER BY id DESC LIMIT " + limit;
         try {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery( sql );

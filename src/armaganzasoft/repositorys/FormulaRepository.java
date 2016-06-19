@@ -13,6 +13,7 @@ import armaganzasoft.models.Forms;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class FormulaRepository extends BaseRepository {
@@ -305,6 +306,25 @@ public boolean eliminar(Forms forms){
         }
         
         return false;
+    }
+
+    public ResultSet getAllForms(){
+    
+        Statement stmt;
+        ResultSet rs = null;
+        
+        String sql = "SELECT * FROM forms";
+        
+        try {
+            stmt = con.createStatement();
+            rs = stmt.executeQuery( sql );
+            
+        } catch (SQLException e) {
+            System.out.println("No se ejecuto el query "+ e);
+            System.out.println(sql);
+        }
+        
+        return rs;
     }
 }
      

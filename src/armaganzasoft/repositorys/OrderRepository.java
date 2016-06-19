@@ -1,14 +1,19 @@
 package armaganzasoft.repositorys;
 
+import armaganzasoft.models.DetailOrders;
 import armaganzasoft.models.Order;
+import armaganzasoft.models.Partitions;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author rodri
+ * @author Isaac Daniel < @codeisaac >
  */
 public class OrderRepository extends BaseRepository {
      
@@ -24,45 +29,148 @@ public class OrderRepository extends BaseRepository {
     }
     
     /**
-     * Insert a new User in data Base
-     * @param user
-     * @return Boolean   True if I was inserted into the Data Base
+     * Insert a new Order in data Base
+     * @param order
+     * @return int   True if I was inserted into the Data Base
      */
-    public boolean addOrden(Order order){
+    public int addOrden(Order order){
         
+        boolean exito = false;
+        int last = 0;
         try {
             
-            query = con.prepareStatement("INSERT INTO users (num_employee, "
-                                                          + "name, "
-                                                          + "last_name, "
-                                                          + "email, "
-                                                          + "password, "
-                                                          + "position, "
-                                                          + "roll, "
-                                                          + "active) "
-                                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?);"
+            query = con.prepareStatement("INSERT INTO orders (costumer_id, "
+                                                          + "branch_id, "
+                                                          + "quantity, "
+                                                          + "measurement_unit_id, "
+                                                          + "total_price) "
+                                        + "VALUES(?, ?, ?, ?, ?);"
                                         );
             
             
-            query.setString(1, order.getNum_employee());
-            query.setString(2, order.getName());
-            query.setString(3, order.getLast_name());
-            query.setString(4, order.getEmail());
-            query.setString(5, order.getPassword());
-            query.setString(6, order.getPosition());
-            query.setString(7, order.getRoll());
-            query.setBoolean(8, order.isActive());
+            query.setInt(1, order.getCostumerId());
+            query.setInt(2, order.getBranchId());
+            query.setFloat(3, order.getQuantity());
+            query.setInt(4, order.getMeasurementUnit());
+            query.setFloat(5, order.getTotal());
             
             if( !query.execute() ){
-                return true;
+                exito = true;
             }
             query.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error: "+ ex);
-        }finally{
-            return false;
+            System.out.println("OrderRepository => Error al agregar una orden: "+ ex);
+            
         }
+        
+        if(exito){
+            try {
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID() AS id;");
+                if(rs.next()){
+                    while(rs.next()){
+                        last = rs.getInt("id");
+                    }
+                }
+                
+            } catch (SQLException ex) {
+                System.out.println("OrderRepository [Class]: No se obtubo el id");
+            }
+        }
+        
+        return last;
+        
+    }
+    
+    /**
+     * Insert a new detail_order in data Base
+     * @param order
+     * @return int   True if I was inserted into the Data Base
+     */
+    public int addDetailOrder(DetailOrders order){
+        
+        boolean exito = false;
+        int last = 0;
+        try {
+            
+            query = con.prepareStatement("INSERT INTO detail_orders (order_id, "
+                                                          + "form_id, "
+                                                          + "deadline) "
+                                        + "VALUES(?, ?, ?);"
+                                        );
+            
+            
+            query.setInt(1, order.getOrder_id());
+            query.setInt(2, order.getForm_id());
+            query.setDate(3, (Date) order.getDeadline());
+            
+            if( !query.execute() ){
+                exito = true;
+            }
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("OrderRepository => Error al agregar un detalle de  orden: "+ ex);
+            
+        }
+        
+        if(exito){
+            try {
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID() AS id;");
+                if(rs.next()){
+                    while(rs.next()){
+                        last = rs.getInt("id");
+                    }
+                }
+                
+            } catch (SQLException ex) {
+                System.out.println("OrderRepository [Class]: No se obtubo el id");
+            }
+        }
+        
+        return last;
+        
+    }
+    
+    /**
+     * Insert a new partition of an order in data Base
+     * @param order
+     * @return Boolean   True if I was inserted into the Data Base
+     */
+    public boolean addPartition(Partitions order){
+        
+        boolean exito = false;
+        try {
+            
+            query = con.prepareStatement("INSERT INTO partitions (detail_order_id, "
+                                                          + "contact, "
+                                                          + "mobil,"
+                                                          + "address,"
+                                                          + "value) "
+                                        + "VALUES(?, ?, ?, ?, ?);"
+                                        );
+            
+            
+            query.setInt(1, order.getDetailOrderId());
+            query.setString(2, order.getContact());
+            query.setString(3, order.getMobil());
+            query.setString(4, order.getAddress());
+            query.setString(5, order.getValue());
+            
+            if( !query.execute() ){
+                exito = true;
+            }
+            query.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("OrderRepository => Error al agregar una particion de  orden: "+ ex);
+            
+        }
+        
+        return exito;
+        
     }
     
     public ResultSet getDetailForm( int formId ){
