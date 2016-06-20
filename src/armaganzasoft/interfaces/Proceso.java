@@ -69,7 +69,7 @@ BaseDatos conn = new BaseDatos();
     }
     void mostrartabla(String valor){
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("CODIGO");
+        
         modelo.addColumn("FORMULA");
         modelo.addColumn("OPERACION");
         modelo.addColumn("DES_OPERACION");
@@ -98,7 +98,7 @@ BaseDatos conn = new BaseDatos();
                 datos[3]=rs.getString(4);
                 datos[4]=rs.getString(5);
                 datos[5]=rs.getString(6);
-                datos[6]=rs.getString(7);
+              
                 
                 modelo.addRow(datos);
             }
