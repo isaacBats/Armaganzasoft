@@ -8,8 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -55,7 +53,13 @@ public class OrderRepository extends BaseRepository {
             query.setFloat(5, order.getTotal());
             
             if( !query.execute() ){
-                exito = true;
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID() AS id;");
+                if(rs.next()){
+//                    while(rs.next()){
+                        last = rs.getInt("id");
+//                    }
+                }
             }
             query.close();
             
@@ -63,22 +67,7 @@ public class OrderRepository extends BaseRepository {
             System.out.println("OrderRepository => Error al agregar una orden: "+ ex);
             
         }
-        
-        if(exito){
-            try {
-                Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID() AS id;");
-                if(rs.next()){
-                    while(rs.next()){
-                        last = rs.getInt("id");
-                    }
-                }
-                
-            } catch (SQLException ex) {
-                System.out.println("OrderRepository [Class]: No se obtubo el id");
-            }
-        }
-        
+
         return last;
         
     }
@@ -92,8 +81,8 @@ public class OrderRepository extends BaseRepository {
         
         boolean exito = false;
         int last = 0;
+        
         try {
-            
             query = con.prepareStatement("INSERT INTO detail_orders (order_id, "
                                                           + "form_id, "
                                                           + "deadline) "
@@ -103,31 +92,22 @@ public class OrderRepository extends BaseRepository {
             
             query.setInt(1, order.getOrder_id());
             query.setInt(2, order.getForm_id());
-            query.setDate(3, (Date) order.getDeadline());
+            query.setString(3, order.getDeadline());
             
             if( !query.execute() ){
-                exito = true;
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID() AS id;");
+                if(rs.next()){
+//                    while(rs.next()){
+                        last = rs.getInt("id");
+//                    }
+                }
             }
             query.close();
             
         } catch (SQLException ex) {
             System.out.println("OrderRepository => Error al agregar un detalle de  orden: "+ ex);
             
-        }
-        
-        if(exito){
-            try {
-                Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID() AS id;");
-                if(rs.next()){
-                    while(rs.next()){
-                        last = rs.getInt("id");
-                    }
-                }
-                
-            } catch (SQLException ex) {
-                System.out.println("OrderRepository [Class]: No se obtubo el id");
-            }
         }
         
         return last;

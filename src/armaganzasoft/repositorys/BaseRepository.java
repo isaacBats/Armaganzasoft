@@ -36,16 +36,15 @@ public class BaseRepository {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery( sql );
             if(rs.next()){
-                while(rs.next()){
-                    sucursal = rs.getInt("id");
-                }
+//                while(rs.next()){
+                    sucursal = rs.getRow();
+//                }
             }
 
         } catch (SQLException e) {
             System.out.println("No se ejecuto el query "+ e);
             System.out.println(sql);
-        }       
-        
+        }
         return sucursal;
     }
 }

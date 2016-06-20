@@ -1,6 +1,5 @@
 package armaganzasoft.models;
 
-import java.util.Date;
 
 
 /**
@@ -11,14 +10,14 @@ public class Order {
     private int id;
     private int costumerId;
     private int branchId;
-    Date date;
+    private String date;
     float quantity;
     int measurementUnit;
     float total;
 
     public Order() {    }
     
-    public Order(int id, int costumerId, int branchId, Date date, float quantity, int measurementUnit, float total) {
+    public Order(int id, int costumerId, int branchId, String date, float quantity, int measurementUnit, float total) {
         this.id = id;
         this.costumerId = costumerId;
         this.branchId = branchId;
@@ -38,7 +37,7 @@ public class Order {
 
     
     
-    public Order(int costumerId, int branchId, Date date, float quantity, int measurementUnit, float total) {
+    public Order(int costumerId, int branchId, String date, float quantity, int measurementUnit, float total) {
         this.costumerId = costumerId;
         this.branchId = branchId;
         this.date = date;
@@ -71,11 +70,11 @@ public class Order {
         this.branchId = branchId;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -101,6 +100,11 @@ public class Order {
 
     public void setTotal(float total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" + "costumerId=" + costumerId + ", branchId=" + branchId + ", date=" + date + ", quantity=" + quantity + ", measurementUnit=" + measurementUnit + ", total=" + total + '}';
     }
     
     

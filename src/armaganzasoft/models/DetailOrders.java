@@ -5,7 +5,6 @@
  */
 package armaganzasoft.models;
 
-import java.util.Date;
 
 /**
  *
@@ -15,20 +14,20 @@ public class DetailOrders {
     private int id;
     private int order_id;
     private int form_id;
-    Date deadline;
+    private String deadline;
 
     public DetailOrders() {
     
     }
 
-    public DetailOrders(int order_id, int form_id, Date deadline) {
+    public DetailOrders(int order_id, int form_id, String deadline) {
         this.order_id = order_id;
         this.form_id = form_id;
         this.deadline = deadline;
     }
 
     
-    public DetailOrders(int id, int order_id, int form_id, Date deadline) {
+    public DetailOrders(int id, int order_id, int form_id, String deadline) {
         this.id = id;
         this.order_id = order_id;
         this.form_id = form_id;
@@ -61,16 +60,18 @@ public class DetailOrders {
         this.form_id = form_id;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "DetailOrders{" + "order_id=" + order_id + ", form_id=" + form_id + ", deadline=" + deadline + '}';
+    }
     
     
 }

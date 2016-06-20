@@ -16,7 +16,6 @@ import armaganzasoft.repositorys.OrderRepository;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -458,24 +457,22 @@ Proceso inicio = new Proceso();
         int mu = 1;        
         float price = 980 * quantity; 
         int idSelectedForm = jComboBoxForms.getSelectedIndex();
-        Date date = new Date();
+        String date = "2016-06-19 14:41:35";
         String contact = jTextFieldContacto.getText();
         String mobil = jTextFieldTelefono.getText();
         String dirEntrega = jTextFieldDirEntrega.getText();
         String value = jTextFieldPedido.getText();
         
         Order orden = new Order(client.getId(), sucursalid, quantity, mu, price );
-        int idOrden = or.addOrden(orden);
+        int idOrden = or.addOrden(orden);   
         
+        
+  
         DetailOrders detailOrder = new DetailOrders(idOrden, idSelectedForm, date);
-        
         int idDetailOrder = or.addDetailOrder(detailOrder);
         
         Partitions partition = new Partitions(idDetailOrder, contact, mobil, dirEntrega, value);
         
-        if(or.addPartition(partition)){
-            
-        }
         if( or.addPartition(partition) ){
             System.out.println("Tu Orden se ha generado correctamente");
             JOptionPane.showMessageDialog(this,"Tu Orden se ha generado correctamente");
