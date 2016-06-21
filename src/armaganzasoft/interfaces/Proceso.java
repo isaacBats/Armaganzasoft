@@ -12,7 +12,6 @@ import armaganzasoft.repositorys.BasicasRepository;
 import armaganzasoft.repositorys.ComboFormulas;
 import armaganzasoft.repositorys.ComboMaterial;
 import armaganzasoft.repositorys.ProcessRepository;
-import armaganzasoft.repositorys.UserRepository;
 import armaganzasoft.services.BaseDatos;
 import static java.awt.event.KeyEvent.VK_SPACE;
 import java.sql.Connection;
@@ -25,7 +24,6 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -70,6 +68,7 @@ BaseDatos conn = new BaseDatos();
     void mostrartabla(String valor){
         DefaultTableModel modelo = new DefaultTableModel();
         
+        modelo.addColumn("REGISTRO");
         modelo.addColumn("FORMULA");
         modelo.addColumn("OPERACION");
         modelo.addColumn("DES_OPERACION");
@@ -98,8 +97,9 @@ BaseDatos conn = new BaseDatos();
                 datos[3]=rs.getString(4);
                 datos[4]=rs.getString(5);
                 datos[5]=rs.getString(6);
-              
+                datos[6]=rs.getString(7);
                 
+              
                 modelo.addRow(datos);
             }
             tabladatos.setModel(modelo);        
@@ -126,6 +126,7 @@ BaseDatos conn = new BaseDatos();
        jTextField9.setText("");
        jComboBox1.setSelectedIndex(0); 
        jComboBox2.setSelectedIndex(0); 
+       
  
  }
     /**
@@ -163,6 +164,7 @@ BaseDatos conn = new BaseDatos();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -369,6 +371,17 @@ BaseDatos conn = new BaseDatos();
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("FORMULA");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
+
+        jButton8.setBackground(new java.awt.Color(153, 153, 255));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar.PNG"))); // NOI18N
+        jButton8.setAutoscrolls(true);
+        jButton8.setBorder(null);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 130, 50, 40));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1390, -1));
@@ -729,11 +742,16 @@ int filaselect=tabladatos.getSelectedRow();
 jComboBox2.setSelectedItem(tabladatos.getValueAt(filaselect,1).toString());
 jTextField5.setText(tabladatos.getValueAt(filaselect,2).toString());
 jTextField6.setText(tabladatos.getValueAt(filaselect,3).toString());    
-jComboBox1.setSelectedItem(tabladatos.getValueAt(filaselect,1).toString());
-jTextField8.setText(tabladatos.getValueAt(filaselect,2).toString());
-jTextField9.setText(tabladatos.getValueAt(filaselect,3).toString());
+jComboBox1.setSelectedItem(tabladatos.getValueAt(filaselect,4).toString());
+jTextField8.setText(tabladatos.getValueAt(filaselect,5).toString());
+jTextField9.setText(tabladatos.getValueAt(filaselect,6).toString());
 // TODO add your handling code here:
     }//GEN-LAST:event_tabladatosMouseClicked
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        mostrartabla("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -778,6 +796,7 @@ jTextField9.setText(tabladatos.getValueAt(filaselect,3).toString());
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel14;
@@ -815,4 +834,5 @@ jTextField9.setText(tabladatos.getValueAt(filaselect,3).toString());
     private javax.swing.JTable tabladatos;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
+int filas;
 }
