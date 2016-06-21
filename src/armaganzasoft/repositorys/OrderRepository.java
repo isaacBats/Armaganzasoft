@@ -3,7 +3,6 @@ package armaganzasoft.repositorys;
 import armaganzasoft.models.DetailOrders;
 import armaganzasoft.models.Order;
 import armaganzasoft.models.Partitions;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

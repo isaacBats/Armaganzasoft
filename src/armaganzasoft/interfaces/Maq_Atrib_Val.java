@@ -5,8 +5,6 @@
  */
 package armaganzasoft.interfaces;
 
-import armaganzasoft.models.Machines;
-import armaganzasoft.repositorys.MaquinasRepository;
 
 
 
@@ -158,10 +156,10 @@ Login inicio = new Login();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
- MaquinasRepository  mr = new MaquinasRepository(); 
- String tb = null;
- String DB = null;
-        mr.Consultar(DB.getText().toString(),tb.getText()toString());
+//        MaquinasRepository  mr = new MaquinasRepository(); 
+        String tb = null;
+        String DB = null;
+//        mr.Consultar(DB.getText().toString(),tb.getText()toString());
        
         
         // TODO add your handling code here:

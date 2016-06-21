@@ -30,6 +30,14 @@ public class Valvula{
         
         return this.name;
     }
+    
+    public void open(){
+        System.out.println("Se ha habierto la Valvula");
+    }
+    
+    public void close(){
+        System.out.println("Se ha cerrado la Valvula");
+    }
 
     private void finish() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

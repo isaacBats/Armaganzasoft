@@ -126,6 +126,7 @@ public class AddOrder extends javax.swing.JFrame {
         jComboBoxForms = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldIdentified = new javax.swing.JTextField();
+        notaLabelCliente = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -259,6 +260,9 @@ public class AddOrder extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextFieldIdentified, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 100, -1));
+
+        notaLabelCliente.setText("El numero del cliente siempre comienza con CLI-...");
+        getContentPane().add(notaLabelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 360, -1));
 
         jMenuBar1.setBorder(null);
 
@@ -587,6 +591,7 @@ Proceso inicio = new Proceso();
     private javax.swing.JTextField jTextFieldTelefono;
     private javax.swing.JTextField jTextFieldTelefono1;
     private javax.swing.JLabel lbhora;
+    private javax.swing.JLabel notaLabelCliente;
     private javax.swing.JLabel titulo2Soluciones;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;

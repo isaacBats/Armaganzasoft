@@ -5,8 +5,8 @@
  */
 package armaganzasoft.interfaces;
 
-import armaganzasoft.repositorys.MaquinasRepository;
-import armaganzasoft.models.Machines;
+//import armaganzasoft.repositorys.MaquinasRepository;
+//import armaganzasoft.models.Machines;
 import javax.swing.JOptionPane;
 
 
@@ -322,13 +322,13 @@ public class Maquinas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-Machines machines;
+//        Machines machines;
         String identified = "";
-        machines = new Machines();
+//        machines = new Machines();
         
        
         identified = jTextField1.getText();
-        MaquinasRepository  mr = new MaquinasRepository(); 
+//        MaquinasRepository  mr = new MaquinasRepository(); 
         
          Object numOperacion = jComboBox1.getSelectedItem();
        
@@ -338,15 +338,15 @@ Machines machines;
        
        String operacio = (String)numOperacio;
         
-         machines = mr.buscarMaquina(identified);
-            jTextField2.setText(machines.getName());
-            jTextField3.setText(machines.getCode());
-            jTextField4.setText(machines.getMaterial_uso());
-            jComboBox1.setSelectedItem(machines.getEstado());
-            jComboBox2.setSelectedItem(machines.getU_medida());
-             jTextField7.setText(machines.getAlarma());
-            jTextField8.setText(machines.getAtributo());
-            jTextField9.setText(machines.getValor());
+//         machines = mr.buscarMaquina(identified);
+//            jTextField2.setText(machines.getName());
+//            jTextField3.setText(machines.getCode());
+//            jTextField4.setText(machines.getMaterial_uso());
+//            jComboBox1.setSelectedItem(machines.getEstado());
+//            jComboBox2.setSelectedItem(machines.getU_medida());
+//             jTextField7.setText(machines.getAlarma());
+//            jTextField8.setText(machines.getAtributo());
+//            jTextField9.setText(machines.getValor());
             
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -427,11 +427,11 @@ Maq_Atrib_Val inicio = new Maq_Atrib_Val();
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
- Machines machines;
-machines = new Machines();
-        
-        MaquinasRepository  maquiRepo = new MaquinasRepository(); 
-           
+// Machines machines;
+//machines = new Machines();
+//        
+//        MaquinasRepository  maquiRepo = new MaquinasRepository(); 
+//           
         Object numOperacion = jComboBox1.getSelectedItem();
        
        String operacion = (String)numOperacion;
@@ -440,32 +440,32 @@ machines = new Machines();
        
        String operacio = (String)numOperacio;
       
-       machines.setName(jTextField2.getText());
-        machines.setCode(jTextField3.getText());
-        machines.setMaterial_uso(jTextField4.getText());
-        machines.setEstado((String)jComboBox1.getSelectedItem());
-        machines.setU_medida((String)jComboBox2.getSelectedItem());
-        machines.setAlarma(jTextField7.getText());
-        machines.setAtributo(jTextField8.getText());
-        machines.setValor(jTextField9.getText());
+//       machines.setName(jTextField2.getText());
+//        machines.setCode(jTextField3.getText());
+//        machines.setMaterial_uso(jTextField4.getText());
+//        machines.setEstado((String)jComboBox1.getSelectedItem());
+//        machines.setU_medida((String)jComboBox2.getSelectedItem());
+//        machines.setAlarma(jTextField7.getText());
+//        machines.setAtributo(jTextField8.getText());
+//        machines.setValor(jTextField9.getText());
                
-            if( !maquiRepo.addMaq(machines) ){
-            System.out.println("La maquina "+machines.getName()+" se ha insertado Correctamente");
-            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE"); 
-            limpiar();
-        }else{
-            System.out.println("La maquina "+machines.getName()+" se ha insertado Correctamente");
-            JOptionPane.showMessageDialog(this,"No se pudo agregar");
-            limpiar();
-        } 
+//            if( !maquiRepo.addMaq(machines) ){
+//            System.out.println("La maquina "+machines.getName()+" se ha insertado Correctamente");
+//            JOptionPane.showMessageDialog(this,"DATOS INGRESADOS CORRECTAMENTE"); 
+//            limpiar();
+//        }else{
+//            System.out.println("La maquina "+machines.getName()+" se ha insertado Correctamente");
+//            JOptionPane.showMessageDialog(this,"No se pudo agregar");
+//            limpiar();
+//        } 
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     private void jCheckBoxMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem2ActionPerformed
-Machines machines;
-      
-        machines = new Machines();
-        MaquinasRepository  MaqRepo = new MaquinasRepository();
+//Machines machines;
+//      
+//        machines = new Machines();
+//        MaquinasRepository  MaqRepo = new MaquinasRepository();
         
         Object numOperacion = jComboBox1.getSelectedItem();
        
@@ -475,46 +475,46 @@ Machines machines;
        
        String operacio = (String)numOperacio;        
         
-        machines.setName(jTextField2.getText());
-        machines.setCode(jTextField3.getText());
-        machines.setMaterial_uso(jTextField4.getText());
-        machines.setEstado((String)jComboBox1.getSelectedItem());
-        machines.setU_medida((String)jComboBox2.getSelectedItem());
-        machines.setAlarma(jTextField7.getText());
-        machines.setAtributo(jTextField8.getText());
-        machines.setValor(jTextField9.getText());
-        
-        Machines busqueda= MaqRepo.buscarMaquina(machines.getCode());
-        machines.setId(busqueda.getId());
-       if( MaqRepo.edit(machines) ){
-            
-            JOptionPane.showMessageDialog(this,"SE EDITO: "+machines.getName());
-            limpiar();
-         
-        }
+//        machines.setName(jTextField2.getText());
+//        machines.setCode(jTextField3.getText());
+//        machines.setMaterial_uso(jTextField4.getText());
+//        machines.setEstado((String)jComboBox1.getSelectedItem());
+//        machines.setU_medida((String)jComboBox2.getSelectedItem());
+//        machines.setAlarma(jTextField7.getText());
+//        machines.setAtributo(jTextField8.getText());
+//        machines.setValor(jTextField9.getText());
+//        
+//        Machines busqueda= MaqRepo.buscarMaquina(machines.getCode());
+//        machines.setId(busqueda.getId());
+//       if( MaqRepo.edit(machines) ){
+//            
+//            JOptionPane.showMessageDialog(this,"SE EDITO: "+machines.getName());
+//            limpiar();
+//         
+//        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxMenuItem2ActionPerformed
 
     private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
 
-        Machines machines;
-        machines = new Machines();
-        MaquinasRepository  MaqRepo = new MaquinasRepository();
+//        Machines machines;
+//        machines = new Machines();
+//        MaquinasRepository  MaqRepo = new MaquinasRepository();
         int respuesta = JOptionPane.showConfirmDialog(rootPane, "Realmente Deseas Eliminar la Maquina", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
         if (respuesta == mensaje.YES_OPTION) {//Si damos si arranca el procedieminto eliminar
-            machines = MaqRepo.buscarMaquina(jTextField3.getText());
+//            machines = MaqRepo.buscarMaquina(jTextField3.getText());
 
-            if( MaqRepo.eliminar(machines)){
-
-                
-                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO LA MAQUINA CORRECTAMENTE");
-
-                limpiar();
-
-            }else{
-                
-                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
-            }
+//            if( MaqRepo.eliminar(machines)){
+//
+//                
+//                JOptionPane.showMessageDialog(this,"SEA A ELIMINADO LA MAQUINA CORRECTAMENTE");
+//
+//                limpiar();
+//
+//            }else{
+//                
+//                JOptionPane.showMessageDialog(this,"NO SE PUDO ELIMINAR ");
+//            }
         }   
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
