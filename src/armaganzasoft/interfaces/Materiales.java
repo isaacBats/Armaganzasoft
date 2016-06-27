@@ -97,6 +97,7 @@ public class Materiales extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -105,6 +106,7 @@ public class Materiales extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -124,6 +126,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 140, -1));
 
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -131,6 +134,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 242, 29));
 
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -138,6 +142,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 160, 30));
 
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -203,6 +208,8 @@ public class Materiales extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("TIPO");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
+
+        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 240, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -216,13 +223,29 @@ public class Materiales extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 240, 30));
+
+        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 240, 30));
+
+        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 240, 30));
+
+        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 240, 30));
+
+        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 460, 240, 30));
+
+        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 240, 30));
+
+        jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 240, 30));
+
+        jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 240, 30));
+
+        jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, 240, 30));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
@@ -325,6 +348,15 @@ public class Materiales extends javax.swing.JFrame {
         jMenu3.setText("PRODUCCION");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem2.setText("AGREGAR ORDENES");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem8.setText("ORDENES");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
@@ -416,9 +448,10 @@ Materials materials;
         MaterialsRepository  cr = new MaterialsRepository(); 
           materials = cr.buscarMaterial(identified);
         
-         
-        
-       
+                 
+        if (materials.getName() == null){
+             JOptionPane.showMessageDialog(this,"EL MATERIAL NO EXISTE");              
+        }       
             
             jTextField2.setText(materials.getName());
             jTextField3.setText(materials.getCode());
@@ -569,9 +602,14 @@ limpiar();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-Login inicio = new Login();
-        inicio.setVisible(true);
-        dispose();        // TODO add your handling code here:
+//cuando se de clic confirmar de cerrara la secion
+        int respuesta=mensaje.showConfirmDialog(rootPane, "¿Realmente deseas cerrar seción?", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        //guardar la respuesta en la variable respuesta y cerramos la secion cuando sea la respuesta que si
+        if(respuesta==mensaje.YES_NO_OPTION){
+            Login acceso= new Login();
+            acceso.setVisible(true);
+            dispose();
+        }//para cerrar la ventana que esta abierta y abrira la que queremos que es la de Acceco       // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
@@ -585,6 +623,13 @@ Opb inicio = new Opb();
         inicio.setVisible(true);
         dispose();             // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+AddOrder inicio = new AddOrder();
+        inicio.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -645,6 +690,7 @@ Opb inicio = new Opb();
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

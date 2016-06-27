@@ -60,6 +60,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -84,10 +85,10 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
         jLabel2.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jLabel2InputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 250, 30));
@@ -185,6 +186,15 @@ public class Menu extends javax.swing.JFrame {
         jMenu2.setText("PRODUCCION");
         jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        jMenuItem12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem12.setText("AGREGAR ORDENES");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem12);
+
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem3.setText("ORDENES");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -214,10 +224,14 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-hilor.detenerReloj();
-        Login inicio = new Login();
-        inicio.setVisible(true);
-        dispose();        // TODO add your handling code here:
+//cuando se de clic confirmar de cerrara la secion
+        int respuesta=mensaje.showConfirmDialog(rootPane, "¿Realmente deseas cerrar seción?", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        //guardar la respuesta en la variable respuesta y cerramos la secion cuando sea la respuesta que si
+        if(respuesta==mensaje.YES_NO_OPTION){
+            Login acceso= new Login();
+            acceso.setVisible(true);
+            dispose();
+        }//para cerrar la ventana que esta abierta y abrira la que queremos que es la de Acceco      // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jLabel2InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jLabel2InputMethodTextChanged
@@ -282,6 +296,12 @@ Ordenes inicio = new Ordenes();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+AddOrder inicio = new AddOrder();
+        inicio.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -329,6 +349,7 @@ Ordenes inicio = new Ordenes();
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -339,4 +360,5 @@ Ordenes inicio = new Ordenes();
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JLabel lbhora;
     // End of variables declaration//GEN-END:variables
+private javax.swing.JOptionPane mensaje;
 }

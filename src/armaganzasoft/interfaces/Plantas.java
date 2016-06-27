@@ -91,6 +91,7 @@ public class Plantas extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -288,6 +289,11 @@ public class Plantas extends javax.swing.JFrame {
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 90, 30));
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -381,6 +387,15 @@ public class Plantas extends javax.swing.JFrame {
         jMenu3.setText("PRODUCCION");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        jMenuItem11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem11.setText("AGREGAR ORDENES");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem11);
+
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem8.setText("ORDENES");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
@@ -471,6 +486,11 @@ Branch branch;
         BranchRepository  br = new BranchRepository(); 
         
          branch = br.buscarPlanta(identified);
+         
+         
+        if (branch.getName() == null){
+             JOptionPane.showMessageDialog(this,"LA PLANTA NO EXISTE");              
+        }
            
             jTextField2.setText(branch.getName());
             jTextField3.setText(branch.getAddress());
@@ -611,12 +631,19 @@ Ordenes inicio = new Ordenes();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+char c = evt.getKeyChar();
+if((c<'0'||c>'9'))evt.consume();
     }//GEN-LAST:event_jTextField5KeyTyped
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-Login inicio = new Login();
-        inicio.setVisible(true);
-        dispose();        // TODO add your handling code here:
+//cuando se de clic confirmar de cerrara la secion
+        int respuesta=mensaje.showConfirmDialog(rootPane, "¿Realmente deseas cerrar seción?", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        //guardar la respuesta en la variable respuesta y cerramos la secion cuando sea la respuesta que si
+        if(respuesta==mensaje.YES_NO_OPTION){
+            Login acceso= new Login();
+            acceso.setVisible(true);
+            dispose();
+        }//para cerrar la ventana que esta abierta y abrira la que queremos que es la de Acceco    // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -669,6 +696,19 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
         limpiar();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+char c = evt.getKeyChar();
+if((c<'0'||c>'9'))evt.consume();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9KeyTyped
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+AddOrder inicio = new AddOrder();
+        inicio.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -730,6 +770,7 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

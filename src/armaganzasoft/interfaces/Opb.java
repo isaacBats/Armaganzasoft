@@ -318,7 +318,7 @@ public class Opb extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /*Obasicas obasicas;
+        Obasicas obasicas;
         String identified = "";
         obasicas = new Obasicas();
 
@@ -329,38 +329,15 @@ public class Opb extends javax.swing.JFrame {
         
         obasicas = ur.buscarOperacion(identified);
         
+        
+        if (obasicas.getCode() == null){
+             JOptionPane.showMessageDialog(this,"LA OPB NO EXISTE");              
+        }
+        
         jTextField2.setText(obasicas.getCode());
         jTextField3.setText(obasicas.getDescripcion());
        
-    */
-      /*  try{
-            DefaultTableModel modeloOpb;
-            conectar =new conexion();
-            String codBuscar="";
-            codBuscar=JOptionPane.showInputDialog("Ingrese el codigo a buscar");
-            rsOpb=conectar.consultar("select code from operations");
-            boolean encontrado=false;
-            while (rsOpb.next()){
-                if(codBuscar.equals(rsOpb.getObject("code")))
-                {
-                    encontrado=true;
-                    break;
-                }
-                
-                
-            }
-            String SQL ="select + from operations where code="+codBuscar+"";
-            modeloOpb=conectar.retornarDatos(SQL);
-            jTable1.getViewport().add(jTable1);
-            if(encontrado==false)
-            {
-                JOptionPane.showMessageDialog(null,"No se encontro el codigo Buscado");
-                
-            } 
-            
-        } catch (SQLException e) {
-           System.out.println(e.getMessage());
-        }*/
+    
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

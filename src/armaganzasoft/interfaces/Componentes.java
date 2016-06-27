@@ -110,6 +110,7 @@ public class Componentes extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -356,6 +357,15 @@ public class Componentes extends javax.swing.JFrame {
         jMenu3.setText("PRODUCCION");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem2.setText("AGREGAR ORDENES");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem8.setText("ORDENES");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
@@ -449,6 +459,11 @@ Components machines;
        String operacio = (String)numOperacio;
         
          machines = mr.buscarMaquina(identified);
+         
+         
+        if (machines.getName() == null){
+             JOptionPane.showMessageDialog(this,"EL COMPONENTE NO EXISTE");              
+        }
             jTextField2.setText(machines.getName());
             jTextField3.setText(machines.getCode());
             jTextField4.setText(machines.getMaterial_uso());
@@ -598,15 +613,27 @@ Ordenes inicio = new Ordenes();
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-Login inicio = new Login();
-        inicio.setVisible(true);
-        dispose();        // TODO add your handling code here:
+//cuando se de clic confirmar de cerrara la secion
+        int respuesta=mensaje.showConfirmDialog(rootPane, "¿Realmente deseas cerrar seción?", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        //guardar la respuesta en la variable respuesta y cerramos la secion cuando sea la respuesta que si
+        if(respuesta==mensaje.YES_NO_OPTION){
+            Login acceso= new Login();
+            acceso.setVisible(true);
+            dispose();
+        }//para cerrar la ventana que esta abierta y abrira la que queremos que es la de Acceco      // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
     Opb inicio = new Opb();
         inicio.setVisible(true);    // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+AddOrder inicio = new AddOrder();
+        inicio.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -672,6 +699,7 @@ Login inicio = new Login();
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

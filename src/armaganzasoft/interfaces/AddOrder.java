@@ -61,7 +61,7 @@ public class AddOrder extends javax.swing.JFrame {
             }
             rs.close();
         } catch (SQLException ex) {
-            System.out.println("Error al traer los datos: " + ex);
+            System.out.println("AddOrder [class] => completaCliente: Error al traer los datos: " + ex);
         }       
     }
     
@@ -74,6 +74,7 @@ public class AddOrder extends javax.swing.JFrame {
             while(rs.next()){
                 modelComboForms.insertElementAt(rs.getObject("name"), rs.getInt("id"));
                 jComboBoxForms.setModel(modelComboForms);
+                
             }
         } catch (SQLException ex) {
             System.out.println("AddOrder [Class]: No hay elementos: " + ex);
@@ -126,7 +127,6 @@ public class AddOrder extends javax.swing.JFrame {
         jComboBoxForms = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldIdentified = new javax.swing.JTextField();
-        notaLabelCliente = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -139,13 +139,15 @@ public class AddOrder extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 120, -1));
         getContentPane().add(jTextFieldDirEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 345, 350, -1));
@@ -261,9 +263,6 @@ public class AddOrder extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldIdentified, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 100, -1));
 
-        notaLabelCliente.setText("El numero del cliente siempre comienza con CLI-...");
-        getContentPane().add(notaLabelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 360, -1));
-
         jMenuBar1.setBorder(null);
 
         jMenu1.setText("CAPTURA DE DATOS");
@@ -351,6 +350,15 @@ public class AddOrder extends javax.swing.JFrame {
         jMenu4.setText("PRODUCCION");
         jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem3.setText("ORDENES");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem3);
+
         jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem9.setText("OPERACION");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -360,10 +368,9 @@ public class AddOrder extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem9);
 
-        jCheckBoxMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("DATOS DESPUES DE LA OPERACION");
-        jMenu4.add(jCheckBoxMenuItem1);
+        jMenuItem11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem11.setText("DATOS DESPUES DE LA OPERACION");
+        jMenu4.add(jMenuItem11);
 
         jMenuBar1.add(jMenu4);
 
@@ -488,6 +495,14 @@ Proceso inicio = new Proceso();
         
     }//GEN-LAST:event_SaveOrder
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+Ordenes inicio = new Ordenes();
+        inicio.setVisible(true);
+        dispose();    
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     private void limpiar(){
         jTextField2.setText("");
         jTextField31.setText("");
@@ -545,7 +560,6 @@ Proceso inicio = new Proceso();
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox jComboBoxForms;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
@@ -569,7 +583,9 @@ Proceso inicio = new Proceso();
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
@@ -591,7 +607,6 @@ Proceso inicio = new Proceso();
     private javax.swing.JTextField jTextFieldTelefono;
     private javax.swing.JTextField jTextFieldTelefono1;
     private javax.swing.JLabel lbhora;
-    private javax.swing.JLabel notaLabelCliente;
     private javax.swing.JLabel titulo2Soluciones;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
