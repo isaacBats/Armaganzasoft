@@ -15,7 +15,10 @@ import static java.awt.event.KeyEvent.VK_SPACE;
 import javax.swing.JOptionPane;
 //Librerias combo autollenable
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.DefaultComboBoxModel;
+
 
 
  // @author ErwinValle
@@ -24,7 +27,7 @@ public class Usuarios extends javax.swing.JFrame {
    private DefaultComboBoxModel modeloCombo;
     HiloReloj hilor;
     //private Object [][] datostabla;
-  
+ 
     public Usuarios() {
         initComponents();
         limpiar();
@@ -39,6 +42,8 @@ public class Usuarios extends javax.swing.JFrame {
         lista = ComboPlantas.llenar_combo();
         for(int i = 0; i<lista.size();i++){
          jComboBox2.addItem(lista.get(i));}
+        
+        
            }
     
     public void bloquear(){    
@@ -116,6 +121,7 @@ public class Usuarios extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -432,6 +438,15 @@ public class Usuarios extends javax.swing.JFrame {
         jMenu3.setText("PRODUCCION");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        jMenuItem11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem11.setText("AGREGAR ORDEN");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem11);
+
         jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem9.setText("ORDENES");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -585,6 +600,10 @@ desbloquear();
        String oper = (String)numOper;
 
         user = ur.buscarUsuario(identified);
+        
+        if (user.getName() == null){
+             JOptionPane.showMessageDialog(this,"EL USUARIO NO EXISTE");              
+        }
         jTextField1.setText(user.getName());
         jTextField2.setText(user.getLast_name());
         jTextField3.setText(user.getNum_employee());
@@ -745,15 +764,36 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
 if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7KeyTyped
-
+   /*  public boolean isEmail(String correo){
+        Pattern pat =null;
+        Matcher mat =null;
+        pat = Pattern.compile("^[\\w\\-\\_\\+]+(\\.[\\w\\-\\_]+)*@(A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$");
+        mat = pat.matcher(correo);
+        if(mat.find()){
+        return true;
+        }else{
+    return false;
+    }*/
+    
     private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
-        // TODO add your handling code here:
+/*if (isEmail(jTextField4.getText())){
+    }else{
+    JOptionPane.showMessageDialog(null,"Email incorrecto","Validar email"
+            ,JOptionPane.INFORMATION_MESSAGE);
+    jTextField4.requestFocus();
+}*/
+       // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4FocusLost
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
- Login inicio = new Login();
-        inicio.setVisible(true);
-        dispose();
+ //cuando se de clic confirmar de cerrara la secion
+        int respuesta=mensaje.showConfirmDialog(rootPane, "¿Realmente deseas cerrar seción?", "Confirmación", mensaje.YES_NO_OPTION, mensaje.QUESTION_MESSAGE);
+        //guardar la respuesta en la variable respuesta y cerramos la secion cuando sea la respuesta que si
+        if(respuesta==mensaje.YES_NO_OPTION){
+            Login acceso= new Login();
+            acceso.setVisible(true);
+            dispose();
+        }//para cerrar la ventana que esta abierta y abrira la que queremos que es la de Acceco 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -761,6 +801,14 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+AddOrder inicio = new AddOrder();
+        inicio.setVisible(true);
+        dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -827,6 +875,7 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -841,7 +890,7 @@ if((c<'a' || c>'z')&& (c<'A' || c>'Z') && (c!=VK_SPACE))evt.consume();
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    public javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lbhora;
