@@ -6,12 +6,6 @@
 package armaganzasoft.interfaces;
 
 import armaganzasoft.models.HiloReloj;
-import armaganzasoft.models.Order;
-import armaganzasoft.repositorys.OrderRepository;
-import com.mxrck.autocompleter.TextAutoCompleter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,37 +14,13 @@ import javax.swing.JOptionPane;
 public class Ordenes extends javax.swing.JFrame {
     HiloReloj hilor;
 
-    private OrderRepository or;
-    
     /**
      * Creates new form Ordenes
      */
     public Ordenes() {
-        this.or = new OrderRepository();
         initComponents();
         hilor = new HiloReloj(lbhora);
-        hilor.start();
-        
-        completaOrden();
-    }
-    
-    private void completaOrden(){
-        
-        TextAutoCompleter orders = new TextAutoCompleter(jTextField2);
-        
-        ResultSet rs = or.getAllOrders( 10 );
-        try {
-            while(rs.next()){
-                if(!rs.getString("num_orden").equals(null)){
-                    orders.addItem( rs.getString( "num_orden" ) );                
-                }
-            }
-            rs.close();
-        }catch (SQLException ex) {
-            System.out.println("Error al traer los datos: " + ex);
-        }catch (NullPointerException np){
-            System.out.println("No se encontro un numero de orden: " + np);
-        }       
+       hilor.start();
     }
 
     /**
@@ -63,6 +33,8 @@ public class Ordenes extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu3 = new javax.swing.JMenu();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jTextFieldDirEntrega = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -74,6 +46,14 @@ public class Ordenes extends javax.swing.JFrame {
         jLabelKGSOrden = new javax.swing.JLabel();
         jLabelKGSPedido = new javax.swing.JLabel();
         jLabelProducto = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabelCemento = new javax.swing.JLabel();
+        jLabelGrava = new javax.swing.JLabel();
+        jLabelArena = new javax.swing.JLabel();
+        jLabelAgua = new javax.swing.JLabel();
+        jLabelAd1 = new javax.swing.JLabel();
+        jLabelAd2 = new javax.swing.JLabel();
+        jLabelAd3 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jTextField31 = new javax.swing.JTextField();
@@ -84,6 +64,12 @@ public class Ordenes extends javax.swing.JFrame {
         jTableOrdenes = new javax.swing.JTable();
         titulo2Soluciones = new javax.swing.JLabel();
         lbhora = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableFormula = new javax.swing.JTable();
+        jTextFieldPVSR = new javax.swing.JTextField();
+        jTextFieldPedidos = new javax.swing.JTextField();
+        jLabelPVSR = new javax.swing.JLabel();
+        jLabelPedidos = new javax.swing.JLabel();
         jTextFieldCliente = new javax.swing.JTextField();
         jTextFieldTelefono = new javax.swing.JTextField();
         jLabelTelefono2 = new javax.swing.JLabel();
@@ -121,13 +107,21 @@ public class Ordenes extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setSize(new java.awt.Dimension(1440, 770));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 320, -1));
 
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                completaDatosOrden(evt);
+        jButton1.setBackground(new java.awt.Color(153, 153, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCAR (2).png"))); // NOI18N
+        jButton1.setText(" Orden");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 140, -1, 40));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 120, -1));
         getContentPane().add(jTextFieldDirEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 345, 350, -1));
 
@@ -156,7 +150,7 @@ public class Ordenes extends javax.swing.JFrame {
                 jTextFieldProductoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 230, -1));
+        getContentPane().add(jTextFieldProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 100, -1));
 
         jLabelKGSOrden.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelKGSOrden.setText("KGS/ORDEN");
@@ -168,7 +162,39 @@ public class Ordenes extends javax.swing.JFrame {
 
         jLabelProducto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelProducto.setText("PRODUCTO");
-        getContentPane().add(jLabelProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, -1, -1));
+        getContentPane().add(jLabelProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 480, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setText("FORMULA");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
+
+        jLabelCemento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelCemento.setText("CEMENTO");
+        getContentPane().add(jLabelCemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, -1, -1));
+
+        jLabelGrava.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelGrava.setText("GRAVA");
+        getContentPane().add(jLabelGrava, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 580, -1, -1));
+
+        jLabelArena.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelArena.setText("ARENA");
+        getContentPane().add(jLabelArena, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 600, -1, -1));
+
+        jLabelAgua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelAgua.setText("AGUA");
+        getContentPane().add(jLabelAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 620, -1, -1));
+
+        jLabelAd1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelAd1.setText("ADITIVO1");
+        getContentPane().add(jLabelAd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 640, -1, -1));
+
+        jLabelAd2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelAd2.setText("ADITIVO2");
+        getContentPane().add(jLabelAd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 660, -1, -1));
+
+        jLabelAd3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelAd3.setText("ADITIVO3");
+        getContentPane().add(jLabelAd3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 680, -1, 20));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel22.setText("FECHA");
@@ -253,6 +279,56 @@ public class Ordenes extends javax.swing.JFrame {
 
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, 80, 20));
+
+        jTableFormula.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "TIPO", "%", "TEORICO"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableFormula.setRowHeight(20);
+        jScrollPane3.setViewportView(jTableFormula);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 380, 170));
+        getContentPane().add(jTextFieldPVSR, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 100, -1));
+
+        jTextFieldPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPedidosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 445, 100, -1));
+
+        jLabelPVSR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelPVSR.setText("P vs R");
+        getContentPane().add(jLabelPVSR, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, -1, -1));
+
+        jLabelPedidos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelPedidos.setText("PEDIDOS");
+        getContentPane().add(jLabelPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 455, -1, -1));
         getContentPane().add(jTextFieldCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 195, 350, -1));
         getContentPane().add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 350, -1));
 
@@ -438,6 +514,14 @@ public class Ordenes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField31ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextFieldPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPedidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPedidosActionPerformed
+
     private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField33ActionPerformed
@@ -511,18 +595,12 @@ Proceso inicio = new Proceso();
         }//para cerrar la ventana que esta abierta y abrira la que queremos que es la de Acceco  // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void completaDatosOrden(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_completaDatosOrden
-        String orden = jTextField2.getText();
-        if (orden.equals("")){
-            JOptionPane.showMessageDialog(this,"Introduce un codigo de orden valido");            
-        }
-        else{
-            ResultSet order;
-            
-            order = or.getOrderByNumOrder(orden);
-        
-        }     
-    }//GEN-LAST:event_completaDatosOrden
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+AddOrder inicio = new AddOrder();
+        inicio.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -560,22 +638,33 @@ Proceso inicio = new Proceso();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelAd1;
+    private javax.swing.JLabel jLabelAd2;
+    private javax.swing.JLabel jLabelAd3;
+    private javax.swing.JLabel jLabelAgua;
+    private javax.swing.JLabel jLabelArena;
+    private javax.swing.JLabel jLabelCemento;
     private javax.swing.JLabel jLabelCliente;
     private javax.swing.JLabel jLabelContacto;
     private javax.swing.JLabel jLabelDirEntrega;
     private javax.swing.JLabel jLabelDirFiscal;
+    private javax.swing.JLabel jLabelGrava;
     private javax.swing.JLabel jLabelKGSOrden;
     private javax.swing.JLabel jLabelKGSPedido;
+    private javax.swing.JLabel jLabelPVSR;
+    private javax.swing.JLabel jLabelPedidos;
     private javax.swing.JLabel jLabelProducto;
     private javax.swing.JLabel jLabelRFC;
     private javax.swing.JLabel jLabelTelefono1;
@@ -597,9 +686,12 @@ Proceso inicio = new Proceso();
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTable jTableFormula;
     private javax.swing.JTable jTableOrdenes;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField33;
@@ -608,7 +700,9 @@ Proceso inicio = new Proceso();
     private javax.swing.JTextField jTextFieldDirEntrega;
     private javax.swing.JTextField jTextFieldDirFiscal;
     private javax.swing.JTextField jTextFieldOrden;
+    private javax.swing.JTextField jTextFieldPVSR;
     private javax.swing.JTextField jTextFieldPedido;
+    private javax.swing.JTextField jTextFieldPedidos;
     private javax.swing.JTextField jTextFieldProducto;
     private javax.swing.JTextField jTextFieldRFC;
     private javax.swing.JTextField jTextFieldTelefono;

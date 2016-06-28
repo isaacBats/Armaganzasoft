@@ -8,7 +8,15 @@ package armaganzasoft.interfaces;
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.ComponentesRepository;
 import armaganzasoft.models.Components;
+import armaganzasoft.services.BaseDatos;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +24,9 @@ import javax.swing.JOptionPane;
  */
 public class Componentes extends javax.swing.JFrame {
       HiloReloj hilor;
+      BaseDatos conn = new BaseDatos();
+    Connection cn = conn.getConnection();
+    String atributo="Id";
 
     /**
      * Creates new form Maquinas
@@ -28,10 +39,63 @@ public class Componentes extends javax.swing.JFrame {
         
          hilor = new HiloReloj(lbhora);
        hilor.start();
+       mostrartabla("");
             
            }
     
-     
+      void mostrartabla(String valor){
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("REGISTRO");
+        modelo.addColumn("FORMULA");
+        modelo.addColumn("OPERACION");
+        modelo.addColumn("DES_OPERACION");
+        modelo.addColumn("MATERIAL");
+        modelo.addColumn("VALOR");
+        modelo.addColumn("TIPO");
+        tabladatos.setModel(modelo);
+        
+        String sql ="";
+        if(valor.equals("")){
+            sql = "SELECT * FROM components";
+        }
+        else{
+            sql = "SELECT * FROM components WHERE "+atributo+"='"+valor+"'";
+        }
+        
+        String datos[] = new String [15];
+        Statement st;
+        try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString(1);
+                datos[1]=rs.getString(2);
+                datos[2]=rs.getString(3);
+                datos[3]=rs.getString(4);
+                datos[4]=rs.getString(5);
+                datos[5]=rs.getString(6);
+                datos[6]=rs.getString(7);
+                datos[7]=rs.getString(8);
+                datos[8]=rs.getString(9);
+                datos[9]=rs.getString(10);
+                datos[10]=rs.getString(11);
+                datos[11]=rs.getString(12);
+                datos[12]=rs.getString(13);
+                datos[13]=rs.getString(14);
+                datos[14]=rs.getString(15);
+               
+              
+                
+              
+                modelo.addRow(datos);
+            }
+            tabladatos.setModel(modelo);        
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     public void limpiar(){
         jTextField1.setText("");
         jTextField2.setText("");
@@ -98,6 +162,8 @@ public class Componentes extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabladatos = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -163,11 +229,11 @@ public class Componentes extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("ESTADO");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("TIPO SEÑAL");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         lbhora.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lbhora.setText("00:00:00");
@@ -175,10 +241,10 @@ public class Componentes extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("PARAMETROS");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, -1, -1));
 
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 270, -1));
+        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 270, -1));
 
         jButton2.setBackground(new java.awt.Color(153, 153, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -222,41 +288,46 @@ public class Componentes extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("ESTATUS");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, -1, -1));
 
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 270, -1));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 270, -1));
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 111, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "abierto/cerrado", "prendido/apagado" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 270, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 250, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "digital", "analogica", "digital/analogica" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 270, -1));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 250, -1));
 
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 270, -1));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 270, -1));
 
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 270, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 270, -1));
 
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 270, -1));
+        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 270, -1));
 
         jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 270, -1));
+        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 270, -1));
 
         jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 270, -1));
+        getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 270, -1));
 
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 270, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 270, -1));
 
         jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 500, 270, -1));
+        getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 270, -1));
 
         jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 270, -1));
+        getContentPane().add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 270, -1));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
         jButton5.setBorder(null);
@@ -275,6 +346,23 @@ public class Componentes extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel10.setText("SOLUCIONES EN INGENIERIA ZARATE");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 100, -1, -1));
+
+        tabladatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tabladatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabladatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabladatos);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 640, 410));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 780));
@@ -635,6 +723,31 @@ AddOrder inicio = new AddOrder();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void tabladatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabladatosMouseClicked
+int filaselect=tabladatos.getSelectedRow();
+jTextField3.setText(tabladatos.getValueAt(filaselect,1).toString());
+jTextField2.setText(tabladatos.getValueAt(filaselect,2).toString());
+jTextField4.setText(tabladatos.getValueAt(filaselect,3).toString()); 
+jComboBox2.setSelectedItem(tabladatos.getValueAt(filaselect,4).toString());
+jComboBox1.setSelectedItem(tabladatos.getValueAt(filaselect,5).toString());
+jTextField8.setText(tabladatos.getValueAt(filaselect,6).toString());
+jTextField9.setText(tabladatos.getValueAt(filaselect,7).toString());
+jTextField5.setText(tabladatos.getValueAt(filaselect,8).toString());
+jTextField12.setText(tabladatos.getValueAt(filaselect,9).toString()); 
+jTextField6.setText(tabladatos.getValueAt(filaselect,10).toString()); 
+jTextField7.setText(tabladatos.getValueAt(filaselect,11).toString()); 
+jTextField10.setText(tabladatos.getValueAt(filaselect,12).toString()); 
+jTextField13.setText(tabladatos.getValueAt(filaselect,13).toString());
+jTextField11.setText(tabladatos.getValueAt(filaselect,14).toString());
+jTextField14.setText(tabladatos.getValueAt(filaselect,15).toString());
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabladatosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -707,6 +820,7 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -722,6 +836,8 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbhora;
+    private javax.swing.JTable tabladatos;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
+int filas;
 }

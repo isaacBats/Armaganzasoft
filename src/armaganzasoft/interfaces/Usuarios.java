@@ -11,21 +11,34 @@ import armaganzasoft.models.HiloReloj;
 import armaganzasoft.models.User;
 import armaganzasoft.repositorys.UserRepository;
 import armaganzasoft.repositorys.ComboPlantas;
+import armaganzasoft.services.BaseDatos;
 import static java.awt.event.KeyEvent.VK_SPACE;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 //Librerias combo autollenable
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 
 
  // @author ErwinValle
 
 public class Usuarios extends javax.swing.JFrame {
+     DefaultListModel modelo= new DefaultListModel();
    private DefaultComboBoxModel modeloCombo;
     HiloReloj hilor;
+    BaseDatos conn = new BaseDatos();
+     Connection cn = conn.getConnection();
+    String atributo="Id";
     //private Object [][] datostabla;
  
     public Usuarios() {
@@ -33,6 +46,7 @@ public class Usuarios extends javax.swing.JFrame {
         limpiar();
         bloquear();
         desbloquear();
+          mostrartabla("");
                    
          hilor = new HiloReloj(lbhora);
        hilor.start();
@@ -45,6 +59,55 @@ public class Usuarios extends javax.swing.JFrame {
         
         
            }
+    void mostrartabla(String valor){
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("ID_PLANTA");
+        modelo.addColumn("#EMPLEADO");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("APELLIDO");
+        modelo.addColumn("EMAIL");
+        modelo.addColumn("CONTRASEÑA");
+        modelo.addColumn("USUARIO");
+        modelo.addColumn("POSICION");
+        modelo.addColumn("ROLL");
+        modelo.addColumn("ESTADO");
+        tabladatos.setModel(modelo);
+        
+        String sql ="";
+        if(valor.equals("")){
+            sql = "SELECT * FROM users";
+        }
+        else{
+            sql = "SELECT * FROM users WHERE "+atributo+"='"+valor+"'";
+        }
+        
+        String datos[] = new String [10];
+        Statement st;
+        try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString(1);
+                datos[1]=rs.getString(2);
+                datos[2]=rs.getString(3);
+                datos[3]=rs.getString(4);
+                datos[4]=rs.getString(5);
+                datos[5]=rs.getString(6);
+                datos[6]=rs.getString(7);
+                datos[7]=rs.getString(8);
+                datos[8]=rs.getString(9);
+                datos[9]=rs.getString(10);
+                
+              
+                modelo.addRow(datos);
+            }
+            tabladatos.setModel(modelo);        
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     public void bloquear(){    
 }
@@ -109,6 +172,8 @@ public class Usuarios extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabladatos = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -202,11 +267,11 @@ public class Usuarios extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 130, 50, 40));
 
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 170, -1));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 170, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("PASSWORD");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, -1, -1));
 
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -236,7 +301,7 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField7KeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 490, 170, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 170, -1));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
@@ -269,15 +334,15 @@ public class Usuarios extends javax.swing.JFrame {
                 jTextField11KeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 170, -1));
+        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, 170, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("PUESTO");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("AREA");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, -1, -1));
 
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -314,7 +379,7 @@ public class Usuarios extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("PLANTA");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "alta", "baja" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 170, -1));
@@ -348,7 +413,24 @@ public class Usuarios extends javax.swing.JFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 170, -1));
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 170, -1));
+
+        tabladatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tabladatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabladatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabladatos);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 710, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -486,7 +568,7 @@ public class Usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField11ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
+  mostrartabla("");    
      User user;
         user = new User();
 
@@ -810,6 +892,23 @@ AddOrder inicio = new AddOrder();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void tabladatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabladatosMouseClicked
+int filaselect=tabladatos.getSelectedRow();
+jComboBox2.setSelectedItem(tabladatos.getValueAt(filaselect,1).toString());
+jTextField3.setText(tabladatos.getValueAt(filaselect,2).toString());
+jTextField1.setText(tabladatos.getValueAt(filaselect,3).toString());
+jTextField2.setText(tabladatos.getValueAt(filaselect,4).toString());
+jTextField4.setText(tabladatos.getValueAt(filaselect,5).toString());
+jPasswordField1.setText(tabladatos.getValueAt(filaselect,6).toString());   
+jTextField5.setText(tabladatos.getValueAt(filaselect,7).toString());
+jTextField11.setText(tabladatos.getValueAt(filaselect,8).toString());
+jTextField7.setText(tabladatos.getValueAt(filaselect,9).toString()); 
+jComboBox1.setSelectedItem(tabladatos.getValueAt(filaselect,10).toString());
+
+
+       // TODO add your handling code here:
+    }//GEN-LAST:event_tabladatosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -885,6 +984,7 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -894,6 +994,8 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lbhora;
+    private javax.swing.JTable tabladatos;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
+int filas;
 }
