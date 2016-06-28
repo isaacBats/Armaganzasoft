@@ -13,6 +13,7 @@ import armaganzasoft.models.Partitions;
 import armaganzasoft.repositorys.CustomerRepository;
 import armaganzasoft.repositorys.FormulaRepository;
 import armaganzasoft.repositorys.OrderRepository;
+import armaganzasoft.repositorys.RemissionRepository;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,6 +30,7 @@ public class AddOrder extends javax.swing.JFrame {
     
     private CustomerRepository cr;
     private OrderRepository or;
+    private RemissionRepository rmr;
 
     /**
      * Creates new form Ordenes
@@ -36,17 +38,46 @@ public class AddOrder extends javax.swing.JFrame {
     public AddOrder() {
         this.cr = new CustomerRepository();
         this.or = new OrderRepository();
+        this.rmr = new RemissionRepository();
         this.modelComboForms = new DefaultComboBoxModel();        
         initComponents();
         hilor = new HiloReloj(lbhora);
         hilor.start();
-        String ordenproduccion = String.format("%08d", 1);
-        this.jTextField2.setText("MX-" + ordenproduccion);
-        this.jTextField31.setText( "RM-" + String.format( "%08d", 2) );
+        
+        this.jTextField2.setText( getNumOrder() );
+        this.jTextField31.setText( getNumRemission() );
         completaCliente();
         modelComboForms.addElement("Selecciona una formula");
         jComboBoxForms.setModel(modelComboForms);
         llenaComboForms();
+    }
+    
+    private String getNumOrder(){
+        
+        String numOrden = "MX-";
+        Integer id = or.getLastId();
+        
+        if( id.equals( null ) || id.equals( 0 ) ){
+            numOrden += String.format("%08d", 1);        
+        }else{
+            numOrden += String.format( "%08d", id + 1 );
+        }
+        
+        return numOrden;
+        
+    }
+    
+    private String getNumRemission(){
+        String numRemission = "RM-";
+        Integer id = rmr.getLastId();
+        
+        if( id.equals( null ) || id.equals( 0 ) ){
+            numRemission += String.format( "%08d", 1);
+        }else{
+            numRemission += String.format( "%08d", id + 1 );
+        }
+        
+        return numRemission;
     }
     
     private void completaCliente(){
@@ -261,7 +292,7 @@ public class AddOrder extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldIdentified, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 100, -1));
 
-        notaLabelCliente.setText("El numero del cliente siempre comienza con CLI-...");
+        notaLabelCliente.setText("El numero del cliente siempre comienza con CLI-");
         getContentPane().add(notaLabelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 360, -1));
 
         jMenuBar1.setBorder(null);
@@ -466,8 +497,11 @@ Proceso inicio = new Proceso();
         String mobil = jTextFieldTelefono.getText();
         String dirEntrega = jTextFieldDirEntrega.getText();
         String value = jTextFieldPedido.getText();
+        int remision = rmr.addRemission( jTextField31.getText() );
+        String numOrden = jTextField2.getText();               
+                
         
-        Order orden = new Order(client.getId(), sucursalid, quantity, mu, price );
+        Order orden = new Order(client.getId(), sucursalid, quantity, mu, price, remision, numOrden );
         int idOrden = or.addOrden(orden);   
         
         
@@ -489,8 +523,8 @@ Proceso inicio = new Proceso();
     }//GEN-LAST:event_SaveOrder
 
     private void limpiar(){
-        jTextField2.setText("");
-        jTextField31.setText("");
+        jTextField2.setText( getNumOrder() );
+        jTextField31.setText( getNumRemission() );
         jTextFieldCliente.setText("");
         jTextFieldContacto.setText("");
         jTextFieldDirEntrega.setText("");

@@ -40,8 +40,10 @@ public class OrderRepository extends BaseRepository {
                                                           + "branch_id, "
                                                           + "quantity, "
                                                           + "measurement_unit_id, "
-                                                          + "total_price) "
-                                        + "VALUES(?, ?, ?, ?, ?);"
+                                                          + "total_price, "
+                                                          + "num_orden, "
+                                                          + "remission_id) "
+                                        + "VALUES(?, ?, ?, ?, ?, ?, ?);"
                                         );
             
             
@@ -50,6 +52,8 @@ public class OrderRepository extends BaseRepository {
             query.setFloat(3, order.getQuantity());
             query.setInt(4, order.getMeasurementUnit());
             query.setFloat(5, order.getTotal());
+            query.setString(6, order.getNumOrden());
+            query.setInt(7, order.getRemision());
             
             if( !query.execute() ){
                 Statement stmt = con.createStatement();
@@ -193,6 +197,71 @@ public class OrderRepository extends BaseRepository {
         }
         
         return null;
+    }
+    
+    public int getLastId( ){
+    
+        int id = 0;
+        Statement stmt = null;       
+        
+        String sql = "SELECT max( id ) as id " +
+                     "FROM orders ";
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery( sql );
+            if(rs.next()){
+                id = rs.getInt("id");
+            }
+            
+            stmt.close();
+            rs.close();
+            
+        } catch (SQLException e) {
+            System.out.println("OrderRepository[Class] : getLastId => No se ejecuto el Query "+ e);
+            System.out.println(sql);
+        }
+        
+        return id;
+    }
+    
+    public ResultSet getAllOrders(){
+    
+        Statement stmt;       
+        
+        String sql = "SELECT * FROM orders";
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery( sql );
+
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("OrderRepository[Class] : getAllOrders => No se ejecuto el query "+ e);
+            System.out.println(sql);
+        }
+        
+        return null;
+    }
+    
+    public ResultSet getAllOrders( int limit ){
+    
+        Statement stmt;       
+        
+        String sql = "SELECT * FROM orders ORDER BY id DESC LIMIT " + limit;
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery( sql );
+
+            return rs;
+        } catch (SQLException e) {
+            System.out.println("OrderRepository[Class] : getAllOrders => No se ejecuto el query "+ e);
+            System.out.println(sql);
+        }
+        
+        return null;
+    }
+
+    public ResultSet getOrderByNumOrder(String orden) {
+        
     }
         
 }

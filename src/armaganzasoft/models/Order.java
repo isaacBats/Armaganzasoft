@@ -11,9 +11,12 @@ public class Order {
     private int costumerId;
     private int branchId;
     private String date;
-    float quantity;
-    int measurementUnit;
-    float total;
+    private float quantity;
+    private int measurementUnit;
+    private float total;
+    private String numOrden;
+    private int remision;
+    
 
     public Order() {    }
     
@@ -27,12 +30,14 @@ public class Order {
         this.total = total;
     }
 
-    public Order(int costumerId, int branchId, float quantity, int measurementUnit, float total) {
+    public Order(int costumerId, int branchId, float quantity, int measurementUnit, float total, int remision, String numOrden) {
         this.costumerId = costumerId;
         this.branchId = branchId;
         this.quantity = quantity;
         this.measurementUnit = measurementUnit;
         this.total = total;
+        this.remision = remision;
+        this.numOrden = numOrden;
     }
 
     
@@ -46,6 +51,23 @@ public class Order {
         this.total = total;
     }
 
+    public String getNumOrden() {
+        return numOrden;
+    }
+
+    public void setNumOrden(String numOrden) {
+        this.numOrden = numOrden;
+    }
+
+    public int getRemision() {
+        return remision;
+    }
+
+    public void setRemision(int remision) {
+        this.remision = remision;
+    }
+
+    
     public int getId() {
         return id;
     }

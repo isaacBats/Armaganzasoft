@@ -581,7 +581,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="notaLabelCliente">
       <Properties>
-        <Property name="text" type="java.lang.String" value="El numero del cliente siempre comienza con CLI-..."/>
+        <Property name="text" type="java.lang.String" value="El numero del cliente siempre comienza con CLI-"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
