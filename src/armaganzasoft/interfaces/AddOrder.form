@@ -592,7 +592,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="notaLabelCliente">
+    <Component class="javax.swing.JLabel" name="JLabelNotaLabelCliente">
       <Properties>
         <Property name="text" type="java.lang.String" value="El numero del cliente siempre comienza con CLI-"/>
       </Properties>

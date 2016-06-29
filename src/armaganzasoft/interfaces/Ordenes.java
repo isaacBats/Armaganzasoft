@@ -11,6 +11,12 @@ import armaganzasoft.repositorys.OrderRepository;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -183,7 +189,7 @@ public class Ordenes extends javax.swing.JFrame {
                 jTextField31ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 80, -1));
+        getContentPane().add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 130, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
@@ -394,11 +400,6 @@ public class Ordenes extends javax.swing.JFrame {
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem3.setText("AGREGAR ORDEN");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
         jMenu4.add(jMenuItem3);
 
         jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -513,17 +514,54 @@ Proceso inicio = new Proceso();
 
     private void completaDatosOrden(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_completaDatosOrden
         String orden = jTextField2.getText();
+        
         if (orden.equals("")){
             JOptionPane.showMessageDialog(this,"Introduce un codigo de orden valido");            
         }
         else{
-            ResultSet order;
-            
-            order = or.getOrderByNumOrder(orden);
+            try {
+                ResultSet order;
+                
+                order = or.getOrderByNumOrder(orden);
+                while(order.next()){
+                     
+                     
+                    jTextField33.setText( formateDate( order.getString( "fecha" ) ) );
+                    jTextField31.setText(order.getString("remision"));
+                    jTextFieldCliente.setText(order.getString("cliente"));
+                    jTextFieldDirFiscal.setText(order.getString("direccion"));
+                    jTextFieldTelefono1.setText(order.getString("telefono"));
+                    jTextFieldRFC.setText(order.getString("rfc"));
+                    jTextFieldContacto.setText(order.getString("contacto_entrega"));
+                    jTextFieldDirEntrega.setText(order.getString("direccion_entrega"));
+                    jTextFieldTelefono.setText(order.getString("telefono_entrega"));
+                    jTextFieldOrden.setText(order.getString("cantidad_orden"));
+                    jTextFieldPedido.setText(order.getString("cantidad_parcial"));
+                    jTextFieldProducto.setText(order.getString("formula"));
+                }
+            } catch (SQLException ex) {
+                System.out.println("Ordenes [Class] : completaDatosOrden => No ahi datos que mostrar " + ex);
+            }
         
         }     
     }//GEN-LAST:event_completaDatosOrden
 
+    public static String formateDate(String dateString) {
+        Date date;
+        String formattedDate = "";
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss",Locale.getDefault()).parse(dateString);
+            formattedDate = new SimpleDateFormat("dd/MM/yyyy",Locale.getDefault()).format(date);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return formattedDate;
+    }
+
+
+    
     /**
      * @param args the command line arguments
      */
