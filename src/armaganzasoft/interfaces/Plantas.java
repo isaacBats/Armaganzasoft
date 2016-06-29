@@ -9,8 +9,16 @@ package armaganzasoft.interfaces;
 import armaganzasoft.repositorys.BranchRepository;
 import armaganzasoft.models.Branch;
 import armaganzasoft.models.HiloReloj;
+import armaganzasoft.services.BaseDatos;
 import static java.awt.event.KeyEvent.VK_SPACE;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
         
 
 /**
@@ -20,7 +28,9 @@ import javax.swing.JOptionPane;
 public class Plantas extends javax.swing.JFrame {
     
     HiloReloj hilor;
-
+BaseDatos conn = new BaseDatos();
+    Connection cn = conn.getConnection();
+    String atributo="Id";
     /**
      * Creates new form Plantas
      */
@@ -30,9 +40,54 @@ public class Plantas extends javax.swing.JFrame {
         
          hilor = new HiloReloj(lbhora);
        hilor.start();
+       mostrartabla("");
     }
 
-    
+    void mostrartabla(String valor){
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("CODIGO");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("DIRECCION");
+        modelo.addColumn("TELEFONO");
+        modelo.addColumn("CIUDAD");
+        modelo.addColumn("CP");
+        modelo.addColumn("RFC");
+        modelo.addColumn("EMAIL");
+        tabladatos.setModel(modelo);
+        
+        String sql ="";
+        if(valor.equals("")){
+            sql = "SELECT * FROM branches";
+        }
+        else{
+            sql = "SELECT * FROM branches WHERE "+atributo+"='"+valor+"'";
+        }
+        
+        String datos[] = new String [8];
+        Statement st;
+        try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString(1);
+                datos[1]=rs.getString(2);
+                datos[2]=rs.getString(3);
+                datos[3]=rs.getString(4);
+                datos[4]=rs.getString(5);
+                datos[5]=rs.getString(6);
+                datos[6]=rs.getString(7);
+                datos[7]=rs.getString(8);
+                
+              
+                modelo.addRow(datos);
+            }
+            tabladatos.setModel(modelo);        
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     public void limpiar(){
         jTextField1.setText("");
         jTextField2.setText("");
@@ -79,6 +134,8 @@ public class Plantas extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabladatos = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -306,6 +363,23 @@ public class Plantas extends javax.swing.JFrame {
         });
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 130, 50, 40));
 
+        tabladatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tabladatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabladatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabladatos);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 630, -1));
+
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 780));
 
@@ -430,7 +504,7 @@ public class Plantas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+ mostrartabla("");
 Branch branch;
         branch = new Branch();
         
@@ -710,6 +784,23 @@ AddOrder inicio = new AddOrder();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void tabladatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabladatosMouseClicked
+int filaselect=tabladatos.getSelectedRow();
+jTextField9.setText(tabladatos.getValueAt(filaselect,1).toString());
+jTextField2.setText(tabladatos.getValueAt(filaselect,2).toString());    
+jTextField3.setText(tabladatos.getValueAt(filaselect,3).toString());   
+jTextField8.setText(tabladatos.getValueAt(filaselect,4).toString()); 
+jTextField4.setText(tabladatos.getValueAt(filaselect,5).toString());
+jTextField5.setText(tabladatos.getValueAt(filaselect,6).toString());
+jTextField7.setText(tabladatos.getValueAt(filaselect,7).toString());
+jTextField6.setText(tabladatos.getValueAt(filaselect,8).toString());
+
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_tabladatosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -779,6 +870,7 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -789,6 +881,7 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbhora;
+    private javax.swing.JTable tabladatos;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
 }

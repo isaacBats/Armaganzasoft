@@ -9,8 +9,16 @@ package armaganzasoft.interfaces;
 import armaganzasoft.models.Customer;
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.repositorys.CustomerRepository;
+import armaganzasoft.services.BaseDatos;
 import static java.awt.event.KeyEvent.VK_SPACE;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -20,6 +28,9 @@ import javax.swing.JOptionPane;
 public class Cliente extends javax.swing.JFrame {
     
         HiloReloj hilor;
+        BaseDatos conn = new BaseDatos();
+    Connection cn = conn.getConnection();
+    String atributo="Id";
 
  
     /**
@@ -34,11 +45,57 @@ public class Cliente extends javax.swing.JFrame {
         limpiar();
            hilor = new HiloReloj(lbhora);
        hilor.start();
+        mostrartabla("");
     }
    
     
     
-   
+    void mostrartabla(String valor){
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("ID_CLIENTE");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("APELLIDOS");
+        modelo.addColumn("EMAIL");
+        modelo.addColumn("TELEFONO");
+        modelo.addColumn("CELULAR");
+        modelo.addColumn("RFC");
+        modelo.addColumn("DIRECCION");
+        modelo.addColumn("CIUDAD");
+        modelo.addColumn("CP");
+        tabladatos.setModel(modelo);
+        
+        String sql ="";
+        if(valor.equals("")){
+            sql = "SELECT * FROM customers";
+        }
+        else{
+            sql = "SELECT * FROM customers WHERE "+atributo+"='"+valor+"'";
+        }
+        
+        String datos[] = new String [7];
+        Statement st;
+        try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString(1);
+                datos[1]=rs.getString(2);
+                datos[2]=rs.getString(3);
+                datos[3]=rs.getString(4);
+                datos[4]=rs.getString(5);
+                datos[5]=rs.getString(6);
+                datos[6]=rs.getString(7);
+                
+              
+                modelo.addRow(datos);
+            }
+            tabladatos.setModel(modelo);        
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     
     
@@ -53,7 +110,6 @@ public class Cliente extends javax.swing.JFrame {
         jTextField8.setText("");
         jTextField9.setText("");
         jTextField10.setText("");
-        jTextField11.setText("");
         jTextField12.setText("");
         
                 
@@ -96,13 +152,13 @@ public class Cliente extends javax.swing.JFrame {
         jTextField12 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         lbhora = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jCheckBoxSubCliente = new javax.swing.JCheckBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabladatos = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -352,18 +408,6 @@ public class Cliente extends javax.swing.JFrame {
         lbhora.setText("00:00:00");
         getContentPane().add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 0, -1, 30));
 
-        jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 50, -1));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel11.setText("SUBCLIENTE - FRENTE");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
-
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_logout.png"))); // NOI18N
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
@@ -395,7 +439,24 @@ public class Cliente extends javax.swing.JFrame {
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 130, 50, 40));
 
         jCheckBoxSubCliente.setText("Sub Cliente");
-        getContentPane().add(jCheckBoxSubCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 600, -1, -1));
+        getContentPane().add(jCheckBoxSubCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
+
+        tabladatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tabladatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabladatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabladatos);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 810, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
@@ -532,7 +593,7 @@ public class Cliente extends javax.swing.JFrame {
         if (customer.getName() == null){
              JOptionPane.showMessageDialog(this,"EL CLIENTE NO EXISTE");              
         }
-            jTextField11.setText(customer.getSub_customer());
+           
             jTextField12.setText(customer.getCustomer_id());
             jTextField2.setText(customer.getName());
             jTextField3.setText(customer.getLast_name());
@@ -552,7 +613,7 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+mostrartabla("");        
         boolean checkSubCliente = jCheckBoxSubCliente.isSelected();
         String subcliente = "";
         if (checkSubCliente){
@@ -648,7 +709,6 @@ Customer customer;
         customer.setAddress(jTextField8.getText());
         customer.setCity(jTextField9.getText());
         customer.setZip_code(jTextField10.getText());
-        customer.setSub_customer(jTextField11.getText());
         customer.setCustomer_id(jTextField12.getText());
        
         
@@ -768,10 +828,6 @@ limpiar();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
-
     private void jTextField12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyTyped
 char c = evt.getKeyChar();
 if((c<'0' || c>'9'))evt.consume();
@@ -832,6 +888,22 @@ AddOrder inicio = new AddOrder();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void tabladatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabladatosMouseClicked
+int filaselect=tabladatos.getSelectedRow();
+jTextField12.setText(tabladatos.getValueAt(filaselect,1).toString());
+jTextField2.setText(tabladatos.getValueAt(filaselect,2).toString());
+jTextField3.setText(tabladatos.getValueAt(filaselect,3).toString());
+jTextField4.setText(tabladatos.getValueAt(filaselect,4).toString()); 
+jTextField5.setText(tabladatos.getValueAt(filaselect,5).toString());
+jTextField6.setText(tabladatos.getValueAt(filaselect,6).toString()); 
+jTextField7.setText(tabladatos.getValueAt(filaselect,7).toString());
+jTextField8.setText(tabladatos.getValueAt(filaselect,8).toString());
+jTextField9.setText(tabladatos.getValueAt(filaselect,9).toString());
+jTextField10.setText(tabladatos.getValueAt(filaselect,10).toString()); 
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabladatosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -877,7 +949,6 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JCheckBox jCheckBoxSubCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -907,9 +978,9 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -920,6 +991,7 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbhora;
+    private javax.swing.JTable tabladatos;
     // End of variables declaration//GEN-END:variables
 
 private javax.swing.JOptionPane mensaje;

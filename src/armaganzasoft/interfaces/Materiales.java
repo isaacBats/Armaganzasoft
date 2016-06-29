@@ -8,14 +8,27 @@ package armaganzasoft.interfaces;
 import armaganzasoft.models.HiloReloj;
 import armaganzasoft.models.Materials;
 import armaganzasoft.repositorys.MaterialsRepository;
+import armaganzasoft.services.BaseDatos;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author ErwinValle
  */
 public class Materiales extends javax.swing.JFrame {
+    DefaultListModel modelo= new DefaultListModel();
  HiloReloj hilor;
+ BaseDatos conn = new BaseDatos();
+    Connection cn = conn.getConnection();
+    String atributo="Id";
     /**
      * Creates new form Materiales
      */
@@ -24,8 +37,63 @@ public class Materiales extends javax.swing.JFrame {
           limpiar();
            hilor = new HiloReloj(lbhora);
        hilor.start();
+        mostrartabla("");
     }
-    
+    void mostrartabla(String valor){
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("CODIGO");
+        modelo.addColumn("TIPO");
+        modelo.addColumn("ATRIBUTO");
+        modelo.addColumn("VALOR");
+        modelo.addColumn("ATRIBUTO1");
+        modelo.addColumn("VALOR1");
+        modelo.addColumn("ATRIBUTO2");
+        modelo.addColumn("VALOR2");
+        modelo.addColumn("ATRIBUTO3");
+        modelo.addColumn("VALOR3");
+        modelo.addColumn("ATRIBUTO4");
+        modelo.addColumn("VALOR4");
+        tabladatos.setModel(modelo);
+        
+        String sql ="";
+        if(valor.equals("")){
+            sql = "SELECT * FROM materials";
+        }
+        else{
+            sql = "SELECT * FROM materials WHERE "+atributo+"='"+valor+"'";
+        }
+        
+        String datos[] = new String [13];
+        Statement st;
+        try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString(1);
+                datos[1]=rs.getString(2);
+                datos[2]=rs.getString(3);
+                datos[3]=rs.getString(4);
+                datos[4]=rs.getString(5);
+                datos[5]=rs.getString(6);
+                datos[6]=rs.getString(7);
+                datos[7]=rs.getString(8);
+                datos[8]=rs.getString(9);
+                datos[9]=rs.getString(10);
+                datos[10]=rs.getString(11);
+                datos[11]=rs.getString(12);
+                datos[12]=rs.getString(13);
+                
+              
+                modelo.addRow(datos);
+            }
+            tabladatos.setModel(modelo);        
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     public void limpiar (){
         jTextField1.setText("");
         jTextField2.setText("");
@@ -85,6 +153,8 @@ public class Materiales extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabladatos = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -267,12 +337,29 @@ public class Materiales extends javax.swing.JFrame {
         jLabel9.setText("SOLUCIONES EN INGENIERIA ZARATE");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 100, -1, -1));
 
+        tabladatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tabladatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabladatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabladatos);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, -1, -1));
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo PRUEBA.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 780));
 
         jMenuBar1.setBorder(null);
 
-        jMenu1.setText("CAPTURANDE DATOS");
+        jMenu1.setText("CAPTURA DE DATOS");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -480,7 +567,8 @@ Materials materials;
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-Materials materials;
+ mostrartabla("");
+        Materials materials;
         materials = new Materials();
         
           MaterialsRepository  mateRepo = new MaterialsRepository();
@@ -631,6 +719,25 @@ AddOrder inicio = new AddOrder();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void tabladatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabladatosMouseClicked
+int filaselect=tabladatos.getSelectedRow();
+jTextField2.setText(tabladatos.getValueAt(filaselect,1).toString());
+jTextField3.setText(tabladatos.getValueAt(filaselect,2).toString());
+jComboBox1.setSelectedItem(tabladatos.getValueAt(filaselect,3).toString());
+jTextField4.setText(tabladatos.getValueAt(filaselect,4).toString()); 
+jTextField6.setText(tabladatos.getValueAt(filaselect,5).toString()); 
+jTextField5.setText(tabladatos.getValueAt(filaselect,6).toString());
+jTextField7.setText(tabladatos.getValueAt(filaselect,7).toString()); 
+jTextField8.setText(tabladatos.getValueAt(filaselect,8).toString());
+jTextField9.setText(tabladatos.getValueAt(filaselect,9).toString());
+jTextField10.setText(tabladatos.getValueAt(filaselect,10).toString()); 
+jTextField11.setText(tabladatos.getValueAt(filaselect,11).toString()); 
+jTextField12.setText(tabladatos.getValueAt(filaselect,12).toString()); 
+jTextField13.setText(tabladatos.getValueAt(filaselect,13).toString()); 
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_tabladatosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -698,6 +805,7 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -712,6 +820,8 @@ AddOrder inicio = new AddOrder();
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbhora;
+    private javax.swing.JTable tabladatos;
     // End of variables declaration//GEN-END:variables
 private javax.swing.JOptionPane mensaje;
+int filas;
 }
