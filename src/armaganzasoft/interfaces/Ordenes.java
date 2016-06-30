@@ -6,7 +6,6 @@
 package armaganzasoft.interfaces;
 
 import armaganzasoft.models.HiloReloj;
-import armaganzasoft.models.Order;
 import armaganzasoft.repositorys.OrderRepository;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.sql.ResultSet;
@@ -15,8 +14,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -526,7 +523,7 @@ Proceso inicio = new Proceso();
                 while(order.next()){
                      
                      
-                    jTextField33.setText( formateDate( order.getString( "fecha" ) ) );
+                    //jTextField33.setText( formateDate( order.getString( "fecha" ) ) );
                     jTextField31.setText(order.getString("remision"));
                     jTextFieldCliente.setText(order.getString("cliente"));
                     jTextFieldDirFiscal.setText(order.getString("direccion"));

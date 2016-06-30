@@ -288,6 +288,11 @@ public class AddOrder extends javax.swing.JFrame {
         jLabel3.setText("Num. Cliente");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 100, -1));
 
+        jTextFieldIdentified.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                recolectaDatosClient(evt);
+            }
+        });
         jTextFieldIdentified.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 recolectaDatosCliente(evt);
@@ -483,15 +488,16 @@ Proceso inicio = new Proceso();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void recolectaDatosCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_recolectaDatosCliente
-        String identified = jTextFieldIdentified.getText();
-        Customer cliente = cr.buscarCliente(identified);
-        if( cliente.getId() > 0 ){
-            jTextFieldCliente.setText(cliente.getName() + " " + cliente.getLast_name());
-            jTextFieldTelefono1.setText(cliente.getTelephone());
-            jTextFieldDirFiscal.setText(cliente.getAddress());
-            jTextFieldRFC.setText(cliente.getRfc());
-                    
-        }
+//        String identified = jTextFieldIdentified.getText();
+//        Customer cliente = cr.buscarCliente(identified);
+//        if( cliente.getId() > 0 ){
+//            jTextFieldCliente.setText(cliente.getName() + " " + cliente.getLast_name());
+//            jTextFieldTelefono1.setText(cliente.getTelephone());
+//            jTextFieldDirFiscal.setText(cliente.getAddress());
+//            jTextFieldRFC.setText(cliente.getRfc());
+//                    
+//        }
+        
     }//GEN-LAST:event_recolectaDatosCliente
 
     private void SaveOrder(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveOrder
@@ -540,6 +546,18 @@ Ordenes inicio = new Ordenes();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void recolectaDatosClient(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recolectaDatosClient
+        String identified = jTextFieldIdentified.getText();
+        Customer cliente = cr.buscarCliente(identified);
+        if( cliente.getId() > 0 ){
+            jTextFieldCliente.setText(cliente.getName() + " " + cliente.getLast_name());
+            jTextFieldTelefono1.setText(cliente.getTelephone());
+            jTextFieldDirFiscal.setText(cliente.getAddress());
+            jTextFieldRFC.setText(cliente.getRfc());
+                    
+        }
+    }//GEN-LAST:event_recolectaDatosClient
 
     private void limpiar(){
         jTextField2.setText( getNumOrder() );

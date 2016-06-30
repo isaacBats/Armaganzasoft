@@ -584,6 +584,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldIdentified">
       <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="recolectaDatosClient"/>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="recolectaDatosCliente"/>
       </Events>
       <Constraints>
